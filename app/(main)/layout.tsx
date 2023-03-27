@@ -11,32 +11,59 @@ interface LayoutProps {
 }
 
 const Header = () => {
+  const [isShow, setIsShow] = React.useState(false);
   return (
-    <header className="flex justify-center backdrop-blur-sm p-6 sticky top-0 border-b-2 border-gray-200">
-      <div className="w-full max-w-container flex items-center justify-between flex-wrap mx-10">
-        <div className="flex items-center flex-shrink-0 mr-6 cursor-pointer">
-          <span className="font-sansM text-xl text-blue-600">TOSS</span>
+    <header className="sticky top-0 z-50 flex justify-center border-b-2 border-gray-200 p-6 backdrop-blur-md">
+      <div className="mx-10 flex w-full max-w-container flex-wrap items-center justify-between">
+        <div className="mr-6 flex flex-shrink-0 cursor-pointer items-center">
+          <span className="font-sansM text-xl text-blue-600">COPY</span>
           <span className="font-sansM text-xl text-gray-900">TECH</span>
         </div>
 
         <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-stone-900 hover:text-blue-600 hover:border-blue-600">
-            <svg
-              className="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
+          <button
+            className="flex items-center rounded  px-3 py-2 text-gray-900  hover:text-blue-600"
+            onClick={() => setIsShow((prev) => !prev)}
+          >
+            {isShow ? (
+              <svg
+                className="fill-current"
+                viewBox="0 96 960 960"
+                height="20"
+                width="20"
+              >
+                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+              </svg>
+            ) : (
+              <svg
+                className="fill-current"
+                viewBox="0 96 960 960"
+                height="20"
+                width="20"
+              >
+                <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+              </svg>
+            )}
           </button>
         </div>
-        <div className="w-full hidden lg:flex lg:items-center lg:w-auto ">
+        {isShow && (
+          <div className="w-full">
+            <div className="text-sm lg:flex-grow">
+              <a className="mt-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block">
+                채용
+              </a>
+              <a className="mt-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block">
+                블로그
+              </a>
+            </div>
+          </div>
+        )}
+        <div className="hidden w-full lg:flex lg:w-auto lg:items-center ">
           <div className="text-sm lg:flex-grow">
-            <a className="block mt-4 lg:inline-block lg:mt-0 text-stone-600 hover:text-black mr-14 cursor-pointer">
+            <a className="mt-4 mr-14 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block">
               채용
             </a>
-            <a className="block mt-4 lg:inline-block lg:mt-0 text-stone-600 hover:text-black mr-4 cursor-pointer">
+            <a className="mt-4 mr-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block">
               블로그
             </a>
           </div>
