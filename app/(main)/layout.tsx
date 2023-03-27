@@ -20,7 +20,7 @@ const Header = () => {
         </div>
 
         <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-stone-900 hover:text-black hover:border-white">
+          <button className="flex items-center px-3 py-2 border rounded text-stone-900 hover:text-blue-600 hover:border-blue-600">
             <svg
               className="fill-current h-3 w-3"
               viewBox="0 0 20 20"
