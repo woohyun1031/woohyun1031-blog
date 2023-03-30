@@ -1,5 +1,6 @@
 'use client';
 
+import useSearchForm from '#hooks/useScrollForm';
 import dayjs from 'dayjs';
 import React from 'react';
 
@@ -16,6 +17,25 @@ const mock2 = {
 
 export default function Form({ data }: { data: any }) {
   console.log(data.results);
+  const { onSubmit } = useSearchForm();
+  const hasNextPage = data?.has_more ?? false;
+
+  const observer = React.useRef<IntersectionObserver>();
+  const lastBookElementRef = React.useCallback(
+    (node: any) => {
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasNextPage) {
+          onSubmit({
+            page: (data.results.length += 10),
+          });
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [hasNextPage],
+  );
+
   return (
     <>
       <div className="flex w-full justify-center">
@@ -23,12 +43,15 @@ export default function Form({ data }: { data: any }) {
           <div className="mt-14 mb-8">
             <span className="font-sansM text-3xl text-gray-900">블로그</span>
           </div>
-          {data.results?.map((item: any, index: number) => (
+          {data?.results?.map((item: any, index: number) => (
             <a
               className="group mt-14 flex w-full cursor-pointer flex-col align-middle lg:flex-row"
               key={item.id}
               href={item.url}
               target="_blank"
+              {...(index + 1 === data?.results?.length
+                ? { ref: lastBookElementRef }
+                : {})}
             >
               <img
                 src={index % 2 === 0 ? mock1.imageId1 : mock2.iamgeId2}

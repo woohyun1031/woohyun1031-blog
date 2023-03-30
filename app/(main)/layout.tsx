@@ -73,11 +73,18 @@ const Header = () => {
   );
 };
 
+const Footer = () => {
+  return (
+    <footer className="flex justify-center border-t-2 border-gray-200 p-6 backdrop-blur-md"></footer>
+  );
+};
+
 export default function AdminLayout({ children }: LayoutProps) {
   return (
     <div>
       <Header />
       {children}
+      <Footer />
     </div>
   );
 }

@@ -1,19 +1,14 @@
+import { notionApi } from '#apis/index';
 import axios from 'axios';
 
-export const getNotionData = async () => {
+export const getNotionData = async (pages: number) => {
+  if (!pages) return;
   try {
-    const response = await axios.request({
-      method: 'POST',
-      url: `https://api.notion.com/v1/databases/${process.env.NOTION_DATABASE}/query`,
-      headers: {
-        accept: 'application/json',
-        'Notion-Version': '2022-06-28',
-        'content-type': 'application/json',
-        Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
-      },
-      data: { page_size: 4 },
-    });
-    return response.data;
+    return await notionApi
+      .post(`/databases/${process.env.NOTION_DATABASE}/query`, {
+        page_size: pages ?? 0,
+      })
+      .then((response) => response.data);
   } catch (error) {
     console.error(error);
   }
