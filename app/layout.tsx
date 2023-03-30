@@ -1,6 +1,7 @@
 import { notoSansKrBold, notoSansKrMedium } from '#styles/fonts';
 import '#styles/globals.css';
 import React from 'react';
+import { Providers } from './providers';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -16,9 +17,7 @@ export default function RootLayout({
     >
       <body>
         <main>
-          {/* <Providers> */}
-          {children}
-          {/* </Providers> */}
+          <Providers>{children}</Providers>
         </main>
       </body>
     </html>
