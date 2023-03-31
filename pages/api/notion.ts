@@ -10,6 +10,12 @@ export const getNotionPageListData = async (pages: number) => {
     return await notionApi
       .post(`/databases/${process.env.NOTION_DATABASE}/query`, {
         page_size: pages ?? 0,
+        filter: {
+          property: 'isBlog',
+          checkbox: {
+            equals: true,
+          },
+        },
       })
       .then((response) => response.data);
   } catch (error) {
@@ -17,8 +23,7 @@ export const getNotionPageListData = async (pages: number) => {
   }
 };
 
-export const getNotionPageData = async (id: number) => {
-  console.log(id);
+export const getNotionPageData = async (id: string) => {
   if (!id) return;
   try {
     return await notionApi
@@ -30,7 +35,6 @@ export const getNotionPageData = async (id: number) => {
 };
 
 export const getNotionBlockChildrenData = async (id: number) => {
-  console.log(id);
   if (!id) return;
   try {
     return await notionApi

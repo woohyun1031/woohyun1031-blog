@@ -1,6 +1,7 @@
 'use client';
 
 import dayjs from 'dayjs';
+import Image from 'next/image';
 import React from 'react';
 
 const mock1 = {
@@ -16,12 +17,18 @@ export default function Form({ contents, page }: { contents: any; page: any }) {
       <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-innerContainer px-8">
           <div className="flex flex-col items-center">
-            {/* <div className="my-6 w-full  font-sansB text-4xl text-gray-800">
-              <img
-                src={`${page.cover?.file?.url ?? mock1.imageId1}`}
-                className="w-full rounded-3xl object-cover"
+            <div className="relative my-6 h-64 w-full font-sansB text-4xl text-gray-800">
+              <Image
+                src={
+                  page.cover?.file?.url ??
+                  page.cover?.external?.url ??
+                  mock1.imageId1
+                }
+                style={{ objectFit: 'contain' }}
+                alt="blog image"
+                fill
               />
-            </div> */}
+            </div>
             <div className="my-6 w-full font-sansB text-4xl leading-relaxed text-gray-800">
               {page.icon?.emoji && (
                 <span className="mr-4">{page.icon.emoji}</span>

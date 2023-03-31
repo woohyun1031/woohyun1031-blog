@@ -49,18 +49,21 @@ export default function Form({ data }: { data: any }) {
               className="group mt-14 flex w-full cursor-pointer flex-col align-middle lg:flex-row"
               key={item.id}
               href={`/blog/${item.id}`}
-              // href={item.url}
-              // target="_blank"
               {...(index + 1 === data?.results?.length
                 ? { ref: lastBookElementRef }
                 : {})}
             >
               <img
-                src={index % 2 === 0 ? mock1.imageId1 : mock2.iamgeId2}
+                src={
+                  item.cover?.file?.url ??
+                  item.cover?.external?.url ??
+                  mock1.imageId1
+                }
                 className="mr-12 h-56 w-full rounded-xl object-cover transition delay-75 duration-500 ease-in-out group-hover:z-0 group-hover:-translate-y-2 group-hover:shadow-lg lg:w-56"
               />
               <div className="flex flex-col justify-center">
                 <span className="mt-4 mb-4 inline-block font-sansM text-3xl text-gray-800 transition delay-75 duration-500 ease-in-out group-hover:text-blue-600 lg:mt-0">
+                  {item.icon?.emoji ?? null}
                   {item.properties.Name.title[0].text.content}
                 </span>
                 <span className="mb-4 inline-block font-sansM text-xl text-gray-700">
