@@ -31,5 +31,5 @@ export default async function Page(props: any) {
     });
   console.log(page);
 
-  return <Form contents={htmlText} title={page} />;
+  return <Form contents={htmlText} page={page} />;
 }
