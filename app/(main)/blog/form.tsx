@@ -53,14 +53,16 @@ export default function Form({ data }: { data: any }) {
                 ? { ref: lastBookElementRef }
                 : {})}
             >
-              <img
-                src={
-                  item.cover?.file?.url ??
-                  item.cover?.external?.url ??
-                  mock1.imageId1
-                }
-                className="mr-12 h-56 w-full rounded-xl object-cover transition delay-75 duration-500 ease-in-out group-hover:z-0 group-hover:-translate-y-2 group-hover:shadow-lg lg:w-56"
-              />
+              {(item.cover?.file?.url || item.cover?.external?.url) && (
+                <img
+                  src={
+                    item.cover?.file?.url ??
+                    item.cover?.external?.url ??
+                    mock1.imageId1
+                  }
+                  className="tr ansition mr-12 h-56 w-full rounded-xl object-cover delay-75 duration-500 ease-in-out group-hover:z-0 group-hover:-translate-y-2 group-hover:shadow-lg lg:w-56"
+                />
+              )}
               <div className="flex flex-col justify-center">
                 <span className="mt-4 mb-4 inline-block font-sansM text-3xl text-gray-800 transition delay-75 duration-500 ease-in-out group-hover:text-blue-600 lg:mt-0">
                   {item.icon?.emoji ?? null}

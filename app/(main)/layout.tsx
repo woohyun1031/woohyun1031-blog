@@ -65,6 +65,13 @@ const Header = () => {
               >
                 블로그
               </Link>
+              <Link
+                target="_blank"
+                href="https://woo1031.notion.site/Back-to-Back-a43f5fe01a5d46efac38f0c6cc0893c5"
+                className="mt-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
+              >
+                LOG
+              </Link>
             </div>
           </div>
         )}
@@ -73,15 +80,22 @@ const Header = () => {
             <Link
               target="_blank"
               href="https://woo1031.notion.site/WooHyun-975fd291ae324dfb87663e2bd9aa35ca"
-              className="mt-4 mr-14 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
+              className="mt-4 mr-8 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
             >
               채용
             </Link>
             <Link
               href="/blog"
-              className="mt-4 mr-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
+              className="mt-4 mr-8 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
             >
               블로그
+            </Link>
+            <Link
+              target="_blank"
+              href="https://woo1031.notion.site/Back-to-Back-a43f5fe01a5d46efac38f0c6cc0893c5"
+              className="mt-4 mr-8 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
+            >
+              LOG
             </Link>
           </div>
         </div>
