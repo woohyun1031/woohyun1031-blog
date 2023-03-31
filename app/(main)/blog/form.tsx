@@ -2,6 +2,7 @@
 
 import useSearchForm from '#hooks/useScrollForm';
 import dayjs from 'dayjs';
+import Link from 'next/link';
 import React from 'react';
 
 const mock1 = {
@@ -16,7 +17,7 @@ const mock2 = {
 };
 
 export default function Form({ data }: { data: any }) {
-  console.log(data.results);
+  console.log(data);
   const { onSubmit } = useSearchForm();
   const hasNextPage = data?.has_more ?? false;
 
@@ -44,11 +45,12 @@ export default function Form({ data }: { data: any }) {
             <span className="font-sansM text-3xl text-gray-900">블로그</span>
           </div>
           {data?.results?.map((item: any, index: number) => (
-            <a
+            <Link
               className="group mt-14 flex w-full cursor-pointer flex-col align-middle lg:flex-row"
               key={item.id}
-              href={item.url}
-              target="_blank"
+              href={`/blog/${item.id}`}
+              // href={item.url}
+              // target="_blank"
               {...(index + 1 === data?.results?.length
                 ? { ref: lastBookElementRef }
                 : {})}
@@ -68,7 +70,7 @@ export default function Form({ data }: { data: any }) {
                   {dayjs(item.created_time).format('YYYY-MM-DD')}
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

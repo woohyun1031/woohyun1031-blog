@@ -49,23 +49,35 @@ const Header = () => {
         {isShow && (
           <div className="w-full">
             <div className="text-sm lg:flex-grow">
-              <a className="mt-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block">
+              <Link
+                href="/resume"
+                className="mt-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
+              >
                 채용
-              </a>
-              <a className="mt-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block">
+              </Link>
+              <Link
+                href="/blog"
+                className="mt-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
+              >
                 블로그
-              </a>
+              </Link>
             </div>
           </div>
         )}
         <div className="hidden w-full lg:flex lg:w-auto lg:items-center ">
           <div className="text-sm lg:flex-grow">
-            <a className="mt-4 mr-14 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block">
+            <Link
+              href="/resuem"
+              className="mt-4 mr-14 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
+            >
               채용
-            </a>
-            <a className="mt-4 mr-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block">
+            </Link>
+            <Link
+              href="/blog"
+              className="mt-4 mr-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
+            >
               블로그
-            </a>
+            </Link>
           </div>
         </div>
       </div>
