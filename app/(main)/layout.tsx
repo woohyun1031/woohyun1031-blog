@@ -15,10 +15,13 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 flex justify-center border-b-2 border-gray-200 p-6 backdrop-blur-md">
       <div className="mx-10 flex w-full max-w-container flex-wrap items-center justify-between">
-        <div className="mr-6 flex flex-shrink-0 cursor-pointer items-center">
+        <Link
+          href="/blog"
+          className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
+        >
           <span className="font-sansM text-xl text-blue-600">COPY</span>
           <span className="font-sansM text-xl text-gray-900">TECH</span>
-        </div>
+        </Link>
 
         <div className="block lg:hidden">
           <button
@@ -47,10 +50,11 @@ const Header = () => {
           </button>
         </div>
         {isShow && (
-          <div className="w-full">
-            <div className="text-sm lg:flex-grow">
+          <div className="w-full lg:hidden">
+            <div className="text-sm">
               <Link
-                href="/resume"
+                target="_blank"
+                href="https://woo1031.notion.site/WooHyun-975fd291ae324dfb87663e2bd9aa35ca"
                 className="mt-4 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
               >
                 채용
@@ -67,7 +71,8 @@ const Header = () => {
         <div className="hidden w-full lg:flex lg:w-auto lg:items-center ">
           <div className="text-sm lg:flex-grow">
             <Link
-              href="/resuem"
+              target="_blank"
+              href="https://woo1031.notion.site/WooHyun-975fd291ae324dfb87663e2bd9aa35ca"
               className="mt-4 mr-14 block cursor-pointer text-stone-600 hover:text-black lg:mt-0 lg:inline-block"
             >
               채용
