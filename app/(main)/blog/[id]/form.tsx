@@ -1,8 +1,10 @@
 'use client';
 
+import { IPage } from '#pages/api/notion';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import React from 'react';
+import { VFile } from 'VFile';
 
 const mock1 = {
   imageId1: 'https://toss.tech/wp-content/uploads/2023/03/00017-3291509353.png',
@@ -10,8 +12,13 @@ const mock1 = {
     'REST Docs 를 최소한의 코드로 작성하면서 변화에도 더 유연하게 대처할 수 있는 tosspayments-restdocs 라이브러리와, 라이브러리에 녹인 기술들을 소개합니다.',
 };
 
-export default function Form({ contents, page }: { contents: any; page: any }) {
-  console.log(page);
+export default function Form({
+  contents,
+  page,
+}: {
+  contents: VFile;
+  page: IPage;
+}) {
   return (
     <>
       <div className="flex w-full justify-center">
@@ -50,7 +57,7 @@ export default function Form({ contents, page }: { contents: any; page: any }) {
                 lg:prose-xl 
                 prose-img:w-full 
                 "
-              dangerouslySetInnerHTML={{ __html: contents.value }}
+              dangerouslySetInnerHTML={{ __html: contents.value as string }}
             />
           </div>
         </div>

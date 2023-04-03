@@ -29,7 +29,7 @@ export default async function Page(props: any) {
     .catch((error) => {
       console.log(error);
     });
-  console.log(page);
-
+  if (!page) return;
+  if (!htmlText) return;
   return <Form contents={htmlText} page={page} />;
 }
