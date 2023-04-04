@@ -25,7 +25,7 @@ export default function Form({
         <div className="min-h-screen w-full max-w-innerContainer px-8">
           <div className="flex flex-col items-center">
             {(page.cover?.file?.url || page.cover?.external?.url) && (
-              <div className="relative my-6 h-64 w-full font-sansB text-4xl text-gray-800">
+              <div className="relative my-6 h-64 w-full font-sansB text-4xl text-gray-800 dark:text-white">
                 <Image
                   src={
                     page.cover?.file?.url ??
@@ -38,23 +38,24 @@ export default function Form({
                 />
               </div>
             )}
-            <div className="my-6 w-full font-sansB text-4xl leading-relaxed text-gray-800">
+            <div className="my-6 w-full font-sansB text-4xl leading-relaxed text-gray-800 dark:text-white">
               {page.icon?.emoji && (
                 <span className="mr-4">{page.icon.emoji}</span>
               )}
               <span>{page.properties.Name.title[0].plain_text}</span>
             </div>
-            <div className="my-6 w-full  font-sansM text-xl text-gray-600">
+            <div className="my-6 w-full font-sansM text-xl text-gray-600 dark:text-gray-400">
               {dayjs(page.created_time).format('YYYY-MM-DD')}
             </div>
 
             <article
               className="
-                prose 
+                prose  
                 prose-gray 
                 mt-8 
                 w-full 
-                max-w-container                
+                max-w-container 
+                dark:prose-dark                
                 md:prose-lg 
                 lg:prose-xl 
                 prose-img:w-full 
