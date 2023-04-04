@@ -6,14 +6,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notoSansKrBold } from 'styles/fonts';
 import { DarkModeThemeContext } from 'app/providers';
-
+import Moon from '#public/images/moon.svg';
+import Sun from '#public/images/sun.svg';
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Header = () => {
   const [isShow, setIsShow] = React.useState(false);
-  const { theme, setTheme } = React.useContext(DarkModeThemeContext);
+  const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
 
   const changeTheme = React.useCallback(() => {
     const localTheme = localStorage.getItem('theme');
@@ -21,12 +22,12 @@ const Header = () => {
       if (localTheme === 'dark') {
         localStorage.removeItem('theme');
         document.documentElement.classList.remove('dark');
-        return setTheme(false);
+        return setIsDark(false);
       }
     } else {
       localStorage.setItem('theme', 'dark');
       document.documentElement.classList.add('dark');
-      setTheme(true);
+      setIsDark(true);
     }
   }, []);
 
@@ -45,10 +46,30 @@ const Header = () => {
 
         <div className="flex lg:hidden ">
           <button
-            className="text-gray-900 dark:text-white"
+            className="text-gray-800 dark:text-white"
             onClick={() => changeTheme()}
           >
-            {theme ? '다크모드' : '라이트모드'}
+            {isDark ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="25"
+                viewBox="0 96 960 960"
+                width="25"
+                className="fill-current"
+              >
+                <path d="M481 1027 346 896H160V710L26 576l134-134V256h186l135-134 133 134h186v186l134 134-134 134v186H614l-133 131Zm-2-191q111 0 186-75.5T740 575q0-110-75.5-185.5T479 314q-27 0-52 5.5T373 338q69 32 111 96t42 141q0 77-42 141t-111 97q24 11 50.5 17t55.5 6Z" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="25"
+                viewBox="0 96 960 960"
+                width="25"
+                className="fill-current"
+              >
+                <path d="M483 976q-84 0-157.5-32t-128-86.5Q143 803 111 729.5T79 572q0-146 93-257.5T409 176q-18 98 11 192.5T520 534q71 71 165.5 100.5T879 646q-26 144-138 237t-258 93Zm261-528-42-94-94-42 94-42 42-94 42 94 94 42-94 42-42 94Z" />
+              </svg>
+            )}
           </button>
           <button
             className="flex items-center rounded  px-3 py-2 text-gray-900  hover:text-blue-600"
@@ -104,30 +125,28 @@ const Header = () => {
         <div className="hidden w-full lg:flex lg:w-auto lg:items-center ">
           <div className="flex text-sm lg:flex-grow">
             <button
-              className="mr-8 text-gray-900 dark:text-white"
+              className="mr-8 text-gray-800 dark:text-white"
               onClick={() => changeTheme()}
             >
-              {theme ? (
+              {isDark ? (
                 <svg
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
+                  height="25"
+                  viewBox="0 96 960 960"
+                  width="25"
+                  className="fill-current"
                 >
-                  <path
-                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                  ></path>
+                  <path d="M481 1027 346 896H160V710L26 576l134-134V256h186l135-134 133 134h186v186l134 134-134 134v186H614l-133 131Zm-2-191q111 0 186-75.5T740 575q0-110-75.5-185.5T479 314q-27 0-52 5.5T373 338q69 32 111 96t42 141q0 77-42 141t-111 97q24 11 50.5 17t55.5 6Z" />
                 </svg>
               ) : (
                 <svg
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
+                  height="25"
+                  viewBox="0 96 960 960"
+                  width="25"
+                  className="fill-current"
                 >
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                  <path d="M483 976q-84 0-157.5-32t-128-86.5Q143 803 111 729.5T79 572q0-146 93-257.5T409 176q-18 98 11 192.5T520 534q71 71 165.5 100.5T879 646q-26 144-138 237t-258 93Zm261-528-42-94-94-42 94-42 42-94 42 94 94 42-94 42-42 94Z" />
                 </svg>
               )}
             </button>

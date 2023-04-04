@@ -15,7 +15,8 @@
       "#queries/*": ["queries/*"],
       "#styles/*": ["styles/*"],
       "#types/*": ["types/*"],
-      "#utils/*": ["utils/*"]
+      "#utils/*": ["utils/*"],
+      "#public/*": ["public"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

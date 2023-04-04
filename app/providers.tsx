@@ -12,8 +12,8 @@ const queryClient = new QueryClient({
 });
 
 export const DarkModeThemeContext = createContext({
-  theme: false,
-  setTheme: (value: any) => {},
+  isDark: false,
+  setIsDark: (value: any) => {},
 });
 
 export function Providers({
@@ -35,7 +35,7 @@ export function Providers({
 
   return (
     <DarkModeThemeContext.Provider
-      value={{ theme: isDarkMode, setTheme: setIsDarkMode }}
+      value={{ isDark: isDarkMode, setIsDark: setIsDarkMode }}
     >
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </DarkModeThemeContext.Provider>
