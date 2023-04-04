@@ -15,7 +15,7 @@ export default function RootLayout({
       lang="ko"
       className={`${notoSansKrBold.variable} ${notoSansKrMedium.variable}`}
     >
-      <body>
+      <body className="dark:bg-gray-900">
         <main>
           <Providers>{children}</Providers>
         </main>

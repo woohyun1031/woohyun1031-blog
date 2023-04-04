@@ -13,6 +13,7 @@ var disabledCss = {
 };
 
 module.exports = {
+  darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx}', // Note the addition of the `app` directory.
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -37,7 +38,7 @@ module.exports = {
       },
       maxWidth: {
         container: '1140px',
-        innerContainer: '644px',
+        innerContainer: '700px',
       },
       typography: (theme) => ({
         DEFAULT: {

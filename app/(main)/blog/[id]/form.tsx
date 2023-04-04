@@ -24,18 +24,20 @@ export default function Form({
       <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-innerContainer px-8">
           <div className="flex flex-col items-center">
-            <div className="relative my-6 h-64 w-full font-sansB text-4xl text-gray-800">
-              <Image
-                src={
-                  page.cover?.file?.url ??
-                  page.cover?.external?.url ??
-                  mock1.imageId1
-                }
-                style={{ objectFit: 'contain' }}
-                alt="blog image"
-                fill
-              />
-            </div>
+            {(page.cover?.file?.url || page.cover?.external?.url) && (
+              <div className="relative my-6 h-64 w-full font-sansB text-4xl text-gray-800">
+                <Image
+                  src={
+                    page.cover?.file?.url ??
+                    page.cover?.external?.url ??
+                    mock1.imageId1
+                  }
+                  style={{ objectFit: 'contain' }}
+                  alt="blog image"
+                  fill
+                />
+              </div>
+            )}
             <div className="my-6 w-full font-sansB text-4xl leading-relaxed text-gray-800">
               {page.icon?.emoji && (
                 <span className="mr-4">{page.icon.emoji}</span>
