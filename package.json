@@ -33,6 +33,7 @@
     "unified": "^10.1.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^7.0.0",
     "autoprefixer": "^10.4.14",
     "babel-eslint": "^10.1.0",
     "eslint-config-prettier": "^8.8.0",

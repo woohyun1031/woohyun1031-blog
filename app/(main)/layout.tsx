@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notoSansKrBold } from 'styles/fonts';
 import { DarkModeThemeContext } from 'app/providers';
-import Moon from '#public/images/moon.svg';
-import Sun from '#public/images/sun.svg';
+// import Moon from '/images/moon.svg';
+// import Sun from '/images/sun.svg';
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -50,25 +50,19 @@ const Header = () => {
             onClick={() => changeTheme()}
           >
             {isDark ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="25"
-                viewBox="0 96 960 960"
-                width="25"
-                className="fill-current"
-              >
-                <path d="M481 1027 346 896H160V710L26 576l134-134V256h186l135-134 133 134h186v186l134 134-134 134v186H614l-133 131Zm-2-191q111 0 186-75.5T740 575q0-110-75.5-185.5T479 314q-27 0-52 5.5T373 338q69 32 111 96t42 141q0 77-42 141t-111 97q24 11 50.5 17t55.5 6Z" />
-              </svg>
+              <div>
+                <Image
+                  src="/sun.svg"
+                  alt="me"
+                  width="25"
+                  height="25"
+                  className="fill-current"
+                />
+              </div>
             ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="25"
-                viewBox="0 96 960 960"
-                width="25"
-                className="fill-current"
-              >
-                <path d="M483 976q-84 0-157.5-32t-128-86.5Q143 803 111 729.5T79 572q0-146 93-257.5T409 176q-18 98 11 192.5T520 534q71 71 165.5 100.5T879 646q-26 144-138 237t-258 93Zm261-528-42-94-94-42 94-42 42-94 42 94 94 42-94 42-42 94Z" />
-              </svg>
+              <div>
+                <Image src="/moon.svg" alt="me" width="25" height="25" />
+              </div>
             )}
           </button>
           <button
@@ -129,25 +123,19 @@ const Header = () => {
               onClick={() => changeTheme()}
             >
               {isDark ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="25"
-                  viewBox="0 96 960 960"
-                  width="25"
-                  className="fill-current"
-                >
-                  <path d="M481 1027 346 896H160V710L26 576l134-134V256h186l135-134 133 134h186v186l134 134-134 134v186H614l-133 131Zm-2-191q111 0 186-75.5T740 575q0-110-75.5-185.5T479 314q-27 0-52 5.5T373 338q69 32 111 96t42 141q0 77-42 141t-111 97q24 11 50.5 17t55.5 6Z" />
-                </svg>
+                <div>
+                  <Image
+                    src="/sun.svg"
+                    alt="me"
+                    width="25"
+                    height="25"
+                    className="fill-current"
+                  />
+                </div>
               ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="25"
-                  viewBox="0 96 960 960"
-                  width="25"
-                  className="fill-current"
-                >
-                  <path d="M483 976q-84 0-157.5-32t-128-86.5Q143 803 111 729.5T79 572q0-146 93-257.5T409 176q-18 98 11 192.5T520 534q71 71 165.5 100.5T879 646q-26 144-138 237t-258 93Zm261-528-42-94-94-42 94-42 42-94 42 94 94 42-94 42-42 94Z" />
-                </svg>
+                <div>
+                  <Image src="/moon.svg" alt="me" width="25" height="25" />
+                </div>
               )}
             </button>
             <button>
