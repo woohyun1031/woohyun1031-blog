@@ -39,15 +39,31 @@ export default function Form({
               </div>
             )}
             <div className="my-6 w-full font-sansB text-4xl leading-relaxed text-gray-800 dark:text-white">
-              {page.icon?.emoji && (
-                <span className="mr-4">{page.icon.emoji}</span>
-              )}
               <span>{page.properties.Name.title[0].plain_text}</span>
             </div>
-            <div className="my-6 w-full font-sansM text-xl text-gray-600 dark:text-gray-400">
-              {dayjs(page.created_time).format('YYYY-MM-DD')}
-            </div>
+            <div className="my-6 flex w-full flex-col justify-start sm:flex-row">
+              <span className="mr-4 mb-4 inline-block font-sansM text-xl text-gray-600 dark:text-gray-400">
+                {dayjs(page.created_time).format('YYYY-MM-DD')}
+              </span>
+              <div>
+                {page.properties.Type.multi_select.map(
+                  (type: { id: string; name: string; color: string }) => {
+                    const bgColor = `bg-${type.color}-500`;
 
+                    return (
+                      <span
+                        className={`mr-4 inline-block rounded-md px-2 font-sansM text-base text-white  dark:text-gray-200 
+                          ${type.color ? bgColor : 'bg-gray-700'} ${
+                          type.color ? `dark:${bgColor}` : 'dark:bg-gray-200'
+                        }`}
+                      >
+                        {type.name}
+                      </span>
+                    );
+                  },
+                )}
+              </div>
+            </div>
             <article
               className="
                 prose  

@@ -18,6 +18,7 @@ const mock2 = {
 };
 
 export default function Form({ data }: { data: INotionPageList }) {
+  console.log(data);
   const { onSubmit } = useSearchForm();
   const hasNextPage = data.has_more ?? false;
 
@@ -73,9 +74,31 @@ export default function Form({ data }: { data: INotionPageList }) {
                   {item.properties.Subtitle.rich_text[0].plain_text ??
                     mock1.content}
                 </span>
-                <span className="mb-4 inline-block font-sansM text-base text-gray-600 dark:text-gray-400">
-                  {dayjs(item.created_time).format('YYYY-MM-DD')}
-                </span>
+                <div className="flex flex-col justify-start sm:flex-row ">
+                  <span className="mr-4 mb-4 inline-block font-sansM text-base text-gray-600 dark:text-gray-400">
+                    {dayjs(item.created_time).format('YYYY-MM-DD')}
+                  </span>
+                  <div>
+                    {item.properties.Type.multi_select.map(
+                      (type: { id: string; name: string; color: string }) => {
+                        const bgColor = `bg-${type.color}-500`;
+
+                        return (
+                          <span
+                            className={`mr-4 inline-block rounded-md px-2 font-sansM text-base text-white  dark:text-gray-200 
+                          ${type.color ? bgColor : 'bg-gray-700'} ${
+                              type.color
+                                ? `dark:${bgColor}`
+                                : 'dark:bg-gray-200'
+                            }`}
+                          >
+                            {type.name}
+                          </span>
+                        );
+                      },
+                    )}
+                  </div>
+                </div>
               </div>
             </Link>
           ))}
