@@ -1,5 +1,6 @@
 'use client';
 
+import Tag from '#components/Tag';
 import useSearchForm from '#hooks/useScrollForm';
 import { INotionPageList, IPage } from '#pages/api/notion';
 import dayjs from 'dayjs';
@@ -81,20 +82,7 @@ export default function Form({ data }: { data: INotionPageList }) {
                   <div>
                     {item.properties.Type.multi_select.map(
                       (type: { id: string; name: string; color: string }) => {
-                        const bgColor = `bg-${type.color}-500`;
-
-                        return (
-                          <span
-                            className={`mr-4 inline-block rounded-md px-2 font-sansM text-base text-white  dark:text-gray-200 
-                          ${type.color ? bgColor : 'bg-gray-700'} ${
-                              type.color
-                                ? `dark:${bgColor}`
-                                : 'dark:bg-gray-200'
-                            }`}
-                          >
-                            {type.name}
-                          </span>
-                        );
+                        return <Tag title={type.name} color={type.color} />;
                       },
                     )}
                   </div>
