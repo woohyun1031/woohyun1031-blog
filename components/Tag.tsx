@@ -13,9 +13,9 @@ const Tag = (props: ITagProps) => {
                 font-sansM  
                 text-xs                
                 text-blue-600
-                dark:bg-gray-800
-                dark:text-blue-500
-                
+                duration-300
+                ease-in-out
+                dark:bg-gray-800 dark:text-blue-500                
       `}
     >
       {props.title ?? ''}
