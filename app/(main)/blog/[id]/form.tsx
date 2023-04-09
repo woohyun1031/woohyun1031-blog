@@ -49,7 +49,7 @@ export default function Form({
               <div>
                 {page.properties.Type.multi_select.map(
                   (type: { id: string; name: string; color: string }) => {
-                    return <Tag title={type.name} color={type.color} />;
+                    return <Tag title={type.name} />;
                   },
                 )}
               </div>

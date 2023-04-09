@@ -4,17 +4,19 @@ import React from 'react';
 
 export interface ITagProps {
   title?: string;
-  color?: string;
 }
 const Tag = (props: ITagProps) => {
-  const bgColor = `bg-${props.color}-500` ?? 'bg-blue-600';
+  const bgColor = 'bg-gray-800';
   return (
     <span
-      className={`mr-4 inline-block rounded-md px-2 font-sansM text-base 
-                text-white  
-                dark:text-gray-200 
-                ${bgColor}
-      }`}
+      className={`} mr-4 inline-block rounded-xl bg-blue-100 px-3 py-1 
+                font-sansM  
+                text-xs                
+                text-blue-600
+                dark:bg-gray-800
+                dark:text-blue-500
+                
+      `}
     >
       {props.title ?? ''}
     </span>
