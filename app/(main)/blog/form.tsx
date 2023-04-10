@@ -18,10 +18,16 @@ const mock2 = {
   content: '선언적인 코드, 토스 프론트엔드 챕터는 어떻게 생각을 하고 있을까요?',
 };
 
-export default function Form({ data }: { data: INotionPageList }) {
-  console.log(data);
+export default function Form({
+  results,
+  hasMore,
+}: {
+  results: IPage[];
+  hasMore: boolean;
+}) {
+  console.log('results:::', results);
   const { onSubmit } = useSearchForm();
-  const hasNextPage = data.has_more ?? false;
+  const hasNextPage = hasMore ?? false;
 
   const observer = React.useRef<IntersectionObserver>();
   const lastBookElementRef = React.useCallback(
@@ -30,7 +36,7 @@ export default function Form({ data }: { data: INotionPageList }) {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasNextPage) {
           onSubmit({
-            page: (data.results.length += 10),
+            page: (results.length += 10),
           });
         }
       });
@@ -48,12 +54,12 @@ export default function Form({ data }: { data: INotionPageList }) {
               블로그
             </span>
           </div>
-          {data?.results?.map((item: IPage, index: number) => (
+          {results?.map((item: IPage, index: number) => (
             <Link
               className="group mt-14 flex w-full cursor-pointer flex-col align-middle lg:flex-row "
               key={item.id}
               href={`/blog/${item.id}`}
-              {...(index + 1 === data?.results?.length
+              {...(index + 1 === results?.length
                 ? { ref: lastBookElementRef }
                 : {})}
             >
@@ -72,7 +78,7 @@ export default function Form({ data }: { data: INotionPageList }) {
                   {item.properties.Name?.title[0].text.content}
                 </span>
                 <span className="mb-4 inline-block font-sansM text-xl text-gray-700 dark:text-gray-200">
-                  {item.properties.Subtitle.rich_text[0].plain_text ??
+                  {item.properties.Subtitle.rich_text[0]?.plain_text ??
                     mock1.content}
                 </span>
                 <div className="flex flex-col justify-start sm:flex-row ">

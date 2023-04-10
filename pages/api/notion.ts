@@ -37,7 +37,13 @@ export interface INotionPageList {
 
 export const notionClient = new Client({ auth: `${process.env.NOTION_TOKEN}` });
 
-export const getNotionPageListData = async (pages: number) => {
+export const getNotionPageListData = async ({
+  pages,
+  start_cursor,
+}: {
+  pages: number;
+  start_cursor?: string;
+}) => {
   if (!pages) return;
   try {
     return await notionApi
@@ -45,6 +51,7 @@ export const getNotionPageListData = async (pages: number) => {
         `/databases/${process.env.NOTION_DATABASE}/query`,
         {
           page_size: pages ?? 0,
+          start_cursor: start_cursor ?? undefined,
           filter: {
             property: 'isBlog',
             checkbox: {
