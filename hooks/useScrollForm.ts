@@ -13,7 +13,7 @@ export type UseSearchFormReturn = {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function useSearchForm(): UseSearchFormReturn {
+export default function useScrollForm(): UseSearchFormReturn {
   const [loading, setLoading] = React.useState(false);
   const pathname = usePathname();
   const router = useRouter();

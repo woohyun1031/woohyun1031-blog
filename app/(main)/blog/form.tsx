@@ -1,7 +1,7 @@
 'use client';
 
 import Tag from '#components/Tag';
-import useSearchForm from '#hooks/useScrollForm';
+import useScrollForm from '#hooks/useScrollForm';
 import { INotionPageList, IPage } from '#pages/api/notion';
 import dayjs from 'dayjs';
 import Link from 'next/link';
@@ -26,7 +26,7 @@ export default function Form({
   hasMore: boolean;
 }) {
   console.log('results:::', results);
-  const { onSubmit } = useSearchForm();
+  const { onSubmit } = useScrollForm();
   const hasNextPage = hasMore ?? false;
 
   const observer = React.useRef<IntersectionObserver>();

@@ -50,6 +50,7 @@ module.exports = {
             'ul > li::before': { backgroundColor: theme('colors.gray.700') },
             hr: { borderColor: theme('colors.gray.800') },
             blockquote: {
+              fontWeight: theme('font-bold'),
               color: theme('colors.gray.100'),
               borderLeftColor: theme('colors.gray.800'),
             },
@@ -63,10 +64,11 @@ module.exports = {
             },
             'a code': { color: theme('colors.gray.100') },
             pre: {
-              color: theme('colors.gray.200'),
+              color: theme('colors.gray.100'),
               backgroundColor: theme('colors.gray.800'),
             },
             'pre code': {
+              color: theme('#DD1144'),
               backgroundColor: theme('colors.gray.800'),
               content: '""',
               'padding-left': 'unset',
