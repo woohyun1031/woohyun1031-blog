@@ -10,5 +10,27 @@ const mock1 = {
 };
 
 export default function Form() {
-  return <div className="flex w-full justify-center">준비중...</div>;
+  return (
+    <>
+      <div className="flex w-full justify-center">
+        <div className="min-h-screen w-full max-w-container px-8">
+          <div className="mt-14 mb-8">
+            <span className="font-sansM text-3xl text-gray-900 dark:text-white">
+              채용
+            </span>
+          </div>
+          <div className="mt-12 flex w-full justify-center px-12">
+            <img
+              src="https://ghchart.rshah.org/woohyun1031"
+              width="100%"
+              className="cursor-pointer p-4 delay-75 duration-500 
+                ease-in-out 
+                hover:-translate-y-2 hover:shadow-lg
+                "
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }

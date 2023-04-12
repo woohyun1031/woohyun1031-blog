@@ -95,7 +95,7 @@ const Header = () => {
             <div className="text-sm">
               <Link
                 target="_blank"
-                href="https://woo1031.notion.site/WooHyun-975fd291ae324dfb87663e2bd9aa35ca"
+                href="./resume"
                 className="mt-4 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
               >
                 채용
@@ -141,7 +141,7 @@ const Header = () => {
             <button>
               <Link
                 target="_blank"
-                href="https://woo1031.notion.site/WooHyun-975fd291ae324dfb87663e2bd9aa35ca"
+                href="./resume"
                 className="mt-4 mr-8 block cursor-pointer  text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
               >
                 채용

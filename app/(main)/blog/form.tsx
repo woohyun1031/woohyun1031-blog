@@ -99,7 +99,7 @@ export default function Form({
         </div>
       </div>
       <div className="mt-12 flex w-full justify-center px-12">
-        <img src="https://ghchart.rshah.org/woohyun1031" width="100%" />
+        <img src="https://ghchart.rshah.org/3b82f6/woohyun1031" width="100%" />
       </div>
     </>
   );
