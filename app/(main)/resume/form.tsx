@@ -2,6 +2,10 @@
 
 import dayjs from 'dayjs';
 import React from 'react';
+import GitHubCalendar from 'react-github-calendar';
+import { DarkModeThemeContext } from 'app/providers';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 const mock1 = {
   imageId1: 'https://toss.tech/wp-content/uploads/2023/03/00017-3291509353.png',
@@ -10,6 +14,36 @@ const mock1 = {
 };
 
 export default function Form() {
+  const { isDark } = React.useContext(DarkModeThemeContext);
+
+  const gitHubCalendar = React.useCallback(() => {
+    console.log(isDark);
+    return (
+      <>
+        <GitHubCalendar
+          username="woohyun1031"
+          colorScheme={isDark ? 'dark' : 'light'}
+          style={{
+            width: '100%',
+            marginTop: 12,
+            color: isDark ? 'white' : 'black',
+          }}
+          theme={{
+            light: ['#efefef', '47e000'],
+            dark: ['#333', '67c63b'],
+          }}
+          renderBlock={(block, activity) =>
+            React.cloneElement(block, {
+              'data-tooltip-id': 'react-tooltip',
+              'data-tooltip-html': `${activity.count} activities on ${activity.date}`,
+            })
+          }
+        />
+        <Tooltip id="react-tooltip" />
+      </>
+    );
+  }, [isDark]);
+
   return (
     <>
       <div className="flex w-full justify-center">
@@ -20,14 +54,7 @@ export default function Form() {
             </span>
           </div>
           <div className="mt-12 flex w-full justify-center px-12">
-            <img
-              src="https://ghchart.rshah.org/woohyun1031"
-              width="100%"
-              className="cursor-pointer p-4 delay-75 duration-500 
-                ease-in-out 
-                hover:-translate-y-2 hover:shadow-lg
-                "
-            />
+            {gitHubCalendar()}
           </div>
         </div>
       </div>
