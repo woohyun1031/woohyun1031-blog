@@ -5,6 +5,7 @@ import useScrollForm from '#hooks/useScrollForm';
 import { IPage } from '#pages/api/notion';
 import dayjs from 'dayjs';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { VFile } from 'VFile';
 
@@ -22,6 +23,7 @@ export default function Form({
   page: IPage;
 }) {
   const { onSubmit } = useScrollForm();
+  const route = useRouter();
   return (
     <>
       <div className="flex w-full justify-center">
@@ -54,11 +56,7 @@ export default function Form({
                     return (
                       <Tag
                         title={type.name}
-                        onClick={() => {
-                          onSubmit({
-                            type: type.name,
-                          });
-                        }}
+                        onClick={() => route.push(`/blog?type=${type.name}`)}
                       />
                     );
                   },
