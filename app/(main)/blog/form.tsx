@@ -92,7 +92,6 @@ export default function Form(props: {
                             title={type.name}
                             onClick={() => {
                               onSubmit({
-                                page: 10,
                                 type: type.name,
                               });
                             }}

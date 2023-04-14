@@ -1,6 +1,7 @@
 'use client';
 
 import Tag from '#components/Tag';
+import useScrollForm from '#hooks/useScrollForm';
 import { IPage } from '#pages/api/notion';
 import dayjs from 'dayjs';
 import Image from 'next/image';
@@ -20,6 +21,7 @@ export default function Form({
   contents: VFile;
   page: IPage;
 }) {
+  const { onSubmit } = useScrollForm();
   return (
     <>
       <div className="flex w-full justify-center">
@@ -49,7 +51,16 @@ export default function Form({
               <div>
                 {page.properties.Type.multi_select.map(
                   (type: { id: string; name: string; color: string }) => {
-                    return <Tag title={type.name} />;
+                    return (
+                      <Tag
+                        title={type.name}
+                        onClick={() => {
+                          onSubmit({
+                            type: type.name,
+                          });
+                        }}
+                      />
+                    );
                   },
                 )}
               </div>
