@@ -6,6 +6,7 @@ export const dynamic = 'force-dynamic';
 
 interface ISearchParams {
   page: number;
+  type: string;
 }
 
 export default async function Page(props: IDefaultPageProps<ISearchParams>) {
@@ -20,6 +21,7 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
         const data = await getNotionPageListData({
           pages: 100,
           ...(start_cursor ? { start_cursor } : {}),
+          ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
         });
         array.push(...(data?.results ? data?.results : []));
         await rc(data?.next_cursor, count);
@@ -28,6 +30,7 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
         const data = await getNotionPageListData({
           pages: lastRequestCount,
           ...(start_cursor ? { start_cursor } : {}),
+          ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
         });
         array.push(...(data?.results.length ? data?.results : []));
         return data?.has_more ?? false;
@@ -40,5 +43,5 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
     props.searchParams.page ? Number(props.searchParams.page) : 10,
   );
   if (!array.length) return;
-  return <Form results={array} hasMore={hasMore} />;
+  return <Form results={array} hasMore={hasMore} params={props.searchParams} />;
 }

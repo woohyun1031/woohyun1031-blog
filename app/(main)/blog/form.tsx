@@ -18,14 +18,12 @@ const mock2 = {
   content: '선언적인 코드, 토스 프론트엔드 챕터는 어떻게 생각을 하고 있을까요?',
 };
 
-export default function Form({
-  results,
-  hasMore,
-}: {
+export default function Form(props: {
   results: IPage[];
   hasMore: boolean;
+  params: any;
 }) {
-  console.log('results:::', results);
+  const { results, hasMore, params } = props;
   const { onSubmit } = useScrollForm();
   const hasNextPage = hasMore ?? false;
 
@@ -36,6 +34,7 @@ export default function Form({
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasNextPage) {
           onSubmit({
+            ...params,
             page: (results.length += 10),
           });
         }
@@ -88,7 +87,17 @@ export default function Form({
                   <div>
                     {item.properties.Type.multi_select.map(
                       (type: { id: string; name: string; color: string }) => {
-                        return <Tag title={type.name} />;
+                        return (
+                          <Tag
+                            title={type.name}
+                            onClick={() => {
+                              onSubmit({
+                                page: 10,
+                                type: type.name,
+                              });
+                            }}
+                          />
+                        );
                       },
                     )}
                   </div>

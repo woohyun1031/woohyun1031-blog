@@ -40,11 +40,36 @@ export const notionClient = new Client({ auth: `${process.env.NOTION_TOKEN}` });
 export const getNotionPageListData = async ({
   pages,
   start_cursor,
+  type,
 }: {
   pages: number;
   start_cursor?: string;
+  type?: string;
 }) => {
   if (!pages) return;
+  const options = type
+    ? {
+        and: [
+          {
+            property: 'isBlog',
+            checkbox: {
+              equals: true,
+            },
+          },
+          {
+            property: 'Type',
+            multi_select: {
+              contains: type,
+            },
+          },
+        ],
+      }
+    : {
+        property: 'isBlog',
+        checkbox: {
+          equals: true,
+        },
+      };
   try {
     return await notionApi
       .post<INotionPageList>(
@@ -52,12 +77,7 @@ export const getNotionPageListData = async ({
         {
           page_size: pages ?? 0,
           start_cursor: start_cursor ?? undefined,
-          filter: {
-            property: 'isBlog',
-            checkbox: {
-              equals: true,
-            },
-          },
+          filter: options,
         },
       )
       .then((response) => response.data);
