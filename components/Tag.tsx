@@ -16,13 +16,21 @@ const Tag = (props: ITagProps) => {
 
         if (props.onClick) props.onClick();
       }}
-      className={`} mr-4 inline-block rounded-xl bg-blue-100 px-3 py-1 
+      className={`mr-4 inline-block rounded-xl bg-blue-100 px-3 py-1 
                 font-sansM  
                 text-xs                
                 text-blue-600
                 duration-300
-                ease-in-out
-                dark:bg-gray-800 dark:text-blue-500                
+                ease-in-out 
+                hover:bg-blue-500
+                hover:text-blue-100
+                active:bg-blue-700
+                dark:bg-gray-800
+                dark:text-blue-500
+                dark:hover:bg-blue-500
+                dark:hover:text-blue-100
+                dark:active:bg-blue-700
+                                                
       `}
     >
       {props.title ?? ''}
