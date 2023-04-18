@@ -48,13 +48,83 @@ export default function Form() {
     <>
       <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-container px-8">
-          <div className="mt-14 mb-8">
-            <span className="font-sansM text-3xl text-gray-900 dark:text-white">
-              채용
-            </span>
-          </div>
-          <div className="mt-12 flex w-full justify-center px-12">
-            {gitHubCalendar()}
+          <div className="mt-14 flex w-full flex-col justify-center px-12">
+            <div className="mt-4">
+              <div>
+                <span className="font-sansM text-3xl text-gray-900 dark:text-white">
+                  회사 프로젝트 기록
+                </span>
+              </div>
+              <div className="mt-4 flex flex-col">
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test01
+                </span>
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test02
+                </span>
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test03
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <div>
+                <span className="font-sansM text-3xl text-gray-900 dark:text-white">
+                  개인 프로젝트 기록
+                </span>
+              </div>
+              <div className="mt-4 flex flex-col">
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test01
+                </span>
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test02
+                </span>
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test03
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <div>
+                <span className="font-sansM text-3xl text-gray-900 dark:text-white">
+                  공부 기록
+                </span>
+              </div>
+              <div className="mt-4 flex flex-col">
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test01
+                </span>
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test02
+                </span>
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test03
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <div>
+                <span className="font-sansM text-3xl text-gray-900 dark:text-white">
+                  커밋 기록
+                </span>
+              </div>
+              <div className="mt-4 flex flex-col">
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test01
+                </span>
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test02
+                </span>
+                <span className="font-sansM text-2xl text-gray-700 dark:text-white">
+                  * Test03
+                </span>
+              </div>
+            </div>
+            <div className="mt-4">{gitHubCalendar()}</div>
           </div>
         </div>
       </div>
