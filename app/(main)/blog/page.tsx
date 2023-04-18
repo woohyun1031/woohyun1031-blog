@@ -43,5 +43,7 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
     props.searchParams.page ? Number(props.searchParams.page) : 10,
   );
   if (!array.length) return;
-  return <Form results={array} hasMore={hasMore} params={props.searchParams} />;
+  return (
+    <Form results={array} hasMore={hasMore} searchParams={props.searchParams} />
+  );
 }

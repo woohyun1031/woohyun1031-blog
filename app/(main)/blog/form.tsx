@@ -21,9 +21,9 @@ const mock2 = {
 export default function Form(props: {
   results: IPage[];
   hasMore: boolean;
-  params: any;
+  searchParams: any;
 }) {
-  const { results, hasMore, params } = props;
+  const { results, hasMore, searchParams } = props;
   const { onSubmit } = useScrollForm();
   const hasNextPage = hasMore ?? false;
 
@@ -34,7 +34,7 @@ export default function Form(props: {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasNextPage) {
           onSubmit({
-            ...params,
+            ...searchParams,
             page: (results.length += 10),
           });
         }
@@ -50,7 +50,7 @@ export default function Form(props: {
         <div className="min-h-screen w-full max-w-container px-8">
           <div className="mt-14 mb-8">
             <span className="font-sansM text-3xl text-gray-900 dark:text-white">
-              블로그
+              {searchParams.type ? searchParams.type : '블로그'}
             </span>
           </div>
           {results?.map((item: IPage, index: number) => (
