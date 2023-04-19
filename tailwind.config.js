@@ -38,6 +38,7 @@ module.exports = {
       },
       maxWidth: {
         container: '1140px',
+        header: '1300px',
         innerContainer: '700px',
       },
       typography: (theme) => ({

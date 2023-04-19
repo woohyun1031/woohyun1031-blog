@@ -33,7 +33,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 flex justify-center border-b-2 border-gray-200 p-6 backdrop-blur-md dark:border-gray-500">
-      <div className="mx-10 flex w-full max-w-container flex-wrap items-center justify-between">
+      <div className="mx-2 flex w-full max-w-header flex-wrap items-center justify-between">
         <Link
           href="/blog"
           className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
@@ -44,7 +44,7 @@ const Header = () => {
           </span>
         </Link>
 
-        <div className="flex lg:hidden ">
+        <div className="flex lg:hidden">
           <button
             className="text-gray-800 dark:text-white"
             onClick={() => changeTheme()}
