@@ -41,6 +41,9 @@ module.exports = {
         header: '1300px',
         innerContainer: '700px',
       },
+      minWidth: {
+        500: '500px',
+      },
       typography: (theme) => ({
         dark: {
           css: {
