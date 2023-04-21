@@ -5,8 +5,10 @@ export interface IApi extends AxiosInstance {
 }
 
 export const notionApi: IApi = axios.create({
-  // baseURL: `https://api.notion.com/v1/databases/${process.env.NOTION_DATABASE}/query`,
   baseURL: `https://api.notion.com/v1`,
+});
+export const githubApi: IApi = axios.create({
+  baseURL: `https://api.github.com`,
 });
 
 notionApi.setToken = function setToken(
@@ -27,6 +29,18 @@ notionApi.interceptors.request.use(
       config.headers.Accept = 'application/json';
       config.headers['Notion-Version'] = '2022-06-28';
       config.headers['Content-Type'] = 'application/json';
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
+
+githubApi.interceptors.request.use(
+  async (config) => {
+    if (config.headers) {
+      config.headers.owner = `${process.env.GITHUB_TOKEN}`;
     }
     return config;
   },
