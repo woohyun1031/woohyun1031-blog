@@ -20,6 +20,7 @@
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
     "notion-to-md": "^2.5.5",
+    "octokit": "^2.0.14",
     "prettier-plugin-tailwindcss": "^0.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
