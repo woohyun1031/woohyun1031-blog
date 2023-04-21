@@ -1,6 +1,7 @@
-import { getNotionPageListData } from '#pages/api/notion';
+import { getGithubCommitList } from '#pages/api/github';
 import Form from './form';
 
 export default async function Page(props: any) {
-  return <Form />;
+  const result = await getGithubCommitList('woohyun1031');
+  return <Form data={result} />;
 }

@@ -8,13 +8,8 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import Image from 'next/image';
 
-const mock1 = {
-  imageId1: 'https://toss.tech/wp-content/uploads/2023/03/00017-3291509353.png',
-  content:
-    'REST Docs 를 최소한의 코드로 작성하면서 변화에도 더 유연하게 대처할 수 있는 tosspayments-restdocs 라이브러리와, 라이브러리에 녹인 기술들을 소개합니다.',
-};
-
-export default function Form() {
+export default function Form(props: { data: any }) {
+  console.log(props.data);
   const { isDark } = React.useContext(DarkModeThemeContext);
 
   const gitHubCalendar = React.useCallback(() => {
@@ -83,20 +78,20 @@ export default function Form() {
 
             <div className="mt-12">
               <div>
-                <span className="font-sansM text-3xl text-gray-900 dark:text-white">
+                <span className="font-sansM text-4xl text-gray-900 dark:text-white">
                   Work Experience
                 </span>
               </div>
 
               <div className="mt-10 lg:flex lg:justify-between">
                 <div className="mb-10">
-                  <p className="dark:text-gray-1z00 font-sansM text-2xl text-gray-800">
+                  <p className="dark:text-gray-1z00 font-sansM text-3xl text-gray-800 dark:text-gray-200">
                     Actbase.llc
                   </p>
                   <p className="mt-4 font-sansM text-xl text-gray-700 dark:text-gray-200">
                     Frontend Developer
                   </p>
-                  <p className="mt-2 font-sansM text-base text-gray-600 dark:text-gray-200">
+                  <p className="mt-2 font-sansM text-base text-gray-600 dark:text-gray-400">
                     2022.08 ~
                   </p>
                 </div>
@@ -345,14 +340,12 @@ export default function Form() {
               </div>
             </div>
 
-            <div className="mt-12">
-              <div>
+            <div className="mt-12 lg:flex lg:justify-between">
+              <div className="mb-10">
                 <span className="font-sansM text-3xl text-gray-900 dark:text-white">
                   Commits
                 </span>
-              </div>
 
-              <div className="mt-4">
                 <div>
                   <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
                     ✓ Listen to the latest
@@ -370,9 +363,10 @@ export default function Form() {
                     ✓ Episode detail page with show
                   </p>
                 </div>
-                <div className="mt-12 flex justify-center">
-                  {gitHubCalendar()}
-                </div>
+              </div>
+
+              <div className="lg:w-3/5 lg:p-12">
+                <div>{gitHubCalendar()}</div>
               </div>
             </div>
           </div>
