@@ -7,10 +7,25 @@ import { DarkModeThemeContext } from 'app/providers';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import Image from 'next/image';
+import { IEventData } from '#pages/api/github';
 
-export default function Form(props: { data: any }) {
-  console.log(props.data);
+export default function Form(props: { commitList: IEventData[] }) {
   const { isDark } = React.useContext(DarkModeThemeContext);
+  const commitList: any = React.useMemo(
+    () =>
+      props.commitList
+        ?.filter((commit: any) => commit.type === 'PushEvent')
+        ?.reduce((acc: any, cur: any) => {
+          return [
+            ...acc,
+            ...cur?.payload?.commits?.map((value: any) => ({
+              message: value?.message,
+              url: value?.url,
+            })),
+          ];
+        }, []),
+    [props.commitList],
+  );
 
   const gitHubCalendar = React.useCallback(() => {
     return (
@@ -345,27 +360,16 @@ export default function Form(props: { data: any }) {
                 <span className="font-sansM text-3xl text-gray-900 dark:text-white">
                   Commits
                 </span>
-
-                <div>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ Listen to the latest
-                  </p>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ any previous podcast episode
-                  </p>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ List page for episodes of the two categories
-                  </p>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ “Tech Talk” and “Inside Out” Episode
-                  </p>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ Episode detail page with show
-                  </p>
+                <div className="mt-4">
+                  {commitList?.map((commit: any) => (
+                    <p className="mt-2 font-sansM text-base text-gray-700 dark:text-gray-200">
+                      ✓ {commit.message}
+                    </p>
+                  ))}
                 </div>
               </div>
 
-              <div className="lg:w-3/5 lg:p-12">
+              <div className="lg:w-3/5 lg:min-w-500 lg:p-12">
                 <div>{gitHubCalendar()}</div>
               </div>
             </div>
