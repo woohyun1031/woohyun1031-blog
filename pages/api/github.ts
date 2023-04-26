@@ -2,7 +2,7 @@ import { githubApi } from '#apis/index';
 
 export interface ICommitData {
   sha: string;
-  author: any[];
+  author: { email: string; name: string }[];
   message: string;
   distinct: boolean;
   url: string;

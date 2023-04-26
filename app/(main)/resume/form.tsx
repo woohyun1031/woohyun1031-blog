@@ -7,10 +7,15 @@ import { DarkModeThemeContext } from 'app/providers';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import Image from 'next/image';
-import { IEventData } from '#pages/api/github';
+import { ICommitData, IEventData } from '#pages/api/github';
+
+interface ICustomCommitData extends ICommitData {
+  createAt: string;
+}
 
 export default function Form(props: { commitList: IEventData[] }) {
   const { isDark } = React.useContext(DarkModeThemeContext);
+
   const commitList: any = React.useMemo(
     () =>
       props.commitList
@@ -19,8 +24,10 @@ export default function Form(props: { commitList: IEventData[] }) {
           return [
             ...acc,
             ...cur?.payload?.commits?.map((value: any) => ({
+              ...value,
               message: value?.message,
               url: value?.url,
+              createAt: cur?.created_at,
             })),
           ];
         }, []),
@@ -360,11 +367,23 @@ export default function Form(props: { commitList: IEventData[] }) {
                 <span className="font-sansM text-3xl text-gray-900 dark:text-white">
                   Commits
                 </span>
+                <span className="mt-2 block font-sansM text-base text-gray-400 dark:text-gray-400 lg:ml-4 lg:inline">
+                  의미있는 커밋을 작성합니다.
+                </span>
                 <div className="mt-4">
-                  {commitList?.map((commit: any) => (
-                    <p className="mt-2 font-sansM text-base text-gray-700 dark:text-gray-200">
-                      ✓ {commit.message}
-                    </p>
+                  {commitList?.map((commit: ICustomCommitData) => (
+                    <>
+                      <a
+                        target="blank"
+                        className="mt-2 block font-sansM text-base text-gray-700 underline dark:text-gray-200"
+                        href={`https://github.com/woohyun1031/effective-memory/commit/${commit?.sha}`}
+                      >
+                        ✓ {commit.message}
+                      </a>
+                      <p className="mt-2 block font-sansM text-base text-gray-400 dark:text-gray-400">
+                        {dayjs(commit.createAt).format('YYYY-MM-DD HH:mm:ss')}
+                      </p>
+                    </>
                   ))}
                 </div>
               </div>
