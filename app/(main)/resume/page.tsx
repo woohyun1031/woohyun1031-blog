@@ -3,6 +3,7 @@ import GitHubCalendar from 'react-github-calendar';
 import { ICommitData, IEventData } from '#pages/api/github';
 import dayjs from 'dayjs';
 import GithubCalendar from './githubCalendar';
+import { getNotionPages, IPage } from '#pages/api/notion';
 
 interface ICustomCommitData extends ICommitData {
   createAt: string;
@@ -25,6 +26,8 @@ export default async function Page(props: any) {
         })),
       ];
     }, []);
+
+  const notitonList = await getNotionPages(5);
 
   return (
     <>
@@ -295,26 +298,33 @@ export default async function Page(props: any) {
                 <span className="font-sansM text-3xl text-gray-900 dark:text-white">
                   Study
                 </span>
+                <span className="mt-2 block font-sansM text-base text-gray-400 dark:text-gray-400 lg:ml-4 lg:inline">
+                  의미있는 기록을 작성합니다.
+                </span>
               </div>
 
               <div className="mt-4">
-                <div>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ Listen to the latest
-                  </p>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ any previous podcast episode
-                  </p>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ List page for episodes of the two categories
-                  </p>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ “Tech Talk” and “Inside Out” Episode
-                  </p>
-                  <p className="font-sansM text-base text-gray-700 dark:text-gray-200">
-                    ✓ Episode detail page with show
-                  </p>
-                </div>
+                {notitonList?.results?.map((value: IPage) => {
+                  return (
+                    <>
+                      <a
+                        target="blank"
+                        className="mt-2 block font-sansM text-base text-gray-700 underline dark:text-gray-200"
+                        href={value.url.replace(
+                          'https://www.notion.so/',
+                          'https://woo1031.notion.site/',
+                        )}
+                      >
+                        ✓ {value?.properties.Name?.title[0].text.content}
+                      </a>
+                      <p className="mt-2 block font-sansM text-base text-gray-400 dark:text-gray-400">
+                        {dayjs(value.created_time).format(
+                          'YYYY-MM-DD HH:mm:ss',
+                        )}
+                      </p>
+                    </>
+                  );
+                })}
               </div>
             </div>
 

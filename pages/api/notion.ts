@@ -37,6 +37,22 @@ export interface INotionPageList {
 
 export const notionClient = new Client({ auth: `${process.env.NOTION_TOKEN}` });
 
+export const getNotionPages = async (pages: number) => {
+  if (!pages) return;
+  try {
+    return await notionApi
+      .post<INotionPageList>(
+        `/databases/${process.env.NOTION_DATABASE}/query`,
+        {
+          page_size: pages ?? 0,
+        },
+      )
+      .then((response) => response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getNotionPageListData = async ({
   pages,
   start_cursor,
