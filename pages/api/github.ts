@@ -8,7 +8,20 @@ export interface ICommitData {
   url: string;
 }
 
-export interface IEventData {
+export interface IPushEventPayload {
+  repository_id: number;
+  push_id: number;
+  size: number;
+  distinct_size: number;
+  ref: string;
+  head: string;
+  before: string;
+  commits: ICommitData[];
+}
+export interface IActionEventPayload {
+  action: string;
+}
+export interface IEventData<T> {
   id: string;
   type: 'PushEvent' | 'WatchEvent';
   actor: {
@@ -24,18 +37,7 @@ export interface IEventData {
     name: string;
     url: string;
   };
-  payload:
-    | {
-        repository_id: number;
-        push_id: number;
-        size: number;
-        distinct_size: number;
-        ref: string;
-        head: string;
-        before: string;
-        commits: ICommitData[];
-      }
-    | { action: 'started' };
+  payload: T;
   public: boolean;
   created_at: string;
   org: {
@@ -51,7 +53,7 @@ export const getGithubCommitList = async (id: string) => {
   if (!id) return;
   try {
     return await githubApi
-      .get<IEventData[]>(`/users/${id}/events`, {
+      .get<IEventData<IPushEventPayload>[]>(`/users/${id}/events`, {
         params: {
           per_page: 5,
           type: 'PushEvent',
