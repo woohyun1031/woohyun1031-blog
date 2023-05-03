@@ -8,14 +8,15 @@ export interface ITagProps {
 }
 const Tag = (props: ITagProps) => {
   const bgColor = 'bg-gray-800';
+  // React.MouseEvent<HTMLSpanElement, MouseEvent>
   return (
     <span
-      onClick={(event) => {
-        event.stopPropagation();
-        event.preventDefault();
+      // onClick={(event) => {
+      //   event.stopPropagation();
+      //   event.preventDefault();
 
-        if (props.onClick) props.onClick();
-      }}
+      //   if (props.onClick) props.onClick();
+      // }}
       className={`mr-4 inline-block rounded-xl bg-blue-100 px-3 py-1 
                 font-sansM  
                 text-xs                
@@ -32,6 +33,14 @@ const Tag = (props: ITagProps) => {
                 dark:active:bg-blue-700
                                                 
       `}
+      {...(!!props.onClick && {
+        onClick(event) {
+          event.stopPropagation();
+          event.preventDefault();
+
+          if (props.onClick) props.onClick();
+        },
+      })}
     >
       {props.title ?? ''}
     </span>
