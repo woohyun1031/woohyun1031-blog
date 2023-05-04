@@ -1,6 +1,7 @@
 import { notionApi } from '#apis/index';
+import convertBlock, { IConvertBlock } from '#utils/notions/convertBlock';
 import { Client } from '@notionhq/client';
-import axios from 'axios';
+import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export interface IPageFile {
   expiry_time: string;
@@ -53,7 +54,7 @@ export const getNotionPages = async (pages: number) => {
   }
 };
 
-export const getNotionPageListData = async ({
+export const getNotionPageList = async ({
   pages,
   start_cursor,
   type,
@@ -102,7 +103,7 @@ export const getNotionPageListData = async ({
   }
 };
 
-export const getNotionPageData = async (id: string) => {
+export const getNotionPage = async (id: string) => {
   if (!id) return;
   try {
     return await notionApi
@@ -113,12 +114,39 @@ export const getNotionPageData = async (id: string) => {
   }
 };
 
-export const getNotionBlockChildrenData = async (id: number) => {
+export const getNotionBlockChildren = async (id: number) => {
   if (!id) return;
   try {
-    return await notionApi
-      .get(`/blocks/${id}/children`)
-      .then((response) => response.data);
+    const blockChildren = await notionApi.get<{
+      object: string;
+      results: BlockObjectResponse[];
+    }>(`/blocks/${id}/children`);
+    return blockChildren.data.results;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getNotionPageDetail = async (id: number) => {
+  if (!id) return;
+  async function rc(idd: any): Promise<IConvertBlock[]> {
+    const blockChildren = await getNotionBlockChildren(idd);
+    if (!blockChildren) return [];
+    const blockChildrenList = await Promise.all(
+      blockChildren?.map(async (item) => {
+        const block = await convertBlock(item);
+        if (block?.hasChildren) {
+          const result = await rc(block.id);
+          block['children'] = result;
+        }
+        return block;
+      }),
+    );
+    return blockChildrenList;
+  }
+  try {
+    const response = await rc(id);
+    return response;
   } catch (error) {
     console.error(error);
   }
