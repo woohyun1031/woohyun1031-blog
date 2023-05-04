@@ -1,17 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-var disabledCss = {
-  'code::before': false,
-  'code::after': false,
-  'blockquote p:first-of-type::before': false,
-  'blockquote p:last-of-type::after': false,
-  pre: false,
-  code: false,
-  'pre code': false,
-  'code::before': false,
-  'code::after': false,
-};
-
 module.exports = {
   darkMode: 'class',
   content: [
@@ -43,6 +31,10 @@ module.exports = {
       },
       minWidth: {
         500: '500px',
+      },
+      borderWidth: {
+        5: '5px',
+        6: '6px',
       },
       typography: (theme) => ({
         dark: {
@@ -82,36 +74,6 @@ module.exports = {
               borderBottomColor: theme('colors.gray.700'),
             },
             'tbody tr': { borderBottomColor: theme('colors.gray.800') },
-          },
-        },
-        DEFAULT: {
-          css: {
-            pre: {
-              color: theme('colors.grey.1000'),
-              backgroundColor: theme('colors.grey.100'),
-            },
-            'pre code::before': {
-              content: '""',
-              'padding-left': 'unset',
-            },
-            'pre code::after': {
-              content: '""',
-              'padding-right': 'unset',
-            },
-            code: {
-              backgroundColor: theme('colors.grey.100'),
-              color: '#DD1144',
-              fontWeight: '400',
-              'border-radius': '0.25rem',
-            },
-            'code::before': {
-              content: '""',
-              'padding-left': '0.25rem',
-            },
-            'code::after': {
-              content: '""',
-              'padding-right': '0.25rem',
-            },
           },
         },
       }),

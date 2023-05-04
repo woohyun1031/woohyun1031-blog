@@ -1,41 +1,16 @@
-import {
-  getNotionBlockChildrenData,
-  getNotionPageData,
-  notionClient,
-} from '#pages/api/notion';
-import { NotionToMarkdown } from 'notion-to-md';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkGfm from 'remark-gfm';
-import remarkBreaks from 'remark-breaks';
-import remarkRehype from 'remark-rehype';
-import rehypeStringify from 'rehype-stringify';
+import { getNotionPage, getNotionPageDetail } from '#pages/api/notion';
 import Tag from '#components/Tag';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
+import Block from '#components/Block';
 
 export default async function Page(props: any) {
-  const page = await getNotionPageData(props.params.id);
-  const data = await getNotionBlockChildrenData(props.params.id);
-  const n2m = new NotionToMarkdown({ notionClient: notionClient });
-  const mdData = await n2m.blocksToMarkdown(data.results);
-  const mdString = n2m.toMarkdownString(mdData);
-
-  const htmlText = await unified()
-    .use(remarkParse)
-    .use(remarkGfm) // remark가 GFM도 지원 가능하도록
-    .use(remarkBreaks) // remark가 line-break도 지원 가능하도록
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(mdString)
-    .catch((error) => {
-      console.log(error);
-    });
+  const page = await getNotionPage(props.params.id);
+  const data = await getNotionPageDetail(props.params.id);
   if (!page) return;
-  if (!htmlText) return;
-
+  console.log(data);
   return (
     <>
       <div className="flex w-full justify-center">
@@ -49,7 +24,7 @@ export default async function Page(props: any) {
                     page.cover?.external?.url ??
                     'https://toss.tech/wp-content/uploads/2023/03/00017-3291509353.png'
                   }
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: 'cover' }}
                   alt="blog image"
                   fill
                 />
@@ -74,20 +49,30 @@ export default async function Page(props: any) {
                 )}
               </div>
             </div>
-            <article
+            <div
               className="
-                prose  
-                prose-gray 
                 mt-8 
                 w-full 
                 max-w-container 
-                dark:prose-dark                
-                md:prose-lg 
-                lg:prose-xl 
-                prose-img:w-full 
+                dark:prose-dark                                
                 "
-              dangerouslySetInnerHTML={{ __html: htmlText.value as string }}
-            />
+            >
+              {data &&
+                data.map((item) => {
+                  if (
+                    item.type === 'paragraph' ||
+                    item.type === 'bulleted_list_item' ||
+                    item.type === 'numbered_list_item'
+                  ) {
+                    return (
+                      <div>
+                        paragragh or bulleted_list_item or numbered_list_item
+                      </div>
+                    );
+                  }
+                  return <Block block={item} />;
+                })}
+            </div>
           </div>
         </div>
       </div>

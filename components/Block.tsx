@@ -1,21 +1,9 @@
 import React from 'react';
 import { IConvertBlock } from '#utils/notions/convertBlock';
 import getAnnotations from '#utils/notions/getAnnotations';
+import CodeBlock from './CodeBlock';
+import Image from 'next/image';
 
-// export const CodeBlock = (block: IConvertBlock) => {
-//   return (
-//     <SyntaxHighlighte
-//       language={block.language}
-//       style={monokai}
-//       customStyle={{
-//         borderRadius: '0.2rem',
-//       }}
-//       className="my-4"
-//     >
-//       {block.code || ''}
-//     </SyntaxHighlighter>
-//   );
-// };
 export const TextBlock = (block: IConvertBlock) => {
   return (
     <>
@@ -23,7 +11,7 @@ export const TextBlock = (block: IConvertBlock) => {
         if (href) return <a href={href}>{plain_text}</a>;
         if (annotations) {
           const className = getAnnotations(annotations);
-          <span className={className}>{plain_text}</span>;
+          return <span className={className}>{plain_text}</span>;
         }
         return <p>{plain_text}</p>;
       })}
@@ -32,6 +20,7 @@ export const TextBlock = (block: IConvertBlock) => {
 };
 
 export default function Block({ block }: { block: IConvertBlock }) {
+  console.log(block);
   switch (block.type) {
     case 'heading_1':
       return (
@@ -51,10 +40,34 @@ export default function Block({ block }: { block: IConvertBlock }) {
           <TextBlock {...block} />
         </h3>
       );
+    case 'quote':
+      return (
+        <blockquote
+          className="mt-4 mb-4 border-l-4 border-l-gray-800 pl-5 font-bold text-gray-800
+          dark:border-l-gray-100
+          dark:text-gray-100
+        "
+        >
+          <TextBlock {...block} />
+        </blockquote>
+      );
+    case 'image':
+      return (
+        <div className="pt-3 pb-1">
+          <img
+            src={block.url ?? ''}
+            alt="test"
+            style={{ objectFit: 'cover', width: '100%' }}
+          />
+          {block.caption && <p>{block.caption}</p>}
+        </div>
+      );
     case 'paragraph':
       return (
         <p className="pt-1 pb-0.5">{block.text && block.text.join(' ')}</p>
       );
+    case 'code':
+      return <CodeBlock {...block} />;
     default:
       return <p>another block</p>;
   }
