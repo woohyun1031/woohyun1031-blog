@@ -7,17 +7,6 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 import React from 'react';
 
-const mock1 = {
-  imageId1: 'https://toss.tech/wp-content/uploads/2023/03/00017-3291509353.png',
-  content:
-    'REST Docs 를 최소한의 코드로 작성하면서 변화에도 더 유연하게 대처할 수 있는 tosspayments-restdocs 라이브러리와, 라이브러리에 녹인 기술들을 소개합니다.',
-};
-
-const mock2 = {
-  iamgeId2: 'https://toss.tech/wp-content/uploads/2023/03/declarative.png',
-  content: '선언적인 코드, 토스 프론트엔드 챕터는 어떻게 생각을 하고 있을까요?',
-};
-
 export default function Form(props: {
   results: IPage[];
   hasMore: boolean;
@@ -67,7 +56,7 @@ export default function Form(props: {
                   src={
                     item.cover?.file?.url ??
                     item.cover?.external?.url ??
-                    mock1.imageId1
+                    'https://toss.tech/wp-content/uploads/2023/03/00017-3291509353.png'
                   }
                   className="tr ansition mr-12 h-56 w-full rounded-xl object-cover delay-75 duration-500 ease-in-out group-hover:z-0 group-hover:-translate-y-2 group-hover:shadow-lg lg:w-56"
                 />
@@ -78,7 +67,7 @@ export default function Form(props: {
                 </span>
                 <span className="mb-4 inline-block font-sansM text-xl text-gray-700 dark:text-gray-200">
                   {item.properties.Subtitle.rich_text[0]?.plain_text ??
-                    mock1.content}
+                    'REST Docs 를 최소한의 코드로 작성하면서 변화에도 더 유연하게 대처할 수 있는 tosspayments-restdocs 라이브러리와, 라이브러리에 녹인 기술들을 소개합니다.'}
                 </span>
                 <div className="flex flex-col justify-start sm:flex-row ">
                   <span className="mr-4 mb-4 inline-block font-sansM text-base text-gray-600 dark:text-gray-400">
@@ -89,6 +78,7 @@ export default function Form(props: {
                       (type: { id: string; name: string; color: string }) => {
                         return (
                           <Tag
+                            key={type.id}
                             title={type.name}
                             onClick={() => {
                               onSubmit({

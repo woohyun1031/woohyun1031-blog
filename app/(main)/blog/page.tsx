@@ -1,4 +1,4 @@
-import { getNotionPageListData, IPage } from '#pages/api/notion';
+import { getNotionPageList, IPage } from '#pages/api/notion';
 import { IDefaultPageProps } from '#types/types';
 import Form from './form';
 
@@ -18,7 +18,7 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
     async function rc(start_cursor: string | null, limit: number) {
       if (limit) {
         const count = limit - 1;
-        const data = await getNotionPageListData({
+        const data = await getNotionPageList({
           pages: 100,
           ...(start_cursor ? { start_cursor } : {}),
           ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
@@ -27,7 +27,7 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
         await rc(data?.next_cursor, count);
         return data?.has_more ?? false;
       } else {
-        const data = await getNotionPageListData({
+        const data = await getNotionPageList({
           pages: lastRequestCount,
           ...(start_cursor ? { start_cursor } : {}),
           ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
