@@ -1,32 +1,18 @@
-import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import type {
+  BlockObjectResponse,
+  RichTextItemResponse,
+} from '@notionhq/client/build/src/api-endpoints';
 
-export interface IBlockText {
-  type: 'text';
-  text: {
-    content: string;
-    link: string;
-  };
-  annotations: {
-    bold: boolean;
-    italic: boolean;
-    strikethrough: boolean;
-    underline: boolean;
-    code: boolean;
-    color: string;
-  };
-  plain_text: string;
-  href: string;
-}
 export interface IConvertBlock {
   id: string;
   type: string;
-  text?: IBlockText[];
+  text?: RichTextItemResponse[];
   hasChildren?: boolean;
   url?: string;
-  caption?: string;
+  caption?: RichTextItemResponse[];
   code?: string;
   language?: string;
-  children?: IConvertBlock[];
+  children?: RichTextItemResponse[];
 }
 
 export default async function convertBlock(
@@ -54,7 +40,7 @@ export default async function convertBlock(
     return {
       id: block.id,
       type: 'image',
-      caption: block.image.caption?.at(0)?.plain_text || '',
+      caption: block.image.caption,
       ...(block.image.type === 'file' ? { url: block.image.file.url } : {}),
     };
   }

@@ -3,11 +3,12 @@ import { IConvertBlock } from '#utils/notions/convertBlock';
 import getAnnotations from '#utils/notions/getAnnotations';
 import CodeBlock from './CodeBlock';
 import Image from 'next/image';
+import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 
-export const TextBlock = (block: IConvertBlock) => {
+export const TextBlock = ({ text }: { text: RichTextItemResponse[] }) => {
   return (
     <>
-      {block.text?.map(({ plain_text, annotations, href }, index) => {
+      {text?.map(({ plain_text, annotations, href }, index) => {
         if (href) return <a href={href}>{plain_text}</a>;
         if (annotations) {
           const className = getAnnotations(annotations);
@@ -20,24 +21,23 @@ export const TextBlock = (block: IConvertBlock) => {
 };
 
 export default function Block({ block }: { block: IConvertBlock }) {
-  console.log(block);
   switch (block.type) {
     case 'heading_1':
       return (
         <h1 className="border-b py-4 pb-2 text-5xl">
-          <TextBlock {...block} />
+          <TextBlock text={block.text ?? []} />
         </h1>
       );
     case 'heading_2':
       return (
         <h2 className="border-b pt-3 pb-1 text-3xl">
-          <TextBlock {...block} />
+          <TextBlock text={block.text ?? []} />
         </h2>
       );
     case 'heading_3':
       return (
         <h3 className="border-b pt-2 pb-1 text-2xl">
-          <TextBlock {...block} />
+          <TextBlock text={block.text ?? []} />
         </h3>
       );
     case 'quote':
@@ -48,7 +48,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
           dark:text-gray-100
         "
         >
-          <TextBlock {...block} />
+          <TextBlock text={block.text ?? []} />
         </blockquote>
       );
     case 'image':
@@ -59,7 +59,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
             alt="test"
             style={{ objectFit: 'cover', width: '100%' }}
           />
-          {block.caption && <p>{block.caption}</p>}
+          {block.caption && <TextBlock text={block.caption ?? []} />}
         </div>
       );
     case 'paragraph':

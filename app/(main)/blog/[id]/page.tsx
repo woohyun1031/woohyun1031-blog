@@ -10,7 +10,7 @@ export default async function Page(props: any) {
   const page = await getNotionPage(props.params.id);
   const data = await getNotionPageDetail(props.params.id);
   if (!page) return;
-  console.log(data);
+
   return (
     <>
       <div className="flex w-full justify-center">
