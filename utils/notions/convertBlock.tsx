@@ -2,6 +2,7 @@ import type {
   BlockObjectResponse,
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
+import { v4 as uuid } from 'uuid';
 
 export interface IConvertBlock {
   id: string;
@@ -12,8 +13,9 @@ export interface IConvertBlock {
   caption?: RichTextItemResponse[];
   code?: string;
   language?: string;
-  children?: RichTextItemResponse[];
+  children?: IConvertBlock[];
 }
+export type TBlockListType = 'numbered_list_item' | 'bulleted_list_item';
 
 export default async function convertBlock(
   block: BlockObjectResponse,
@@ -57,19 +59,60 @@ export default async function convertBlock(
     id: block.id,
     type: block.type,
   };
-  // if (block.type === 'bookmark') {
-  //   // const ogs = require('open-graph-scraper');
-  //   // const { result } = await ogs({ url: block.bookmark.url });
-  //   // return {
-  //   //   id: block.id,
-  //   //   type: 'bookmark',
-  //   //   title: result.ogTitle || result.twitterTitle || '',
-  //   //   description: result.ogDescription || result.twitterDescription || '',
-  //   //   image: (typeof result.ogImage === 'object' && !Array.isArray(result.ogImage) && result.ogImage.url) || '',
-  //   //   favicon: result.favicon.startsWith('https://')
-  //   //     ? result.favicon
-  //   //     : 'https://' + result.requestUrl.split('/').slice(2, 3).join('') + result.favicon,
-  //   //   url: result.requestUrl,
-  //   // };
-  // }
+}
+
+export function convertList2Block(blocks: IConvertBlock[]) {
+  let listTypeArray: IConvertBlock[] = [];
+  let listType: TBlockListType | null;
+
+  const result = blocks.reduce((pre: IConvertBlock[], cur: IConvertBlock) => {
+    if (['numbered_list_item', 'bulleted_list_item'].includes(cur.type)) {
+      if (!!listType && listType !== cur.type) {
+        const prevTypeList = [...listTypeArray];
+        const prevType = listType;
+        listType = cur.type as TBlockListType;
+        listTypeArray = [cur];
+        return [
+          ...pre,
+          {
+            id: uuid(),
+            type: prevType as TBlockListType,
+            hasChildren: false,
+            children: prevTypeList,
+          },
+        ];
+      }
+      listType = cur.type as TBlockListType;
+      listTypeArray.push({
+        ...cur,
+        ...(cur.hasChildren && cur.children
+          ? {
+              children: convertList2Block(cur.children),
+            }
+          : {}),
+      });
+      return [...pre];
+    } else {
+      const prevTypeList = [...listTypeArray];
+      const prevType = listType;
+      listTypeArray = [];
+      return [
+        ...pre,
+        ...(prevTypeList.length
+          ? [
+              {
+                id: uuid(),
+                type: prevType as TBlockListType,
+                hasChildren: false,
+                children: prevTypeList,
+              },
+              cur,
+            ]
+          : [cur]),
+      ];
+    }
+  }, []);
+
+  if (listTypeArray.length) return [...listTypeArray];
+  return result;
 }

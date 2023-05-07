@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import Block from '#components/Block';
+import Test from './client';
 
 export default async function Page(props: any) {
   const page = await getNotionPage(props.params.id);
@@ -49,6 +50,7 @@ export default async function Page(props: any) {
                 )}
               </div>
             </div>
+            <Test test={data} />
             <div
               className="
                 mt-8 

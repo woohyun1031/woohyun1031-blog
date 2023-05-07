@@ -1,5 +1,8 @@
 import { notionApi } from '#apis/index';
-import convertBlock, { IConvertBlock } from '#utils/notions/convertBlock';
+import convertBlock, {
+  convertList2Block,
+  IConvertBlock,
+} from '#utils/notions/convertBlock';
 import { Client } from '@notionhq/client';
 import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
@@ -114,7 +117,7 @@ export const getNotionPage = async (id: string) => {
   }
 };
 
-export const getNotionBlockChildren = async (id: number) => {
+export const getNotionBlockChildren = async (id: string) => {
   if (!id) return;
   try {
     const blockChildren = await notionApi.get<{
@@ -127,10 +130,10 @@ export const getNotionBlockChildren = async (id: number) => {
   }
 };
 
-export const getNotionPageDetail = async (id: number) => {
+export const getNotionPageDetail = async (id: string) => {
   if (!id) return;
-  async function rc(idd: any): Promise<IConvertBlock[]> {
-    const blockChildren = await getNotionBlockChildren(idd);
+  async function rc(id: string): Promise<IConvertBlock[]> {
+    const blockChildren = await getNotionBlockChildren(id);
     if (!blockChildren) return [];
     const blockChildrenList = await Promise.all(
       blockChildren?.map(async (item) => {
@@ -146,7 +149,8 @@ export const getNotionPageDetail = async (id: number) => {
   }
   try {
     const response = await rc(id);
-    return response;
+    const result = convertList2Block(response);
+    return result;
   } catch (error) {
     console.error(error);
   }

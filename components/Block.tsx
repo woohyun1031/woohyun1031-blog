@@ -43,9 +43,10 @@ export default function Block({ block }: { block: IConvertBlock }) {
     case 'quote':
       return (
         <blockquote
-          className="mt-4 mb-4 border-l-4 border-l-gray-800 pl-5 font-bold text-gray-800
+          className="mt-4 mb-4 border-l-4 border-l-gray-800 bg-gray-100 py-2 pl-5 font-bold text-gray-800
           dark:border-l-gray-100
-          dark:text-gray-100
+          dark:bg-gray-900
+          dark:text-gray-200
         "
         >
           <TextBlock text={block.text ?? []} />
