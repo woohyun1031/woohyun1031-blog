@@ -1,24 +1,7 @@
 import React from 'react';
 import { IConvertBlock } from '#utils/notions/convertBlock';
-import getAnnotations from '#utils/notions/getAnnotations';
 import CodeBlock from './CodeBlock';
-import Image from 'next/image';
-import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
-
-export const TextBlock = ({ text }: { text: RichTextItemResponse[] }) => {
-  return (
-    <>
-      {text?.map(({ plain_text, annotations, href }, index) => {
-        if (href) return <a href={href}>{plain_text}</a>;
-        if (annotations) {
-          const className = getAnnotations(annotations);
-          return <span className={className}>{plain_text}</span>;
-        }
-        return <p>{plain_text}</p>;
-      })}
-    </>
-  );
-};
+import TextBlock from './TextBlock';
 
 export default function Block({ block }: { block: IConvertBlock }) {
   switch (block.type) {
