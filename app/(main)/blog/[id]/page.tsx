@@ -5,7 +5,6 @@ import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import Block from '#components/Block';
-import Test from './client';
 
 export default async function Page(props: any) {
   const page = await getNotionPage(props.params.id);
@@ -50,7 +49,6 @@ export default async function Page(props: any) {
                 )}
               </div>
             </div>
-            <Test test={data} />
             <div
               className="
                 mt-8 
@@ -61,17 +59,6 @@ export default async function Page(props: any) {
             >
               {data &&
                 data.map((item) => {
-                  if (
-                    item.type === 'paragraph' ||
-                    item.type === 'bulleted_list_item' ||
-                    item.type === 'numbered_list_item'
-                  ) {
-                    return (
-                      <div>
-                        paragragh or bulleted_list_item or numbered_list_item
-                      </div>
-                    );
-                  }
                   return <Block block={item} />;
                 })}
             </div>
