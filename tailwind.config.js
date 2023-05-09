@@ -28,11 +28,13 @@ module.exports = {
         container: '1140px',
         header: '1300px',
         innerContainer: '700px',
+        70: '70%',
       },
       minWidth: {
         500: '500px',
       },
       borderWidth: {
+        1: '1px',
         5: '5px',
         6: '6px',
       },

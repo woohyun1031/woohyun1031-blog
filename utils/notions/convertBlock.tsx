@@ -3,6 +3,8 @@ import type {
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 import { v4 as uuid } from 'uuid';
+import ogs from 'open-graph-scraper';
+import { URL } from 'url';
 
 export interface IConvertBlock {
   id: string;
@@ -14,6 +16,10 @@ export interface IConvertBlock {
   code?: string;
   language?: string;
   children?: IConvertBlock[];
+  title?: string;
+  description?: string;
+  image?: any;
+  favicon?: any;
 }
 export type TBlockListType = 'numbered_list_item' | 'bulleted_list_item';
 
@@ -55,6 +61,20 @@ export default async function convertBlock(
       language: block.code.language,
     };
   }
+
+  if (block.type === 'bookmark') {
+    const { result } = await ogs({ url: block.bookmark.url });
+    return {
+      id: block.id,
+      type: 'bookmark',
+      title: result?.ogTitle ?? result?.twitterTitle ?? '',
+      description: result.ogDescription || result.twitterDescription || '',
+      image: result.ogImage?.[0]?.url,
+      favicon: new URL(result.requestUrl ?? '').origin + '/favicon.ico',
+      url: result.requestUrl,
+    };
+  }
+
   return {
     id: block.id,
     type: block.type,

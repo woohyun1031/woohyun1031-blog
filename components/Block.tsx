@@ -2,6 +2,7 @@ import React from 'react';
 import { IConvertBlock } from '#utils/notions/convertBlock';
 import CodeBlock from './CodeBlock';
 import TextBlock from './TextBlock';
+import BookmarkBlock from './BookmarkBlock';
 
 export default function Block({ block }: { block: IConvertBlock }) {
   function rc(blockList: IConvertBlock[]) {
@@ -72,10 +73,10 @@ export default function Block({ block }: { block: IConvertBlock }) {
     quote: () => (
       <blockquote
         className="mt-4 mb-4 border-l-4 border-l-gray-800 bg-gray-100 py-2 pl-5 font-bold text-gray-800
-    dark:border-l-gray-100
-    dark:bg-gray-900
-    dark:text-gray-200
-  "
+          dark:border-l-gray-100
+          dark:bg-gray-900
+          dark:text-gray-200
+        "
       >
         <TextBlock text={block.text ?? []} />
       </blockquote>
@@ -91,6 +92,8 @@ export default function Block({ block }: { block: IConvertBlock }) {
       </div>
     ),
     code: () => <CodeBlock {...block} />,
+    divider: () => <hr className="mt-4 mb-4 border-t" />,
+    bookmark: () => <BookmarkBlock {...block} />,
   };
   // @ts-ignore
   return blocksObj[block.type]?.() ?? 'not matching block';
