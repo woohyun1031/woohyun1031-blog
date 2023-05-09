@@ -84,7 +84,6 @@ export default async function convertBlock(
 export function convertList2Block(blocks: IConvertBlock[]) {
   let listTypeArray: IConvertBlock[] = [];
   let listType: TBlockListType | null = null;
-  console.log('blocks:::', blocks);
   const result = blocks.reduce((pre: IConvertBlock[], cur: IConvertBlock) => {
     if (['numbered_list_item', 'bulleted_list_item'].includes(cur.type)) {
       if (!!listType && listType !== cur.type) {
