@@ -150,7 +150,6 @@ export const getNotionPageDetail = async (id: string) => {
   try {
     const response = await rc(id);
     const result = convertList2Block(response);
-    console.log(result);
     return result;
   } catch (error) {
     console.error(error);
