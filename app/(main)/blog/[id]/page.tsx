@@ -24,7 +24,7 @@ export default async function Page(props: any) {
                     page.cover?.external?.url ??
                     'https://toss.tech/wp-content/uploads/2023/03/00017-3291509353.png'
                   }
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', borderRadius: 10 }}
                   alt="blog image"
                   fill
                 />

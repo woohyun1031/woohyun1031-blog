@@ -83,8 +83,8 @@ export default async function convertBlock(
 
 export function convertList2Block(blocks: IConvertBlock[]) {
   let listTypeArray: IConvertBlock[] = [];
-  let listType: TBlockListType | null;
-
+  let listType: TBlockListType | null = null;
+  console.log('blocks:::', blocks);
   const result = blocks.reduce((pre: IConvertBlock[], cur: IConvertBlock) => {
     if (['numbered_list_item', 'bulleted_list_item'].includes(cur.type)) {
       if (!!listType && listType !== cur.type) {
@@ -133,6 +133,22 @@ export function convertList2Block(blocks: IConvertBlock[]) {
     }
   }, []);
 
-  if (listTypeArray.length) return [...listTypeArray];
+  if (listTypeArray.length) {
+    if (
+      !!listType &&
+      ['numbered_list_item', 'bulleted_list_item'].includes(listType)
+    ) {
+      return [
+        ...result,
+        {
+          id: uuid(),
+          type: listType,
+          hasChildren: false,
+          children: listTypeArray,
+        },
+      ];
+    }
+    return [...result, ...listTypeArray];
+  }
   return result;
 }
