@@ -105,13 +105,6 @@ const Header = () => {
               >
                 블로그
               </Link>
-              <Link
-                target="_blank"
-                href="https://woo1031.notion.site/Back-to-Back-a43f5fe01a5d46efac38f0c6cc0893c5"
-                className="mt-4 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
-              >
-                LOG
-              </Link>
             </div>
           </div>
         )}
@@ -151,15 +144,6 @@ const Header = () => {
                 className="mt-4 mr-8 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
               >
                 블로그
-              </Link>
-            </button>
-            <button>
-              <Link
-                target="_blank"
-                href="https://woo1031.notion.site/Back-to-Back-a43f5fe01a5d46efac38f0c6cc0893c5"
-                className="mt-4 mr-8 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
-              >
-                LOG
               </Link>
             </button>
           </div>
