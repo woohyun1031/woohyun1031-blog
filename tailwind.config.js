@@ -11,6 +11,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      flex: {
+        bookmark: '4 1 180px',
+      },
       colors: {
         grey: {
           100: '#F5F7FA',
@@ -38,48 +41,6 @@ module.exports = {
         5: '5px',
         6: '6px',
       },
-      typography: (theme) => ({
-        dark: {
-          css: {
-            color: theme('colors.gray.300'),
-            '[class~="lead"]': { color: theme('colors.gray.400') },
-            a: { color: theme('colors.gray.100') },
-            strong: { color: theme('colors.gray.100') },
-            'ul > li::before': { backgroundColor: theme('colors.gray.700') },
-            hr: { borderColor: theme('colors.gray.800') },
-            blockquote: {
-              fontWeight: theme('font-bold'),
-              color: theme('colors.gray.100'),
-              borderLeftColor: theme('colors.gray.800'),
-            },
-            h1: { color: theme('colors.gray.100') },
-            h2: { color: theme('colors.gray.100') },
-            h3: { color: theme('colors.gray.100') },
-            h4: { color: theme('colors.gray.100') },
-            code: {
-              color: theme('colors.gray.100'),
-              backgroundColor: theme('colors.gray.700'),
-            },
-            'a code': { color: theme('colors.gray.100') },
-            pre: {
-              color: theme('colors.gray.100'),
-              backgroundColor: theme('colors.gray.800'),
-            },
-            'pre code': {
-              color: theme('#DD1144'),
-              backgroundColor: theme('colors.gray.800'),
-              content: '""',
-              'padding-left': 'unset',
-            },
-            thead: {
-              color: theme('colors.gray.100'),
-              borderBottomColor: theme('colors.gray.700'),
-            },
-            'tbody tr': { borderBottomColor: theme('colors.gray.800') },
-          },
-        },
-      }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
 };
