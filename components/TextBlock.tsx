@@ -10,7 +10,7 @@ const TextBlock = ({ text }: { text: RichTextItemResponse[] }) => {
           return (
             <a
               href={href}
-              className="text-red-500 underline underline-offset-2"
+              className="leading-8 text-red-500 underline underline-offset-2"
               target="_blank"
             >
               {plain_text}
@@ -26,13 +26,15 @@ const TextBlock = ({ text }: { text: RichTextItemResponse[] }) => {
             strikethrough: 'line-through',
             underline: 'underline underline-offset-2',
           };
-          const annotationss = Object.entries(annotations)
-            .filter(([, value]) => !!value)
-            .map(([key]) => className[key] ?? '')
-            .join(' ');
+          const annotationss = [
+            'leading-8',
+            ...Object.entries(annotations)
+              .filter(([, value]) => !!value)
+              .map(([key]) => className[key] ?? ''),
+          ].join(' ');
           return <span className={annotationss}>{plain_text}</span>;
         }
-        return <p className="dark: text-gray-300">{plain_text}</p>;
+        return <p className="dark: leading-8 text-gray-300">{plain_text}</p>;
       })}
     </>
   );
