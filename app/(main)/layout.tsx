@@ -38,9 +38,9 @@ const Header = () => {
           href="/blog"
           className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
         >
-          <span className="font-sansM text-xl text-blue-600">WOOH</span>
+          <span className="font-sansM text-xl text-blue-600">HEY</span>
           <span className="font-sansM text-xl text-gray-900 dark:text-white">
-            TECH
+            DEV
           </span>
         </Link>
 
