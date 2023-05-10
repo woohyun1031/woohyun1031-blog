@@ -70,7 +70,9 @@ export default async function convertBlock(
       title: result?.ogTitle ?? result?.twitterTitle ?? '',
       description: result.ogDescription || result.twitterDescription || '',
       image: result.ogImage?.[0]?.url,
-      favicon: new URL(result.requestUrl ?? '').origin + '/favicon.ico',
+      favicon: result.favicon?.startsWith('http')
+        ? result.favicon
+        : new URL(result.requestUrl ?? '').origin + '/favicon.ico',
       url: result.requestUrl,
     };
   }

@@ -9,15 +9,19 @@ const BookmarkBlock = (block: IConvertBlock) => {
       href={block.url}
       className="mt-4 mb-4 flex h-24 w-full justify-between rounded-md border-1 border-gray-300 dark:border-gray-700"
     >
-      <div className="max-w-full flex-1 py-3 px-3 md:max-w-70">
+      <div className="max-w-full flex-bookmark overflow-hidden py-3 px-4">
         <h3 className="mt-0 overflow-hidden text-ellipsis whitespace-nowrap text-lg">
           {block.title}
         </h3>
         <p className="h-8 overflow-hidden font-sansM text-xs text-gray-500">
           {block.description}
         </p>
+        <div className="flex items-center gap-2">
+          <img src={block.favicon} alt="favicon" width={16} height={16} />
+          <p className="truncate text-xs">{block.url}</p>
+        </div>
       </div>
-      <div className="hidden md:block">
+      <div className="block sm:block ">
         <img
           src={block.image ?? ''}
           alt="test"
