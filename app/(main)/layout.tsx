@@ -44,6 +44,7 @@ const Header = () => {
           <Link
             href="/blog"
             className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
+            onClick={() => setIsShow(false)}
           >
             <span className="font-sansM text-xl text-blue-600">HEY</span>
             <span className="font-sansM text-xl text-gray-900 dark:text-white">
@@ -103,12 +104,14 @@ const Header = () => {
                 <Link
                   href="./resume"
                   className="mt-4 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
+                  onClick={() => setIsShow(false)}
                 >
                   ABOUT
                 </Link>
                 <Link
                   href="/blog"
                   className="mt-4 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
+                  onClick={() => setIsShow(false)}
                 >
                   DEVLOG
                 </Link>
