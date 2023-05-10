@@ -8,6 +8,7 @@ const BookmarkBlock = (block: IConvertBlock) => {
     <a
       href={block.url}
       className="mt-4 mb-4 flex h-24 w-full justify-between rounded-md border-1 border-gray-300 dark:border-gray-700"
+      target="_blank"
     >
       <div className="max-w-full flex-bookmark overflow-hidden py-3 px-4">
         <h3 className="mt-0 overflow-hidden text-ellipsis whitespace-nowrap text-lg">
