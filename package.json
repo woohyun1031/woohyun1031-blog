@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.3",
-    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.15.6",
     "@types/open-graph-scraper": "^4.8.2",
     "@types/react": "18.0.28",
