@@ -1,5 +1,7 @@
 'use client';
 
+import Footer from '#components/Footer';
+import Header from '#components/Header';
 import React, { createContext } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -37,7 +39,11 @@ export function Providers({
     <DarkModeThemeContext.Provider
       value={{ isDark: isDarkMode, setIsDark: setIsDarkMode }}
     >
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <Header />
+        {children}
+        <Footer />
+      </QueryClientProvider>
     </DarkModeThemeContext.Provider>
   );
 }
