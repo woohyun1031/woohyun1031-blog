@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { notoSansKrBold } from 'styles/fonts';
 import { DarkModeThemeContext } from 'app/providers';
 
 const Header = () => {
@@ -94,20 +92,20 @@ const Header = () => {
       </div>
       <div className="m-0 h-full w-full overflow-hidden">
         <div
-          className={`h-full transform text-sm duration-300 ease-in-out lg:hidden ${
+          className={`flex h-full transform flex-col text-sm duration-300 ease-in-out lg:hidden ${
             isShow ? 'translate-y-0' : '-translate-y-16'
           }`}
         >
           <Link
             href="./resume"
-            className="h-full cursor-pointer pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
+            className="w-full cursor-pointer pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
             onClick={() => setIsShow(false)}
           >
             ABOUT
           </Link>
           <Link
             href="/blog"
-            className="mt-4 block h-full cursor-pointer py-2 pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
+            className="mt-4 w-full cursor-pointer py-2 pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
             onClick={() => setIsShow(false)}
           >
             DEVLOG
