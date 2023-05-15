@@ -37,7 +37,7 @@ export default function Form(props: {
     <>
       <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-container px-8">
-          <div className="mt-14 mb-8">
+          <div className="mt-36 mb-8">
             <span className="font-sansM text-3xl text-gray-900 dark:text-white">
               {searchParams.type ? searchParams.type : '블로그'}
             </span>

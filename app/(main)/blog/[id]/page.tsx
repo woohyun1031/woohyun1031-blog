@@ -13,7 +13,7 @@ export default async function Page(props: any) {
 
   return (
     <>
-      <div className="flex w-full justify-center">
+      <div className="mt-36 flex w-full justify-center">
         <div className="min-h-screen w-full max-w-innerContainer px-8">
           <div className="flex flex-col items-center">
             {(page.cover?.file?.url || page.cover?.external?.url) && (
@@ -51,10 +51,10 @@ export default async function Page(props: any) {
             </div>
             <div
               className="
+                dark:prose-dark 
                 mt-8 
                 w-full 
-                max-w-container 
-                dark:prose-dark                                
+                max-w-container                                
                 "
             >
               {data &&
