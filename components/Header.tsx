@@ -27,16 +27,16 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-gray-200 bg-white bg-opacity-75 backdrop-blur-md duration-300 ease-in-out dark:border-gray-600 dark:bg-gray-900">
-      <div className="flex justify-center py-3 px-6 duration-300 ease-in-out">
+    <header className="sticky top-0 z-50 duration-300 ease-in-out">
+      <div className="flex w-full justify-center bg-white bg-opacity-75 py-3 px-6 backdrop-blur-md duration-300 ease-in-out dark:bg-gray-900">
         <div className="mx-2 flex w-full max-w-header flex-wrap items-center justify-between">
           <Link
             href="/resume"
             className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
             onClick={() => setIsShow(false)}
           >
-            <span className="font-sans text-xl text-gray-800 dark:text-white">
-              woo.hyun.kim
+            <span className="text-xl font-extralight text-gray-800 dark:text-white">
+              woohyun.kim
             </span>
           </Link>
 
@@ -86,66 +86,28 @@ const Header = () => {
               )}
             </button>
           </div>
-          {isShow && (
-            <div className="w-full lg:hidden">
-              <div className="text-sm">
-                <Link
-                  href="./resume"
-                  className="mt-4 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
-                  onClick={() => setIsShow(false)}
-                >
-                  ABOUT
-                </Link>
-                <Link
-                  href="/blog"
-                  className="mt-4 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
-                  onClick={() => setIsShow(false)}
-                >
-                  DEVLOG
-                </Link>
-              </div>
-            </div>
-          )}
-          <div className="hidden w-full lg:flex lg:w-auto lg:items-center ">
-            <div className="flex text-sm lg:flex-grow">
-              <button
-                className="mr-8 text-gray-800 dark:text-white"
-                onClick={() => changeTheme()}
-              >
-                {isDark ? (
-                  <div>
-                    <Image
-                      src="/sun.svg"
-                      alt="me"
-                      width="25"
-                      height="25"
-                      className="fill-current"
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    <Image src="/moon.svg" alt="me" width="25" height="25" />
-                  </div>
-                )}
-              </button>
-              <button>
-                <Link
-                  href="./resume"
-                  className="mt-4 mr-8 block cursor-pointer  text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
-                >
-                  ABOUT
-                </Link>
-              </button>
-              <button>
-                <Link
-                  href="/blog"
-                  className="mt-4 mr-8 block cursor-pointer text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
-                >
-                  DEVLOG
-                </Link>
-              </button>
-            </div>
-          </div>
+        </div>
+      </div>
+      <div className="m-0 h-full w-full overflow-hidden">
+        <div
+          className={`h-full transform bg-white bg-opacity-75 text-sm backdrop-blur-md duration-300 ease-in-out dark:border-gray-600 dark:bg-gray-900 lg:hidden ${
+            isShow ? 'translate-y-0' : '-translate-y-16'
+          }`}
+        >
+          <Link
+            href="./resume"
+            className="h-full cursor-pointer pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
+            onClick={() => setIsShow(false)}
+          >
+            ABOUT
+          </Link>
+          <Link
+            href="/blog"
+            className="mt-4 block h-full cursor-pointer py-2 pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
+            onClick={() => setIsShow(false)}
+          >
+            DEVLOG
+          </Link>
         </div>
       </div>
     </header>
