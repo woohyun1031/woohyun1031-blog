@@ -27,8 +27,12 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 duration-300 ease-in-out">
-      <div className="flex w-full justify-center bg-white bg-opacity-75 py-3 px-6 backdrop-blur-md duration-300 ease-in-out dark:bg-gray-900">
+    <header
+      className={`fixed top-0 z-50 w-full bg-white bg-opacity-75 backdrop-blur-md duration-300 ease-in-out ${
+        isShow ? 'h-32' : 'h-14'
+      } dark:bg-gray-900`}
+    >
+      <div className="flex w-full justify-center py-3 px-6">
         <div className="mx-2 flex w-full max-w-header flex-wrap items-center justify-between">
           <Link
             href="/resume"
@@ -62,7 +66,7 @@ const Header = () => {
               )}
             </button>
             <button
-              className="flex items-center rounded  px-3 py-2 text-gray-900  hover:text-blue-600"
+              className="flex items-center rounded px-3 py-2 text-gray-900  hover:text-blue-600"
               onClick={() => setIsShow((prev) => !prev)}
             >
               {isShow ? (
@@ -90,7 +94,7 @@ const Header = () => {
       </div>
       <div className="m-0 h-full w-full overflow-hidden">
         <div
-          className={`h-full transform bg-white bg-opacity-75 text-sm backdrop-blur-md duration-300 ease-in-out dark:border-gray-600 dark:bg-gray-900 lg:hidden ${
+          className={`h-full transform text-sm duration-300 ease-in-out lg:hidden ${
             isShow ? 'translate-y-0' : '-translate-y-16'
           }`}
         >
