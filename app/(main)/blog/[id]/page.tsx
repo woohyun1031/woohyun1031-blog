@@ -1,10 +1,19 @@
 import { getNotionPage, getNotionPageDetail } from '#pages/api/notion';
+import { Metadata } from 'next';
 import Tag from '#components/Tag';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import Block from '#components/Block';
+
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const product = await getNotionPage(params.id);
+  return {
+    title: product?.properties?.Type?.multi_select?.[0].name,
+    description: product?.properties?.Type?.multi_select?.[0].name,
+  };
+}
 
 export default async function Page(props: any) {
   const page = await getNotionPage(props.params.id);
