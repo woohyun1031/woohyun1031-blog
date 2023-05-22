@@ -104,6 +104,11 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <BookmarkBlock {...block} />
       </div>
     ),
+    link_preview: () => (
+      <div className="pt-2 pb-1">
+        <BookmarkBlock {...block} />
+      </div>
+    ),
   };
   // @ts-ignore
   return blocksObj[block.type]?.() ?? 'not matching block';

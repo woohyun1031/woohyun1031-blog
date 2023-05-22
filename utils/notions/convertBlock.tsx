@@ -77,6 +77,21 @@ export default async function convertBlock(
     };
   }
 
+  if (block.type === 'link_preview') {
+    const { result } = await ogs({ url: block.link_preview.url });
+    return {
+      id: block.id,
+      type: 'link_preview',
+      title: result?.ogTitle ?? result?.twitterTitle ?? '',
+      description: result.ogDescription || result.twitterDescription || '',
+      image: result.ogImage?.[0]?.url,
+      favicon: result.favicon?.startsWith('http')
+        ? result.favicon
+        : new URL(result.requestUrl ?? '').origin + '/favicon.ico',
+      url: result.requestUrl,
+    };
+  }
+
   return {
     id: block.id,
     type: block.type,
