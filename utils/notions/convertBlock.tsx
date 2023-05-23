@@ -64,6 +64,7 @@ export default async function convertBlock(
 
   if (block.type === 'bookmark') {
     const { result } = await ogs({ url: block.bookmark.url });
+    console.log(result);
     return {
       id: block.id,
       type: 'bookmark',
@@ -72,7 +73,7 @@ export default async function convertBlock(
       image: result.ogImage?.[0]?.url,
       favicon: result.favicon?.startsWith('http')
         ? result.favicon
-        : new URL(result.requestUrl ?? '').origin + '/favicon.ico',
+        : new URL(result.requestUrl ?? '').origin + result.favicon,
       url: result.requestUrl,
     };
   }
@@ -87,7 +88,7 @@ export default async function convertBlock(
       image: result.ogImage?.[0]?.url,
       favicon: result.favicon?.startsWith('http')
         ? result.favicon
-        : new URL(result.requestUrl ?? '').origin + '/favicon.ico',
+        : new URL(result.requestUrl ?? '').origin + result.favicon,
       url: result.requestUrl,
     };
   }
