@@ -73,6 +73,8 @@ export default async function convertBlock(
       image: result.ogImage?.[0]?.url,
       favicon: result.favicon?.startsWith('http')
         ? result.favicon
+        : result.favicon?.startsWith('//')
+        ? `http:${result.favicon}`
         : new URL(result.requestUrl ?? '').origin + result.favicon,
       url: result.requestUrl,
     };
