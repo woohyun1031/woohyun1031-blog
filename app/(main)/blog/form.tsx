@@ -38,8 +38,8 @@ export default function Form(props: {
       <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-container px-8">
           <div className="mt-36 mb-8">
-            <span className="font-sansM text-3xl text-gray-900 dark:text-white">
-              {searchParams.type ? searchParams.type : '블로그'}
+            <span className="font-sansT text-4xl text-gray-900 dark:text-white">
+              {searchParams.type ? searchParams.type : ''}
             </span>
           </div>
           {results?.map((item: IPage, index: number) => (
@@ -62,15 +62,14 @@ export default function Form(props: {
                 />
               )}
               <div className="flex flex-col justify-center">
-                <span className="mt-4 mb-4 inline-block font-sansM text-3xl text-gray-800 transition delay-75 duration-500 ease-in-out group-hover:text-blue-600 dark:text-white lg:mt-0">
+                <span className="mt-4 mb-4 inline-block font-sansT text-3xl text-gray-900 transition delay-75 duration-500 ease-in-out group-hover:text-blue-600 dark:text-white lg:mt-0">
                   {item.properties.Name?.title[0].text.content}
                 </span>
-                <span className="mb-4 inline-block font-sansM text-xl text-gray-700 dark:text-gray-200">
-                  {item.properties.Subtitle.rich_text[0]?.plain_text ??
-                    'REST Docs 를 최소한의 코드로 작성하면서 변화에도 더 유연하게 대처할 수 있는 tosspayments-restdocs 라이브러리와, 라이브러리에 녹인 기술들을 소개합니다.'}
+                <span className="mb-4 inline-block font-sansT text-xl text-gray-700 dark:text-gray-200">
+                  {item.properties.Subtitle.rich_text[0]?.plain_text}
                 </span>
                 <div className="flex flex-col justify-start sm:flex-row ">
-                  <span className="mr-4 mb-4 inline-block font-sansM text-base text-gray-600 dark:text-gray-400">
+                  <span className="mr-4 mb-4 inline-block font-sansT text-base text-gray-600 dark:text-gray-400">
                     {dayjs(item.created_time).format('YYYY-MM-DD')}
                   </span>
                   <div>
