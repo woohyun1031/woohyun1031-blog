@@ -1,4 +1,8 @@
-import { notoSansKrBold, notoSansKrMedium } from '#styles/fonts';
+import {
+  notoSansKrBold,
+  notoSansKrMedium,
+  notoSansKrThin,
+} from '#styles/fonts';
 import '#styles/globals.css';
 import React from 'react';
 import { Providers } from './providers';
@@ -13,7 +17,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${notoSansKrBold.variable} ${notoSansKrMedium.variable}`}
+      className={`${notoSansKrBold.variable} ${notoSansKrMedium.variable} ${notoSansKrThin.variable}`}
     >
       <body className="duration-300 ease-in-out dark:bg-gray-900 dark:text-gray-300">
         <main>

@@ -19,3 +19,12 @@ export const notoSansKrMedium = Noto_Sans_KR({
   variable: '--noto-sans_KR-medium',
   fallback: ['system-ui'],
 });
+
+export const notoSansKrThin = Noto_Sans_KR({
+  weight: '100',
+  display: 'fallback',
+  subsets: ['latin'],
+  style: 'normal',
+  variable: '--noto-sans_KR-thin',
+  fallback: ['system-ui'],
+});

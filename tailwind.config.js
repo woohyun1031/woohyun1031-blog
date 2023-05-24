@@ -23,6 +23,7 @@ module.exports = {
       fontFamily: {
         sansB: ['var(--noto-sans_KR-bold)'],
         sansM: ['var(--noto-sans_KR-medium)'],
+        sansT: ['var(--noto-sans_KR-thin)'],
       },
       backgroundColor: {
         nav: '#1890FF',
