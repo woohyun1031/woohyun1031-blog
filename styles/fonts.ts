@@ -21,7 +21,7 @@ export const notoSansKrMedium = Noto_Sans_KR({
 });
 
 export const notoSansKrThin = Noto_Sans_KR({
-  weight: '100',
+  weight: '300',
   display: 'fallback',
   subsets: ['latin'],
   style: 'normal',
