@@ -42,7 +42,7 @@ const Header = () => {
             </span>
           </Link>
 
-          <div className="flex lg:hidden">
+          <div className="flex">
             <button
               className="text-gray-800 dark:text-white"
               onClick={() => changeTheme()}
@@ -64,7 +64,7 @@ const Header = () => {
               )}
             </button>
             <button
-              className="flex items-center rounded px-3 py-2 text-gray-900  hover:text-blue-600"
+              className="flex items-center rounded px-3 py-2 text-gray-900 hover:text-blue-600 lg:hidden"
               onClick={() => setIsShow((prev) => !prev)}
             >
               {isShow ? (
@@ -87,6 +87,20 @@ const Header = () => {
                 </svg>
               )}
             </button>
+            <div className="ml-6 hidden gap-6 lg:flex">
+              <Link
+                href="./resume"
+                className="cursor-pointe m-auto text-xs text-stone-600 hover:text-black dark:text-white"
+              >
+                ABOUT
+              </Link>
+              <Link
+                href="/blog"
+                className="m-auto w-full cursor-pointer text-xs text-stone-600 hover:text-black dark:text-white"
+              >
+                DEVLOG
+              </Link>
+            </div>
           </div>
         </div>
       </div>
