@@ -2,6 +2,7 @@
 
 import Footer from '#components/Footer';
 import Header from '#components/Header';
+import { usePathname } from 'next/navigation';
 import React, { createContext } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -24,6 +25,7 @@ export function Providers({
   children: React.ReactNode;
 }): React.ReactElement {
   const [isDarkMode, setIsDarkMode] = React.useState<boolean>(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     if (localStorage.theme === 'dark') {
@@ -34,6 +36,10 @@ export function Providers({
       setIsDarkMode(false);
     }
   }, []);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <DarkModeThemeContext.Provider
