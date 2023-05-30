@@ -39,14 +39,14 @@ export default async function Page(props: any) {
                 />
               </div>
             )}
-            <div className="my-6 w-full font-sansB text-4xl leading-relaxed text-gray-800 dark:text-white">
+            <div className="mb-3 mt-6 w-full font-sansT text-4xl leading-relaxed text-gray-900 dark:text-white">
               <span>{page.properties.Name.title[0].plain_text}</span>
             </div>
-            <div className="my-6 flex w-full flex-col justify-start sm:flex-row">
-              <span className="mr-4 mb-4 inline-block font-sansM text-xl text-gray-600 dark:text-gray-400">
+            <div className="mb-6 flex w-full flex-col justify-start align-middle sm:flex-row">
+              <p className="mr-4 mb-4 inline-block font-sansT text-lg text-gray-500 dark:text-gray-400 sm:mb-0">
                 {dayjs(page.created_time).format('YYYY-MM-DD')}
-              </span>
-              <div>
+              </p>
+              <div className="flex items-end">
                 {page.properties.Type.multi_select.map(
                   (type: { id: string; name: string; color: string }) => {
                     return (

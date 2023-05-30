@@ -7,7 +7,7 @@ const BookmarkBlock = (block: IConvertBlock) => {
   return (
     <a
       href={block.url}
-      className="mt-4 mb-4 flex h-24 w-full justify-between rounded-md border-1 border-gray-300 dark:border-gray-700"
+      className="flex h-24 w-full justify-between rounded-md border-1 border-gray-300 dark:border-gray-700"
       target="_blank"
     >
       <div className="max-w-full flex-bookmark overflow-hidden py-3 px-4">

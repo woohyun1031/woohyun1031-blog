@@ -72,7 +72,8 @@ export default function Block({ block }: { block: IConvertBlock }) {
     ),
     quote: () => (
       <blockquote
-        className="border-l-4 border-l-gray-800 bg-gray-100 py-2 pt-4 pb-3 pl-5 font-bold text-gray-800 duration-300 ease-in-out
+        className="border-l-4 border-l-gray-800 bg-gray-100 py-2 pt-4 pb-3 pl-5 font-bold text-gray-800 duration-300
+          ease-in-out
           dark:border-l-gray-100
           dark:bg-gray-900
           dark:text-gray-200
