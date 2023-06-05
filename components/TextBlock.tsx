@@ -43,7 +43,7 @@ const TextBlock = ({
             return <span className={annotationss}>{plain_text}</span>;
           }
           return (
-            <p className="dark: 'font-sansT' leading-8 text-gray-300">
+            <p className="dark:'font-sansT' leading-8 text-gray-300">
               {plain_text}
             </p>
           );

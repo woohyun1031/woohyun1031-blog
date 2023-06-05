@@ -64,7 +64,6 @@ export default async function convertBlock(
 
   if (block.type === 'bookmark') {
     const { result } = await ogs({ url: block.bookmark.url });
-    console.log(result);
     return {
       id: block.id,
       type: 'bookmark',
