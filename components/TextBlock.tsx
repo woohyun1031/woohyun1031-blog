@@ -17,7 +17,7 @@ const TextBlock = ({
             return (
               <a
                 href={href}
-                className="'font-sansT leading-8 text-red-500 underline underline-offset-2"
+                className="'font-sansT leading-6 text-red-500 underline underline-offset-2"
                 target="_blank"
               >
                 {plain_text}
@@ -27,7 +27,7 @@ const TextBlock = ({
             const className: {
               [key: string]: React.ComponentProps<'span'>['className'];
             } = {
-              code: 'rounded bg-gray-100 px-1 py-0.5 text-red-500 transition-colors dark:bg-gray-800 border-gray-500 border-1 dark:border-0',
+              code: 'rounded bg-gray-100 px-1 text-red-500 transition-colors dark:bg-gray-800 border-gray-400 border-1 dark:border-0',
               bold: 'font-bold',
               italic: 'italic',
               strikethrough: 'line-through',
@@ -35,7 +35,9 @@ const TextBlock = ({
             };
             const annotationss = [
               'font-sansT',
-              'leading-8',
+              'leading-6',
+              'text-gray-700',
+              'dark:text-gray-400',
               ...Object.entries(annotations)
                 .filter(([, value]) => !!value)
                 .map(([key]) => className[key] ?? ''),
@@ -43,9 +45,7 @@ const TextBlock = ({
             return <span className={annotationss}>{plain_text}</span>;
           }
           return (
-            <p className="dark:'font-sansT' leading-8 text-gray-300">
-              {plain_text}
-            </p>
+            <p className="text-gray-700, font-sansT leading-8">{plain_text}</p>
           );
         })}
       </span>

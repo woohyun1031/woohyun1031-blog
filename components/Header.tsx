@@ -28,7 +28,7 @@ const Header = () => {
     <header
       className={`fixed top-0 z-50 w-full bg-white bg-opacity-75 backdrop-blur-md duration-300 ease-in-out ${
         isShow ? 'h-32' : 'h-14'
-      } dark:bg-gray-900 dark:bg-opacity-70`}
+      } dark:bg-gray-800 dark:bg-opacity-70`}
     >
       <div className="flex w-full justify-center py-3 px-6">
         <div className="mx-2 flex w-full max-w-header flex-wrap items-center justify-between">
