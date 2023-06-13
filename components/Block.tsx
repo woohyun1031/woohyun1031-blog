@@ -56,17 +56,17 @@ export default function Block({ block }: { block: IConvertBlock }) {
       );
     },
     heading_1: () => (
-      <h1 className="border-b pt-4 pb-3 text-5xl">
+      <h1 className="border-b pt-4 pb-3 text-5xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h1>
     ),
     heading_2: () => (
-      <h2 className="border-b pt-4 pb-3 text-3xl">
+      <h2 className="border-b pt-4 pb-3 text-3xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h2>
     ),
     heading_3: () => (
-      <h3 className="border-b pt-4 pb-3 text-2xl">
+      <h3 className="border-b pt-4 pb-3 text-2xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h3>
     ),
@@ -87,7 +87,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <img
           src={block.url ?? ''}
           alt="test"
-          style={{ objectFit: 'cover', width: '100%', borderRadius: 10 }}
+          style={{ objectFit: 'cover', width: '100%' }}
         />
         <p className="text-xs text-gray-600">
           {block.caption && <TextBlock text={block.caption ?? []} />}
@@ -99,7 +99,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <CodeBlock {...block} />
       </div>
     ),
-    divider: () => <hr className="border-t pt-4 pb-3" />,
+    divider: () => <hr className="border-t pt-4 pb-3 dark:border-gray-600" />,
     bookmark: () => (
       <div className="pt-2 pb-1">
         <BookmarkBlock {...block} />

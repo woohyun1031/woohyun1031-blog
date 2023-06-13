@@ -23,7 +23,7 @@ export default async function Page(props: any) {
   return (
     <>
       <div className="mt-36 flex w-full justify-center">
-        <div className="min-h-screen w-full max-w-innerContainer px-8">
+        <div className="min-h-screen w-full max-w-innerContainer px-4">
           <div className="flex flex-col items-center">
             {(page.cover?.file?.url || page.cover?.external?.url) && (
               <div className="relative my-6 h-64 w-full font-sansB text-4xl text-gray-800 dark:text-white">
@@ -39,7 +39,7 @@ export default async function Page(props: any) {
                 />
               </div>
             )}
-            <div className="mb-3 mt-6 w-full font-sansT text-4xl leading-relaxed text-gray-900 dark:text-white">
+            <div className="my-3 w-full font-sansT text-3xl leading-relaxed text-gray-900 dark:text-white sm:text-4xl">
               <span>{page.properties.Name.title[0].plain_text}</span>
             </div>
             <div className="mb-6 flex w-full flex-col justify-start align-middle sm:flex-row">

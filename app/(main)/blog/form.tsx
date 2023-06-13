@@ -36,7 +36,7 @@ export default function Form(props: {
   return (
     <>
       <div className="flex w-full justify-center">
-        <div className="min-h-screen w-full max-w-container px-8">
+        <div className="min-h-screen w-full max-w-container px-4">
           <div className="mt-36 mb-8">
             <span className="font-sansT text-4xl text-gray-900 dark:text-white">
               {searchParams.type ? searchParams.type : ''}
