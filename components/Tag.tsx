@@ -7,11 +7,9 @@ export interface ITagProps {
   onClick?: () => void;
 }
 const Tag = (props: ITagProps) => {
-  const bgColor = 'bg-gray-800';
-
   return (
     <span
-      className={`mr-4 inline-block rounded-xl bg-gray-100 px-3 py-1 
+      className={`inline-block rounded-xl bg-gray-100 px-3 py-1 
                 font-sansT
                 text-xs                
                 text-gray-500

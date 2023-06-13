@@ -62,10 +62,10 @@ export default function Form(props: {
                 />
               )}
               <div className="flex flex-col justify-center">
-                <span className="mt-4 mb-4 inline-block font-sansT text-3xl text-gray-900 transition delay-75 duration-500 ease-in-out group-hover:text-red-500 dark:text-white dark:group-hover:text-gray-400 lg:mt-0">
+                <span className="mt-4 mb-4 inline-block font-sansT text-2xl text-gray-900 transition delay-75 duration-500 ease-in-out group-hover:text-red-500 dark:text-white dark:group-hover:text-gray-400 sm:text-3xl lg:mt-0">
                   {item.properties.Name?.title[0].text.content}
                 </span>
-                <span className="mb-4 inline-block font-sansT text-xl text-gray-700 dark:text-gray-200">
+                <span className="mb-4 inline-block font-sansT text-base text-gray-700 dark:text-gray-200">
                   {item.properties.Subtitle.rich_text[0]?.plain_text}
                 </span>
                 <div className="flex flex-col justify-start sm:flex-row ">
@@ -76,15 +76,17 @@ export default function Form(props: {
                     {item.properties.Type.multi_select.map(
                       (type: { id: string; name: string; color: string }) => {
                         return (
-                          <Tag
-                            key={type.id}
-                            title={type.name}
-                            onClick={() => {
-                              onSubmit({
-                                type: type.name,
-                              });
-                            }}
-                          />
+                          <div className="mr-4 inline-block ">
+                            <Tag
+                              key={type.id}
+                              title={type.name}
+                              onClick={() => {
+                                onSubmit({
+                                  type: type.name,
+                                });
+                              }}
+                            />
+                          </div>
                         );
                       },
                     )}

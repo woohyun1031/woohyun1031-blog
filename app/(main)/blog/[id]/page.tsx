@@ -50,9 +50,11 @@ export default async function Page(props: any) {
                 {page.properties.Type.multi_select.map(
                   (type: { id: string; name: string; color: string }) => {
                     return (
-                      <Link href={`/blog?type=${type.name}`}>
-                        <Tag title={type.name} />
-                      </Link>
+                      <div className="mr-4 inline-block ">
+                        <Link href={`/blog?type=${type.name}`}>
+                          <Tag title={type.name} />
+                        </Link>
+                      </div>
                     );
                   },
                 )}
