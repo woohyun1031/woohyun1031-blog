@@ -17,7 +17,7 @@ const TextBlock = ({
             return (
               <a
                 href={href}
-                className="'font-sansT leading-6 text-red-500 underline underline-offset-2"
+                className="'font-sansT leading-6 text-red-400 underline underline-offset-2"
                 target="_blank"
               >
                 {plain_text}
@@ -27,7 +27,7 @@ const TextBlock = ({
             const className: {
               [key: string]: React.ComponentProps<'span'>['className'];
             } = {
-              code: 'rounded bg-gray-100 px-1 text-red-500 transition-colors dark:bg-gray-800 border-gray-400 border-1 dark:border-0',
+              code: 'rounded bg-gray-100 px-1 text-red-500 text-sm transition-colors dark:bg-gray-700 border-gray-400 border-1 dark:border-0',
               bold: 'font-bold',
               italic: 'italic',
               strikethrough: 'line-through',

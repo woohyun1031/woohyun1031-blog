@@ -69,7 +69,7 @@ export default async function Page(props: any) {
                 <Title value={'Skill'} />
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
-              <div className="mt-4">
+              <div className="mt-10">
                 <div>
                   <p className="mb-2 font-sansT text-base text-gray-700 dark:text-gray-200">
                     · 프론트 기술 환경(Webpack, Babel, Eslint 등) 구성 및 소규모
@@ -88,10 +88,11 @@ export default async function Page(props: any) {
                     경험
                   </p>
                   <p className="mb-2 font-sansT text-base text-gray-700 dark:text-gray-200">
-                    · 웹의 전체적인 흐름을 고려하여 개발
+                    · 함수형 프로그래밍의 철학을 바탕으로 웹의 전체적인 흐름을
+                    고려하여 개발 선호
                   </p>
                   <p className="mb-2 font-sansT text-base text-gray-700 dark:text-gray-200">
-                    · Typescript / Javascript 언어를 이해하고 필요한 환경에 따라
+                    · Typescript/Javascript 언어를 이해하고 필요한 환경에 따라
                     사용
                   </p>
                 </div>
@@ -269,7 +270,7 @@ export default async function Page(props: any) {
                 </span>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
-              <div className="mt-4">
+              <div className="mt-10">
                 {notitonList?.results?.map((value: IPage) => {
                   return (
                     <>
