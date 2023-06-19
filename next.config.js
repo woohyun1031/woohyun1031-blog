@@ -4,7 +4,7 @@ var nextConfig = {
     return [
       {
         source: '/',
-        destination: '/resume',
+        destination: '/about',
       },
     ];
   },
