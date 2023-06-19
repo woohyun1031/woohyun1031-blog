@@ -11,7 +11,7 @@ const BookmarkBlock = (block: IConvertBlock) => {
       target="_blank"
     >
       <div className="max-w-full flex-bookmark overflow-hidden py-3 px-4">
-        <h3 className="mt-0 overflow-hidden text-ellipsis whitespace-nowrap text-lg">
+        <h3 className="mt-0 overflow-hidden text-ellipsis whitespace-nowrap text-base sm:text-lg">
           {block.title}
         </h3>
         <p className="h-8 overflow-hidden font-sansM text-xs text-gray-500">

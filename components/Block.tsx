@@ -21,7 +21,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
   const blocksObj = {
     paragraph: () => {
       return (
-        <div className="pt-4 pb-3">
+        <div className="pt-4 pb-3 text-sm sm:text-base">
           <TextBlock text={block.text ?? []} />
           {block.hasChildren && rc(block.children ?? [])}
         </div>
@@ -32,7 +32,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <ul className="list-inside list-decimal pt-4 pb-3">
           {block.children?.map((item) => (
             <>
-              <li className="pb-1">
+              <li className="pb-1 text-sm sm:text-base">
                 <TextBlock text={item.text ?? []} className="pl-1" />
               </li>
               {item.hasChildren && rc(item.children ?? [])}
@@ -46,7 +46,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <ul className="list-inside list-disc pt-4 pb-3">
           {block.children?.map((item) => (
             <>
-              <li className="pb-1">
+              <li className="pb-1 text-sm sm:text-base">
                 <TextBlock text={item.text ?? []} className="pl-1" />
               </li>
               {item.hasChildren && rc(item.children ?? [])}
@@ -72,11 +72,12 @@ export default function Block({ block }: { block: IConvertBlock }) {
     ),
     quote: () => (
       <blockquote
-        className="border-l-4 border-l-gray-800 bg-gray-100 py-2 pt-4 pb-3 pl-5 font-bold text-gray-800 duration-300
-          ease-in-out
-          dark:border-l-gray-100
+        className="border-l-4 border-l-gray-800 bg-gray-100 py-2 pt-4 pb-3 pl-5 text-sm font-bold text-gray-800
+        duration-300 ease-in-out  
+        dark:border-l-gray-100
           dark:bg-gray-900
           dark:text-gray-200
+          sm:text-base
         "
       >
         <TextBlock text={block.text ?? []} />

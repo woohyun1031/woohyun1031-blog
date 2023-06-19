@@ -10,8 +10,9 @@ import Block from '#components/Block';
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const product = await getNotionPage(params.id);
   return {
-    title: product?.properties?.Type?.multi_select?.[0].name,
-    description: product?.properties?.Type?.multi_select?.[0].name,
+    title: product?.properties?.metaTitle?.rich_text?.[0]?.plain_text,
+    description:
+      product?.properties?.metaDescription?.rich_text?.[0]?.plain_text,
   };
 }
 
@@ -26,7 +27,7 @@ export default async function Page(props: any) {
         <div className="min-h-screen w-full max-w-innerContainer px-4">
           <div className="flex flex-col items-center">
             {(page.cover?.file?.url || page.cover?.external?.url) && (
-              <div className="relative my-6 h-64 w-full font-sansB text-4xl text-gray-800 dark:text-white">
+              <div className="relative mb-6 h-64 w-full font-sansB text-4xl text-gray-800 dark:text-white sm:mb-12">
                 <Image
                   src={
                     page.cover?.file?.url ??
@@ -39,11 +40,12 @@ export default async function Page(props: any) {
                 />
               </div>
             )}
-            <div className="my-3 w-full font-sansT text-3xl leading-relaxed text-gray-900 dark:text-white sm:text-4xl">
+            <div className="mb-3 w-full font-sansT text-3xl leading-relaxed text-gray-900 dark:text-white sm:mb-6 sm:text-4xl">
               <span>{page.properties.Name.title[0].plain_text}</span>
             </div>
+
             <div className="mb-6 flex w-full flex-col justify-start align-middle sm:flex-row">
-              <p className="mr-4 mb-4 inline-block font-sansT text-lg text-gray-500 dark:text-gray-400 sm:mb-0">
+              <p className="mr-4 mb-4 inline-block font-sansT text-sm text-gray-500 dark:text-gray-400 sm:mb-0 sm:text-base">
                 {dayjs(page.created_time).format('YYYY-MM-DD')}
               </p>
               <div className="flex items-end">
@@ -60,6 +62,7 @@ export default async function Page(props: any) {
                 )}
               </div>
             </div>
+
             <div
               className="
                 dark:prose-dark 
