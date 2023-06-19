@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 var nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/resume',
+      },
+    ];
+  },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.('.svg'),
@@ -20,9 +28,6 @@ var nextConfig = {
     fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
-  },
-  experimental: {
-    appDir: true,
   },
   images: {
     domains: ['s3.us-west-2.amazonaws.com', 'toss.tech', 'www.notion.so'],
