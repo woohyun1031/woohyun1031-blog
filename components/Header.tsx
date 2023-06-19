@@ -33,7 +33,7 @@ const Header = () => {
       <div className="flex w-full justify-center py-3 px-6">
         <div className="mx-2 flex w-full max-w-header flex-wrap items-center justify-between">
           <Link
-            href="/resume"
+            href="/about"
             className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
             onClick={() => setIsShow(false)}
           >
@@ -89,7 +89,7 @@ const Header = () => {
             </button>
             <div className="ml-6 hidden gap-6 lg:flex">
               <Link
-                href="./resume"
+                href="./about"
                 className="cursor-pointe m-auto text-xs text-stone-600 hover:text-black dark:text-white"
               >
                 ABOUT
@@ -111,7 +111,7 @@ const Header = () => {
           }`}
         >
           <Link
-            href="./resume"
+            href="./about"
             className="w-full cursor-pointer pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
             onClick={() => setIsShow(false)}
           >
