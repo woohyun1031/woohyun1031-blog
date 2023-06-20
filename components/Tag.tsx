@@ -9,7 +9,7 @@ export interface ITagProps {
 const Tag = (props: ITagProps) => {
   return (
     <span
-      className={`inline-block rounded-xl bg-gray-100 px-3 py-1 
+      className={`
                 font-sansT
                 text-xs                
                 text-gray-500
@@ -17,8 +17,7 @@ const Tag = (props: ITagProps) => {
                 ease-in-out                 
                 hover:text-red-400
                 active:text-red-600
-
-                dark:bg-gray-800
+                
                 dark:text-gray-400                
                 dark:hover:text-gray-100                
       `}

@@ -17,7 +17,7 @@ const TextBlock = ({
             return (
               <a
                 href={href}
-                className="'font-sansT leading-6 text-red-400 underline underline-offset-2"
+                className="break-keep font-sansT leading-6 text-red-400 underline underline-offset-2"
                 target="_blank"
               >
                 {plain_text}
@@ -34,9 +34,10 @@ const TextBlock = ({
               underline: 'underline underline-offset-2',
             };
             const annotationss = [
+              'break-keep',
               'font-sansT',
               'leading-6',
-              'text-gray-700',
+              'text-gray-600',
               'dark:text-gray-400',
               ...Object.entries(annotations)
                 .filter(([, value]) => !!value)
@@ -45,7 +46,9 @@ const TextBlock = ({
             return <span className={annotationss}>{plain_text}</span>;
           }
           return (
-            <p className="text-gray-700, font-sansT leading-8">{plain_text}</p>
+            <p className="text-gray-700, break-keep font-sansT leading-8">
+              {plain_text}
+            </p>
           );
         })}
       </span>

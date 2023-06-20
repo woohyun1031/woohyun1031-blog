@@ -20,13 +20,13 @@ export default async function Page(props: any) {
   const page = await getNotionPage(props.params.id);
   const data = await getNotionPageDetail(props.params.id);
   if (!page) return;
-
+  const tagList = page?.properties?.Type?.multi_select ?? [];
   return (
     <>
       <div className="mt-36 flex w-full justify-center">
         <div className="min-h-screen w-full max-w-innerContainer px-4">
           <div className="flex flex-col items-center">
-            {(page.cover?.file?.url || page.cover?.external?.url) && (
+            {/* {(page.cover?.file?.url || page.cover?.external?.url) && (
               <div className="relative mb-6 h-64 w-full font-sansB text-4xl text-gray-800 dark:text-white sm:mb-12">
                 <Image
                   src={
@@ -39,34 +39,52 @@ export default async function Page(props: any) {
                   fill
                 />
               </div>
-            )}
-            <div className="mb-3 w-full font-sansT text-3xl leading-relaxed text-gray-900 dark:text-white sm:mb-6 sm:text-4xl">
+            )} */}
+            <div className="mb-3 w-full break-keep px-4 text-center font-sansT text-3xl leading-relaxed text-gray-900 dark:text-white sm:mb-6 sm:text-4xl sm:leading-relaxed">
               <span>{page.properties.Name.title[0].plain_text}</span>
             </div>
 
-            <div className="mb-6 flex w-full flex-col justify-start align-middle sm:flex-row">
-              <p className="mr-4 mb-4 inline-block font-sansT text-sm text-gray-500 dark:text-gray-400 sm:mb-0 sm:text-base">
-                {dayjs(page.created_time).format('YYYY-MM-DD')}
-              </p>
-              <div className="flex items-end">
-                {page.properties.Type.multi_select.map(
-                  (type: { id: string; name: string; color: string }) => {
-                    return (
-                      <div className="mr-4 inline-block ">
+            <div className="mb-24 flex w-full flex-row flex-wrap justify-center gap-y-2 gap-x-4 align-middle">
+              <div className="text-center">
+                <span className="align-middle font-sansT text-xs text-gray-500 dark:text-gray-400">
+                  {dayjs(page.created_time).format('MMMM DD, YYYY')}
+                </span>
+              </div>
+              {tagList.length ? (
+                <div>
+                  <span className="font-sansT text-xs text-gray-500 dark:text-gray-400">
+                    |
+                  </span>
+                </div>
+              ) : null}
+              {tagList?.map(
+                (
+                  type: { id: string; name: string; color: string },
+                  index: number,
+                ) => {
+                  return (
+                    <>
+                      <div>
                         <Link href={`/blog?type=${type.name}`}>
                           <Tag title={type.name} />
                         </Link>
                       </div>
-                    );
-                  },
-                )}
-              </div>
+                      {tagList.length !== index + 1 && (
+                        <div>
+                          <span className="font-sansT text-xs text-gray-500 dark:text-gray-400">
+                            |
+                          </span>
+                        </div>
+                      )}
+                    </>
+                  );
+                },
+              )}
             </div>
 
             <div
               className="
-                dark:prose-dark 
-                mt-8 
+                dark:prose-dark                 
                 w-full 
                 max-w-container                                
                 "
