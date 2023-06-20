@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 var nextConfig = {
-  async rewrites() {
+  async redirects() {
     return [
       {
         source: '/',
-        destination: '/about',
+        destination: '/blog',
+        permanent: true,
       },
     ];
   },
