@@ -21,9 +21,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sansB: ['var(--noto-sans_KR-bold)'],
-        sansM: ['var(--noto-sans_KR-medium)'],
-        sansT: ['var(--noto-sans_KR-thin)'],
+        sansB: ['var(--font-bold)'],
+        sansM: ['var(--font-medium)'],
+        sansT: ['var(--font-thin)'],
       },
       backgroundColor: {
         nav: '#1890FF',
@@ -37,8 +37,8 @@ module.exports = {
       minWidth: {
         500: '500px',
       },
-      width:{
-        500:'500px',
+      width: {
+        500: '500px',
       },
       borderWidth: {
         1: '1px',

@@ -1,30 +1,30 @@
 import React from 'react';
-import { Noto_Sans_KR } from 'next/font/google';
+import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google';
 
 // Noto_Sans_KR
-export const notoSansKrBold = Noto_Sans_KR({
+export const fontBold = Noto_Serif_KR({
   weight: '700',
   display: 'fallback',
   subsets: ['latin'],
   style: 'normal',
-  variable: '--noto-sans_KR-bold',
+  variable: '--font-bold',
   fallback: ['system-ui'],
 });
 
-export const notoSansKrMedium = Noto_Sans_KR({
-  weight: '500',
+export const fontMedium = Noto_Serif_KR({
+  weight: '400',
   display: 'fallback',
   subsets: ['latin'],
   style: 'normal',
-  variable: '--noto-sans_KR-medium',
+  variable: '--font-medium',
   fallback: ['system-ui'],
 });
 
-export const notoSansKrThin = Noto_Sans_KR({
-  weight: '300',
+export const fontThin = Noto_Serif_KR({
+  weight: '200',
   display: 'fallback',
   subsets: ['latin'],
   style: 'normal',
-  variable: '--noto-sans_KR-thin',
+  variable: '--font-thin',
   fallback: ['system-ui'],
 });
