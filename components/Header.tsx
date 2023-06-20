@@ -89,7 +89,7 @@ const Header = () => {
             </button>
             <div className="ml-6 hidden gap-6 lg:flex">
               <Link
-                href="./about"
+                href="/about"
                 className="cursor-pointe m-auto text-xs text-stone-600 hover:text-black dark:text-white"
               >
                 ABOUT
