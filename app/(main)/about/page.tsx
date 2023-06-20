@@ -196,7 +196,7 @@ export default async function Page(props: any) {
                     </SubTitle>
                   </div>
                   <div className="mt-2">
-                    <SoftDescription>2022.08 ~</SoftDescription>
+                    <SoftDescription>2023.04 ~</SoftDescription>
                   </div>
                 </div>
                 <div className="lg:w-500">
@@ -229,7 +229,7 @@ export default async function Page(props: any) {
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · GitHub Action과 Vercel로 CI, CD 파이프라인 구축
+                          · GitHub와 Vercel로 CD 파이프라인 구축
                         </Description>
                       </div>
                     </div>
@@ -237,7 +237,7 @@ export default async function Page(props: any) {
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
                     <p className="mt-2 font-sansT text-sm text-gray-600 dark:text-gray-400 sm:text-base">
-                      TypeScript, Next.js13, Tailwind, GithubAction
+                      TypeScript, Next.js13, Tailwind
                     </p>
                   </div>
                 </div>
