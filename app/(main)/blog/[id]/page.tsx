@@ -1,4 +1,8 @@
-import { getNotionPage, getNotionPageDetail } from '#pages/api/notion';
+import {
+  getNotionPage,
+  getNotionPageDetail,
+  getNotionPageList,
+} from '#pages/api/notion';
 import { Metadata } from 'next';
 import Tag from '#components/Tag';
 import dayjs from 'dayjs';
@@ -14,6 +18,19 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
     description:
       product?.properties?.metaDescription?.rich_text?.[0]?.plain_text,
   };
+}
+
+export async function generateStaticParams() {
+  const pageList = await getNotionPageList({
+    pages: 100,
+  });
+  return pageList?.results
+    ? pageList?.results
+        .map((res) => res?.id)
+        .map((pageId) => ({
+          id: pageId,
+        }))
+    : [];
 }
 
 export default async function Page(props: any) {

@@ -27,7 +27,7 @@ const TextBlock = ({
             const className: {
               [key: string]: React.ComponentProps<'span'>['className'];
             } = {
-              code: 'rounded bg-gray-100 px-1 text-red-500 text-xs sm:text-sm transition-colors dark:bg-gray-700 border-gray-400 border-1 dark:border-0',
+              code: 'rounded bg-gray-100 px-1 text-red-500 text-xs sm:text-sm transition-colors dark:bg-gray-700 dark:border-0',
               bold: 'font-bold',
               italic: 'italic',
               strikethrough: 'line-through',
