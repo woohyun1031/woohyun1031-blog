@@ -20,18 +20,18 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   };
 }
 
-// export async function generateStaticParams() {
-//   const pageList = await getNotionPageList({
-//     pages: 100,
-//   });
-//   return pageList?.results
-//     ? pageList?.results
-//         .map((res) => res?.id)
-//         .map((pageId) => ({
-//           id: pageId,
-//         }))
-//     : [];
-// }
+export async function generateStaticParams() {
+  const pageList = await getNotionPageList({
+    pages: 100,
+  });
+  return pageList?.results
+    ? pageList?.results
+        .map((res) => res?.id)
+        .map((pageId) => ({
+          id: pageId,
+        }))
+    : [];
+}
 
 export default async function Page(props: any) {
   const page = await getNotionPage(props.params.id);
