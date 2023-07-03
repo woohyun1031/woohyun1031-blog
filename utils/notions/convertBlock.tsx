@@ -46,23 +46,11 @@ export default async function convertBlock(
   }
 
   if (block.type === 'image') {
-    if (block.image.type === 'file') {
-      if (!fs.existsSync(`/images/${block.id}.jpg`)) {
-        await fetch(block.image.file.url)
-          .then((res) => res.arrayBuffer())
-          .then((res) => {
-            fs.writeFileSync(`/images/${block.id}.jpg`, Buffer.from(res));
-          });
-      }
-    }
-
     return {
       id: block.id,
       type: 'image',
       caption: block.image.caption,
-      ...(block.image.type === 'file'
-        ? { url: `/images/${block.id}.jpg` }
-        : {}),
+      ...(block.image.type === 'file' ? { url: block.image.file.url } : {}),
     };
   }
 
