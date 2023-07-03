@@ -17,6 +17,7 @@ export default function GithubCalendar() {
           colorScheme={isDark ? 'dark' : 'light'}
           style={{
             width: '100%',
+            margin: 'auto',
             marginTop: 12,
             color: isDark ? 'white' : 'black',
           }}
