@@ -5,7 +5,7 @@ import type {
 import { v4 as uuid } from 'uuid';
 import ogs from 'open-graph-scraper';
 import { URL } from 'url';
-import fs from 'fs';
+import AWS from 'aws-sdk';
 
 export interface IConvertBlock {
   id: string;
@@ -24,6 +24,19 @@ export interface IConvertBlock {
 }
 export type TBlockListType = 'numbered_list_item' | 'bulleted_list_item';
 
+// Content-Type에서 이미지의 확장자 추출하는 함수
+function getImageExtension(contentType: string) {
+  switch (contentType) {
+    case 'image/jpeg':
+      return 'jpg';
+    case 'image/png':
+      return 'png';
+    case 'image/gif':
+      return 'gif';
+    default:
+      return 'jpg';
+  }
+}
 export default async function convertBlock(
   block: BlockObjectResponse,
 ): Promise<IConvertBlock> {
@@ -46,11 +59,57 @@ export default async function convertBlock(
   }
 
   if (block.type === 'image') {
+    const s3 = new AWS.S3({
+      region: process.env.AWS_REGION,
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_ID as string,
+      },
+    });
+    let imageUrl;
+    if (block.image.type === 'file') {
+      const response = await fetch(block.image.file.url);
+      const imageBuffer = await response.arrayBuffer();
+
+      // 원본 이미지의 Content-Type 추출
+      const contentType = response.headers.get('content-type');
+
+      const imageKey = `images/${block.id}.${getImageExtension(
+        contentType as string,
+      )}`;
+      const checkParams = {
+        Bucket: 'woo1031bucket',
+        Key: imageKey,
+      };
+      let isExist;
+      try {
+        await s3.headObject(checkParams).promise();
+        imageUrl = `https://${s3.config.endpoint}/${checkParams.Bucket}/${checkParams.Key}`;
+        isExist = true;
+      } catch (error: any) {
+        if (error.name === 'NotFound') {
+          isExist = false;
+        } else {
+          console.log('error:::', error);
+          throw error;
+        }
+      }
+      if (!isExist) {
+        const params = {
+          Bucket: 'woo1031bucket',
+          Key: imageKey,
+          Body: Buffer.from(imageBuffer),
+        };
+
+        const uploadResult = await s3.upload(params).promise();
+        imageUrl = uploadResult.Location;
+      }
+    }
     return {
       id: block.id,
       type: 'image',
       caption: block.image.caption,
-      ...(block.image.type === 'file' ? { url: block.image.file.url } : {}),
+      ...(block.image.type === 'file' ? { url: imageUrl } : {}),
     };
   }
 
