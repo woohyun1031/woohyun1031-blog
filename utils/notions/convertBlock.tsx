@@ -40,124 +40,135 @@ function getImageExtension(contentType: string) {
 export default async function convertBlock(
   block: BlockObjectResponse,
 ): Promise<IConvertBlock> {
-  if (
-    block.type === 'paragraph' ||
-    block.type === 'heading_1' ||
-    block.type === 'heading_2' ||
-    block.type === 'heading_3' ||
-    block.type === 'bulleted_list_item' ||
-    block.type === 'numbered_list_item' ||
-    block.type === 'quote'
-  ) {
+  try {
+    if (
+      block.type === 'paragraph' ||
+      block.type === 'heading_1' ||
+      block.type === 'heading_2' ||
+      block.type === 'heading_3' ||
+      block.type === 'bulleted_list_item' ||
+      block.type === 'numbered_list_item' ||
+      block.type === 'quote'
+    ) {
+      return {
+        id: block.id,
+        type: block.type,
+        // @ts-ignore
+        text: block[block.type].rich_text,
+        hasChildren: block.has_children,
+      };
+    }
+
+    if (block.type === 'image') {
+      const s3 = new AWS.S3({
+        region: process.env.AWS_REGION,
+        credentials: {
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_ID as string,
+        },
+      });
+      let imageUrl;
+      if (block.image.type === 'file') {
+        const response = await fetch(block.image.file.url);
+        const imageBuffer = await response.arrayBuffer();
+
+        // 원본 이미지의 Content-Type 추출
+        const contentType = response.headers.get('content-type');
+
+        const imageKey = `images/${block.id}.${getImageExtension(
+          contentType as string,
+        )}`;
+        const checkParams = {
+          Bucket: 'woo1031bucket',
+          Key: imageKey,
+        };
+        let isExist;
+        try {
+          await s3.headObject(checkParams).promise();
+          imageUrl = `https://${s3.config.endpoint}/${checkParams.Bucket}/${checkParams.Key}`;
+          isExist = true;
+        } catch (error: any) {
+          if (error.name === 'NotFound') {
+            isExist = false;
+          } else {
+            console.log('error:::', error);
+            throw error;
+          }
+        }
+        if (!isExist) {
+          const params = {
+            Bucket: 'woo1031bucket',
+            Key: imageKey,
+            Body: Buffer.from(imageBuffer),
+          };
+
+          const uploadResult = await s3.upload(params).promise();
+          imageUrl = uploadResult.Location;
+        }
+      }
+      return {
+        id: block.id,
+        type: 'image',
+        caption: block.image.caption,
+        ...(block.image.type === 'file' ? { url: imageUrl } : {}),
+      };
+    }
+
+    if (block.type === 'code') {
+      return {
+        id: block.id,
+        type: 'code',
+        code: block.code.rich_text.reduce(
+          (acc, cur) => acc + cur.plain_text,
+          '',
+        ),
+        language: block.code.language,
+      };
+    }
+
+    if (block.type === 'bookmark') {
+      const { result } = await ogs({ url: block.bookmark.url });
+      return {
+        id: block.id,
+        type: 'bookmark',
+        title: result?.ogTitle ?? result?.twitterTitle ?? '',
+        description: result.ogDescription || result.twitterDescription || '',
+        image: result.ogImage?.[0]?.url,
+        favicon: result.favicon?.startsWith('http')
+          ? result.favicon
+          : result.favicon?.startsWith('//')
+          ? `http:${result.favicon}`
+          : new URL(result.requestUrl ?? '').origin + result.favicon,
+        url: result.requestUrl,
+      };
+    }
+
+    if (block.type === 'link_preview') {
+      const { result } = await ogs({ url: block.link_preview.url });
+      return {
+        id: block.id,
+        type: 'link_preview',
+        title: result?.ogTitle ?? result?.twitterTitle ?? '',
+        description: result.ogDescription || result.twitterDescription || '',
+        image: result.ogImage?.[0]?.url,
+        favicon: result.favicon?.startsWith('http')
+          ? result.favicon
+          : new URL(result.requestUrl ?? '').origin + result.favicon,
+        url: result.requestUrl,
+      };
+    }
+
     return {
       id: block.id,
       type: block.type,
-      // @ts-ignore
-      text: block[block.type].rich_text,
-      hasChildren: block.has_children,
     };
-  }
-
-  if (block.type === 'image') {
-    const s3 = new AWS.S3({
-      region: process.env.AWS_REGION,
-      credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_ID as string,
-      },
-    });
-    let imageUrl;
-    if (block.image.type === 'file') {
-      const response = await fetch(block.image.file.url);
-      const imageBuffer = await response.arrayBuffer();
-
-      // 원본 이미지의 Content-Type 추출
-      const contentType = response.headers.get('content-type');
-
-      const imageKey = `images/${block.id}.${getImageExtension(
-        contentType as string,
-      )}`;
-      const checkParams = {
-        Bucket: 'woo1031bucket',
-        Key: imageKey,
-      };
-      let isExist;
-      try {
-        await s3.headObject(checkParams).promise();
-        imageUrl = `https://${s3.config.endpoint}/${checkParams.Bucket}/${checkParams.Key}`;
-        isExist = true;
-      } catch (error: any) {
-        if (error.name === 'NotFound') {
-          isExist = false;
-        } else {
-          console.log('error:::', error);
-          throw error;
-        }
-      }
-      if (!isExist) {
-        const params = {
-          Bucket: 'woo1031bucket',
-          Key: imageKey,
-          Body: Buffer.from(imageBuffer),
-        };
-
-        const uploadResult = await s3.upload(params).promise();
-        imageUrl = uploadResult.Location;
-      }
-    }
+  } catch (error) {
+    console.log(error);
     return {
       id: block.id,
-      type: 'image',
-      caption: block.image.caption,
-      ...(block.image.type === 'file' ? { url: imageUrl } : {}),
+      type: block.type,
     };
   }
-
-  if (block.type === 'code') {
-    return {
-      id: block.id,
-      type: 'code',
-      code: block.code.rich_text.reduce((acc, cur) => acc + cur.plain_text, ''),
-      language: block.code.language,
-    };
-  }
-
-  if (block.type === 'bookmark') {
-    const { result } = await ogs({ url: block.bookmark.url });
-    return {
-      id: block.id,
-      type: 'bookmark',
-      title: result?.ogTitle ?? result?.twitterTitle ?? '',
-      description: result.ogDescription || result.twitterDescription || '',
-      image: result.ogImage?.[0]?.url,
-      favicon: result.favicon?.startsWith('http')
-        ? result.favicon
-        : result.favicon?.startsWith('//')
-        ? `http:${result.favicon}`
-        : new URL(result.requestUrl ?? '').origin + result.favicon,
-      url: result.requestUrl,
-    };
-  }
-
-  if (block.type === 'link_preview') {
-    const { result } = await ogs({ url: block.link_preview.url });
-    return {
-      id: block.id,
-      type: 'link_preview',
-      title: result?.ogTitle ?? result?.twitterTitle ?? '',
-      description: result.ogDescription || result.twitterDescription || '',
-      image: result.ogImage?.[0]?.url,
-      favicon: result.favicon?.startsWith('http')
-        ? result.favicon
-        : new URL(result.requestUrl ?? '').origin + result.favicon,
-      url: result.requestUrl,
-    };
-  }
-
-  return {
-    id: block.id,
-    type: block.type,
-  };
 }
 
 export function convertList2Block(blocks: IConvertBlock[]) {
