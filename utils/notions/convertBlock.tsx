@@ -127,7 +127,13 @@ export default async function convertBlock(
     }
 
     if (block.type === 'bookmark') {
-      const { result } = await ogs({ url: block.bookmark.url });
+      const { result, error } = await ogs({ url: block.bookmark.url });
+      if (error) {
+        return {
+          id: block.id,
+          type: 'bookmark',
+        };
+      }
       return {
         id: block.id,
         type: 'bookmark',

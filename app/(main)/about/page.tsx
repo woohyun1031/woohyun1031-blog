@@ -60,6 +60,15 @@ export default async function Page(props: any) {
                     e-mail
                   </Link>
                 </span>
+
+                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                  <Link
+                    href="https://woo1031.notion.site/woo1031/WooHyun-Kim-69ab520d7e2648d1aec863db6a50a282"
+                    target="_blank"
+                  >
+                    notion
+                  </Link>
+                </span>
               </div>
             </div>
 

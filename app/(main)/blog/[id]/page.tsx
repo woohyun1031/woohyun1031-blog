@@ -43,20 +43,6 @@ export default async function Page(props: any) {
       <div className="mt-36 flex w-full justify-center">
         <div className="min-h-screen w-full max-w-innerContainer px-4">
           <div className="flex flex-col items-center">
-            {/* {(page.cover?.file?.url || page.cover?.external?.url) && (
-              <div className="relative mb-6 h-64 w-full font-sansB text-4xl text-gray-800 dark:text-white sm:mb-12">
-                <Image
-                  src={
-                    page.cover?.file?.url ??
-                    page.cover?.external?.url ??
-                    'https://toss.tech/wp-content/uploads/2023/03/00017-3291509353.png'
-                  }
-                  style={{ objectFit: 'cover', borderRadius: 10 }}
-                  alt="blog image"
-                  fill
-                />
-              </div>
-            )} */}
             <div className="mb-3 w-full break-keep px-4 text-center font-sansT text-3xl leading-relaxed text-gray-900 dark:text-white sm:mb-6 sm:text-4xl sm:leading-relaxed">
               <span>{page.properties.Name.title[0].plain_text}</span>
             </div>
