@@ -10,9 +10,17 @@ import { LinkButton } from '#components/LinkButton';
 import Description from '#components/about/Description';
 import SubTitle from '#components/about/SubTitle';
 import SoftDescription from '#components/about/SoftDescription';
+import { Metadata } from 'next';
 
 interface ICustomCommitData extends ICommitData {
   createAt: string;
+}
+
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  return {
+    title: '김우현 프론트엔드 엔지니어 이력서',
+    description: '김우현 프론트엔드 엔지니어의 이력서',
+  };
 }
 
 export default async function Page(props: any) {
