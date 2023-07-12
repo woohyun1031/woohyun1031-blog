@@ -241,6 +241,12 @@ export default async function Page(props: any) {
                       </div>
                       <div className="mb-2">
                         <Description>
+                          · Notion api 기반 구조 트리 제작하여 자체 interface
+                          구축
+                        </Description>
+                      </div>
+                      <div className="mb-2">
+                        <Description>
                           · Notion, Github api 기반 블로그 인터페이스 구현
                         </Description>
                       </div>
