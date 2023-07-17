@@ -1,6 +1,4 @@
-import { getGithubCommitList, IPushEventPayload } from '#pages/api/github';
-import GitHubCalendar from 'react-github-calendar';
-import { ICommitData, IEventData } from '#pages/api/github';
+import { ICommitData } from '#pages/api/github';
 import dayjs from 'dayjs';
 import GithubCalendar from '#components/about/GithubCalendar';
 import { getNotionPages, IPage } from '#pages/api/notion';
@@ -12,10 +10,6 @@ import SubTitle from '#components/about/SubTitle';
 import SoftDescription from '#components/about/SoftDescription';
 import { Metadata } from 'next';
 
-interface ICustomCommitData extends ICommitData {
-  createAt: string;
-}
-
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   return {
     title: '김우현 프론트엔드 엔지니어 이력서',
@@ -23,7 +17,9 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   };
 }
 
-export default async function Page(props: any) {
+export const dynamic = 'force-dynamic';
+
+export default async function Page() {
   const notitonList = await getNotionPages(5);
 
   return (
@@ -176,7 +172,7 @@ export default async function Page(props: any) {
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · React-Query lib, Redux 기반 상태 환경 디자인 겸험
+                          · React-Query lib, Redux 기반 상태 환경 디자인 경험
                         </Description>
                       </div>
                       <div className="mb-2">
