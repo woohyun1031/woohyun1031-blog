@@ -113,5 +113,5 @@ export default function Block({ block }: { block: IConvertBlock }) {
     ),
   };
   // @ts-ignore
-  return blocksObj[block.type]?.() ?? 'not matching block';
+  return blocksObj[block.type]?.() ?? null;
 }

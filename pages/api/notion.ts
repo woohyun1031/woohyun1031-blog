@@ -139,11 +139,6 @@ export const getNotionBlockChildren = async (id: string) => {
     return resultArr;
   }
   try {
-    // const blockChildren = await notionApi.get<{
-    //   object: string;
-    //   results: BlockObjectResponse[];
-    // }>(`/blocks/${id}/children`);
-    // return blockChildren.data.results;
     return await rc(null, id, []);
   } catch (error) {
     console.error(error);

@@ -18,22 +18,26 @@ const BookmarkBlock = (block: IConvertBlock) => {
           {block.description}
         </p>
         <div className="flex items-center gap-2">
-          <img src={block.favicon} alt="favicon" width={16} height={16} />
+          {block.favicon ? (
+            <img src={block.favicon} alt="favicon" width={16} height={16} />
+          ) : null}
           <p className="truncate text-xs">{block.url}</p>
         </div>
       </div>
-      <div className="block sm:block ">
-        <img
-          src={block.image ?? ''}
-          alt="test"
-          style={{
-            borderTopRightRadius: 5,
-            borderBottomRightRadius: 5,
-            objectFit: 'contain',
-            height: '100%',
-          }}
-        />
-      </div>
+      {block.image ? (
+        <div className="block sm:block ">
+          <img
+            src={block.image ?? ''}
+            alt="test"
+            style={{
+              borderTopRightRadius: 5,
+              borderBottomRightRadius: 5,
+              objectFit: 'contain',
+              height: '100%',
+            }}
+          />
+        </div>
+      ) : null}
     </a>
   );
 };

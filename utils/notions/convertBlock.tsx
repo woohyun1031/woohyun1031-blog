@@ -134,17 +134,21 @@ export default async function convertBlock(
           type: 'bookmark',
         };
       }
+      const favicon = result.favicon?.startsWith('http')
+        ? result.favicon
+        : result.favicon?.startsWith('//')
+        ? `http:${result.favicon}`
+        : new URL(result.requestUrl ?? '').origin + '/favicon.ico';
+      const response = await fetch(favicon);
+      const status =
+        response.status >= 400 && response.status < 600 ? false : true;
       return {
         id: block.id,
         type: 'bookmark',
         title: result?.ogTitle ?? result?.twitterTitle ?? '',
         description: result.ogDescription || result.twitterDescription || '',
         image: result.ogImage?.[0]?.url,
-        favicon: result.favicon?.startsWith('http')
-          ? result.favicon
-          : result.favicon?.startsWith('//')
-          ? `http:${result.favicon}`
-          : new URL(result.requestUrl ?? '').origin + result.favicon,
+        favicon: status ? favicon : null,
         url: result.requestUrl,
       };
     }
@@ -169,10 +173,10 @@ export default async function convertBlock(
       type: block.type,
     };
   } catch (error) {
-    console.log(error);
+    console.log('error:::', error);
     return {
       id: block.id,
-      type: block.type,
+      type: 'error',
     };
   }
 }
