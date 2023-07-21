@@ -119,12 +119,32 @@ export const getNotionPage = async (id: string) => {
 
 export const getNotionBlockChildren = async (id: string) => {
   if (!id) return;
-  try {
+  async function rc(
+    _start_cursor: string | null,
+    _id: string,
+    _array: BlockObjectResponse[],
+  ): Promise<BlockObjectResponse[]> {
     const blockChildren = await notionApi.get<{
       object: string;
       results: BlockObjectResponse[];
-    }>(`/blocks/${id}/children`);
-    return blockChildren.data.results;
+      next_cursor?: string;
+      has_more: boolean;
+    }>(`/blocks/${id}/children`, {
+      params: { start_cursor: _start_cursor ?? undefined },
+    });
+    const resultArr = [..._array, ...blockChildren.data.results];
+    if (blockChildren.data?.next_cursor && blockChildren.data.has_more) {
+      return rc(blockChildren.data?.next_cursor, id, resultArr);
+    }
+    return resultArr;
+  }
+  try {
+    // const blockChildren = await notionApi.get<{
+    //   object: string;
+    //   results: BlockObjectResponse[];
+    // }>(`/blocks/${id}/children`);
+    // return blockChildren.data.results;
+    return await rc(null, id, []);
   } catch (error) {
     console.error(error);
   }
