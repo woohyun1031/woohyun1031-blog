@@ -9,6 +9,9 @@ import Description from '#components/about/Description';
 import SubTitle from '#components/about/SubTitle';
 import SoftDescription from '#components/about/SoftDescription';
 import { Metadata } from 'next';
+import Block from '#components/Block';
+import ogs from 'open-graph-scraper';
+import React from 'react';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   return {
@@ -21,7 +24,43 @@ export const dynamic = 'force-dynamic';
 
 export default async function Page() {
   const notitonList = await getNotionPages(5);
-
+  async function getNotionBlock(src: string) {
+    if (!src) return null;
+    const { result, error } = await ogs({
+      url: src,
+    });
+    if (error) {
+      return (
+        <Block
+          block={{
+            id: 'notion block',
+            type: 'bookmark',
+          }}
+        />
+      );
+    }
+    const favicon = result.favicon?.startsWith('http')
+      ? result.favicon
+      : result.favicon?.startsWith('//')
+      ? `http:${result.favicon}`
+      : new URL(result.requestUrl ?? '').origin + '/favicon.ico';
+    const response = await fetch(favicon);
+    const status =
+      response.status >= 400 && response.status < 600 ? false : true;
+    return (
+      <Block
+        block={{
+          id: 'notion block',
+          type: 'bookmark',
+          title: result?.ogTitle ?? result?.twitterTitle ?? '',
+          description: result.ogDescription || result.twitterDescription || '',
+          image: result.ogImage?.[0]?.url,
+          favicon: status ? favicon : null,
+          url: result.requestUrl,
+        }}
+      />
+    );
+  }
   return (
     <>
       <div className="flex w-full justify-center ">
@@ -30,16 +69,17 @@ export default async function Page() {
             <div>
               <div>
                 <div>
-                  <span className="block font-sansT text-lg leading-snug sm:text-xl lg:inline">
-                    frontend engineer
+                  <span className="block font-sansM text-4xl leading-snug text-gray-900 dark:text-gray-50 sm:text-5xl lg:inline">
+                    WOOHYUN KIM{' '}
                   </span>
-                  <span className="block font-sansT text-4xl leading-snug text-gray-900 dark:text-gray-50 sm:text-6xl lg:inline">
-                    {' '}
-                    WOOHYUN KIM
-                  </span>
+                  <div className="mt-6 block leading-snug  lg:mt-0 lg:inline">
+                    <SubTitle>
+                      frontend engineer & Professional Student
+                    </SubTitle>
+                  </div>
                 </div>
               </div>
-              <div className="mt-3 sm:mt-6">
+              <div className="mt-1 lg:mt-6">
                 <div>
                   <Description>
                     1년차 프론트엔드 엔지니어로 활동하고 있는 김우현입니다.
@@ -255,9 +295,9 @@ export default async function Page() {
                     <div className="mt-4">
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
-                    <p className="mt-2 font-sansT text-sm text-gray-600 dark:text-gray-400 sm:text-base">
-                      TypeScript, Next.js13, Tailwind
-                    </p>
+                    <div className="mt-2">
+                      <Description>TypeScript, Next.js13, Tailwind</Description>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -363,6 +403,11 @@ export default async function Page() {
                     </>
                   );
                 })}
+              </div>
+              <div className="mt-10">
+                {await getNotionBlock(
+                  'https://woo1031.notion.site/Effective-Memory-a43f5fe01a5d46efac38f0c6cc0893c5',
+                )}
               </div>
             </BlockWrapper>
 
