@@ -74,7 +74,7 @@ export default async function Page() {
                   </span>
                   <div className="mt-6 block leading-snug  lg:mt-0 lg:inline">
                     <SubTitle>
-                      frontend engineer & Professional Student
+                      frontend engineer & professional student
                     </SubTitle>
                   </div>
                 </div>
@@ -296,7 +296,9 @@ export default async function Page() {
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
                     <div className="mt-2">
-                      <Description>TypeScript, Next.js13, Tailwind</Description>
+                      <Description>
+                        TypeScript, Next.js13, Tailwind, AWS.S3
+                      </Description>
                     </div>
                   </div>
                 </div>
