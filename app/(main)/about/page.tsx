@@ -197,22 +197,23 @@ export default async function Page() {
                       <div className="mb-2">
                         <Description>
                           · Next.js 13 framework 기반 프로젝트 진행, RSC 활용한
-                          SSR, CSR 구현 경험
+                          SSR, CSR 처리
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · 프론트엔드 기술환경 및 프로젝트 디자인 경험
+                          · 프론트엔드 기술환경 및 프로젝트 디자인
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · Core 공통 컴포넌트, 공통 hook, util 제작, 재사용
+                          · 재사용 가능한 Core 공통 컴포넌트, 공통 hook, util
+                          제작
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · React-Query lib, Redux 기반 상태 환경 디자인 경험
+                          · React-Query, Redux 기반 상태 환경 디자인
                         </Description>
                       </div>
                       <div className="mb-2">
