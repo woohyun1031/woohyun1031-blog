@@ -7,6 +7,17 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+export const metadata = {
+  title: {
+    default: 'WooHyun devlog',
+    template: 'WooHyun devlog | %s',
+  },
+  description: 'WooHyun 블로그',
+  verification: {
+    google: '90EmFVCMTeGYYS2aGd49tpMpiU39e2D4Ggqi-R0ULl0',
+  },
+};
+
 export default function RootLayout({
   children,
 }: RootLayoutProps): React.ReactElement {
