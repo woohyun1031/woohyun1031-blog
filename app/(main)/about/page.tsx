@@ -82,7 +82,7 @@ export default async function Page() {
               <div className="mt-1 lg:mt-6">
                 <div>
                   <Description>
-                    1년차 프론트엔드 엔지니어로 활동하고 있는 김우현입니다.
+                    2년차 프론트엔드 엔지니어로 활동하고 있는 김우현입니다.
                   </Description>
                 </div>
                 <div className="mb-2">
