@@ -28,7 +28,7 @@ export async function generateStaticParams() {
     ? pageList?.results
         .map((res) => res?.path)
         .map((path) => ({
-          id: path,
+          path,
         }))
     : [];
 }
@@ -38,7 +38,7 @@ export default async function Page(props: any) {
     pages: 100,
   });
   const target = pages?.results.find(
-    (item) => encodeURI(item.path) === props.params.id,
+    (item) => encodeURI(item.path) === props.params.path,
   );
   if (!target)
     return (
