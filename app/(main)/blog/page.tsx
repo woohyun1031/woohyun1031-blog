@@ -11,7 +11,7 @@ interface ISearchParams {
 
 export default async function Page(props: IDefaultPageProps<ISearchParams>) {
   async function getPages(pages: number) {
-    const array: IPage[] = [];
+    const array: (Partial<IPage> & { path: string })[] = [];
     const requestCount = Math.floor(pages / 100);
     const lastRequestCount = pages % 100;
 

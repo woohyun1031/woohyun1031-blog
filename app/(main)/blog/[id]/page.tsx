@@ -26,16 +26,33 @@ export async function generateStaticParams() {
   });
   return pageList?.results
     ? pageList?.results
-        .map((res) => res?.id)
-        .map((pageId) => ({
-          id: pageId,
+        .map((res) => res?.path)
+        .map((path) => ({
+          id: path,
         }))
     : [];
 }
 
 export default async function Page(props: any) {
-  const page = await getNotionPage(props.params.id);
-  const data = await getNotionPageDetail(props.params.id);
+  const pages = await getNotionPageList({
+    pages: 100,
+  });
+  const target = pages?.results.find(
+    (item) => encodeURI(item.path) === props.params.id,
+  );
+  if (!target)
+    return (
+      <div className="mt-36 flex w-full justify-center">
+        <div className="min-h-screen w-full max-w-innerContainer px-4">
+          <div className="flex flex-col items-center">
+            <div>404 페이지를 찾을 수 없습니다</div>
+          </div>
+        </div>
+      </div>
+    );
+
+  const page = await getNotionPage(target.id as string);
+  const data = await getNotionPageDetail(target.id as string);
   if (!page) return;
   const tagList = page?.properties?.Type?.multi_select ?? [];
   return (

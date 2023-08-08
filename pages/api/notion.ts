@@ -30,22 +30,34 @@ export interface IPage {
   properties: Record<string, Record<string, any>>;
   url: string;
 }
-export interface INotionPageList {
+export interface INotionPageList<T> {
   has_more: boolean;
   next_cursor: any;
   object: string;
   page: {};
-  results: IPage[];
+  results: T[];
   type: 'page';
 }
 
 export const notionClient = new Client({ auth: `${process.env.NOTION_TOKEN}` });
 
+export const getPathFromTitle = (title: string): string => {
+  return (title || '')
+    .replace(/ /g, '-')
+    .replace(/[^a-zA-Z0-9가-힣-]/g, '')
+    .replace(/--/g, '-')
+    .replace(/-$/, '')
+    .replace(/^-/, '')
+    .replace(/--/g, '-')
+    .trim()
+    .toLowerCase();
+};
+
 export const getNotionPages = async (pages: number) => {
   if (!pages) return;
   try {
     return await notionApi
-      .post<INotionPageList>(
+      .post<INotionPageList<IPage>>(
         `/databases/${process.env.NOTION_DATABASE}/query`,
         {
           page_size: pages ?? 0,
@@ -92,7 +104,7 @@ export const getNotionPageList = async ({
       };
   try {
     return await notionApi
-      .post<INotionPageList>(
+      .post<INotionPageList<IPage>>(
         `/databases/${process.env.NOTION_DATABASE}/query`,
         {
           page_size: pages ?? 0,
@@ -100,7 +112,17 @@ export const getNotionPageList = async ({
           filter: options,
         },
       )
-      .then((response) => response.data);
+      .then(
+        (response): INotionPageList<Partial<IPage> & { path: string }> => ({
+          ...response.data,
+          results: response.data.results.map((item) => {
+            const path = getPathFromTitle(
+              item.properties?.Name?.title?.[0]?.plain_text ?? '',
+            );
+            return { ...item, path };
+          }),
+        }),
+      );
   } catch (error) {
     console.error(error);
   }
