@@ -427,6 +427,15 @@ export default async function Page() {
                 </div>
               </div>
             </BlockWrapper>
+
+            <BlockWrapper>
+              <div className="mb-10 text-center">
+                <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
+                  More Information?
+                  <LinkButton url="https://woo1031.notion.site/woo1031/WooHyun-Kim-69ab520d7e2648d1aec863db6a50a282" />
+                </span>
+              </div>
+            </BlockWrapper>
           </div>
         </div>
       </div>
