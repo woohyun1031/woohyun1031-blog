@@ -2,6 +2,7 @@ import { fontBold, fontMedium, fontThin } from '#styles/fonts';
 import '#styles/globals.css';
 import React from 'react';
 import { Providers } from './providers';
+import { Analytics } from '@vercel/analytics/react';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -47,6 +48,7 @@ export default function RootLayout({
         <main>
           <Providers>{children}</Providers>
         </main>
+        <Analytics />
       </body>
     </html>
   );
