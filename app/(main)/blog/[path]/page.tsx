@@ -12,11 +12,23 @@ import Link from 'next/link';
 import Block from '#components/Block';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const product = await getNotionPage(params.id);
+  const pages = await getNotionPageList({
+    pages: 100,
+  });
+  const target = pages?.results.find(
+    (item) => encodeURI(item.path) === params.path,
+  );
+  const product = await getNotionPage(target?.id);
   return {
-    title: product?.properties?.metaTitle?.rich_text?.[0]?.plain_text,
-    description:
-      product?.properties?.metaDescription?.rich_text?.[0]?.plain_text,
+    title: product?.properties?.Name?.title?.[0]?.plain_text,
+    description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+    keywords: [
+      'Next.js',
+      'React',
+      'JavaScript',
+      'FrondEnd',
+      ...product?.properties?.Type?.multi_select?.map((item: any) => item.name),
+    ],
   };
 }
 

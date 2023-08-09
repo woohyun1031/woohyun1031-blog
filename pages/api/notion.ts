@@ -29,6 +29,7 @@ export interface IPage {
   };
   properties: Record<string, Record<string, any>>;
   url: string;
+  public_url: string;
 }
 export interface INotionPageList<T> {
   has_more: boolean;
@@ -128,7 +129,7 @@ export const getNotionPageList = async ({
   }
 };
 
-export const getNotionPage = async (id: string) => {
+export const getNotionPage = async (id?: string) => {
   if (!id) return;
   try {
     return await notionApi
