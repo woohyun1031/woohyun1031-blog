@@ -79,16 +79,29 @@ export default async function Page() {
                   </div>
                 </div>
               </div>
-              <div className="mt-1 lg:mt-6">
-                <div>
+              <div className="mt-1 lg:mt-6 lg:w-3/4">
+                <div className="mb-2">
                   <Description>
-                    2년차 프론트엔드 엔지니어로 활동하고 있는 김우현입니다.
+                    2년차 프론트엔드 엔지니어인 김우현입니다.
                   </Description>
                 </div>
                 <div className="mb-2">
                   <Description>
-                    요즘 일도 개발, 취미도 개발로, 공부하고 문제 해결하는 재미로
-                    살고 있습니다.
+                    요즘 일도 취미도 개발로, 공부하고 문제 해결하는 재미로 살고
+                    있습니다.
+                  </Description>
+                </div>
+                <div className="mb-2">
+                  <Description>
+                    사용자 경험을 우선으로 고민을 할 수 있는 작업과 웹
+                    파이프라인의 다양한 측면을 고려하여 데이터와 사실을 기반으로
+                    한 문제 해결에 높은 흥미를 가지고 있습니다.
+                  </Description>
+                </div>
+                <div className="mb-2">
+                  <Description>
+                    선언적 패턴과 계층적 구조를 기반한 함수형 패러다임을
+                    선호하며 유지보수성이 높은, 효율적인 개발 방식을 지향합니다.
                   </Description>
                 </div>
               </div>
