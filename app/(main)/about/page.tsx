@@ -149,8 +149,8 @@ export default async function Page() {
                   </div>
                   <div className="mb-2">
                     <Description>
-                      · 함수형 프로그래밍을 선호하며 선언적 패턴과 계층형 구조
-                      지향
+                      · 선언적 패턴과 계층적 구조를 기반한 함수형 패러다임을
+                      선호하며 유지보수성이 높은, 효율적인 개발 방식을 지향.
                     </Description>
                   </div>
                   <div className="mb-2">
