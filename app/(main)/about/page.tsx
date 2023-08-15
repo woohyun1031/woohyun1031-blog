@@ -5,7 +5,7 @@ import { getNotionPages, IPage } from '#pages/api/notion';
 import Link from 'next/link';
 import { BlockWrapper, Title } from '#components/about';
 import { LinkButton } from '#components/LinkButton';
-import Description from '#components/about/Description';
+import { Description, BordDescription } from '#components/about/Description';
 import SubTitle from '#components/about/SubTitle';
 import SoftDescription from '#components/about/SoftDescription';
 import { Metadata } from 'next';
@@ -79,10 +79,12 @@ export default async function Page() {
                   </div>
                 </div>
               </div>
-              <div className="mt-1 lg:mt-6 lg:w-3/4">
+              <div className="mt-2 lg:mt-6 lg:w-3/4">
                 <div className="mb-2">
                   <Description>
-                    2년차 프론트엔드 엔지니어인 김우현입니다.
+                    2년차 프론트엔드 엔지니어인
+                    <BordDescription> 김우현</BordDescription>
+                    입니다.
                   </Description>
                 </div>
                 <div className="mb-2">
@@ -93,14 +95,17 @@ export default async function Page() {
                 </div>
                 <div className="mb-2">
                   <Description>
-                    사용자 경험을 우선으로 고민을 할 수 있는 작업과 웹
-                    파이프라인의 다양한 측면을 고려하여 데이터와 사실을 기반으로
-                    한 문제 해결에 높은 흥미를 가지고 있습니다.
+                    <BordDescription>사용자 경험을 </BordDescription>
+                    우선으로 고민을 할 수 있는 작업과
+                    <BordDescription> 웹 파이프라인의 </BordDescription>
+                    다양한 측면을 고려하여 데이터와 사실을 기반으로 한 문제
+                    해결에 높은 흥미를 가지고 있습니다.
                   </Description>
                 </div>
                 <div className="mb-2">
                   <Description>
-                    선언적 패턴과 계층적 구조를 기반한 함수형 패러다임을
+                    선언적 패턴과 계층적 구조를 기반한
+                    <BordDescription> 함수형 패러다임을</BordDescription>
                     선호하며 유지보수성이 높은, 효율적인 개발 방식을 지향합니다.
                   </Description>
                 </div>
@@ -138,37 +143,57 @@ export default async function Page() {
                 <div>
                   <div className="mb-2">
                     <Description>
-                      · 프론트 기술 환경(Webpack, Babel, Eslint 등) 구성 및
-                      소규모 프로젝트 리드 경험
+                      ·
+                      <BordDescription>
+                        {' '}
+                        프론트 기술 환경(Webpack, Babel, Eslint 등)
+                      </BordDescription>
+                      구성 및 소규모 프로젝트 리드 경험
                     </Description>
                   </div>
                   <div className="mb-2">
                     <Description>
-                      · React 랜더링 프로세스와 최적화를 고려한 구현 능력,
-                      hook를 유연하게 사용하여 공통 모듈, 기능 개발
+                      ·<BordDescription> React </BordDescription>
+                      랜더링 프로세스와 최적화를 고려한 구현 능력, hook를
+                      유연하게 사용하여 공통 모듈, 기능 개발
                     </Description>
                   </div>
                   <div className="mb-2">
                     <Description>
-                      · 요구사항에 적절한 랜더링 환경을 파악하여 Next.js 13 기반
-                      프로젝트 디자인
+                      · 요구사항에 적절한 랜더링 환경을 파악하여
+                      <BordDescription> Next.js 13 </BordDescription>
+                      기반 프로젝트 디자인
                     </Description>
                   </div>
                   <div className="mb-2">
                     <Description>
-                      · ContextApi, Redux, React-Query 등 요구사항에 맞는
-                      상태관리 경험
+                      ·
+                      <BordDescription>
+                        {' '}
+                        ContextApi, Redux, React-Query{' '}
+                      </BordDescription>
+                      등 요구사항에 맞는 상태관리 경험
                     </Description>
                   </div>
                   <div className="mb-2">
                     <Description>
-                      · 선언적 패턴과 계층적 구조를 기반한 함수형 패러다임을
+                      · 선언적 패턴과 계층적 구조를 기반한
+                      <BordDescription> 함수형 패러다임을 </BordDescription>
                       선호하며 유지보수성이 높은, 효율적인 개발 방식을 지향.
                     </Description>
                   </div>
                   <div className="mb-2">
                     <Description>
-                      · Typescript/Javascript 언어의 패러다임을 이해하고 사용
+                      · 웹소켓 프로토콜 기반
+                      <BordDescription> Socket.io </BordDescription>
+                      활용 채팅 및 효율적인 양방향 통신 기능 구현 경험
+                    </Description>
+                  </div>
+                  <div className="mb-2">
+                    <Description>
+                      ·
+                      <BordDescription> Typescript/Javascript </BordDescription>
+                      언어의 패러다임을 이해하고 사용
                     </Description>
                   </div>
                 </div>
@@ -178,6 +203,10 @@ export default async function Page() {
             <BlockWrapper>
               <div>
                 <Title value={'Work Experience'} />
+                <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
+                  More Information?
+                  <LinkButton url="https://www.notion.so/woo1031/WooHyun-Kim-975fd291ae324dfb87663e2bd9aa35ca?pvs=4#36e875ba7bac4d3693cca9821ac5153e" />
+                </span>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
               <div className="mt-10 lg:flex lg:justify-between">
@@ -209,13 +238,18 @@ export default async function Page() {
                     <div className="mt-2">
                       <div className="mb-2">
                         <Description>
-                          · Next.js 13 framework 기반 프로젝트 진행, RSC 활용한
-                          SSR, CSR 처리
+                          ·<BordDescription> Next.js 13 </BordDescription>
+                          framework 기반 프로젝트 진행, RSC 활용한 SSR, CSR 처리
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · 프론트엔드 기술환경 및 프로젝트 디자인
+                          ·
+                          <BordDescription>
+                            {' '}
+                            프론트엔드 기술 환경(Package, Webpack, Eslint...){' '}
+                          </BordDescription>
+                          및 프로젝트 디자인
                         </Description>
                       </div>
                       <div className="mb-2">
@@ -226,13 +260,20 @@ export default async function Page() {
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · React-Query, Redux 기반 상태 환경 디자인
+                          · React-Query, Redux 기반
+                          <BordDescription> 상태 관리 시스템 </BordDescription>
+                          구축
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · 기획자, 디자이너와 밀접한 협업 경험 및 Figma 이용한
-                          협업 경험
+                          · CSS 전처리 도구 및 Component Library를 사용한
+                          퍼블리싱 경험
+                        </Description>
+                      </div>
+                      <div className="mb-2">
+                        <Description>
+                          · 기획자, 디자이너와 밀접한 협업 경험
                         </Description>
                       </div>
                     </div>
@@ -252,6 +293,10 @@ export default async function Page() {
             <BlockWrapper>
               <div>
                 <Title value={'Project'} />
+                <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
+                  More Information?
+                  <LinkButton url="https://www.notion.so/woo1031/WooHyun-Kim-975fd291ae324dfb87663e2bd9aa35ca?pvs=4#ca18c3f0d6144adf884583f80e399fb0" />
+                </span>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
               <div className="mt-10 lg:flex lg:justify-between">
@@ -281,28 +326,40 @@ export default async function Page() {
                       <div className="mb-2">
                         <Description>
                           · Notion에 주기적으로 작성하는 공부 내용 공유 목적의
-                          블로그 제작
+                          <BordDescription> 블로그 </BordDescription>
+                          제작
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · Next.js 13 framework 기반 프로젝트 진행
+                          ·<BordDescription> Next.js 13 </BordDescription>
+                          framework 기반 프로젝트 진행
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · Notion api 기반 구조 트리 제작하여 자체 interface
+                          · Notion api 기반
+                          <BordDescription>
+                            {' '}
+                            구조 트리 제작하여 자체 인터페이스{' '}
+                          </BordDescription>
                           구축
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · Notion, Github api 기반 블로그 인터페이스 구현
+                          ·
+                          <BordDescription>
+                            {' '}
+                            Notion, Github api{' '}
+                          </BordDescription>
+                          기반 블로그 인터페이스 구현
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · GitHub와 Vercel로 CD 파이프라인 구축
+                          · GitHub와 Vercel로
+                          <BordDescription> CD 파이프라인 구축</BordDescription>
                         </Description>
                       </div>
                     </div>
@@ -340,7 +397,11 @@ export default async function Page() {
                     </div>
                     <div className="mt-2">
                       <Description>
-                        강사 1명과 다수의 학생들의 실시간 동영상 스트리밍
+                        강사 1명과 다수의 학생들의
+                        <BordDescription>
+                          {' '}
+                          실시간 동영상 스트리밍{' '}
+                        </BordDescription>
                         플랫폼을 기획으로 진행한 팀프로젝트
                       </Description>
                     </div>
@@ -350,25 +411,39 @@ export default async function Page() {
                     <div className="mt-2">
                       <div className="mb-2">
                         <Description>
-                          · React, Typescript 기반 웹 서비스 개발/운영
+                          ·
+                          <BordDescription> React, Typescript </BordDescription>
+                          기반 웹 서비스 개발/운영
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · Redux/Toolkit, React query 도입으로 props, store
-                          복잡도 개선
+                          ·
+                          <BordDescription>
+                            {' '}
+                            Redux/Toolkit, React query 도입
+                          </BordDescription>
+                          으로 props, store 복잡도 개선
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · Socket.io 라이브러리 활용한 채팅, Interaction 반응
-                          기능 구현
+                          ·
+                          <BordDescription>
+                            {' '}
+                            Socket.io 라이브러리 활용한{' '}
+                          </BordDescription>
+                          채팅, Interaction 실시간 반응 기능 구현
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · ThemeProvider(Styled Component)로 중복 style 분리 및
-                          재사용
+                          ·
+                          <BordDescription>
+                            {' '}
+                            ThemeProvider(Styled Component)
+                          </BordDescription>
+                          로 중복 style 분리 및 재사용
                         </Description>
                       </div>
                     </div>

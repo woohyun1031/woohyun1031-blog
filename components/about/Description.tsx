@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Description = ({ children }: { children: React.ReactNode }) => {
+export const Description = ({ children }: { children: React.ReactNode }) => {
   return (
     <span className="break-keep font-sansT text-sm text-gray-600 dark:text-gray-400 sm:text-base">
       {children}
@@ -8,4 +8,14 @@ const Description = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Description;
+export const BordDescription = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  return (
+    <span className="break-keep font-sansM text-sm text-gray-700 dark:text-gray-300 sm:text-base">
+      {children}
+    </span>
+  );
+};
