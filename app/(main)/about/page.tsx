@@ -13,12 +13,10 @@ import Block from '#components/Block';
 import ogs from 'open-graph-scraper';
 import React from 'react';
 
-export async function generateMetadata({ params }: any): Promise<Metadata> {
-  return {
-    title: '김우현 프론트엔드 엔지니어 이력서',
-    description: '김우현 프론트엔드 엔지니어의 이력서',
-  };
-}
+export const metadata: Metadata = {
+  title: '김우현 프론트엔드 엔지니어 이력서',
+  description: '김우현 프론트엔드 엔지니어의 이력서',
+};
 
 export const dynamic = 'force-dynamic';
 

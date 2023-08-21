@@ -6,9 +6,16 @@ export default async function sitemap() {
   const posts = await getNotionPageList({
     pages: 100,
   });
-  const postUrls = posts?.results.map((post) => ({
-    url: `${baseUrl}/blog/${post.path}`,
-    lastModified: new Date(post.last_edited_time as string),
-  }));
+  const postUrls = [
+    {
+      url: `${baseUrl}/blog/about`,
+      lastModified: new Date(),
+    },
+    ...(posts?.results?.map((post) => ({
+      url: `${baseUrl}/blog/${post.path}`,
+      lastModified: new Date(post.last_edited_time as string),
+    })) ?? []),
+  ];
+
   return postUrls;
 }
