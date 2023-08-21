@@ -41,6 +41,12 @@ export default function RootLayout({
         <meta property="og:site_name" content="WooHyun Devlog" />
         <meta property="og:locale" content="en_US" />
 
+        <meta property="twitter:title" content="WooHyun Devlog" />
+        <meta
+          property="twitter:description"
+          content="2년차 프론트엔드 엔지니어로 활동하고 있는 김우현입니다. 요즘 일도 개발, 취미도 개발로, 공부하고 문제 해결하는 재미로 살고 있습니다."
+        />
+        <meta property="twitter:card" content="/image.png" />
         <meta name="twitter:image" content="/image.png" />
         <meta name="twitter:image:type" content="image/png" />
       </head>
