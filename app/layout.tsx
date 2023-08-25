@@ -1,8 +1,9 @@
-import { fontBold, fontMedium, fontThin } from '#styles/fonts';
 import '#styles/globals.css';
+import { fontBold, fontMedium, fontThin } from '#styles/fonts';
 import React from 'react';
 import { Providers } from './providers';
 import { Analytics } from '@vercel/analytics/react';
+import Script from 'next/script';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -55,6 +56,18 @@ export default function RootLayout({
           <Providers>{children}</Providers>
         </main>
         <Analytics />
+        <div className="container">
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_MANAGER_ID}`}
+          />
+          <Script id="google-analytics">
+            {`window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+         
+           gtag('config', ${process.env.GOOGLE_MANAGER_ID});`}
+          </Script>
+        </div>
       </body>
     </html>
   );
