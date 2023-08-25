@@ -4,6 +4,7 @@ import React from 'react';
 import { Providers } from './providers';
 import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
+import GoogleAnalytics from '#components/GoogleAnalytics';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -56,18 +57,7 @@ export default function RootLayout({
           <Providers>{children}</Providers>
         </main>
         <Analytics />
-        <div className="container">
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_MANAGER_ID}`}
-          />
-          <Script id="google-analytics">
-            {`window.dataLayer = window.dataLayer || [];
-           function gtag(){dataLayer.push(arguments);}
-           gtag('js', new Date());
-         
-           gtag('config', ${process.env.GOOGLE_MANAGER_ID});`}
-          </Script>
-        </div>
+        <GoogleAnalytics />
       </body>
     </html>
   );
