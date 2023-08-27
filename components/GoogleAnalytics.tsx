@@ -3,10 +3,12 @@
 import Script from 'next/script';
 
 const GoogleAnalytics = () => {
+  const traceId = 'G-VJN31ZVJJS';
+
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=G-VJN31ZVJJS`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${traceId}`}
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -15,7 +17,7 @@ const GoogleAnalytics = () => {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-VJN31ZVJJS');
+          gtag('config', '${traceId}');
         `}
       </Script>
     </>
