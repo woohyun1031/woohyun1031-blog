@@ -592,8 +592,7 @@ export default async function Page() {
                 <div className="mb-4">
                   <div>
                     <SubTitle>
-                      지식 in over flow
-                      <Description> ( 개발 지식 공유 프로젝트 ) </Description>
+                      개발 지식 공유 프로젝트
                       <LinkButton url="https://github.com/woogod1031/hanghae_1_week" />
                     </SubTitle>
                   </div>
@@ -642,8 +641,7 @@ export default async function Page() {
                     </div>
                     <div className="mt-2">
                       <Description>
-                        TypeScript, React18, StyledComponent, Firestore,
-                        Firebase Storage, Firebase Hosting
+                        jQuery, CSS3, python3, Flask, FireStore, MongoDB
                       </Description>
                     </div>
                   </div>
