@@ -257,7 +257,8 @@ export default async function Page() {
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · 프로젝트 파일 시스템, 상태 관리 시스템 디자인
+                          · 프로젝트 파일 시스템, 상태 관리 시스템(Redux, React
+                          Query) 디자인
                         </Description>
                       </div>
                       <div className="mb-2">
@@ -265,12 +266,20 @@ export default async function Page() {
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · CSS3 및 Component Library를 사용한 UI 구현
+                          · CSS3 library(SCSS, styled component...), Component
+                          Library(AntD, MUI...)를 사용한 UI 구현
                         </Description>
                       </div>
                       <div className="mb-2">
                         <Description>
-                          · 써드파티 시스템 및 API와 결합한 모듈 구축
+                          · NextAuth, middleware 제어를 통한 프로젝트 내 인증,
+                          인가 시스템 구축 및 관리
+                        </Description>
+                      </div>
+                      <div className="mb-2">
+                        <Description>
+                          · KCP API 결합한 결제 시스템 구현 등 써드파티 시스템
+                          및 API와 결합한 모듈 구축
                         </Description>
                       </div>
                       <div className="mb-2">
