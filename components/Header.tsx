@@ -28,12 +28,12 @@ const Header = () => {
     <header
       className={`fixed top-0 z-50 w-full bg-white bg-opacity-75 backdrop-blur-md duration-300 ease-in-out ${
         isShow ? 'h-32 lg:h-14' : 'h-14'
-      } dark:bg-gray-800 dark:bg-opacity-70`}
+      } dark:bg-black dark:bg-opacity-70`}
     >
       <div className="flex w-full justify-center py-3 px-6">
         <div className="mx-2 flex w-full max-w-header flex-wrap items-center justify-between">
           <Link
-            href="/blog"
+            href="/article"
             className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
             onClick={() => setIsShow(false)}
           >
@@ -95,7 +95,7 @@ const Header = () => {
                 ABOUT
               </Link>
               <Link
-                href="/blog"
+                href="/article"
                 className="m-auto w-full cursor-pointer text-xs text-stone-600 hover:text-black dark:text-white"
               >
                 DEVLOG
@@ -118,7 +118,7 @@ const Header = () => {
             ABOUT
           </Link>
           <Link
-            href="/blog"
+            href="/article"
             className="mt-4 w-full cursor-pointer py-2 pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
             onClick={() => setIsShow(false)}
           >

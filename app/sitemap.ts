@@ -8,11 +8,11 @@ export default async function sitemap() {
   });
   const postUrls = [
     {
-      url: `${baseUrl}/blog/about`,
+      url: `${baseUrl}/article/about`,
       lastModified: new Date(),
     },
     ...(posts?.results?.map((post) => ({
-      url: `${baseUrl}/blog/${post.path}`,
+      url: `${baseUrl}/article/${post.path}`,
       lastModified: new Date(post.last_edited_time as string),
     })) ?? []),
   ];

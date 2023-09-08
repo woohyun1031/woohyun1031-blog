@@ -52,7 +52,7 @@ export default function RootLayout({
         <meta name="twitter:image" content="/image.png" />
         <meta name="twitter:image:type" content="image/png" />
       </head>
-      <body className="duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-300">
+      <body className="duration-300 ease-in-out dark:bg-black dark:text-gray-300">
         <main>
           <Providers>{children}</Providers>
         </main>
