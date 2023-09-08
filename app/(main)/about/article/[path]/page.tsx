@@ -97,7 +97,7 @@ export default async function Page(props: any) {
                   return (
                     <>
                       <div>
-                        <Link href={`/blog?type=${type.name}`}>
+                        <Link href={`/article?type=${type.name}`}>
                           <Tag title={type.name} />
                         </Link>
                       </div>

@@ -8,7 +8,7 @@ export default async function sitemap() {
   });
   const postUrls = [
     {
-      url: `${baseUrl}/article/about`,
+      url: `${baseUrl}/article`,
       lastModified: new Date(),
     },
     ...(posts?.results?.map((post) => ({

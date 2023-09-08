@@ -49,7 +49,7 @@ export default function Form(props: {
                   <Link
                     className="group flex w-full cursor-pointer flex-col align-middle lg:flex-row "
                     key={item.id}
-                    href={`/blog/${item.path}`}
+                    href={`/article/${item.path}`}
                     {...(index + 1 === results?.length
                       ? { ref: lastBookElementRef }
                       : {})}
@@ -94,7 +94,7 @@ export default function Form(props: {
                         return (
                           <>
                             <div>
-                              <Link href={`/blog?type=${type.name}`}>
+                              <Link href={`/article?type=${type.name}`}>
                                 <Tag title={type.name} />
                               </Link>
                             </div>

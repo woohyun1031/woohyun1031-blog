@@ -98,7 +98,7 @@ const Header = () => {
                 href="/article"
                 className="m-auto w-full cursor-pointer text-xs text-stone-600 hover:text-black dark:text-white"
               >
-                DEVLOG
+                ARTICLE
               </Link>
             </div>
           </div>
@@ -122,7 +122,7 @@ const Header = () => {
             className="mt-4 w-full cursor-pointer py-2 pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
             onClick={() => setIsShow(false)}
           >
-            DEVLOG
+            ARTICLE
           </Link>
         </div>
       </div>
