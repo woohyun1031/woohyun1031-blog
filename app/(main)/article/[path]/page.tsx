@@ -22,6 +22,15 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   return {
     title: product?.properties?.Name?.title?.[0]?.plain_text,
     description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+    openGraph: {
+      title: product?.properties?.Name?.title?.[0]?.plain_text,
+      description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+      type: 'article',
+    },
+    twitter: {
+      title: product?.properties?.Name?.title?.[0]?.plain_text,
+      description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+    },
     keywords: [
       'Next.js',
       'React',
