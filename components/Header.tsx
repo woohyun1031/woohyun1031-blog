@@ -4,10 +4,12 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { DarkModeThemeContext } from 'app/providers';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isShow, setIsShow] = React.useState(false);
   const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
+  const pathName = usePathname();
 
   const changeTheme = React.useCallback(() => {
     const localTheme = localStorage.getItem('theme');
@@ -90,13 +92,23 @@ const Header = () => {
             <div className="ml-6 hidden gap-6 lg:flex">
               <Link
                 href="/about"
-                className="cursor-pointe m-auto text-xs text-stone-600 hover:text-black dark:text-white"
+                className={`cursor-pointe m-auto text-xs duration-300
+                ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 ${
+                  pathName?.includes('about')
+                    ? 'text-red-400 dark:text-red-400'
+                    : 'text-stone-600 dark:text-white'
+                }`}
               >
                 ABOUT
               </Link>
               <Link
                 href="/article"
-                className="m-auto w-full cursor-pointer text-xs text-stone-600 hover:text-black dark:text-white"
+                className={`m-auto w-full cursor-pointer text-xs duration-300
+                ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 ${
+                  pathName?.includes('article')
+                    ? 'text-red-400 dark:text-red-400'
+                    : 'text-stone-600 dark:text-white'
+                }`}
               >
                 ARTICLE
               </Link>
@@ -112,14 +124,24 @@ const Header = () => {
         >
           <Link
             href="/about"
-            className="w-full cursor-pointer pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
+            className={`w-full cursor-pointer pl-8 text-xs  duration-300
+            ease-in-out hover:text-red-400 active:text-red-600  dark:hover:text-red-400 dark:active:text-red-600 lg:mt-0 lg:inline-block ${
+              pathName?.includes('about')
+                ? 'text-red-400 dark:text-red-400'
+                : 'text-stone-600 dark:text-white'
+            }`}
             onClick={() => setIsShow(false)}
           >
             ABOUT
           </Link>
           <Link
             href="/article"
-            className="mt-4 w-full cursor-pointer py-2 pl-8 text-xs text-stone-600 hover:text-black dark:text-white lg:mt-0 lg:inline-block"
+            className={`mt-4 w-full cursor-pointer py-2 pl-8 text-xs duration-300
+            ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 lg:mt-0 lg:inline-block ${
+              pathName?.includes('article')
+                ? 'text-red-400 dark:text-red-400'
+                : 'text-stone-600 dark:text-white'
+            }`}
             onClick={() => setIsShow(false)}
           >
             ARTICLE
