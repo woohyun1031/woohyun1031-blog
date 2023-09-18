@@ -62,6 +62,12 @@ export const getNotionPages = async (pages: number) => {
         `/databases/${process.env.NOTION_DATABASE}/query`,
         {
           page_size: pages ?? 0,
+          filter: {
+            property: 'Status',
+            select: {
+              equals: 'Completed 🙆‍♂️',
+            },
+          },
         },
       )
       .then((response) => response.data);
