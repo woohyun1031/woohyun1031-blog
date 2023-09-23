@@ -26,10 +26,22 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
       title: product?.properties?.Name?.title?.[0]?.plain_text,
       description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
       type: 'article',
+      url: `https://woo1031.vercel.app/article/${target?.path ?? ''}`,
+      images: [
+        {
+          url: '/image.png',
+          alt: 'article image',
+        },
+      ],
+      siteName: 'WooHyun Devlog',
+      locale: 'en_US',
     },
     twitter: {
       title: product?.properties?.Name?.title?.[0]?.plain_text,
       description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+      card: 'summary',
+      creator: '@nextjs',
+      images: ['/image.png'],
     },
     keywords: [
       'Next.js',
