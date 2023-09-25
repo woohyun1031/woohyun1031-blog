@@ -387,8 +387,8 @@ export default async function Page() {
                     <div className="mt-2">
                       <Description>
                         TypeScript, NextJS 13, React 18, ReactNative,
-                        ReactQuery, Redux, styled-components, SCSS, Less,
-                        GitLab, AWS S3
+                        ReactQuery, Redux, styled-components, SCSS, Less, GitLab
+                        CI, AWS S3, Docker
                       </Description>
                     </div>
                   </div>

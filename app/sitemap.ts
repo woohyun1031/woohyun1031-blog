@@ -9,6 +9,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
   const postUrls = [
     {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+    },
+    {
       url: `${baseUrl}/article`,
       lastModified: new Date(),
     },
