@@ -12,8 +12,8 @@ interface RootLayoutProps {
 
 export const metadata = {
   title: {
-    default: '김우현 프론트엔드 엔지니어 이력서',
-    template: '김우현 프론트엔드 엔지니어 이력서 | %s',
+    default: '김우현 프론트엔드 엔지니어 블로그',
+    template: '김우현 프론트엔드 엔지니어 블로그 | %s',
   },
   description:
     '2년차 프론트엔드 엔지니어로 활동하고 있는 김우현입니다. 요즘 일도 개발, 취미도 개발로, 공부하고 문제 해결하는 재미로 살고 있습니다.',

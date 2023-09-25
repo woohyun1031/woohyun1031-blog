@@ -1,6 +1,7 @@
 import { getNotionPageList } from '#pages/api/notion';
+import { MetadataRoute } from 'next';
 
-export default async function sitemap() {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://woo1031.vercel.app';
 
   const posts = await getNotionPageList({
