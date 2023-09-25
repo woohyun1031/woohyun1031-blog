@@ -435,7 +435,7 @@ export default async function Page() {
                       <div className="mb-2">
                         <Description>
                           · Notion API 기반
-                          <BordDescription> 자체 구조 트리 </BordDescription>
+                          <BordDescription> AST </BordDescription>
                           제작
                         </Description>
                       </div>
@@ -452,7 +452,22 @@ export default async function Page() {
                       <div className="mb-2">
                         <Description>
                           · GitHub와 Vercel로
-                          <BordDescription> CD 파이프라인 구축</BordDescription>
+                          <BordDescription>
+                            {' '}
+                            CI/CD 파이프라인 구축
+                          </BordDescription>
+                        </Description>
+                      </div>
+                      <div className="mb-2">
+                        <Description>
+                          · 정적 페이지 생성, sitemap 동적 컨트롤, Google Search
+                          Console 관리, 동적으로 meta data 생성을 통해
+                          <BordDescription>
+                            {' '}
+                            검색 엔진 최적화(SEO){' '}
+                          </BordDescription>
+                          작업 진행 (Lighthouse 기준 95점 이상으로 향상 및
+                          Article 검색 시 구글 첫 페이지 노출)
                         </Description>
                       </div>
                     </div>
@@ -462,7 +477,7 @@ export default async function Page() {
                     <div className="mt-2">
                       <Description>
                         TypeScript, NextJS 13, Tailwind, Notion API, Github API,
-                        AWS S3
+                        AWS S3, Google Search Console
                       </Description>
                     </div>
                   </div>

@@ -63,7 +63,7 @@ export default function RootLayout({
       className={`${fontBold.variable} ${fontMedium.variable} ${fontThin.variable}`}
     >
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className="duration-300 ease-in-out dark:bg-black dark:text-gray-300">
         <main>
