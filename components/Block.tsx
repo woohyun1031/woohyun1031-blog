@@ -7,7 +7,7 @@ import BookmarkBlock from './BookmarkBlock';
 export default function Block({ block }: { block: IConvertBlock }) {
   function rc(blockList: IConvertBlock[]) {
     return (
-      <div className="pt-2 pb-1 pl-10">
+      <div className="pt-2 pb-1 pl-4">
         {blockList.map((blo) => (
           <>
             <Block block={blo} />
