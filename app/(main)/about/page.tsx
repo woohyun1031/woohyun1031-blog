@@ -101,6 +101,11 @@ export default async function Page() {
   return (
     <>
       <div className="flex w-full justify-center ">
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charSet="utf-8"
+        ></script>
         <div className="min-h-screen w-full max-w-container px-8">
           <div className="mt-36 flex w-full flex-col justify-center px-12">
             <div>

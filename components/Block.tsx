@@ -111,6 +111,23 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <BookmarkBlock {...block} />
       </div>
     ),
+    embed: () => {
+      if (block?.url?.includes('twitter.com')) {
+        return (
+          <div className="pt-2 pb-1">
+            <blockquote className="twitter-tweet">
+              <a href={block?.url ?? ''}></a>
+            </blockquote>
+            <script
+              id="twitter_script"
+              async
+              src={block?.url ?? ''}
+              charSet="utf-8"
+            ></script>
+          </div>
+        );
+      }
+    },
   };
   // @ts-ignore
   return blocksObj[block.type]?.() ?? null;

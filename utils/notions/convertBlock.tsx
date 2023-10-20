@@ -168,6 +168,15 @@ export default async function convertBlock(
       };
     }
 
+    if (block.type === 'embed') {
+      return {
+        id: block.id,
+        type: block.type,
+        url: block.embed?.url,
+        caption: block.embed?.caption,
+      };
+    }
+
     return {
       id: block.id,
       type: block.type,
