@@ -121,7 +121,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
             <script
               id="twitter_script"
               async
-              src={block?.url ?? ''}
+              src="https://platform.twitter.com/widgets.js"
               charSet="utf-8"
             ></script>
           </div>
