@@ -119,7 +119,6 @@ export default function Block({ block }: { block: IConvertBlock }) {
               <a href={block?.url ?? ''}></a>
             </blockquote>
             <script
-              id="twitter_script"
               async
               src="https://platform.twitter.com/widgets.js"
               charSet="utf-8"
