@@ -710,7 +710,7 @@ export default async function Page() {
                 <Title value={'Study'} />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   의미있는 기록을 작성합니다.
-                  <LinkButton url="https://woo1031.notion.site/woo1031/Back-to-Back-2d6ebc5912ce4bc38a1ec85b857a62cd" />
+                  <LinkButton url="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4" />
                 </span>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
@@ -744,7 +744,7 @@ export default async function Page() {
               </div>
               <div className="mt-10">
                 {await getNotionBlock(
-                  'https://woo1031.notion.site/Effective-Memory-a43f5fe01a5d46efac38f0c6cc0893c5',
+                  'https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4',
                 )}
               </div>
             </BlockWrapper>

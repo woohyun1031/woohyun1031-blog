@@ -3,6 +3,7 @@ import { IConvertBlock } from '#utils/notions/convertBlock';
 import CodeBlock from './CodeBlock';
 import TextBlock from './TextBlock';
 import BookmarkBlock from './BookmarkBlock';
+import Script from 'next/script';
 
 export default function Block({ block }: { block: IConvertBlock }) {
   function rc(blockList: IConvertBlock[]) {
@@ -118,11 +119,11 @@ export default function Block({ block }: { block: IConvertBlock }) {
             <blockquote className="twitter-tweet">
               <a href={block?.url ?? ''}></a>
             </blockquote>
-            <script
+            <Script
               async
               src="https://platform.twitter.com/widgets.js"
               charSet="utf-8"
-            ></script>
+            ></Script>
           </div>
         );
       }
