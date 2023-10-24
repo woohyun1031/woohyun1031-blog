@@ -114,7 +114,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
     embed: () => {
       if (block?.url?.includes('twitter.com')) {
         return (
-          <div className="pt-2 pb-1">
+          <div className="flex justify-center pt-2 pb-1">
             <blockquote className="twitter-tweet">
               <a href={block?.url ?? ''}></a>
             </blockquote>
