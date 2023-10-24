@@ -123,7 +123,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         const tweetId = extractTweetIDFromURL(block.url);
         return (
           <div className="flex justify-center pt-2 pb-1">
-            <Tweet apiUrl={tweetId} />
+            <Tweet id={tweetId} />
           </div>
         );
       }
