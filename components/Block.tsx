@@ -3,7 +3,7 @@ import { IConvertBlock } from '#utils/notions/convertBlock';
 import CodeBlock from './CodeBlock';
 import TextBlock from './TextBlock';
 import BookmarkBlock from './BookmarkBlock';
-import Script from 'next/script';
+import { Tweet } from 'react-tweet';
 
 export default function Block({ block }: { block: IConvertBlock }) {
   function rc(blockList: IConvertBlock[]) {
@@ -113,17 +113,17 @@ export default function Block({ block }: { block: IConvertBlock }) {
       </div>
     ),
     embed: () => {
-      if (block?.url?.includes('twitter.com')) {
+      const extractTweetIDFromURL = (url: string) => {
+        const parts = url.split('/');
+        const tweetID = parts[parts.length - 1];
+        return tweetID;
+      };
+
+      if (block?.url && block?.url?.includes('twitter.com')) {
+        const tweetId = extractTweetIDFromURL(block.url);
         return (
           <div className="flex justify-center pt-2 pb-1">
-            <blockquote className="twitter-tweet">
-              <a href={block?.url ?? ''}></a>
-            </blockquote>
-            <Script
-              async
-              src="https://platform.twitter.com/widgets.js"
-              charSet="utf-8"
-            ></Script>
+            <Tweet apiUrl={tweetId} />
           </div>
         );
       }

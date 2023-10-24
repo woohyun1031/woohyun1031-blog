@@ -34,6 +34,7 @@
     "react-query": "^3.39.3",
     "react-syntax-highlighter": "^15.5.0",
     "react-tooltip": "^5.11.1",
+    "react-tweet": "^3.1.1",
     "rehype-stringify": "^9.0.3",
     "remark-breaks": "^3.0.2",
     "remark-gfm": "^3.0.1",
