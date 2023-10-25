@@ -37,7 +37,17 @@ const Header = () => {
           <Link
             href="/article"
             className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
-            onClick={() => setIsShow(false)}
+            onClick={(event) => {
+              if (pathName?.includes('article')) {
+                event.preventDefault();
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              }
+              setIsShow(false);
+            }}
           >
             <span className="text-xl font-extralight text-gray-800 dark:text-white">
               woohyun.kim
@@ -109,6 +119,16 @@ const Header = () => {
                     ? 'text-red-400 dark:text-red-400'
                     : 'text-stone-600 dark:text-white'
                 }`}
+                onClick={(event) => {
+                  if (pathName?.includes('article')) {
+                    event.preventDefault();
+                    window.scrollTo({
+                      top: 0,
+                      left: 0,
+                      behavior: 'smooth',
+                    });
+                  }
+                }}
               >
                 ARTICLE
               </Link>
@@ -142,7 +162,17 @@ const Header = () => {
                 ? 'text-red-400 dark:text-red-400'
                 : 'text-stone-600 dark:text-white'
             }`}
-            onClick={() => setIsShow(false)}
+            onClick={(event) => {
+              if (pathName?.includes('article')) {
+                event.preventDefault();
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              }
+              setIsShow(false);
+            }}
           >
             ARTICLE
           </Link>
