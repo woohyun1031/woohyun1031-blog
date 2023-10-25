@@ -10,6 +10,9 @@ const Header = () => {
   const [isShow, setIsShow] = React.useState(false);
   const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
   const pathName = usePathname();
+  const pathNames = pathName?.split('/') ?? [];
+  const isArticleListPage =
+    pathNames?.length <= 2 && pathNames?.includes('article');
 
   const changeTheme = React.useCallback(() => {
     const localTheme = localStorage.getItem('theme');
@@ -38,7 +41,7 @@ const Header = () => {
             href="/article"
             className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
             onClick={(event) => {
-              if (pathName?.includes('article')) {
+              if (isArticleListPage) {
                 event.preventDefault();
                 window.scrollTo({
                   top: 0,
@@ -120,7 +123,7 @@ const Header = () => {
                     : 'text-stone-600 dark:text-white'
                 }`}
                 onClick={(event) => {
-                  if (pathName?.includes('article')) {
+                  if (isArticleListPage) {
                     event.preventDefault();
                     window.scrollTo({
                       top: 0,
@@ -163,7 +166,7 @@ const Header = () => {
                 : 'text-stone-600 dark:text-white'
             }`}
             onClick={(event) => {
-              if (pathName?.includes('article')) {
+              if (isArticleListPage) {
                 event.preventDefault();
                 window.scrollTo({
                   top: 0,
