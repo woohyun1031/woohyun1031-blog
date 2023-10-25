@@ -17,7 +17,7 @@ export default function useScrollForm(): UseSearchFormReturn {
   const [loading, setLoading] = React.useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const searchParams = useSearchParams();
+
   const onSubmit = React.useCallback(
     (values: Record<string, any>) => {
       setLoading(true);
@@ -36,6 +36,9 @@ export default function useScrollForm(): UseSearchFormReturn {
             return { ...p, [key]: handleFormat(value) };
           }, {}),
         )}`,
+        {
+          scroll: false,
+        },
       );
     },
     [pathname, router],
