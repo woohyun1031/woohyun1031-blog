@@ -1,7 +1,6 @@
 import React from 'react';
 import queryString from 'querystring';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import dayjs from 'dayjs';
+import { usePathname, useRouter } from 'next/navigation';
 
 export interface SearchFormProps<TParams = Record<string, any>> {
   params?: TParams;
