@@ -8,11 +8,15 @@ import Link from 'next/link';
 import React from 'react';
 
 export default function Form(props: {
-  results: (Partial<IPage> & { path: string })[];
+  array: (Partial<IPage> & { path: string })[];
   hasMore: boolean;
   searchParams: any;
 }) {
-  const { results, hasMore, searchParams } = props;
+  const { array, hasMore, searchParams } = props;
+  const results = React.useMemo(
+    () => array?.filter((item) => !!item) ?? [],
+    [array],
+  );
   const { onSubmit } = useScrollForm();
   const hasNextPage = hasMore ?? false;
 
@@ -50,7 +54,7 @@ export default function Form(props: {
                     className="group flex w-full cursor-pointer flex-col align-middle lg:flex-row "
                     key={item.id}
                     href={`/article/${item.path}`}
-                    {...(index + 1 === results?.length
+                    {...(index + 1 === results.filter((item) => !!item)?.length
                       ? { ref: lastBookElementRef }
                       : {})}
                   >

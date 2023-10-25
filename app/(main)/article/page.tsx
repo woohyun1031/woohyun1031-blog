@@ -82,6 +82,6 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
   );
   if (!array.length) return;
   return (
-    <Form results={array} hasMore={hasMore} searchParams={props.searchParams} />
+    <Form array={array} hasMore={hasMore} searchParams={props.searchParams} />
   );
 }
