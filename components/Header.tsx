@@ -4,15 +4,19 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { DarkModeThemeContext } from 'app/providers';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 const Header = () => {
   const [isShow, setIsShow] = React.useState(false);
   const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
   const pathName = usePathname();
+  const searchParams = useSearchParams();
   const pathNames = pathName?.split('/') ?? [];
+
   const isArticleListPage =
-    pathNames?.length <= 2 && pathNames?.includes('article');
+    pathNames?.length <= 2 &&
+    pathNames?.includes('article') &&
+    !searchParams?.has('type');
 
   const changeTheme = React.useCallback(() => {
     const localTheme = localStorage.getItem('theme');
