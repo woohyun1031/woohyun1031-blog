@@ -18,6 +18,8 @@ const Header = () => {
     pathNames?.includes('article') &&
     !searchParams?.has('type');
 
+  const isAboutPage = pathNames?.includes('about');
+
   const changeTheme = React.useCallback(() => {
     const localTheme = localStorage.getItem('theme');
     if (localTheme) {
@@ -115,6 +117,17 @@ const Header = () => {
                     ? 'text-red-400 dark:text-red-400'
                     : 'text-stone-600 dark:text-white'
                 }`}
+                onClick={(event) => {
+                  if (isAboutPage) {
+                    event.preventDefault();
+                    window.scrollTo({
+                      top: 0,
+                      left: 0,
+                      behavior: 'smooth',
+                    });
+                  }
+                  setIsShow(false);
+                }}
               >
                 ABOUT
               </Link>
@@ -157,7 +170,17 @@ const Header = () => {
                 ? 'text-red-400 dark:text-red-400'
                 : 'text-stone-600 dark:text-white'
             }`}
-            onClick={() => setIsShow(false)}
+            onClick={(event) => {
+              if (isAboutPage) {
+                event.preventDefault();
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              }
+              setIsShow(false);
+            }}
           >
             ABOUT
           </Link>
