@@ -154,7 +154,13 @@ export default async function convertBlock(
     }
 
     if (block.type === 'link_preview') {
-      const { result } = await ogs({ url: block.link_preview.url });
+      const { result, error } = await ogs({ url: block.link_preview.url });
+      if (error) {
+        return {
+          id: block.id,
+          type: 'bookmark',
+        };
+      }
       return {
         id: block.id,
         type: 'link_preview',
