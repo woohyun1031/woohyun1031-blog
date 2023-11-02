@@ -9,6 +9,7 @@ import {
   Description,
   BordDescription,
   SoftDescription,
+  LinkDescription,
 } from '#components/about/Description';
 import SubTitle from '#components/about/SubTitle';
 import { Metadata } from 'next';
@@ -111,7 +112,8 @@ export default async function Page() {
                   </span>
                   <div className="mt-6 block leading-snug  lg:mt-0 lg:inline">
                     <SubTitle>
-                      frontend engineer & professional student
+                      frontend engineer & product engineer & professional
+                      student
                     </SubTitle>
                   </div>
                 </div>
@@ -126,24 +128,40 @@ export default async function Page() {
                 </div>
                 <div className="mb-2">
                   <Description>
-                    요즘 일도 취미도 개발로, 공부하고 문제 해결하는 재미로 살고
-                    있습니다.
+                    중견 고객사들의 제품, CMS 프로젝트의 프론트엔드 파트를
+                    설계하고 구축 등을 해왔으며 Docker와 Gitlab을 사용한 CI/CD와
+                    가벼운 인프라 경험을 갖고 있습니다.
                   </Description>
                 </div>
                 <div className="mb-2">
                   <Description>
-                    <BordDescription>사용자 경험을 </BordDescription>
-                    우선으로 고민을 할 수 있는 작업과
-                    <BordDescription> 웹 파이프라인의 </BordDescription>
-                    다양한 측면을 고려하여 데이터와 사실을 기반으로 한 문제
-                    해결에 높은 흥미를 가지고 있습니다.
+                    현재 프론트엔드의 전문성과 정체성을 갖고 작업을 하지만
+                    백앤드와 인프라에도 관심을 갖고 공부를 하고 있으며{' '}
+                    <LinkDescription href="https://woo1031.vercel.app/article/%EC%A0%9C%ED%92%88product%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4-%ED%94%8C%EB%9E%AB%ED%8F%BCplatform%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4">
+                      “Product 엔지니어”라는
+                    </LinkDescription>{' '}
+                    풀스택을 지향하고 있습니다.
                   </Description>
                 </div>
                 <div className="mb-2">
                   <Description>
-                    선언적 패턴과 계층적 구조를 기반한
-                    <BordDescription> 함수형 패러다임을 </BordDescription>
-                    선호하며 유지보수성이 높은, 효율적인 개발 방식을 지향합니다.
+                    요즘 일도 취미도 프로그래밍으로, 공부하고 문제 해결하는
+                    재미로 살고 있으며 꾸준하게
+                    <LinkDescription href="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4">
+                      {' '}
+                      노션에 기록을 적어가면서{' '}
+                    </LinkDescription>
+                    가끔 직접적으로 접하는 흥미로운 문제에 대해선{' '}
+                    <LinkDescription href="/article">
+                      블로그 게시물로도
+                    </LinkDescription>{' '}
+                    작성을 합니다.
+                  </Description>
+                </div>
+                <div className="mb-2">
+                  <Description>
+                    선언적 패턴과 계층적 구조를 기반한 함수형 패러다임을
+                    선호하며 유지보수성이 높은, 효율적인 코드 패턴 지향합니다.
                   </Description>
                 </div>
               </div>
@@ -239,6 +257,12 @@ export default async function Page() {
                       지식 및 마크업 능력과 ES6 표준 스펙을 활용한 개발 지향
                     </Description>
                   </div>
+                  <div className="mb-2">
+                    <Description>
+                      · 사내 서버에 설치된 Docker와 Gitlab CI를 사용한 프로젝트
+                      CI/CD 구축 경험
+                    </Description>
+                  </div>
                 </div>
               </div>
             </BlockWrapper>
@@ -312,6 +336,12 @@ export default async function Page() {
                         <Description>
                           · KCP API 결합한 결제 시스템 구현 등 써드파티 시스템
                           및 API와 결합한 모듈 구축
+                        </Description>
+                      </div>
+                      <div className="mb-2">
+                        <Description>
+                          · 사내 서버에 설치된 Docker와 Gitlab CI를 사용한
+                          프로젝트 CI/CD 구축 경험
                         </Description>
                       </div>
                       <div className="mb-2">
