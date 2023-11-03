@@ -774,9 +774,20 @@ export default async function Page() {
                 })}
               </div>
               <div className="mt-10">
-                {await getNotionBlock(
+                <div className="mt-2">
+                  <Description>
+                    More Information?
+                    <LinkButton url="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4" />
+                  </Description>
+                </div>
+                {/* <div className="mt-2">
+                  <SoftDescription>
+                    {dayjs(value.created_time).format('YYYY-MM-DD HH:mm:ss')}
+                  </SoftDescription>
+                </div> */}
+                {/* {await getNotionBlock(
                   'https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4',
-                )}
+                )} */}
               </div>
             </BlockWrapper>
 
