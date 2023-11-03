@@ -99,6 +99,7 @@ export default async function Page() {
       />
     );
   }
+
   return (
     <>
       <div className="flex w-full justify-center ">
@@ -161,7 +162,7 @@ export default async function Page() {
                 <div className="mb-2">
                   <Description>
                     선언적 패턴과 계층적 구조를 기반한 함수형 패러다임을
-                    선호하며 유지보수성이 높은, 효율적인 코드 패턴 지향합니다.
+                    선호하며 유지보수성이 높은, 효율적인 코드 패턴을 지향합니다.
                   </Description>
                 </div>
               </div>
@@ -521,7 +522,7 @@ export default async function Page() {
                       QUE!{' '}
                       <Description>
                         라이브 스트리밍 에듀 플랫폼
-                        <LinkButton url="https://github.com/Hanghae99-5-Team1/TeamQue-FE" />
+                        <LinkButton url="https://github.com/woohyun1031/TeamQue-FE" />
                       </Description>
                     </SubTitle>
                   </div>
