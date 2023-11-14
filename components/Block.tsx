@@ -101,7 +101,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <CodeBlock {...block} />
       </div>
     ),
-    divider: () => <hr className="border-t pt-4 pb-3 dark:border-gray-600" />,
+    divider: () => <hr className="border-t pt-1 pb-1 dark:border-gray-600" />,
     bookmark: () => (
       <div className="pt-2 pb-1">
         <BookmarkBlock {...block} />
