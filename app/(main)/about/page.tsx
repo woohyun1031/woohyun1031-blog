@@ -358,8 +358,21 @@ export default async function Page() {
                     <div className="mt-4">
                       <div className="mt-2">
                         <Description>
-                          <BordDescription>Bizprint</BordDescription> - CMS기반
-                          맞춤상품 입점 쇼핑몰 구축
+                          <BordDescription>아워홈</BordDescription> -
+                          TQMS(통합품질관리시스템) 구축
+                        </Description>
+                      </div>
+                      <div className="mt-1">
+                        <SoftDescription>
+                          아워홈 내부에서 사용되는 TQMS 개발
+                        </SoftDescription>
+                      </div>
+                    </div>
+                    <div className="mt-4">
+                      <div className="mt-2">
+                        <Description>
+                          <BordDescription>메이비원</BordDescription> - Bizprint
+                          CMS기반 맞춤상품 입점 쇼핑몰 구축
                         </Description>
                       </div>
                       <div className="mt-1">
@@ -371,10 +384,8 @@ export default async function Page() {
                     <div className="mt-4">
                       <div className="mt-2">
                         <Description>
-                          <BordDescription>
-                            ReviewMaster 사내 프로젝트
-                          </BordDescription>{' '}
-                          - Front 개발
+                          <BordDescription>액트베이스</BordDescription> - 사내
+                          프로젝트 Front 개발
                         </Description>
                       </div>
                       <div className="mt-1">
@@ -387,7 +398,7 @@ export default async function Page() {
                       <div className="mt-2">
                         <Description>
                           <BordDescription>
-                            Pangaia(신세계아이앤씨)
+                            신세계아이앤씨 & Pangaia
                           </BordDescription>{' '}
                           - CMS 시스템 Front 개발
                         </Description>
@@ -401,7 +412,7 @@ export default async function Page() {
                     <div className="mt-4">
                       <div className="mt-2">
                         <Description>
-                          <BordDescription>Pulmoowon</BordDescription> - 사내 앱
+                          <BordDescription>풀무원</BordDescription> - 사내 앱
                           개발
                         </Description>
                       </div>
