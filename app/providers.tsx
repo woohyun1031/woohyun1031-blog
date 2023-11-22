@@ -4,15 +4,6 @@ import Footer from '#components/Footer';
 import Header from '#components/Header';
 import { usePathname } from 'next/navigation';
 import React, { createContext } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    },
-  },
-});
 
 export const DarkModeThemeContext = createContext({
   isDark: false,
@@ -45,11 +36,9 @@ export function Providers({
     <DarkModeThemeContext.Provider
       value={{ isDark: isDarkMode, setIsDark: setIsDarkMode }}
     >
-      <QueryClientProvider client={queryClient}>
-        <Header />
-        {children}
-        <Footer />
-      </QueryClientProvider>
+      <Header />
+      {children}
+      <Footer />
     </DarkModeThemeContext.Provider>
   );
 }

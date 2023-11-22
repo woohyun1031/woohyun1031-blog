@@ -691,7 +691,7 @@ export default async function Page() {
                   <div>
                     <SubTitle>
                       개발 지식 공유 프로젝트
-                      <LinkButton url="https://github.com/woogod1031/hanghae_1_week" />
+                      <LinkButton url="https://github.com/woohyun1031/hanghae_1_week" />
                     </SubTitle>
                   </div>
                   <div className="mt-2">
