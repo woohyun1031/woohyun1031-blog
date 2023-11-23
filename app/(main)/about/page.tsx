@@ -476,19 +476,12 @@ export default async function Page() {
                     <div className="mt-2">
                       <div className="mb-2">
                         <Description>
-                          · Notion API 기반
-                          <BordDescription> AST </BordDescription>
-                          제작
-                        </Description>
-                      </div>
-                      <div className="mb-2">
-                        <Description>
                           ·
                           <BordDescription>
                             {' '}
                             Notion, Github API{' '}
                           </BordDescription>
-                          기반 블로그 인터페이스 구현
+                          기반한 자체적으로 블로그 인터페이스 구현
                         </Description>
                       </div>
                       <div className="mb-2">
