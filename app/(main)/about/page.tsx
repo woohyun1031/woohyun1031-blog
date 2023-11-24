@@ -384,19 +384,6 @@ export default async function Page() {
                     <div className="mt-4">
                       <div className="mt-2">
                         <Description>
-                          <BordDescription>액트베이스</BordDescription> - 사내
-                          프로젝트 Front 개발
-                        </Description>
-                      </div>
-                      <div className="mt-1">
-                        <SoftDescription>
-                          Review 등록 및 관리 시스템 Front 구현, Front 리드
-                        </SoftDescription>
-                      </div>
-                    </div>
-                    <div className="mt-4">
-                      <div className="mt-2">
-                        <Description>
                           <BordDescription>
                             신세계아이앤씨 & Pangaia
                           </BordDescription>{' '}

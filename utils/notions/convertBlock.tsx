@@ -91,7 +91,7 @@ export default async function convertBlock(
           if (error.name === 'NotFound') {
             isExist = false;
           } else {
-            console.log('error:::', error);
+            console.log('aws_error:::', error);
             throw error;
           }
         }
@@ -129,6 +129,7 @@ export default async function convertBlock(
     if (block.type === 'bookmark') {
       const { result, error } = await ogs({ url: block.bookmark.url });
       if (error) {
+        console.log('ogs_error:::', error);
         return {
           id: block.id,
           type: 'bookmark',
@@ -156,6 +157,7 @@ export default async function convertBlock(
     if (block.type === 'link_preview') {
       const { result, error } = await ogs({ url: block.link_preview.url });
       if (error) {
+        console.log('ogs_error:::', error);
         return {
           id: block.id,
           type: 'bookmark',
@@ -188,7 +190,7 @@ export default async function convertBlock(
       type: block.type,
     };
   } catch (error) {
-    console.log('error:::', error);
+    console.log('convert_error:::', error);
     return {
       id: block.id,
       type: 'error',
