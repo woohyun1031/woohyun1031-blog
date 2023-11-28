@@ -1,8 +1,8 @@
 'use client';
 
-import Tag from '#components/Tag';
-import useScrollForm from '#hooks/useScrollForm';
-import { INotionPageList, IPage } from '#pages/api/notion';
+import Tag from 'app/components/Tag';
+import useScrollForm from 'app/hooks/useScrollForm';
+import { INotionPageList, IPage } from 'app/api/notion';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import React from 'react';

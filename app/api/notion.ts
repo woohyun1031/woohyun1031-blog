@@ -1,8 +1,8 @@
-import { notionApi } from '#apis/index';
+import { notionApi } from 'app/api/index';
 import convertBlock, {
   convertList2Block,
   IConvertBlock,
-} from '#utils/notions/convertBlock';
+} from 'app/utils/notions/convertBlock';
 import { Client } from '@notionhq/client';
 import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 

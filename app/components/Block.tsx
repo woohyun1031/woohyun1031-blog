@@ -1,5 +1,5 @@
 import React from 'react';
-import { IConvertBlock } from '#utils/notions/convertBlock';
+import { IConvertBlock } from 'app/utils/notions/convertBlock';
 import CodeBlock from './CodeBlock';
 import TextBlock from './TextBlock';
 import BookmarkBlock from './BookmarkBlock';

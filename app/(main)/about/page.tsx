@@ -1,19 +1,19 @@
-import { ICommitData } from '#pages/api/github';
+import { ICommitData } from 'app/api/github';
 import dayjs from 'dayjs';
-import GithubCalendar from '#components/about/GithubCalendar';
-import { getNotionPages, IPage } from '#pages/api/notion';
+import GithubCalendar from 'app/components/about/GithubCalendar';
+import { getNotionPages, IPage } from 'app/api/notion';
 import Link from 'next/link';
-import { BlockWrapper, Title } from '#components/about';
-import { LinkButton } from '#components/LinkButton';
+import { BlockWrapper, Title } from 'app/components/about';
+import { LinkButton } from 'app/components/LinkButton';
 import {
   Description,
   BordDescription,
   SoftDescription,
   LinkDescription,
-} from '#components/about/Description';
-import SubTitle from '#components/about/SubTitle';
+} from 'app/components/about/Description';
+import SubTitle from 'app/components/about/SubTitle';
 import { Metadata } from 'next';
-import Block from '#components/Block';
+import Block from 'app/components/Block';
 import ogs from 'open-graph-scraper';
 import React from 'react';
 

@@ -2,14 +2,14 @@ import {
   getNotionPage,
   getNotionPageDetail,
   getNotionPageList,
-} from '#pages/api/notion';
+} from 'app/api/notion';
 import { Metadata } from 'next';
-import Tag from '#components/Tag';
+import Tag from 'app/components/Tag';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
-import Block from '#components/Block';
+import Block from 'app/components/Block';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const pages = await getNotionPageList({

@@ -1,5 +1,5 @@
-import { getNotionPageList, IPage } from '#pages/api/notion';
-import { IDefaultPageProps } from '#types/types';
+import { getNotionPageList, IPage } from 'app/api/notion';
+import { IDefaultPageProps } from 'app/types/types';
 import { Metadata } from 'next';
 import Form from './form';
 
