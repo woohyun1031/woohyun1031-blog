@@ -34,7 +34,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
           {block.children?.map((item) => (
             <>
               <li className="mb-2 ml-5 pl-2 text-sm sm:text-base">
-                <TextBlock text={item.text ?? []} className="pl-6" />
+                <TextBlock text={item.text ?? []} />
               </li>
               {item.hasChildren && rc(item.children ?? [])}
             </>
