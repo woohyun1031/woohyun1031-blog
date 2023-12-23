@@ -22,7 +22,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
   const blocksObj = {
     paragraph: () => {
       return (
-        <div className="pt-4 pb-3 text-sm sm:text-base">
+        <div className="mt-6 mb-2 text-sm sm:text-base">
           <TextBlock text={block.text ?? []} />
           {block.hasChildren && rc(block.children ?? [])}
         </div>
@@ -30,11 +30,11 @@ export default function Block({ block }: { block: IConvertBlock }) {
     },
     numbered_list_item: () => {
       return (
-        <ul className="list-inside list-decimal pt-4 pb-3">
+        <ul className="mt-6 mb-2 list-decimal">
           {block.children?.map((item) => (
             <>
-              <li className="pb-1 text-sm sm:text-base">
-                <TextBlock text={item.text ?? []} className="pl-1" />
+              <li className="mb-2 ml-5 pl-2 text-sm sm:text-base">
+                <TextBlock text={item.text ?? []} className="pl-6" />
               </li>
               {item.hasChildren && rc(item.children ?? [])}
             </>
@@ -44,11 +44,11 @@ export default function Block({ block }: { block: IConvertBlock }) {
     },
     bulleted_list_item: () => {
       return (
-        <ul className="list-inside list-disc pt-4 pb-3">
+        <ul className="mt-6 mb-2 list-disc">
           {block.children?.map((item) => (
             <>
-              <li className="pb-1 text-sm sm:text-base">
-                <TextBlock text={item.text ?? []} className="pl-1" />
+              <li className="mb-2 ml-5 pl-2 text-sm sm:text-base">
+                <TextBlock text={item.text ?? []} />
               </li>
               {item.hasChildren && rc(item.children ?? [])}
             </>
@@ -57,23 +57,23 @@ export default function Block({ block }: { block: IConvertBlock }) {
       );
     },
     heading_1: () => (
-      <h1 className="border-b pt-4 pb-3 text-5xl dark:border-gray-600">
+      <h1 className="mt-6 mb-2 border-b text-5xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h1>
     ),
     heading_2: () => (
-      <h2 className="border-b pt-4 pb-3 text-3xl dark:border-gray-600">
+      <h2 className="mt-6 mb-2 border-b text-3xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h2>
     ),
     heading_3: () => (
-      <h3 className="border-b pt-4 pb-3 text-2xl dark:border-gray-600">
+      <h3 className="mt-6 mb-2 border-b text-2xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h3>
     ),
     quote: () => (
       <blockquote
-        className="border-l-4 border-l-gray-800 bg-gray-100 py-2 pt-4 pb-3 pl-5 text-sm font-bold text-gray-800
+        className="mt-6 mb-2 border-l-4 border-l-gray-800 bg-gray-100 py-2 pl-5 text-sm font-bold text-gray-800
         duration-300 ease-in-out  
         dark:border-l-gray-100
           dark:bg-gray-900
@@ -85,7 +85,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
       </blockquote>
     ),
     image: () => (
-      <div className="pt-4 pb-3">
+      <div className="mt-6 mb-2">
         <img
           src={block.url ?? ''}
           alt="test"
@@ -97,7 +97,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
       </div>
     ),
     code: () => (
-      <div className="pt-4 pb-3">
+      <div className="mt-6 mb-2">
         <CodeBlock {...block} />
       </div>
     ),
