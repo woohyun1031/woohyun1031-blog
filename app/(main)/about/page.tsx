@@ -199,76 +199,73 @@ export default async function Page() {
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
               <div className="mt-10">
-                <div>
-                  <div className="mb-2">
+                <ul className="mt-6 mb-2 list-disc">
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      ·
                       <BordDescription> Webpack, Babel, Eslint</BordDescription>
                       와 같은 프론트 기술 환경 구성 및 소규모 프로젝트 리드 경험
                     </Description>
-                  </div>
-                  <div className="mb-2">
+                  </li>
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      ·<BordDescription> React </BordDescription>
+                      <BordDescription> React </BordDescription>
                       랜더링 프로세스와 최적화를 고려한 구현 능력, hook를
                       유연하게 사용하여 공통 모듈, 기능 개발
                     </Description>
-                  </div>
-                  <div className="mb-2">
+                  </li>
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      · 요구사항에 적절한 랜더링 환경을 파악하여
+                      요구사항에 적절한 랜더링 환경을 파악하여
                       <BordDescription> Next.js App Routing </BordDescription>
                       기반 프로젝트 디자인
                     </Description>
-                  </div>
-                  <div className="mb-2">
+                  </li>
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      ·
                       <BordDescription>
                         {' '}
                         ContextApi, Redux, React-Query{' '}
                       </BordDescription>
                       등 요구사항에 맞는 클라이언트 상태관리 경험
                     </Description>
-                  </div>
-                  <div className="mb-2">
+                  </li>
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      · 선언적 패턴과 계층적 구조를 기반한
+                      선언적 패턴과 계층적 구조를 기반한
                       <BordDescription> 함수형 패러다임을 </BordDescription>
                       선호하며 유지보수성이 높은, 효율적인 개발 방식을 지향.
                     </Description>
-                  </div>
-                  <div className="mb-2">
+                  </li>
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      · 웹 소켓 프로토콜 기반 라이브러리
+                      웹 소켓 프로토콜 기반 라이브러리
                       <BordDescription> Socket.IO </BordDescription>
                       활용한 채팅 및 효율적인 양방향 통신 기능 구현 경험
                     </Description>
-                  </div>
-                  <div className="mb-2">
+                  </li>
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      ·
                       <BordDescription>
                         {' '}
                         Typescript, Javascript{' '}
                       </BordDescription>
                       언어의 패러다임을 이해하고 사용
                     </Description>
-                  </div>
-                  <div className="mb-2">
+                  </li>
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      ·<BordDescription> HTML5,CSS3,ES6+ </BordDescription>의
+                      <BordDescription> HTML5,CSS3,ES6+ </BordDescription>의
                       기본 지식 및 마크업 능력과 ES6+ 표준 스펙을 활용한 개발
                       지향
                     </Description>
-                  </div>
-                  <div className="mb-2">
+                  </li>
+                  <li className="mb-2 ml-5 pl-2">
                     <Description>
-                      · Docker와 Gitlab CI를 사용한 프로젝트 CI/CD 파이프라인
-                      구축 경험
+                      Docker와 Gitlab CI를 사용한 프로젝트 CI/CD 파이프라인 구축
+                      경험
                     </Description>
-                  </div>
-                </div>
+                  </li>
+                </ul>
               </div>
             </BlockWrapper>
 
@@ -370,54 +367,53 @@ export default async function Page() {
                     <div className="mt-4">
                       <SubTitle>What did I do</SubTitle>
                     </div>
-                    <div className="mt-2">
-                      <div className="mb-2">
+                    <ul className="mt-6 mb-2 list-disc">
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · 기능, 인터페이스 API 연결 및 폴백 처리
+                          기능, 인터페이스 API 연결 및 폴백 처리
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · Webpack, Babel, ESlint과 같은 프론트 기술 환경 구성
+                          Webpack, Babel, ESlint과 같은 프론트 기술 환경 구성
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · 프로젝트 파일 시스템, 클라이언트 상태 관리 디자인
+                          프로젝트 파일 시스템, 클라이언트 상태 관리 디자인
                         </Description>
-                      </div>
-                      <div className="mb-2">
-                        <Description>· Module, Package 디자인</Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
+                        <Description>Module, Package 디자인</Description>
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · CSS3 library와 Component Library를 사용한 UI
-                          퍼블리싱
+                          CSS3 library와 Component Library를 사용한 UI 퍼블리싱
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · NextAuth, middleware 제어를 통한 프로젝트 내 인증,
+                          NextAuth, middleware 제어를 통한 프로젝트 내 인증,
                           인가 시스템 구축 및 관리
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · KCP API 결합한 결제 시스템 구현 등 서드파티 시스템
-                          및 API와 결합한 모듈 구축
+                          KCP API 결합한 결제 시스템 구현 등 서드파티 시스템 및
+                          API와 결합한 모듈 구축
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · Docker와 Gitlab CI를 사용한 프로젝트 CI/CD 구축 경험
+                          Docker와 Gitlab CI를 사용한 프로젝트 CI/CD 구축 경험
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · 기획자, 디자이너와 밀접한 협업 경험
+                          기획자, 디자이너와 밀접한 협업 경험
                         </Description>
-                      </div>
-                    </div>
+                      </li>
+                    </ul>
 
                     <div className="mt-4">
                       <SubTitle>Tech Stack</SubTitle>
@@ -469,26 +465,25 @@ export default async function Page() {
                     <div className="mt-4">
                       <SubTitle>What did I do</SubTitle>
                     </div>
-                    <div className="mt-2">
-                      <div className="mb-2">
+                    <ul className="mt-6 mb-2 list-disc">
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          ·
                           <BordDescription>
                             {' '}
                             Next.js 13+, Notion, Github API{' '}
                           </BordDescription>
                           기반한 자체적으로 블로그 인터페이스 구현
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · GitHub와 Vercel로
+                          GitHub와 Vercel로
                           <BordDescription> CD 파이프라인 구축</BordDescription>
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · 빌드 시 동적으로 정적 페이지 생성 후 sitemap 동적
+                          빌드 시 동적으로 정적 페이지 생성 후 sitemap 동적
                           컨트롤, Google Search Console 관리, 동적으로 meta
                           데이터 생성을 통해
                           <BordDescription>
@@ -497,20 +492,20 @@ export default async function Page() {
                           </BordDescription>
                           작업 진행
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · 아티클 페이지 Chrome Lighthouse 기준 90점 이상으로
+                          아티클 페이지 Chrome Lighthouse 기준 90점 이상으로
                           향상 및 아티클 검색 시 구글 첫 페이지 노출
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · Google Analytics, Vercel Analytics 연결을 통한
-                          사용자 데이터 수집 기능 활성화
+                          Google Analytics, Vercel Analytics 연결을 통한 사용자
+                          데이터 수집 기능 활성화
                         </Description>
-                      </div>
-                    </div>
+                      </li>
+                    </ul>
                     <div className="mt-4">
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
@@ -557,59 +552,57 @@ export default async function Page() {
                     <div className="mt-4">
                       <SubTitle>What did I do</SubTitle>
                     </div>
-                    <div className="mt-2">
-                      <div className="mb-2">
+                    <ul className="mt-6 mb-2 list-disc">
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          ·
                           <BordDescription>
                             {' '}
                             React 18, Typescript 5{' '}
                           </BordDescription>
                           기반 웹 서비스 개발, 운영
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · <BordDescription> Redux Toolkit</BordDescription>을
+                          <BordDescription> Redux Toolkit</BordDescription>을
                           사용한 전역상태 관리로 props 복잡도 개선
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · <BordDescription> React Query 도입</BordDescription>
+                          <BordDescription> React Query 도입</BordDescription>
                           하여 Store, Fetching 영역 분리시켜 서버 상태와
                           클라이언트 상태 분리
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          ·<BordDescription> Socket.io</BordDescription>
+                          <BordDescription> Socket.io</BordDescription>
                           라이브러리 활용한 채팅, 실시간 반응 기능 구현
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          ·
                           <BordDescription>
                             {' '}
                             ThemeProvider(Styled Component)
                           </BordDescription>
                           로 중복 style 분리시켜 50% style 재사용
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          ·<BordDescription> Git-Flow</BordDescription>
+                          <BordDescription> Git-Flow</BordDescription>
                           브랜치 전략 도입하여 브랜치 관리
                         </Description>
-                      </div>
-                      <div className="mb-2">
+                      </li>
+                      <li className="mb-2 ml-5 pl-2 ">
                         <Description>
-                          · 프론트엔드 2명, 백엔드 2명, 디자이너 2명의 협업
+                          프론트엔드 2명, 백엔드 2명, 디자이너 2명의 협업
                           프로젝트
                         </Description>
-                      </div>
-                    </div>
+                      </li>
+                    </ul>
                     <div className="mt-4">
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
