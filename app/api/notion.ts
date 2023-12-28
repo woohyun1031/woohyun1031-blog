@@ -64,7 +64,7 @@ export const getNotionPages = async (pages: number) => {
           page_size: pages ?? 0,
           filter: {
             property: 'Status',
-            select: {
+            status: {
               equals: '완료',
             },
           },
