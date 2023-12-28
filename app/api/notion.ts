@@ -65,7 +65,7 @@ export const getNotionPages = async (pages: number) => {
           filter: {
             property: 'Status',
             select: {
-              equals: 'Completed 🙆‍♂️',
+              equals: '완료',
             },
           },
         },
