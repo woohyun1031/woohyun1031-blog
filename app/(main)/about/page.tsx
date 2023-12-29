@@ -1,7 +1,7 @@
 import { ICommitData } from 'app/api/github';
 import dayjs from 'dayjs';
 import GithubCalendar from 'app/components/about/GithubCalendar';
-import { getNotionPages, IPage } from 'app/api/notion';
+import { getNotionCompletePageList, IPage } from 'app/api/notion';
 import Link from 'next/link';
 import { BlockWrapper, Title } from 'app/components/about';
 import { LinkButton } from 'app/components/LinkButton';
@@ -58,7 +58,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function Page() {
   async function getNotionPageList() {
-    const notitonList = await getNotionPages(5);
+    const notitonList = await getNotionCompletePageList(5);
     return notitonList;
   }
 

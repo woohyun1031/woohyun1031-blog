@@ -40,8 +40,6 @@ export interface INotionPageList<T> {
   type: 'page';
 }
 
-export const notionClient = new Client({ auth: `${process.env.NOTION_TOKEN}` });
-
 export const getPathFromTitle = (title: string): string => {
   return (title || '')
     .replace(/ /g, '-')
@@ -54,7 +52,7 @@ export const getPathFromTitle = (title: string): string => {
     .toLowerCase();
 };
 
-export const getNotionPages = async (pages: number) => {
+export const getNotionCompletePageList = async (pages: number) => {
   if (!pages) return;
   try {
     return await notionApi
@@ -76,7 +74,7 @@ export const getNotionPages = async (pages: number) => {
   }
 };
 
-export const getNotionPageList = async ({
+export const getNotionBlogPageList = async ({
   pages,
   start_cursor,
   type,
@@ -135,7 +133,7 @@ export const getNotionPageList = async ({
   }
 };
 
-export const getNotionPage = async (id?: string) => {
+export const getNotionPageInfo = async (id?: string) => {
   if (!id) return;
   try {
     return await notionApi

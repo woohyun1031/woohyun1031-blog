@@ -1,7 +1,7 @@
 import {
-  getNotionPage,
+  getNotionPageInfo,
   getNotionPageDetail,
-  getNotionPageList,
+  getNotionBlogPageList,
 } from 'app/api/notion';
 import { Metadata } from 'next';
 import Tag from 'app/components/Tag';
@@ -12,13 +12,13 @@ import Link from 'next/link';
 import Block from 'app/components/Block';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const pages = await getNotionPageList({
+  const pages = await getNotionBlogPageList({
     pages: 100,
   });
   const target = pages?.results.find(
     (item) => encodeURI(item.path) === params.path,
   );
-  const product = await getNotionPage(target?.id);
+  const product = await getNotionPageInfo(target?.id);
   return {
     title: product?.properties?.Name?.title?.[0]?.plain_text,
     description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const pageList = await getNotionPageList({
+  const pageList = await getNotionBlogPageList({
     pages: 100,
   });
   return pageList?.results
@@ -67,7 +67,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page(props: any) {
-  const pages = await getNotionPageList({
+  const pages = await getNotionBlogPageList({
     pages: 100,
   });
   const target = pages?.results.find(
@@ -84,7 +84,7 @@ export default async function Page(props: any) {
       </div>
     );
 
-  const page = await getNotionPage(target.id as string);
+  const page = await getNotionPageInfo(target.id as string);
   const data = await getNotionPageDetail(target.id as string);
   if (!page) return;
   const tagList = page?.properties?.Type?.multi_select ?? [];
