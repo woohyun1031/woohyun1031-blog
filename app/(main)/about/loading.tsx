@@ -1,8 +1,6 @@
 import LoadingComponent from 'app/components/Loading';
 
 export default function Loading() {
-  const items = 3;
-
   return (
     <div className="flex w-full animate-pulse justify-center">
       <div className="min-h-screen w-full max-w-container px-8">
