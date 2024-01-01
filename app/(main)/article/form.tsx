@@ -42,9 +42,14 @@ export default function Form(props: {
       <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-container px-4">
           <div className="mt-36 mb-8">
-            <span className="font-sansT text-4xl text-gray-900 dark:text-white">
+            <span className="font-sansM text-5xl text-gray-900 dark:text-white">
               {searchParams.type ? searchParams.type : ''}
             </span>
+            {searchParams.type ? (
+              <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
+            ) : (
+              ''
+            )}
           </div>
           {results?.map(
             (item: Partial<IPage> & { path: string }, index: number) => {
