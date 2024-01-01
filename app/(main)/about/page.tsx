@@ -62,43 +62,43 @@ export default async function Page() {
     return notitonList;
   }
 
-  async function getNotionBlock(src: string) {
-    if (!src) return null;
-    const { result, error } = await ogs({
-      url: src,
-    });
-    if (error) {
-      return (
-        <Block
-          block={{
-            id: 'notion block',
-            type: 'bookmark',
-          }}
-        />
-      );
-    }
-    const favicon = result.favicon?.startsWith('http')
-      ? result.favicon
-      : result.favicon?.startsWith('//')
-      ? `http:${result.favicon}`
-      : new URL(result.requestUrl ?? '').origin + '/favicon.ico';
-    const response = await fetch(favicon);
-    const status =
-      response.status >= 400 && response.status < 600 ? false : true;
-    return (
-      <Block
-        block={{
-          id: 'notion block',
-          type: 'bookmark',
-          title: result?.ogTitle ?? result?.twitterTitle ?? '',
-          description: result.ogDescription || result.twitterDescription || '',
-          image: result.ogImage?.[0]?.url,
-          favicon: status ? favicon : null,
-          url: result.requestUrl,
-        }}
-      />
-    );
-  }
+  // async function getNotionBlock(src: string) {
+  //   if (!src) return null;
+  //   const { result, error } = await ogs({
+  //     url: src,
+  //   });
+  //   if (error) {
+  //     return (
+  //       <Block
+  //         block={{
+  //           id: 'notion block',
+  //           type: 'bookmark',
+  //         }}
+  //       />
+  //     );
+  //   }
+  //   const favicon = result.favicon?.startsWith('http')
+  //     ? result.favicon
+  //     : result.favicon?.startsWith('//')
+  //     ? `http:${result.favicon}`
+  //     : new URL(result.requestUrl ?? '').origin + '/favicon.ico';
+  //   const response = await fetch(favicon);
+  //   const status =
+  //     response.status >= 400 && response.status < 600 ? false : true;
+  //   return (
+  //     <Block
+  //       block={{
+  //         id: 'notion block',
+  //         type: 'bookmark',
+  //         title: result?.ogTitle ?? result?.twitterTitle ?? '',
+  //         description: result.ogDescription || result.twitterDescription || '',
+  //         image: result.ogImage?.[0]?.url,
+  //         favicon: status ? favicon : null,
+  //         url: result.requestUrl,
+  //       }}
+  //     />
+  //   );
+  // }
 
   return (
     <>
@@ -170,14 +170,8 @@ export default async function Page() {
                   </Description>
                 </div>
               </div>
-              <div className="mt-6">
-                <span className="cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
-                  <Link href="https://github.com/woohyun1031" target="_blank">
-                    github
-                  </Link>
-                </span>
-
-                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+              <div className="mt-4">
+                <span className=" cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
                   <Link href="mailto:ktkwhms3@gmail.com" target="_blank">
                     e-mail
                   </Link>
@@ -191,6 +185,11 @@ export default async function Page() {
                     resume
                   </Link>
                 </span>
+                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                  <Link href="https://github.com/woohyun1031" target="_blank">
+                    github
+                  </Link>
+                </span>
 
                 <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
                   <Link
@@ -198,6 +197,12 @@ export default async function Page() {
                     target="_blank"
                   >
                     notion
+                  </Link>
+                </span>
+
+                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                  <Link href="https://woo1031.vercel.app/" target="_blank">
+                    blog
                   </Link>
                 </span>
               </div>

@@ -4,6 +4,7 @@ import CodeBlock from './CodeBlock';
 import TextBlock from './TextBlock';
 import BookmarkBlock from './BookmarkBlock';
 import { Tweet } from 'react-tweet';
+import ListTag from './ListTag';
 
 export default function Block({ block }: { block: IConvertBlock }) {
   function rc(blockList: IConvertBlock[]) {
@@ -33,9 +34,9 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <ul className="mt-6 mb-2 list-decimal">
           {block.children?.map((item) => (
             <>
-              <li className="mb-2 ml-5 pl-2 text-sm sm:text-base">
+              <ListTag className="text-sm marker:text-gray-700 dark:marker:text-gray-400 sm:text-base">
                 <TextBlock text={item.text ?? []} />
-              </li>
+              </ListTag>
               {item.hasChildren && rc(item.children ?? [])}
             </>
           ))}
@@ -47,9 +48,9 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <ul className="mt-6 mb-2 list-disc">
           {block.children?.map((item) => (
             <>
-              <li className="mb-2 ml-5 pl-2 text-sm sm:text-base">
+              <ListTag className="text-sm marker:text-gray-700 sm:text-base">
                 <TextBlock text={item.text ?? []} />
-              </li>
+              </ListTag>
               {item.hasChildren && rc(item.children ?? [])}
             </>
           ))}
