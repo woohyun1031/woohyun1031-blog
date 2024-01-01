@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 
 export const Description = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -27,7 +27,7 @@ export const SoftDescription = ({
   children: React.ReactNode;
 }) => {
   return (
-    <span className="break-keep font-sansT text-xs text-gray-400 dark:text-gray-400">
+    <span className="break-keep font-sansT text-xs text-gray-400 dark:text-gray-500">
       {children}
     </span>
   );

@@ -1,21 +1,21 @@
-import { ICommitData } from 'app/api/github';
 import dayjs from 'dayjs';
-import GithubCalendar from 'app/components/about/GithubCalendar';
+import GithubCalendar from '#components/about/GithubCalendar';
 import { getNotionCompletePageList, IPage } from 'app/api/notion';
 import Link from 'next/link';
-import { BlockWrapper, Title } from 'app/components/about';
-import { LinkButton } from 'app/components/LinkButton';
+import { BlockWrapper, Title } from '#components/about';
+import { LinkButton } from '#components/LinkButton';
 import {
   Description,
   BordDescription,
   SoftDescription,
   LinkDescription,
-} from 'app/components/about/Description';
-import SubTitle from 'app/components/about/SubTitle';
+} from '#components/about/Description';
+import SubTitle from '#components/about/SubTitle';
 import { Metadata } from 'next';
-import Block from 'app/components/Block';
+import Block from '#components/Block';
 import ogs from 'open-graph-scraper';
 import React from 'react';
+import ListTag from '#components/ListTag';
 
 export const metadata: Metadata = {
   title: '김우현 프론트엔드 엔지니어 이력서',
@@ -129,10 +129,18 @@ export default async function Page() {
                 </div>
                 <div className="mb-2">
                   <Description>
-                    중견 고객사 애플리케이션의 프론트엔드 파트를 설계하고
-                    구축하며 API 연결과 폴백 구현 등 다양한 작업을 해왔습니다.{' '}
-                    이 과정에서 Docker와 Gitlab을 활용한 CI/CD와 같은 가벼운
-                    인프라 경험을 갖고 있습니다.
+                    중견 고객사 애플리케이션의
+                    <BordDescription>
+                      {' '}
+                      프론트엔드 파트를 설계하고 구축하며
+                    </BordDescription>{' '}
+                    API 연결과 폴백 구현 등 다양한 작업을 해왔습니다. 이
+                    과정에서 Docker와 Gitlab을 활용한{' '}
+                    <BordDescription>
+                      {' '}
+                      CI/CD와 같은 가벼운 인프라 경험
+                    </BordDescription>
+                    을 갖고 있습니다.
                   </Description>
                 </div>
                 <div className="mb-2">
@@ -161,13 +169,6 @@ export default async function Page() {
                     </LinkDescription>
                   </Description>
                 </div>
-                <div className="mb-2">
-                  <Description>
-                    선언적 패턴과 계층적 구조를 기반한 함수형 패러다임을
-                    선호합니다. 이를 통해 유지보수성이 뛰어나고, 효율적인 코드를
-                    작성하는 것을 목표로 하고 있습니다.
-                  </Description>
-                </div>
               </div>
               <div className="mt-6">
                 <span className="cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
@@ -184,6 +185,15 @@ export default async function Page() {
 
                 <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
                   <Link
+                    href="https://woo1031.notion.site/WooHyun-Kim-975fd291ae324dfb87663e2bd9aa35ca?pvs=4"
+                    target="_blank"
+                  >
+                    resume
+                  </Link>
+                </span>
+
+                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                  <Link
                     href="https://woo1031.notion.site/woo1031/WooHyun-Kim-69ab520d7e2648d1aec863db6a50a282"
                     target="_blank"
                   >
@@ -195,55 +205,64 @@ export default async function Page() {
 
             <BlockWrapper>
               <div>
-                <Title value={'Skill'} />
+                <Title value={'Main Point'} />
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
               <div className="mt-10">
-                <ul className="mt-6 mb-2 list-disc">
-                  <li className="mb-2 ml-5 pl-2">
+                <ul className="mt-2 mb-2 list-disc">
+                  <ListTag>
                     <Description>
-                      <BordDescription> Webpack, Babel, Eslint</BordDescription>
-                      와 같은 프론트 기술 환경 구성 및 소규모 프로젝트 리드 경험
+                      Webpack, Babel, Eslint 와 같은
+                      <BordDescription>
+                        {' '}
+                        프론트 기술 환경 구성 및 소규모 프로젝트 리드 경험
+                      </BordDescription>
                     </Description>
-                  </li>
-                  <li className="mb-2 ml-5 pl-2">
+                  </ListTag>
+                  <ListTag>
                     <Description>
-                      <BordDescription> React </BordDescription>
-                      랜더링 프로세스와 최적화를 고려한 구현 능력, hook를
-                      유연하게 사용하여 공통 모듈, 기능 개발
+                      React 랜더링 프로세스와 최적화를 고려한
+                      <BordDescription> 구현 능력</BordDescription>, hook를
+                      유연하게 사용하여
+                      <BordDescription> 공통 모듈, 기능 개발</BordDescription>
                     </Description>
-                  </li>
-                  <li className="mb-2 ml-5 pl-2">
+                  </ListTag>
+                  <ListTag>
                     <Description>
                       요구사항에 적절한 랜더링 환경을 파악하여
                       <BordDescription> Next.js App Routing </BordDescription>
                       기반 프로젝트 디자인
                     </Description>
-                  </li>
-                  <li className="mb-2 ml-5 pl-2">
+                  </ListTag>
+                  <ListTag>
                     <Description>
+                      ContextApi, Redux, React-Query 등 요구사항에 맞는
                       <BordDescription>
                         {' '}
-                        ContextApi, Redux, React-Query{' '}
+                        클라이언트 상태관리 경험
                       </BordDescription>
-                      등 요구사항에 맞는 클라이언트 상태관리 경험
                     </Description>
-                  </li>
-                  <li className="mb-2 ml-5 pl-2">
+                  </ListTag>
+                  <ListTag>
                     <Description>
-                      선언적 패턴과 계층적 구조를 기반한
-                      <BordDescription> 함수형 패러다임을 </BordDescription>
-                      선호하며 유지보수성이 높은, 효율적인 개발 방식을 지향.
+                      선언적 패턴과 계층적 구조를 기반한 함수형 패러다임을
+                      선호하며
+                      <BordDescription>
+                        {' '}
+                        유지보수성이 높은, 효율적인 개발 방식을 지향.
+                      </BordDescription>
                     </Description>
-                  </li>
-                  <li className="mb-2 ml-5 pl-2">
+                  </ListTag>
+                  <ListTag>
                     <Description>
-                      웹 소켓 프로토콜 기반 라이브러리
-                      <BordDescription> Socket.IO </BordDescription>
-                      활용한 채팅 및 효율적인 양방향 통신 기능 구현 경험
+                      웹 소켓 프로토콜 기반 라이브러리 Socket.IO 활용한
+                      <BordDescription>
+                        {' '}
+                        채팅 및 효율적인 양방향 통신 기능 구현 경험
+                      </BordDescription>
                     </Description>
-                  </li>
-                  <li className="mb-2 ml-5 pl-2">
+                  </ListTag>
+                  <ListTag>
                     <Description>
                       <BordDescription>
                         {' '}
@@ -251,20 +270,27 @@ export default async function Page() {
                       </BordDescription>
                       언어의 패러다임을 이해하고 사용
                     </Description>
-                  </li>
-                  <li className="mb-2 ml-5 pl-2">
+                  </ListTag>
+                  <ListTag>
                     <Description>
-                      <BordDescription> HTML5,CSS3,ES6+ </BordDescription>의
-                      기본 지식 및 마크업 능력과 ES6+ 표준 스펙을 활용한 개발
-                      지향
+                      HTML5,CSS3,ES6+의 기본 지식 및 마크업 능력과
+                      <BordDescription>
+                        {' '}
+                        ES6+ 표준 스펙을 활용한
+                      </BordDescription>{' '}
+                      개발 지향
                     </Description>
-                  </li>
-                  <li className="mb-2 ml-5 pl-2">
+                  </ListTag>
+                  <ListTag>
                     <Description>
-                      Docker와 Gitlab CI를 사용한 프로젝트 CI/CD 파이프라인 구축
+                      Docker와 Gitlab CI를 사용한 프로젝트
+                      <BordDescription>
+                        {' '}
+                        CI/CD 파이프라인 핸들링{' '}
+                      </BordDescription>
                       경험
                     </Description>
-                  </li>
+                  </ListTag>
                 </ul>
               </div>
             </BlockWrapper>
@@ -281,13 +307,11 @@ export default async function Page() {
               <div className="mt-10 lg:flex lg:justify-between">
                 <div className="mb-10">
                   <div>
-                    <SubTitle>
+                    <Title>
                       Actbase.llc
+                      <Description> / Frontend Developer</Description>
                       <LinkButton url="https://actbase.io/" />
-                    </SubTitle>
-                  </div>
-                  <div className="mt-4">
-                    <Description>frontend developer</Description>
+                    </Title>
                   </div>
                   <div className="mt-2">
                     <SoftDescription>2022.08 ~ 2023.12</SoftDescription>
@@ -301,121 +325,223 @@ export default async function Page() {
                     <div className="mt-2 font-sansT text-sm text-gray-600 dark:text-gray-400 sm:text-base">
                       <Description>
                         고객사의 비즈니스 요구사항에 맞는 애플리케이션 개발 및
-                        유지보수
+                        유지보수를 진행하는 개발팀에서 프론트엔드 개발자를
+                        맡았습니다.
                       </Description>
                     </div>
 
-                    <div className="mt-4">
-                      <SubTitle>Projects</SubTitle>
-                    </div>
-                    <div className="mt-4">
+                    <div className="mt-6">
                       <div className="mt-2">
-                        <Description>
-                          <BordDescription>아워홈</BordDescription> -
-                          TQMS(통합품질관리시스템) 구축
-                        </Description>
+                        <SubTitle>
+                          아워홈
+                          <Description>
+                            {' '}
+                            / TQMS(통합품질관리시스템) 구축
+                          </Description>
+                        </SubTitle>
                       </div>
-                      <div className="mt-1">
+                      <div className="mt-2">
                         <SoftDescription>
                           종합식품기업 아워홈 내부에서 관리되는
                           통합품질관리시스템 개발
                         </SoftDescription>
                       </div>
-                    </div>
-                    <div className="mt-4">
-                      <div className="mt-2">
-                        <Description>
-                          <BordDescription>메이비원</BordDescription> - Bizprint
-                          CMS기반 맞춤상품 입점 쇼핑몰 구축
-                        </Description>
-                      </div>
                       <div className="mt-1">
-                        <SoftDescription>
-                          온라인 인쇄 서비스 Bizprint 쇼핑몰의 CMS System 개발
-                        </SoftDescription>
-                      </div>
-                    </div>
-                    <div className="mt-4">
-                      <div className="mt-2">
-                        <Description>
-                          <BordDescription>
-                            신세계아이앤씨 & Spvrkd
-                          </BordDescription>{' '}
-                          - Back Office 시스템 Front 개발
-                        </Description>
-                      </div>
-                      <div className="mt-1">
-                        <SoftDescription>
-                          글로벌 쇼핑몰 앱 Spvrkd의 Back Office System 구현
-                        </SoftDescription>
-                      </div>
-                    </div>
-                    <div className="mt-4">
-                      <div className="mt-2">
-                        <Description>
-                          <BordDescription>풀무원</BordDescription> - 사내 앱
-                          mKWP 개발
-                        </Description>
-                      </div>
-                      <div className="mt-1">
-                        <SoftDescription>
-                          풀무원 사내 앱 mKWP의 다국어 기능 추가 프로젝트 참여
-                        </SoftDescription>
+                        <ul className="mt-2 mb-2 list-disc">
+                          <ListTag>
+                            <Description>
+                              클레임 관리, 자가진단 관리 시스템 퍼블리싱, API
+                              연결 및 폴백(fallback) 처리
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              Chart.js 다양한 차트를 활용한{' '}
+                              <BordDescription>
+                                클레임 데이터 분류 및 데이터 시각화 기능
+                              </BordDescription>{' '}
+                              구현
+                            </Description>
+                          </ListTag>
+                        </ul>
                       </div>
                     </div>
 
                     <div className="mt-4">
-                      <SubTitle>What did I do</SubTitle>
+                      <div className="mt-2">
+                        <SubTitle>
+                          메이비원
+                          <Description>
+                            {' '}
+                            / Bizprint CMS기반 맞춤상품 입점 쇼핑몰 구축
+                          </Description>
+                        </SubTitle>
+                      </div>
+                      <div className="mt-2">
+                        <SoftDescription>
+                          온라인 인쇄 서비스 기업 Bizprint 쇼핑몰 페이지의 CMS
+                          System 개발
+                        </SoftDescription>
+                      </div>
+                      <div className="mt-1">
+                        <ul className="mt-2 mb-2 list-disc">
+                          <ListTag>
+                            <Description>
+                              Next.js app router의
+                              <LinkDescription href="mailto:ktkwhms3@gmail.com">
+                                {' '}
+                                server components{' '}
+                              </LinkDescription>{' '}
+                              사용한
+                              <BordDescription>
+                                {' '}
+                                공통 페이지네이션, 패칭 컴포넌트 설계
+                              </BordDescription>
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              사내 서버에 Docker와 Gitlab CI 를 사용한
+                              <BordDescription>
+                                {' '}
+                                CI/CD 파이프라인 핸들링{' '}
+                              </BordDescription>
+                              경험
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              CMS 기반하여 동적으로 상품을 입점 시킬 수 있는
+                              <BordDescription>
+                                {' '}
+                                상품 등록 비즈니스 로직
+                              </BordDescription>{' '}
+                              개발
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              KCP API와 연동하여{' '}
+                              <BordDescription>
+                                PC표준 결제 로직 및 영수증 표시 로직
+                              </BordDescription>{' '}
+                              구현
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              <LinkDescription href="mailto:ktkwhms3@gmail.com">
+                                middleware
+                              </LinkDescription>{' '}
+                              활용하여 사용자 권한에 따라 페이지 조회 및 등록
+                              분리
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              NextAuth와 middleware 제어를 통한 프로젝트 내{' '}
+                              <BordDescription>
+                                인증, 인가 시스템 구축 및 관리
+                              </BordDescription>
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              상품, 회원 관리, 쿠폰과 상품권 발급 및 관리 등
+                              기획과 조건에 맞춰 페이지 퍼블리싱, API 연결 및
+                              폴백(fallback) 처리
+                            </Description>
+                          </ListTag>
+                        </ul>
+                      </div>
                     </div>
-                    <ul className="mt-6 mb-2 list-disc">
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          기능, 인터페이스 API 연결 및 폴백 처리
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          Webpack, Babel, ESlint과 같은 프론트 기술 환경 구성
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          프로젝트 파일 시스템, 클라이언트 상태 관리 디자인
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>Module, Package 디자인</Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          CSS3 library와 Component Library를 사용한 UI 퍼블리싱
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          NextAuth, middleware 제어를 통한 프로젝트 내 인증,
-                          인가 시스템 구축 및 관리
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          KCP API 결합한 결제 시스템 구현 등 서드파티 시스템 및
-                          API와 결합한 모듈 구축
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          Docker와 Gitlab CI를 사용한 프로젝트 CI/CD 구축 경험
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          기획자, 디자이너와 밀접한 협업 경험
-                        </Description>
-                      </li>
-                    </ul>
 
                     <div className="mt-4">
+                      <div className="mt-2">
+                        <SubTitle>
+                          풀무원 <Description> / 사내 앱 mKWP 개발</Description>
+                        </SubTitle>
+                      </div>
+                      <div className="mt-2">
+                        <SoftDescription>
+                          풀무원 사내 앱{' '}
+                          <LinkDescription href="mailto:ktkwhms3@gmail.com">
+                            mKWP
+                          </LinkDescription>
+                          의 다국어 기능 추가 프로젝트 참여
+                        </SoftDescription>
+                      </div>
+                      <div className="mt-1">
+                        <ul className="mt-2 mb-2 list-disc">
+                          <ListTag>
+                            <Description>
+                              사용자 설정으로 4개(한,영,중,일)국어 지원해주는
+                              <BordDescription>
+                                {' '}
+                                useLocalizations
+                              </BordDescription>{' '}
+                              훅 구현
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              <LinkDescription href="mailto:ktkwhms3@gmail.com">
+                                AppState
+                              </LinkDescription>
+                              에 따라 인증, 인가 콜백을 실행시키는
+                              <BordDescription>
+                                {' '}
+                                useAppStateChangeEffect
+                              </BordDescription>
+                              훅 구현
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              다국어 패치와 함께 발생하는 에러 처리
+                            </Description>
+                          </ListTag>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="mt-4">
+                      <div className="mt-2">
+                        <SubTitle>
+                          신세계아이앤씨 & Spvrkd
+                          <Description>
+                            {' '}
+                            / Back Office 시스템 Front 개발
+                          </Description>
+                        </SubTitle>
+                      </div>
+                      <div className="mt-2">
+                        <SoftDescription>
+                          글로벌 쇼핑몰 앱 Spvrkd 웹 Back office 시스템 구현
+                        </SoftDescription>
+                      </div>
+                      <div className="mt-1">
+                        <ul className="mt-2 mb-2 list-disc">
+                          <ListTag>
+                            <Description>
+                              상품 관리, 회원 관리, 주문 공정 관리 등 커머스
+                              CMS와 관련한 비즈니스 로직 구현 과 API 연결 및
+                              폴백(fallback) 처리
+                            </Description>
+                          </ListTag>
+                          <ListTag>
+                            <Description>
+                              CRACO 기반으로{' '}
+                              <BordDescription>
+                                jsconfig 수정을 통한 절대경로 도입
+                              </BordDescription>
+                            </Description>
+                          </ListTag>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="mt-6">
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
                     <div className="mt-2">
@@ -443,12 +569,15 @@ export default async function Page() {
                 <div className="mb-4">
                   <div>
                     <SubTitle>
-                      Notion CMS 기반 개인 블로그{' '}
+                      Notion DB 기반 개인 블로그 제작{' '}
                       <LinkButton url="https://github.com/woohyun1031/effective-memory" />
                     </SubTitle>
                   </div>
                   <div className="mt-2">
-                    <SoftDescription>2023.04 ~</SoftDescription>
+                    <SoftDescription>
+                      Notion에 주기적으로 작성하는 공부 내용 공유 목적의 블로그
+                      제작
+                    </SoftDescription>
                   </div>
                 </div>
                 <div className="lg:w-500">
@@ -458,30 +587,39 @@ export default async function Page() {
                     </div>
                     <div className="mt-2">
                       <Description>
-                        Notion에 주기적으로 작성하는 공부 내용 공유 목적의
-                        블로그 제작
+                        요즘에는 일과 취미 모두를 개발에 집중하고 있습니다. 웹
+                        CS 학습과 맡은 프로젝트의 문제를 해결하는 것을
+                        좋아합니다. 이러한 경험과 흥미로운 문제들을 꾸준히
+                        <LinkDescription href="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4">
+                          {' '}
+                          노션에 기록하고 있습니다.{' '}
+                        </LinkDescription>
+                        가끔 직접적으로 접하는 문제들에 대해 노션과 연동하여
+                        <LinkDescription href="/article">
+                          {' '}
+                          블로그에 글을 업로드 하기도 합니다.
+                        </LinkDescription>
                       </Description>
                     </div>
                     <div className="mt-4">
                       <SubTitle>What did I do</SubTitle>
                     </div>
-                    <ul className="mt-6 mb-2 list-disc">
-                      <li className="mb-2 ml-5 pl-2 ">
+                    <ul className="mt-2 mb-2 list-disc">
+                      <ListTag>
                         <Description>
+                          Next.js 13+, Notion, Github API 기반한{' '}
                           <BordDescription>
-                            {' '}
-                            Next.js 13+, Notion, Github API{' '}
+                            자체적으로 블로그 인터페이스 구현
                           </BordDescription>
-                          기반한 자체적으로 블로그 인터페이스 구현
                         </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
+                      </ListTag>
+                      <ListTag>
                         <Description>
                           GitHub와 Vercel로
                           <BordDescription> CD 파이프라인 구축</BordDescription>
                         </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
+                      </ListTag>
+                      <ListTag>
                         <Description>
                           빌드 시 동적으로 정적 페이지 생성 후 sitemap 동적
                           컨트롤, Google Search Console 관리, 동적으로 meta
@@ -492,19 +630,21 @@ export default async function Page() {
                           </BordDescription>
                           작업 진행
                         </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
+                      </ListTag>
+                      <ListTag>
                         <Description>
                           아티클 페이지 Chrome Lighthouse 기준 90점 이상으로
                           향상 및 아티클 검색 시 구글 첫 페이지 노출
                         </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
+                      </ListTag>
+                      <ListTag>
                         <Description>
-                          Google Analytics, Vercel Analytics 연결을 통한 사용자
-                          데이터 수집 기능 활성화
+                          Google Analytics, Vercel Analytics 연결을 통한{' '}
+                          <BordDescription>
+                            사용자 데이터 수집 기능 활성화
+                          </BordDescription>
                         </Description>
-                      </li>
+                      </ListTag>
                     </ul>
                     <div className="mt-4">
                       <SubTitle>Tech Stack</SubTitle>
@@ -523,15 +663,18 @@ export default async function Page() {
                 <div className="mb-4">
                   <div>
                     <SubTitle>
-                      QUE!{' '}
+                      QUE!
                       <Description>
-                        라이브 스트리밍 에듀 플랫폼
+                        {' '}
+                        / 라이브 스트리밍 에듀 플랫폼
                         <LinkButton url="https://github.com/woohyun1031/TeamQue-FE" />
                       </Description>
                     </SubTitle>
                   </div>
                   <div className="mt-2">
-                    <SoftDescription>2022.03 ~ 2022.04</SoftDescription>
+                    <SoftDescription>
+                      강사 1명과 다수의 학생들의 실시간 동영상 스트리밍 플랫폼
+                    </SoftDescription>
                   </div>
                 </div>
                 <div className="lg:w-500">
@@ -541,74 +684,77 @@ export default async function Page() {
                     </div>
                     <div className="mt-2">
                       <Description>
-                        강사 1명과 다수의 학생들의
-                        <BordDescription>
-                          {' '}
-                          실시간 동영상 스트리밍{' '}
-                        </BordDescription>
-                        플랫폼을 기획으로 진행한 팀프로젝트
+                        비대면 실시간 스트리밍 교육 서비스 제공을 목적으로 만든
+                        협업 프로젝트
                       </Description>
                     </div>
                     <div className="mt-4">
                       <SubTitle>What did I do</SubTitle>
                     </div>
-                    <ul className="mt-6 mb-2 list-disc">
-                      <li className="mb-2 ml-5 pl-2 ">
+                    <ul className="mt-2 mb-2 list-disc">
+                      <ListTag>
                         <Description>
+                          React 18, Typescript 5 기반{' '}
+                          <BordDescription>
+                            웹 서비스 개발, 운영
+                          </BordDescription>
+                        </Description>
+                      </ListTag>
+                      <ListTag>
+                        <Description>
+                          Redux Toolkit을 사용한 전역상태 관리로{' '}
+                          <BordDescription>props 복잡도 개선</BordDescription>
+                        </Description>
+                      </ListTag>
+                      <ListTag>
+                        <Description>
+                          React Query 도입하여 Store, Fetching 영역 분리시켜{' '}
                           <BordDescription>
                             {' '}
-                            React 18, Typescript 5{' '}
+                            서버 상태와 클라이언트 상태 분리
                           </BordDescription>
-                          기반 웹 서비스 개발, 운영
                         </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
+                      </ListTag>
+                      <ListTag>
                         <Description>
-                          <BordDescription> Redux Toolkit</BordDescription>을
-                          사용한 전역상태 관리로 props 복잡도 개선
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          <BordDescription> React Query 도입</BordDescription>
-                          하여 Store, Fetching 영역 분리시켜 서버 상태와
-                          클라이언트 상태 분리
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
-                          <BordDescription> Socket.io</BordDescription>
-                          라이브러리 활용한 채팅, 실시간 반응 기능 구현
-                        </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
-                        <Description>
+                          Socket.io 라이브러리 활용한
                           <BordDescription>
                             {' '}
-                            ThemeProvider(Styled Component)
+                            채팅, 실시간 반응 기능 구현
                           </BordDescription>
-                          로 중복 style 분리시켜 50% style 재사용
                         </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
+                      </ListTag>
+                      <ListTag>
                         <Description>
-                          <BordDescription> Git-Flow</BordDescription>
+                          ThemeProvider(Styled Component) 로
+                          <BordDescription>
+                            {' '}
+                            중복 style 분리시켜 50% style 재사용
+                          </BordDescription>
+                        </Description>
+                      </ListTag>
+                      <ListTag>
+                        <Description>
+                          <LinkDescription href="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4">
+                            Git-Flow{' '}
+                          </LinkDescription>
                           브랜치 전략 도입하여 브랜치 관리
                         </Description>
-                      </li>
-                      <li className="mb-2 ml-5 pl-2 ">
+                      </ListTag>
+                      <ListTag>
                         <Description>
                           프론트엔드 2명, 백엔드 2명, 디자이너 2명의 협업
-                          프로젝트
+                          프로젝트 진행
                         </Description>
-                      </li>
+                      </ListTag>
                     </ul>
                     <div className="mt-4">
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
                     <div className="mt-2">
                       <Description>
-                        TypeScript, React, styled-components, Socket.IO
+                        TypeScript, React, ReactQuery, Redux Toolkit,
+                        styled-components, Socket.IO
                       </Description>
                     </div>
                   </div>
@@ -620,7 +766,8 @@ export default async function Page() {
               <div>
                 <Title value={'Study'} />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
-                  의미있는 기록을 작성합니다.
+                  일과 사이드 프로젝트에서 얻는 경험 또는 새롭게 알게 된
+                  흥미로운 문제들을 기록합니다.
                   <LinkButton url="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4" />
                 </span>
               </div>
@@ -681,6 +828,71 @@ export default async function Page() {
                 <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
                 <div className="mt-10">
                   <GithubCalendar />
+                </div>
+              </div>
+            </BlockWrapper>
+
+            <BlockWrapper>
+              <div className="mb-10">
+                <Title value={'Education'} />
+                <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
+                  More Information?
+                  <LinkButton url="https://www.notion.so/woo1031/WooHyun-Kim-975fd291ae324dfb87663e2bd9aa35ca?pvs=4#b50ca10036c84fd2a5a2489a10690717" />
+                </span>
+                <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
+                <div className="mt-10">
+                  <div className="mb-4">
+                    <div>
+                      <SubTitle>
+                        항해99 부트캠프 5기 심화 웹 프론트엔드 수료
+                        <Description>
+                          {' '}
+                          / 스파르타 코딩 클럽
+                          <LinkButton url="https://spartacodingclub.kr/" />
+                        </Description>
+                      </SubTitle>
+                    </div>
+                    <div className="mt-2">
+                      <SoftDescription>2022.01 ~ 2022.04</SoftDescription>
+                    </div>
+
+                    <ul className="mt-2 mb-2 list-disc">
+                      <ListTag>
+                        <Description>
+                          Web CS, 알고리즘, 자료구조에 대한 기초 및 심화 학습
+                        </Description>
+                      </ListTag>
+                      <ListTag>
+                        <Description>
+                          백엔드, 디자이너와 팀 프로젝트를 통한 협업 경험
+                        </Description>
+                      </ListTag>
+                      <ListTag>
+                        <Description>
+                          React 기초,심화 리뉴얼 강의 내 문법, 코드 검수 및
+                          테스트 매니저 진행
+                        </Description>
+                      </ListTag>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-10">
+                  <div className="mb-4">
+                    <div>
+                      <SubTitle>
+                        정보처리산업기사 취득
+                        <Description>
+                          {' '}
+                          / 한국산업인력공단
+                          <LinkButton url="https://www.hrdkorea.or.kr/" />
+                        </Description>
+                      </SubTitle>
+                    </div>
+                    <div className="mt-2">
+                      <SoftDescription>2023.11</SoftDescription>
+                    </div>
+                  </div>
                 </div>
               </div>
             </BlockWrapper>
