@@ -4,12 +4,12 @@ import CodeBlock from './CodeBlock';
 import TextBlock from './TextBlock';
 import BookmarkBlock from './BookmarkBlock';
 import { Tweet } from 'react-tweet';
-import ListTag from './ListTag';
+import { ListTag } from '#components/common';
 
 export default function Block({ block }: { block: IConvertBlock }) {
   function rc(blockList: IConvertBlock[]) {
     return (
-      <div className="pt-2 pb-1 pl-4">
+      <div className="pb-1 pl-4 pt-2">
         {blockList.map((blo) => (
           <>
             <Block block={blo} />
@@ -23,7 +23,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
   const blocksObj = {
     paragraph: () => {
       return (
-        <div className="mt-6 mb-2 text-sm sm:text-base">
+        <div className="mb-2 mt-6 text-sm sm:text-base">
           <TextBlock text={block.text ?? []} />
           {block.hasChildren && rc(block.children ?? [])}
         </div>
@@ -31,7 +31,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
     },
     numbered_list_item: () => {
       return (
-        <ul className="mt-6 mb-2 list-decimal">
+        <ul className="mb-2 mt-6 list-decimal">
           {block.children?.map((item) => (
             <>
               <ListTag className="text-sm marker:text-gray-700 dark:marker:text-gray-400 sm:text-base">
@@ -45,7 +45,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
     },
     bulleted_list_item: () => {
       return (
-        <ul className="mt-6 mb-2 list-disc">
+        <ul className="mb-2 mt-6 list-disc">
           {block.children?.map((item) => (
             <>
               <ListTag className="text-sm marker:text-gray-700 sm:text-base">
@@ -58,23 +58,23 @@ export default function Block({ block }: { block: IConvertBlock }) {
       );
     },
     heading_1: () => (
-      <h1 className="mt-6 mb-2 border-b text-5xl dark:border-gray-600">
+      <h1 className="mb-2 mt-6 border-b text-5xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h1>
     ),
     heading_2: () => (
-      <h2 className="mt-6 mb-2 border-b text-3xl dark:border-gray-600">
+      <h2 className="mb-2 mt-6 border-b text-3xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h2>
     ),
     heading_3: () => (
-      <h3 className="mt-6 mb-2 border-b text-2xl dark:border-gray-600">
+      <h3 className="mb-2 mt-6 border-b text-2xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h3>
     ),
     quote: () => (
       <blockquote
-        className="mt-6 mb-2 border-l-4 border-l-gray-800 bg-gray-100 py-2 pl-5 text-sm font-bold text-gray-800
+        className="mb-2 mt-6 border-l-4 border-l-gray-800 bg-gray-100 py-2 pl-5 text-sm font-bold text-gray-800
         duration-300 ease-in-out  
         dark:border-l-gray-100
           dark:bg-gray-900
@@ -86,7 +86,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
       </blockquote>
     ),
     image: () => (
-      <div className="mt-6 mb-2">
+      <div className="mb-2 mt-6">
         <img
           src={block.url ?? ''}
           alt="test"
@@ -98,18 +98,18 @@ export default function Block({ block }: { block: IConvertBlock }) {
       </div>
     ),
     code: () => (
-      <div className="mt-6 mb-2">
+      <div className="mb-2 mt-6">
         <CodeBlock {...block} />
       </div>
     ),
-    divider: () => <hr className="border-t pt-1 pb-1 dark:border-gray-600" />,
+    divider: () => <hr className="border-t pb-1 pt-1 dark:border-gray-600" />,
     bookmark: () => (
-      <div className="pt-2 pb-1">
+      <div className="pb-1 pt-2">
         <BookmarkBlock {...block} />
       </div>
     ),
     link_preview: () => (
-      <div className="pt-2 pb-1">
+      <div className="pb-1 pt-2">
         <BookmarkBlock {...block} />
       </div>
     ),
@@ -123,7 +123,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
       if (block?.url && block?.url?.includes('twitter.com')) {
         const tweetId = extractTweetIDFromURL(block.url);
         return (
-          <div className="flex justify-center pt-2 pb-1">
+          <div className="flex justify-center pb-1 pt-2">
             <Tweet id={tweetId} />
           </div>
         );

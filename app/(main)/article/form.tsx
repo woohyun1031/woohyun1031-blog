@@ -1,6 +1,6 @@
 'use client';
 
-import Tag from 'app/components/Tag';
+import { Tag } from '#components/common';
 import useScrollForm from 'app/hooks/useScrollForm';
 import { INotionPageList, IPage } from 'app/api/notion';
 import dayjs from 'dayjs';
@@ -41,7 +41,7 @@ export default function Form(props: {
     <>
       <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-container px-4">
-          <div className="mt-36 mb-8">
+          <div className="mb-8 mt-36">
             <span className="font-sansM text-5xl text-gray-900 dark:text-white">
               {searchParams.type ? searchParams.type : ''}
             </span>
@@ -74,7 +74,7 @@ export default function Form(props: {
                     />
                   )} */}
                     <div className="flex w-full flex-col justify-center">
-                      <span className="mt-4 mb-4 inline-block w-full break-keep text-center font-sansT text-2xl text-gray-900 transition delay-75 duration-500 ease-in-out group-hover:text-red-500 dark:text-white dark:group-hover:text-gray-400 sm:text-left sm:text-3xl lg:mt-0">
+                      <span className="mb-4 mt-4 inline-block w-full break-keep text-center font-sansT text-2xl text-gray-900 transition delay-75 duration-500 ease-in-out group-hover:text-red-500 dark:text-white dark:group-hover:text-gray-400 sm:text-left sm:text-3xl lg:mt-0">
                         {item?.properties?.Name?.title[0].text.content}
                       </span>
                       <span className="mb-4 inline-block break-keep font-sansT text-base text-gray-700 dark:text-gray-200">
@@ -82,7 +82,7 @@ export default function Form(props: {
                       </span>
                     </div>
                   </Link>
-                  <div className="mb-24 flex w-full flex-row flex-wrap gap-y-2 gap-x-4 align-middle">
+                  <div className="mb-24 flex w-full flex-row flex-wrap gap-x-4 gap-y-2 align-middle">
                     <div className="text-center">
                       <span className="align-middle font-sansT text-xs text-gray-500 dark:text-gray-400">
                         {dayjs(item?.created_time).format('MMMM DD, YYYY')}

@@ -1,7 +1,6 @@
 'use client';
 
-import Footer from 'app/components/Footer';
-import Header from 'app/components/Header';
+import { Footer, Header } from '#components/common';
 import { usePathname } from 'next/navigation';
 import React, { createContext } from 'react';
 

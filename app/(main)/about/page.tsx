@@ -1,21 +1,20 @@
 import dayjs from 'dayjs';
-import GithubCalendar from '#components/about/GithubCalendar';
-import { getNotionCompletePageList, IPage } from 'app/api/notion';
-import Link from 'next/link';
-import { BlockWrapper, Title } from '#components/about';
-import { LinkButton } from '#components/LinkButton';
 import {
+  GithubCalendar,
   Description,
   BordDescription,
   SoftDescription,
   LinkDescription,
-} from '#components/about/Description';
-import SubTitle from '#components/about/SubTitle';
+  LinkButton,
+  SubTitle,
+  BlockWrapper,
+  Title,
+} from '#components/about';
+import { getNotionCompletePageList, IPage } from 'app/api/notion';
+import Link from 'next/link';
 import { Metadata } from 'next';
-import Block from '#components/Block';
-import ogs from 'open-graph-scraper';
 import React from 'react';
-import ListTag from '#components/ListTag';
+import { ListTag } from '#components/common';
 
 export const metadata: Metadata = {
   title: '김우현 프론트엔드 엔지니어 이력서',
@@ -214,7 +213,7 @@ export default async function Page() {
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
               <div className="mt-10">
-                <ul className="mt-2 mb-2 list-disc">
+                <ul className="mb-2 mt-2 list-disc">
                   <ListTag>
                     <Description>
                       Webpack, Babel, Eslint 와 같은
@@ -352,7 +351,7 @@ export default async function Page() {
                         </SoftDescription>
                       </div>
                       <div className="mt-1">
-                        <ul className="mt-2 mb-2 list-disc">
+                        <ul className="mb-2 mt-2 list-disc">
                           <ListTag>
                             <Description>
                               클레임 관리, 자가진단 관리 시스템 퍼블리싱, API
@@ -389,7 +388,7 @@ export default async function Page() {
                         </SoftDescription>
                       </div>
                       <div className="mt-1">
-                        <ul className="mt-2 mb-2 list-disc">
+                        <ul className="mb-2 mt-2 list-disc">
                           <ListTag>
                             <Description>
                               Next.js app router의
@@ -477,7 +476,7 @@ export default async function Page() {
                         </SoftDescription>
                       </div>
                       <div className="mt-1">
-                        <ul className="mt-2 mb-2 list-disc">
+                        <ul className="mb-2 mt-2 list-disc">
                           <ListTag>
                             <Description>
                               사용자 설정으로 4개(한,영,중,일)국어 지원해주는
@@ -526,7 +525,7 @@ export default async function Page() {
                         </SoftDescription>
                       </div>
                       <div className="mt-1">
-                        <ul className="mt-2 mb-2 list-disc">
+                        <ul className="mb-2 mt-2 list-disc">
                           <ListTag>
                             <Description>
                               상품 관리, 회원 관리, 주문 공정 관리 등 커머스
@@ -609,7 +608,7 @@ export default async function Page() {
                     <div className="mt-4">
                       <SubTitle>What did I do</SubTitle>
                     </div>
-                    <ul className="mt-2 mb-2 list-disc">
+                    <ul className="mb-2 mt-2 list-disc">
                       <ListTag>
                         <Description>
                           Next.js 13+, Notion, Github API 기반한{' '}
@@ -696,7 +695,7 @@ export default async function Page() {
                     <div className="mt-4">
                       <SubTitle>What did I do</SubTitle>
                     </div>
-                    <ul className="mt-2 mb-2 list-disc">
+                    <ul className="mb-2 mt-2 list-disc">
                       <ListTag>
                         <Description>
                           React 18, Typescript 5 기반{' '}
@@ -861,7 +860,7 @@ export default async function Page() {
                       <SoftDescription>2022.01 ~ 2022.04</SoftDescription>
                     </div>
 
-                    <ul className="mt-2 mb-2 list-disc">
+                    <ul className="mb-2 mt-2 list-disc">
                       <ListTag>
                         <Description>
                           Web CS, 알고리즘, 자료구조에 대한 기초 및 심화 학습

@@ -4,12 +4,11 @@ import {
   getNotionBlogPageList,
 } from 'app/api/notion';
 import { Metadata } from 'next';
-import Tag from 'app/components/Tag';
+import { Tag } from '#components/common';
 import dayjs from 'dayjs';
-import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
-import Block from 'app/components/Block';
+import { Block } from '#components/blocks';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const pages = await getNotionBlogPageList({
@@ -97,7 +96,7 @@ export default async function Page(props: any) {
               <span>{page.properties.Name.title[0].plain_text}</span>
             </div>
 
-            <div className="mb-24 flex w-full flex-row flex-wrap justify-center gap-y-2 gap-x-4 align-middle">
+            <div className="mb-24 flex w-full flex-row flex-wrap justify-center gap-x-4 gap-y-2 align-middle">
               <div className="text-center">
                 <span className="align-middle font-sansT text-xs text-gray-500 dark:text-gray-400">
                   {dayjs(page.created_time).format('MMMM DD, YYYY')}

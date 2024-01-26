@@ -3,7 +3,7 @@ import { fontBold, fontMedium, fontThin } from 'public/styles/fonts';
 import React from 'react';
 import { Providers } from './providers';
 import { Analytics } from '@vercel/analytics/react';
-import GoogleAnalytics from 'app/components/GoogleAnalytics';
+import { GoogleAnalytics } from '#components/common';
 
 interface RootLayoutProps {
   children: React.ReactNode;

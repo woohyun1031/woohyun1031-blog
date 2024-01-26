@@ -1,5 +1,3 @@
-import LoadingComponent from 'app/components/Loading';
-
 export default function Loading() {
   return (
     <div className="flex w-full animate-pulse justify-center">

@@ -1,12 +1,10 @@
-import LoadingComponent from 'app/components/Loading';
-
 export default function Loading() {
   const items = 3;
 
   return (
     <div className="flex w-full animate-pulse justify-center">
       <div className="min-h-screen w-full max-w-container px-4">
-        <div className="mt-36 mb-8" />
+        <div className="mb-8 mt-36" />
         {[...new Array(items)].map((_, idx) => (
           <div
             className={`flex flex-col items-start ${idx == 0 ? '' : 'mt-24'}`}
