@@ -61,47 +61,9 @@ export default async function Page() {
     return notitonList;
   }
 
-  // async function getNotionBlock(src: string) {
-  //   if (!src) return null;
-  //   const { result, error } = await ogs({
-  //     url: src,
-  //   });
-  //   if (error) {
-  //     return (
-  //       <Block
-  //         block={{
-  //           id: 'notion block',
-  //           type: 'bookmark',
-  //         }}
-  //       />
-  //     );
-  //   }
-  //   const favicon = result.favicon?.startsWith('http')
-  //     ? result.favicon
-  //     : result.favicon?.startsWith('//')
-  //     ? `http:${result.favicon}`
-  //     : new URL(result.requestUrl ?? '').origin + '/favicon.ico';
-  //   const response = await fetch(favicon);
-  //   const status =
-  //     response.status >= 400 && response.status < 600 ? false : true;
-  //   return (
-  //     <Block
-  //       block={{
-  //         id: 'notion block',
-  //         type: 'bookmark',
-  //         title: result?.ogTitle ?? result?.twitterTitle ?? '',
-  //         description: result.ogDescription || result.twitterDescription || '',
-  //         image: result.ogImage?.[0]?.url,
-  //         favicon: status ? favicon : null,
-  //         url: result.requestUrl,
-  //       }}
-  //     />
-  //   );
-  // }
-
   return (
     <>
-      <div className="flex w-full justify-center ">
+      <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-container px-8">
           <div className="mt-36 flex w-full flex-col justify-center px-12">
             <div>
@@ -112,21 +74,57 @@ export default async function Page() {
                   </span>
                   <div className="mt-6 block leading-snug  lg:mt-0 lg:inline">
                     <SubTitle>
-                      frontend engineer & product engineer & professional
-                      student
+                      Frontend Developer & Product Engineer & Professional
+                      Student
                     </SubTitle>
                   </div>
                 </div>
               </div>
               <div className="mt-2 lg:mt-6 lg:w-3/4">
+                {/* <ul className="mb-2 mt-2 list-disc">
+                  <ListTag>
+                    <Description>
+                      안녕하세요, 2년차 프론트엔드 엔지니어 김우현입니다.
+                    </Description>
+                  </ListTag>
+                  <ListTag>
+                    <Description>
+                      요즘에는 일과 취미 모두를 개발에 집중하고 있습니다.
+                    </Description>
+                  </ListTag>
+                  <ListTag>
+                    <Description>
+                      흥미로운 경험과 문제들을 꾸준히 개인 노션에 기록하고
+                      가끔은 블로그에도 업로드합니다.
+                    </Description>
+                  </ListTag>
+                  <ListTag>
+                    <Description>
+                      프론트엔드 전문성을 갖추면서도 백엔드와 인프라에도 관심을
+                      가지고 성장하고 있습니다.
+                    </Description>
+                  </ListTag>
+                  <ListTag>
+                    <Description>
+                      개인적으로 풀스택 엔지니어로 발전하기 위해 노력하고
+                      있습니다.
+                    </Description>
+                  </ListTag>
+                  <ListTag>
+                    <Description>
+                      현재 단기간 내 목표는 한 개발 팀을 이끌 역량이 되는 리드
+                      개발자로 성장하는 것입니다.
+                    </Description>
+                  </ListTag>
+                </ul> */}
                 <div className="mb-2">
                   <Description>
-                    안녕하세요, 2년차 프론트엔드 엔지니어
+                    안녕하세요, 2년차 프론트엔드 개발자
                     <BordDescription> 김우현</BordDescription>
-                    입니다.
+                    입니다<span className="text-2xl">👋</span>
                   </Description>
                 </div>
-                <div className="mb-2">
+                {/* <div className="mb-2">
                   <Description>
                     중견 고객사 애플리케이션의
                     <BordDescription>
@@ -151,46 +149,53 @@ export default async function Page() {
                     </LinkDescription>{' '}
                     풀스택 엔지니어로 성장하기 위해 노력하고 있습니다.
                   </Description>
+                </div> */}
+                <div className="mb-2">
+                  <Description>
+                    고객사 어플리케이션의 프론트엔드 파트를 설계하고 구축하는
+                    일을 하고 있습니다<span className="text-2xl">🚀</span>{' '}
+                    TypeScript와 React.js, Next.js를 사용하지만 Vanilla.js로
+                    개인 작업 하는 걸 선호합니다.
+                  </Description>
                 </div>
                 <div className="mb-2">
                   <Description>
-                    요즘에는 일과 취미 모두를 개발에 집중하고 있습니다. 웹 CS
-                    학습과 맡은 프로젝트의 문제를 해결하는 것을 좋아합니다.
-                    이러한 경험과 흥미로운 문제들을 꾸준히
+                    요즘에는 일과 취미 모두를 개발에 집중하고 있습니다. 이러한
+                    경험과 흥미로운 문제들을 꾸준히
                     <LinkDescription href="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4">
                       {' '}
-                      노션에 기록하고 있습니다.{' '}
+                      🔗노션에 기록하고 있습니다.{' '}
                     </LinkDescription>
                     가끔 직접적으로 접하는 문제들에 대해 노션과 연동하여
                     <LinkDescription href="/article">
                       {' '}
-                      블로그에 글을 업로드 하기도 합니다.
+                      🔗이곳에 글을 업로드 하기도 합니다.
                     </LinkDescription>
                   </Description>
                 </div>
               </div>
               <div className="mt-4">
-                <span className=" cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                <span className=" cursor-pointer font-sansM text-sm text-red-400 hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
                   <Link href="mailto:ktkwhms3@gmail.com" target="_blank">
                     e-mail
                   </Link>
                 </span>
 
-                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                <span className="ml-6 cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
                   <Link
-                    href="https://woo1031.notion.site/WooHyun-Kim-975fd291ae324dfb87663e2bd9aa35ca?pvs=4"
+                    href="https://woo1031.notion.site/2-e87c8b2c792c45f0af4fa68b96661411?pvs=4"
                     target="_blank"
                   >
                     resume
                   </Link>
                 </span>
-                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                <span className="ml-6 cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
                   <Link href="https://github.com/woohyun1031" target="_blank">
                     github
                   </Link>
                 </span>
 
-                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                <span className="ml-6 cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
                   <Link
                     href="https://woo1031.notion.site/woo1031/WooHyun-Kim-69ab520d7e2648d1aec863db6a50a282"
                     target="_blank"
@@ -199,7 +204,7 @@ export default async function Page() {
                   </Link>
                 </span>
 
-                <span className="ml-6 cursor-pointer font-sansT text-sm text-red-400 hover:text-gray-400 dark:text-red-400 dark:hover:text-gray-400 sm:text-base">
+                <span className="ml-6 cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
                   <Link href="https://woo1031.vercel.app/" target="_blank">
                     blog
                   </Link>
@@ -207,7 +212,7 @@ export default async function Page() {
               </div>
             </div>
 
-            <BlockWrapper>
+            {/* <BlockWrapper>
               <div>
                 <Title value={'Main Point'} />
               </div>
@@ -297,7 +302,7 @@ export default async function Page() {
                   </ListTag>
                 </ul>
               </div>
-            </BlockWrapper>
+            </BlockWrapper> */}
 
             <BlockWrapper>
               <div>
@@ -326,15 +331,46 @@ export default async function Page() {
                     <div className="mt-4">
                       <SubTitle>Description</SubTitle>
                     </div>
-                    <div className="mt-2 font-sansT text-sm text-gray-600 dark:text-gray-400 sm:text-base">
+                    <div className="mt-2">
                       <Description>
                         고객사의 비즈니스 요구사항에 맞는 애플리케이션 개발 및
-                        유지보수를 진행하는 개발팀에서 프론트엔드 개발자를
-                        맡았습니다.
+                        유지보수를 진행하는 개발팀에서 프론트엔드를
+                        담당했습니다.
+                      </Description>
+                    </div>
+                    <div>
+                      <Description>
+                        애플리케이션의 프론트엔드 파트 설계 및 구축 등 다양한
+                        작업을 해왔으며 이 과정에서 Docker와 GitLab을 활용한
+                        CI/CD와 인프라 관련 경험을 쌓았습니다.
                       </Description>
                     </div>
 
-                    <div className="mt-6">
+                    {/* <div className="mt-6">
+                      <SubTitle>What did I do</SubTitle>
+                    </div>
+                    <div className="mt-2">
+                      <ul className="mb-2 mt-2 list-disc">
+                        <ListTag>
+                          <Description>
+                            고객사 애플리케이션의 프론트엔드 파트 설계 및 구축
+                          </Description>
+                        </ListTag>
+                        <ListTag>
+                          <Description>
+                            Docker와 GitLab을 활용한 CI/CD와 인프라 관련 경험
+                          </Description>
+                        </ListTag>
+                        <ListTag>
+                          <Description>
+                            Webpack, Babel, Eslint와 같은 프론트 기술 환경 구축
+                            및 소규모 프로젝트 리드 경험
+                          </Description>
+                        </ListTag>
+                      </ul>
+                    </div> */}
+
+                    {/* <div className="mt-6">
                       <div className="mt-2">
                         <SubTitle>
                           아워홈
@@ -369,9 +405,9 @@ export default async function Page() {
                           </ListTag>
                         </ul>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="mt-4">
+                    {/* <div className="mt-4">
                       <div className="mt-2">
                         <SubTitle>
                           메이비원
@@ -458,9 +494,9 @@ export default async function Page() {
                           </ListTag>
                         </ul>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="mt-4">
+                    {/* <div className="mt-4">
                       <div className="mt-2">
                         <SubTitle>
                           풀무원 <Description> / 사내 앱 mKWP 개발</Description>
@@ -507,9 +543,9 @@ export default async function Page() {
                           </ListTag>
                         </ul>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="mt-4">
+                    {/* <div className="mt-4">
                       <div className="mt-2">
                         <SubTitle>
                           신세계아이앤씨 & Spvrkd
@@ -543,16 +579,16 @@ export default async function Page() {
                           </ListTag>
                         </ul>
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="mt-6">
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
                     <div className="mt-2">
                       <Description>
-                        TypeScript, NextJS 13, React 18, ReactNative,
-                        ReactQuery, Redux, styled-components, SCSS, Less, GitLab
-                        CI, AWS S3, Docker
+                        TypeScript, Next.js, React.js, ReactNative, ReactQuery,
+                        Redux, styled-components, SCSS, Less, GitLab CI, AWS S3,
+                        Docker ...
                       </Description>
                     </div>
                   </div>
@@ -560,9 +596,9 @@ export default async function Page() {
               </div>
             </BlockWrapper>
 
-            <BlockWrapper>
+            {/* <BlockWrapper>
               <div>
-                <Title value={'Project'} />
+                <Title value={'Personal Project'} />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   More Information?
                   <LinkButton url="https://www.notion.so/woo1031/WooHyun-Kim-975fd291ae324dfb87663e2bd9aa35ca?pvs=4#ca18c3f0d6144adf884583f80e399fb0" />
@@ -764,14 +800,13 @@ export default async function Page() {
                   </div>
                 </div>
               </div>
-            </BlockWrapper>
+            </BlockWrapper> */}
 
             <BlockWrapper>
               <div>
                 <Title value={'Study'} />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
-                  일과 사이드 프로젝트에서 얻는 경험 또는 새롭게 알게 된
-                  흥미로운 문제들을 기록합니다.
+                  새롭게 알게 된 흥미로운 문제들을 기록합니다.
                   <LinkButton url="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4" />
                 </span>
               </div>
@@ -811,14 +846,6 @@ export default async function Page() {
                     <LinkButton url="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4" />
                   </Description>
                 </div>
-                {/* <div className="mt-2">
-                  <SoftDescription>
-                    {dayjs(value.created_time).format('YYYY-MM-DD HH:mm:ss')}
-                  </SoftDescription>
-                </div> */}
-                {/* {await getNotionBlock(
-                  'https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4',
-                )} */}
               </div>
             </BlockWrapper>
 
@@ -836,7 +863,7 @@ export default async function Page() {
               </div>
             </BlockWrapper>
 
-            <BlockWrapper>
+            {/* <BlockWrapper>
               <div className="mb-10">
                 <Title value={'Education'} />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
@@ -899,7 +926,7 @@ export default async function Page() {
                   </div>
                 </div>
               </div>
-            </BlockWrapper>
+            </BlockWrapper> */}
 
             <BlockWrapper>
               <div className="mb-10 text-center">

@@ -41,7 +41,7 @@ const Header = () => {
         isShow ? 'h-32 lg:h-14' : 'h-14'
       } dark:bg-black dark:bg-opacity-70`}
     >
-      <div className="flex w-full justify-center py-3 px-6">
+      <div className="flex w-full justify-center px-6 py-3">
         <div className="mx-2 flex w-full max-w-header flex-wrap items-center justify-between">
           <Link
             href="/article"
@@ -58,7 +58,7 @@ const Header = () => {
               setIsShow(false);
             }}
           >
-            <span className="text-xl font-extralight text-gray-800 dark:text-white">
+            <span className="text-xl font-extralight text-gray-800 duration-300 ease-in-out hover:text-red-400 active:text-red-600 dark:text-white dark:hover:text-red-400 dark:active:text-red-600">
               woohyun.kim
             </span>
           </Link>
