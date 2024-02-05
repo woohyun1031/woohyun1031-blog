@@ -90,7 +90,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <img
           src={block.url ?? ''}
           alt="test"
-          style={{ objectFit: 'cover', width: '100%' }}
+          className="w-full border-1 border-gray-400 object-cover dark:border-gray-700"
         />
         <p className="text-xs text-gray-600">
           {block.caption && <TextBlock text={block.caption ?? []} />}

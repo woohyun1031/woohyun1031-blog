@@ -7,7 +7,11 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const CodeBlock = (block: IConvertBlock) => {
   return (
-    <SyntaxHighlighter language={block.language} style={vscDarkPlus}>
+    <SyntaxHighlighter
+      language={block.language}
+      style={vscDarkPlus}
+      className="border-1 dark:border-gray-700"
+    >
       {block.code || ''}
     </SyntaxHighlighter>
   );

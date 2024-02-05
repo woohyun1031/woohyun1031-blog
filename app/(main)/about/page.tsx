@@ -69,10 +69,10 @@ export default async function Page() {
             <div>
               <div>
                 <div>
-                  <span className="block font-sansM text-4xl leading-snug text-gray-900 dark:text-gray-50 sm:text-5xl lg:inline">
+                  <span className="block font-sansM text-4xl leading-snug text-gray-900 duration-300 ease-in-out dark:text-gray-50 sm:text-5xl lg:inline">
                     WooHyun Kim{' '}
                   </span>
-                  <div className="mt-6 block leading-snug  lg:mt-0 lg:inline">
+                  <div className="mt-6 block leading-snug duration-300 ease-in-out lg:mt-0 lg:inline">
                     <SubTitle>
                       Frontend Developer & Product Engineer & Professional
                       Student

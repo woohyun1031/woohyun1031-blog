@@ -1,6 +1,6 @@
 'use client';
 
-import { Tag } from '#components/common';
+import { SkeletonComponent, Tag } from '#components/common';
 import useScrollForm from 'app/hooks/useScrollForm';
 import { INotionPageList, IPage } from 'app/api/notion';
 import dayjs from 'dayjs';
@@ -77,7 +77,7 @@ export default function Form(props: {
                       <span className="mb-4 mt-4 inline-block w-full break-keep text-center font-sansT text-2xl text-gray-900 transition delay-75 duration-500 ease-in-out group-hover:text-red-500 dark:text-white dark:group-hover:text-gray-400 sm:text-left sm:text-3xl lg:mt-0">
                         {item?.properties?.Name?.title[0].text.content}
                       </span>
-                      <span className="mb-4 inline-block break-keep font-sansT text-base text-gray-700 dark:text-gray-200">
+                      <span className="mb-4 inline-block break-keep font-sansT text-base text-gray-700 delay-75 duration-500 group-hover:text-red-500 dark:text-gray-200 dark:group-hover:text-gray-400">
                         {item?.properties?.Subtitle.rich_text[0]?.plain_text}
                       </span>
                     </div>
@@ -124,20 +124,7 @@ export default function Form(props: {
               );
             },
           )}
-          {!!hasNextPage && (
-            <>
-              <div className="mt-24 flex animate-pulse flex-col items-start">
-                <div className="mb-4 h-10 w-full rounded-full bg-gray-300 opacity-40 dark:bg-gray-600"></div>
-                <div className="mb-4 h-5 w-3/4 rounded-full bg-gray-200 opacity-40 dark:bg-gray-700"></div>
-                <div className="h-4 w-1/3 rounded-full bg-gray-300 opacity-40 dark:bg-gray-700"></div>
-              </div>
-              <div className="mt-24 flex animate-pulse flex-col items-start">
-                <div className="mb-4 h-10 w-full rounded-full bg-gray-300 opacity-40 dark:bg-gray-600"></div>
-                <div className="mb-4 h-5 w-3/4 rounded-full bg-gray-200 opacity-40 dark:bg-gray-700"></div>
-                <div className="h-4 w-1/3 rounded-full bg-gray-300 opacity-40 dark:bg-gray-700"></div>
-              </div>
-            </>
-          )}
+          {!!hasNextPage && <SkeletonComponent count={2} />}
         </div>
       </div>
     </>

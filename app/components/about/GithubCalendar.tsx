@@ -20,6 +20,8 @@ export default function GithubCalendar() {
             margin: 'auto',
             marginTop: 12,
             color: isDark ? 'white' : 'black',
+            transitionDuration: '300ms',
+            transitionTimingFunction: 'ease-in-out',
           }}
           theme={{
             light: ['#efefef', '47e000'],

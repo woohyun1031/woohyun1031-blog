@@ -18,7 +18,7 @@ const Tag = (props: ITagProps) => {
                 hover:text-red-400
                 active:text-red-600
                 
-                dark:text-gray-400                
+                dark:text-red-400                
                 dark:hover:text-gray-100                
       `}
       {...(!!props.onClick && {
