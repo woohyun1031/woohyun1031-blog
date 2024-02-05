@@ -175,7 +175,7 @@ export default async function Page() {
                 </div>
               </div>
               <div className="mt-4">
-                <span className=" cursor-pointer font-sansM text-sm text-red-400 hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
+                <span className="cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
                   <Link href="mailto:ktkwhms3@gmail.com" target="_blank">
                     e-mail
                   </Link>
@@ -345,7 +345,6 @@ export default async function Page() {
                         CI/CD와 인프라 관련 경험을 쌓았습니다.
                       </Description>
                     </div>
-
                     {/* <div className="mt-6">
                       <SubTitle>What did I do</SubTitle>
                     </div>
@@ -369,7 +368,6 @@ export default async function Page() {
                         </ListTag>
                       </ul>
                     </div> */}
-
                     {/* <div className="mt-6">
                       <div className="mt-2">
                         <SubTitle>
@@ -406,7 +404,6 @@ export default async function Page() {
                         </ul>
                       </div>
                     </div> */}
-
                     {/* <div className="mt-4">
                       <div className="mt-2">
                         <SubTitle>
@@ -495,7 +492,6 @@ export default async function Page() {
                         </ul>
                       </div>
                     </div> */}
-
                     {/* <div className="mt-4">
                       <div className="mt-2">
                         <SubTitle>
@@ -544,7 +540,6 @@ export default async function Page() {
                         </ul>
                       </div>
                     </div> */}
-
                     {/* <div className="mt-4">
                       <div className="mt-2">
                         <SubTitle>
@@ -580,7 +575,6 @@ export default async function Page() {
                         </ul>
                       </div>
                     </div> */}
-
                     <div className="mt-6">
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
@@ -589,6 +583,14 @@ export default async function Page() {
                         TypeScript, Next.js, React.js, ReactNative, ReactQuery,
                         Redux, styled-components, SCSS, Less, GitLab CI, AWS S3,
                         Docker ...
+                      </Description>
+                    </div>
+
+                    <div className="mt-6">
+                      <Description>
+                        <LinkDescription href="https://woo1031.notion.site/2-e87c8b2c792c45f0af4fa68b96661411?pvs=4">
+                          🔗 자세한 내용은 이력서를 확인해주세요
+                        </LinkDescription>
                       </Description>
                     </div>
                   </div>
@@ -842,8 +844,8 @@ export default async function Page() {
               <div className="mt-10">
                 <div className="mt-2">
                   <Description>
-                    More Information?
-                    <LinkButton url="https://woo1031.notion.site/development-engineering-study-record-a43f5fe01a5d46efac38f0c6cc0893c5?pvs=4" />
+                    More Records ?
+                    <LinkButton url="https://woo1031.notion.site/development-engineering-database-2d6ebc5912ce4bc38a1ec85b857a62cd" />
                   </Description>
                 </div>
               </div>
