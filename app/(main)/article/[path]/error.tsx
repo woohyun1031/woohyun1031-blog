@@ -19,7 +19,7 @@ export default function Error({
         <div className="mt-36" />
         <div className="flex flex-col items-center justify-center">
           <p className="mb-9 font-sansT text-5xl text-gray-800 dark:text-gray-400">
-            Error 404 - Not Found
+            Something went wrong!
           </p>
           <p className="font-sansT">Sorry, This page does not exist :(</p>
           {/* <button onClick={() => reset()}>Try again</button> */}

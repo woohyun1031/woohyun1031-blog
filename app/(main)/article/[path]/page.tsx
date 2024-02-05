@@ -76,8 +76,12 @@ export default async function Page(props: any) {
     return (
       <div className="mt-36 flex w-full justify-center">
         <div className="min-h-screen w-full max-w-innerContainer px-4">
-          <div className="flex flex-col items-center">
-            <div>404 페이지를 찾을 수 없습니다</div>
+          <div className="flex flex-col items-center justify-center">
+            <p className="mb-9 font-sansT text-5xl text-gray-800 dark:text-gray-400">
+              Error 404 - Not Found
+            </p>
+            <p className="font-sansT">Sorry, This page does not exist :(</p>
+            {/* <button onClick={() => reset()}>Try again</button> */}
           </div>
         </div>
       </div>
