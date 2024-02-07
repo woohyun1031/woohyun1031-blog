@@ -9,14 +9,18 @@ import dayjs from 'dayjs';
 import React from 'react';
 import Link from 'next/link';
 import { Block } from '#components/blocks';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const pages = await getNotionBlogPageList({
     pages: 100,
   });
-  const target = pages?.results.find(
+  const target = pages?.results?.find(
     (item) => encodeURI(item.path) === params.path,
   );
+  if (!target?.id) {
+    notFound();
+  }
   const product = await getNotionPageInfo(target?.id);
   return {
     title: product?.properties?.Name?.title?.[0]?.plain_text,
@@ -72,24 +76,15 @@ export default async function Page(props: any) {
   const target = pages?.results.find(
     (item) => encodeURI(item.path) === props.params.path,
   );
-  if (!target)
-    return (
-      <div className="mt-36 flex w-full justify-center">
-        <div className="min-h-screen w-full max-w-innerContainer px-4">
-          <div className="flex flex-col items-center justify-center">
-            <p className="mb-9 font-sansT text-5xl text-gray-800 dark:text-gray-400">
-              Error 404 - Not Found
-            </p>
-            <p className="font-sansT">Sorry, This page does not exist :(</p>
-            {/* <button onClick={() => reset()}>Try again</button> */}
-          </div>
-        </div>
-      </div>
-    );
+  if (!target) {
+    notFound();
+  }
 
   const page = await getNotionPageInfo(target.id as string);
   const data = await getNotionPageDetail(target.id as string);
-  if (!page) return;
+  if (!page) {
+    notFound();
+  }
   const tagList = page?.properties?.Type?.multi_select ?? [];
   return (
     <>
