@@ -18,42 +18,45 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   const target = pages?.results?.find(
     (item) => encodeURI(item.path) === params.path,
   );
-  if (!target?.id) {
-    notFound();
-  }
-  const product = await getNotionPageInfo(target?.id);
-  return {
-    title: product?.properties?.Name?.title?.[0]?.plain_text,
-    description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
-    openGraph: {
+
+  if (target?.id) {
+    const product = await getNotionPageInfo(target?.id);
+    return {
       title: product?.properties?.Name?.title?.[0]?.plain_text,
       description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
-      type: 'article',
-      url: `https://woo1031.vercel.app/article/${target?.path ?? ''}`,
-      images: [
-        {
-          url: '/image.png',
-          alt: 'article image',
-        },
+      openGraph: {
+        title: product?.properties?.Name?.title?.[0]?.plain_text,
+        description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+        type: 'article',
+        url: `https://woo1031.vercel.app/article/${target?.path ?? ''}`,
+        images: [
+          {
+            url: '/image.png',
+            alt: 'article image',
+          },
+        ],
+        siteName: 'WooHyun Devlog',
+        locale: 'en_US',
+      },
+      twitter: {
+        title: product?.properties?.Name?.title?.[0]?.plain_text,
+        description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+        card: 'summary',
+        creator: '@nextjs',
+        images: ['/image.png'],
+      },
+      keywords: [
+        'Next.js',
+        'React',
+        'JavaScript',
+        'FrondEnd',
+        ...product?.properties?.Type?.multi_select?.map(
+          (item: any) => item.name,
+        ),
       ],
-      siteName: 'WooHyun Devlog',
-      locale: 'en_US',
-    },
-    twitter: {
-      title: product?.properties?.Name?.title?.[0]?.plain_text,
-      description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
-      card: 'summary',
-      creator: '@nextjs',
-      images: ['/image.png'],
-    },
-    keywords: [
-      'Next.js',
-      'React',
-      'JavaScript',
-      'FrondEnd',
-      ...product?.properties?.Type?.multi_select?.map((item: any) => item.name),
-    ],
-  };
+    };
+  }
+  return {};
 }
 
 export async function generateStaticParams() {
@@ -79,7 +82,6 @@ export default async function Page(props: any) {
   if (!target) {
     notFound();
   }
-
   const page = await getNotionPageInfo(target.id as string);
   const data = await getNotionPageDetail(target.id as string);
   if (!page) {
