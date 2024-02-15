@@ -85,11 +85,13 @@ export default async function Page(props: any) {
     (item) => encodeURI(item.path) === props.params.path,
   );
   if (!target) {
+    console.log('404 notFound Error', props, target);
     notFound();
   }
   const page = await getNotionPageInfo(target.id as string);
   const data = await getNotionPageDetail(target.id as string);
   if (!page) {
+    console.log('404 notFound Error', props, page);
     notFound();
   }
   const tagList = page?.properties?.Type?.multi_select ?? [];
