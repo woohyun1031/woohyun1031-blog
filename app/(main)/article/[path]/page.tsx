@@ -18,9 +18,9 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   const target = pages?.results?.find(
     (item) => encodeURI(item.path) === params.path,
   );
-
   if (target?.id) {
     const product = await getNotionPageInfo(target?.id);
+    console.log(product);
     return {
       title: product?.properties?.Name?.title?.[0]?.plain_text,
       description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
@@ -45,12 +45,18 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         creator: '@nextjs',
         images: ['/image.png'],
       },
-      robots: {
-        index: true,
-        googleBot: {
-          index: true,
-        },
-      },
+      ...[
+        product?.id !== 'df27adbd-36c8-4e7a-b355-1e4ef88f02d6'
+          ? {
+              robots: {
+                index: true,
+                googleBot: {
+                  index: true,
+                },
+              },
+            }
+          : {},
+      ],
       keywords: [
         'Next.js',
         'React',
