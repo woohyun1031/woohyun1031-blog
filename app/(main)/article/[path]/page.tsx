@@ -20,7 +20,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   );
   if (target?.id) {
     const product = await getNotionPageInfo(target?.id);
-    console.log(product);
     return {
       title: product?.properties?.Name?.title?.[0]?.plain_text,
       description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
