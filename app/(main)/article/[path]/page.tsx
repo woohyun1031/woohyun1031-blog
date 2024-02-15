@@ -44,18 +44,12 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         creator: '@nextjs',
         images: ['/image.png'],
       },
-      ...[
-        product?.id !== 'df27adbd-36c8-4e7a-b355-1e4ef88f02d6'
-          ? {
-              robots: {
-                index: true,
-                googleBot: {
-                  index: true,
-                },
-              },
-            }
-          : {},
-      ],
+      robots: {
+        index: true,
+        googleBot: {
+          index: true,
+        },
+      },
       keywords: [
         'Next.js',
         'React',
