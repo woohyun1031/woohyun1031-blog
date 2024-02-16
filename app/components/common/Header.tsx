@@ -10,10 +10,10 @@ const Header = () => {
   const [isShow, setIsShow] = React.useState(false);
   const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
   const pathName = usePathname();
-  // const searchParams = useSearchParams();
-  const searchParams = new URLSearchParams(
-    typeof window !== 'undefined' ? window.location.search : '',
-  );
+  const searchParams = useSearchParams();
+  // const searchParams = new URLSearchParams(
+  //   typeof window !== 'undefined' ? window.location.search : '',
+  // );
   const pathNames = pathName?.split('/') ?? [];
 
   const isArticleListPage =
