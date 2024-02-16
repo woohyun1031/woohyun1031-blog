@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { DarkModeThemeContext } from 'app/providers';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-const Header = () => {
+export const Header = () => {
   const [isShow, setIsShow] = React.useState(false);
   const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
   const pathName = usePathname();
@@ -217,4 +217,10 @@ const Header = () => {
   );
 };
 
-export default Header;
+export const HeaderWapper = () => {
+  return (
+    <Suspense>
+      <Header />
+    </Suspense>
+  );
+};

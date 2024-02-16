@@ -1,6 +1,6 @@
 'use client';
 
-import { Footer, Header } from '#components/common';
+import { Footer, HeaderWapper } from '#components/common';
 import { usePathname } from 'next/navigation';
 import React, { createContext } from 'react';
 
@@ -35,7 +35,7 @@ export function Providers({
     <DarkModeThemeContext.Provider
       value={{ isDark: isDarkMode, setIsDark: setIsDarkMode }}
     >
-      <Header />
+      <HeaderWapper />
       {children}
       <Footer />
     </DarkModeThemeContext.Provider>
