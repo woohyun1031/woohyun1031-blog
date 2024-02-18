@@ -1,7 +1,7 @@
 import { SkeletonComponent } from '#components/common';
 
 export default function Loading() {
-  const items = 3;
+  const items = 1;
 
   return (
     <div className="flex w-full animate-pulse justify-center">
