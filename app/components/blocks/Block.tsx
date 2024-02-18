@@ -34,8 +34,8 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <ul className="mb-2 mt-6 list-decimal">
           {block.children?.map((item) => (
             <>
-              <ListTag className="text-sm marker:text-gray-700 dark:marker:text-gray-400 sm:text-base">
-                <TextBlock text={item.text ?? []} />
+              <ListTag className="text-sm marker:text-sm marker:text-gray-700 dark:marker:text-gray-400 sm:text-base sm:marker:text-base">
+                <TextBlock text={item.text ?? []} className="!font-sansM" />
               </ListTag>
               {item.hasChildren && rc(item.children ?? [])}
             </>

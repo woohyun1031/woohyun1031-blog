@@ -1,7 +1,7 @@
 import React from 'react';
 import { Noto_Sans_KR, Noto_Serif_KR, Gothic_A1 } from 'next/font/google';
 
-// Noto_Sans_KR
+// Gothic_A1
 export const fontBold = Gothic_A1({
   weight: '700',
   display: 'fallback',
