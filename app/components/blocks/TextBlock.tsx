@@ -28,10 +28,10 @@ const TextBlock = ({
               [key: string]: React.ComponentProps<'span'>['className'];
             } = {
               code: 'rounded bg-gray-100 p-1 text-red-500 text-xs sm:text-sm transition-colors dark:bg-gray-700 ',
-              bold: 'font-bold',
-              italic: 'italic',
-              strikethrough: 'line-through',
-              underline: 'underline underline-offset-2',
+              bold: '!font-bold',
+              italic: '!italic',
+              strikethrough: '!line-through',
+              underline: '!underline !underline-offset-2',
             };
             const matchingAnnotation = Object.entries(annotations)
               .filter(([, value]) => !!value)
