@@ -64,32 +64,30 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
     }) {
       const originData = await getArticlesDataFromDB({
         page_size,
-        ...(start_cursor ? { start_cursor } : {}),
-        ...(type
+        filter: type
           ? {
-              filter: {
-                and: [
-                  {
-                    property: 'isBlog',
-                    checkbox: {
-                      equals: true,
-                    },
+              and: [
+                {
+                  property: 'isBlog',
+                  checkbox: {
+                    equals: true,
                   },
-                  {
-                    property: 'Type',
-                    multi_select: {
-                      contains: type,
-                    },
+                },
+                {
+                  property: 'Type',
+                  multi_select: {
+                    contains: type,
                   },
-                ],
-              },
+                },
+              ],
             }
           : {
               property: 'isBlog',
               checkbox: {
                 equals: true,
               },
-            }),
+            },
+        ...(start_cursor ? { start_cursor } : {}),
       });
 
       const articles = originData?.results.map((item) => {
@@ -104,14 +102,13 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
 
     async function recursiveFetch(start_cursor: string | null, limit: number) {
       if (limit) {
-        const count = limit - 1;
         const { originData, articles } = await getArticlesWithOrigin({
           page_size: 100,
           ...(start_cursor ? { start_cursor } : {}),
           ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
         });
         resultArray.push(...(articles ?? []));
-        await recursiveFetch(originData?.next_cursor, count);
+        await recursiveFetch(originData?.next_cursor, limit - 1);
         return originData?.has_more ?? false;
       } else {
         const { originData, articles } = await getArticlesWithOrigin({
