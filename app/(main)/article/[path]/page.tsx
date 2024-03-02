@@ -1,7 +1,8 @@
 import {
   getNotionPageInfo,
   getNotionPageDetail,
-  getNotionBlogPageList,
+  getArticlesDataFromDB,
+  getPathFromTitle,
 } from 'app/api/notion';
 import { Metadata } from 'next';
 import { Tag } from '#components/common';
@@ -11,13 +12,23 @@ import Link from 'next/link';
 import { Block } from '#components/blocks';
 import { notFound } from 'next/navigation';
 
-export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const pages = await getNotionBlogPageList({
-    pages: 100,
+async function getArticles(pages: number) {
+  const originData = await getArticlesDataFromDB({
+    page_size: pages,
   });
-  const target = pages?.results?.find(
-    (item) => encodeURI(item.path) === params.path,
-  );
+
+  const articles = originData?.results.map((item) => {
+    const path = getPathFromTitle(
+      item.properties?.Name?.title?.[0]?.plain_text ?? '',
+    );
+    return { ...item, path };
+  });
+
+  return articles;
+}
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const articles = await getArticles(100);
+  const target = articles?.find((item) => encodeURI(item.path) === params.path);
   if (target?.id) {
     const product = await getNotionPageInfo(target?.id);
     return {
@@ -65,11 +76,9 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const pageList = await getNotionBlogPageList({
-    pages: 100,
-  });
-  return pageList?.results
-    ? pageList?.results
+  const articles = await getArticles(100);
+  return articles
+    ? articles
         .map((res) => res?.path)
         .map((path) => ({
           path,
@@ -78,10 +87,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page(props: any) {
-  const pages = await getNotionBlogPageList({
-    pages: 100,
-  });
-  const target = pages?.results.find(
+  const articles = await getArticles(100);
+  const target = articles?.find(
     (item) => encodeURI(item.path) === props.params.path,
   );
   if (!target) {

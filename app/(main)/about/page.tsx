@@ -10,7 +10,7 @@ import {
   BlockWrapper,
   Title,
 } from '#components/about';
-import { getNotionCompletePageList, IPage } from 'app/api/notion';
+import { getArticlesDataFromDB, IPage } from 'app/api/notion';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import React from 'react';
@@ -57,7 +57,9 @@ export const dynamic = 'force-dynamic';
 
 export default async function Page() {
   async function getNotionPageList() {
-    const notitonList = await getNotionCompletePageList(5);
+    const notitonList = await getArticlesDataFromDB({
+      page_size: 5,
+    });
     return notitonList;
   }
 

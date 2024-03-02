@@ -51,28 +51,6 @@ export const getPathFromTitle = (title: string): string => {
     .toLowerCase();
 };
 
-export const getNotionCompletePageList = async (pages: number) => {
-  if (!pages) return;
-  try {
-    return await notionApi
-      .post<INotionPageList<IPage>>(
-        `/databases/${process.env.NOTION_DATABASE}/query`,
-        {
-          page_size: pages ?? 0,
-          filter: {
-            property: 'Status',
-            status: {
-              equals: '완료',
-            },
-          },
-        },
-      )
-      .then((response) => response.data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 export const getArticlesDataFromDB = async ({
   page_size,
   start_cursor,
@@ -84,7 +62,6 @@ export const getArticlesDataFromDB = async ({
 }) => {
   try {
     if (!page_size) return;
-
     return await notionApi
       .post<INotionPageList<IPage>>(
         `/databases/${process.env.NOTION_DATABASE}/query`,
@@ -95,65 +72,6 @@ export const getArticlesDataFromDB = async ({
         },
       )
       .then((response): INotionPageList<IPage> => response.data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export const getNotionBlogPageList = async ({
-  pages,
-  start_cursor,
-  type,
-}: {
-  pages: number;
-  start_cursor?: string;
-  type?: string;
-}) => {
-  if (!pages) return;
-  const options = type
-    ? {
-        and: [
-          {
-            property: 'isBlog',
-            checkbox: {
-              equals: true,
-            },
-          },
-          {
-            property: 'Type',
-            multi_select: {
-              contains: type,
-            },
-          },
-        ],
-      }
-    : {
-        property: 'isBlog',
-        checkbox: {
-          equals: true,
-        },
-      };
-  try {
-    return await notionApi
-      .post<INotionPageList<IPage>>(
-        `/databases/${process.env.NOTION_DATABASE}/query`,
-        {
-          page_size: pages ?? 0,
-          start_cursor: start_cursor ?? undefined,
-          filter: options,
-        },
-      )
-      .then(
-        (response): INotionPageList<Partial<IPage> & { path: string }> => ({
-          ...response.data,
-          results: response.data.results.map((item) => {
-            const path = getPathFromTitle(
-              item.properties?.Name?.title?.[0]?.plain_text ?? '',
-            );
-            return { ...item, path };
-          }),
-        }),
-      );
   } catch (error) {
     console.error(error);
   }
