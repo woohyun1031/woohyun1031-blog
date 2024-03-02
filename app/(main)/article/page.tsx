@@ -1,4 +1,4 @@
-import { getNotionBlogPageList, IPage } from 'app/api/notion';
+import { getArticlesDataFromDB, getPathFromTitle, IPage } from 'app/api/notion';
 import { IDefaultPageProps } from 'app/types/types';
 import { Metadata } from 'next';
 import Form from './form';
@@ -49,34 +49,84 @@ interface ISearchParams {
 
 export default async function Page(props: IDefaultPageProps<ISearchParams>) {
   async function getPages(pages: number) {
-    const array: (Partial<IPage> & { path: string })[] = [];
+    const resultArray: (Partial<IPage> & { path: string })[] = [];
     const requestCount = Math.floor(pages / 100);
     const lastRequestCount = pages % 100;
 
-    async function rc(start_cursor: string | null, limit: number) {
+    async function getArticlesWithOrigin({
+      start_cursor,
+      page_size,
+      type,
+    }: {
+      start_cursor?: string;
+      page_size: number;
+      type?: string;
+    }) {
+      const originData = await getArticlesDataFromDB({
+        page_size,
+        ...(start_cursor ? { start_cursor } : {}),
+        ...(type
+          ? {
+              filter: {
+                and: [
+                  {
+                    property: 'isBlog',
+                    checkbox: {
+                      equals: true,
+                    },
+                  },
+                  {
+                    property: 'Type',
+                    multi_select: {
+                      contains: type,
+                    },
+                  },
+                ],
+              },
+            }
+          : {
+              property: 'isBlog',
+              checkbox: {
+                equals: true,
+              },
+            }),
+      });
+
+      const articles = originData?.results.map((item) => {
+        const path = getPathFromTitle(
+          item.properties?.Name?.title?.[0]?.plain_text ?? '',
+        );
+        return { ...item, path };
+      });
+
+      return { originData, articles };
+    }
+
+    async function recursiveFetch(start_cursor: string | null, limit: number) {
       if (limit) {
         const count = limit - 1;
-        const data = await getNotionBlogPageList({
-          pages: 100,
+        const { originData, articles } = await getArticlesWithOrigin({
+          page_size: 100,
           ...(start_cursor ? { start_cursor } : {}),
           ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
         });
-        array.push(...(data?.results ? data?.results : []));
-        await rc(data?.next_cursor, count);
-        return data?.has_more ?? false;
+        resultArray.push(...(articles ?? []));
+        await recursiveFetch(originData?.next_cursor, count);
+        return originData?.has_more ?? false;
       } else {
-        const data = await getNotionBlogPageList({
-          pages: lastRequestCount,
+        const { originData, articles } = await getArticlesWithOrigin({
+          page_size: lastRequestCount,
           ...(start_cursor ? { start_cursor } : {}),
           ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
         });
-        array.push(...(data?.results.length ? data?.results : []));
-        return data?.has_more ?? false;
+        resultArray.push(...(articles ?? []));
+        return originData?.has_more ?? false;
       }
     }
-    const hasMore = await rc(null, requestCount);
-    return { array, hasMore };
+    const hasMore = await recursiveFetch(null, requestCount);
+    return { array: resultArray, hasMore };
   }
+
   const { array, hasMore } = await getPages(
     props.searchParams.page ? Number(props.searchParams.page) : 10,
   );

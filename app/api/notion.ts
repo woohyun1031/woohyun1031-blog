@@ -73,6 +73,33 @@ export const getNotionCompletePageList = async (pages: number) => {
   }
 };
 
+export const getArticlesDataFromDB = async ({
+  page_size,
+  start_cursor,
+  filter,
+}: {
+  page_size: number;
+  start_cursor?: string;
+  filter?: any;
+}) => {
+  try {
+    if (!page_size) return;
+
+    return await notionApi
+      .post<INotionPageList<IPage>>(
+        `/databases/${process.env.NOTION_DATABASE}/query`,
+        {
+          page_size: page_size ?? 0,
+          start_cursor: start_cursor ?? undefined,
+          filter: filter,
+        },
+      )
+      .then((response): INotionPageList<IPage> => response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getNotionBlogPageList = async ({
   pages,
   start_cursor,
@@ -158,6 +185,7 @@ export const getNotionBlockChildren = async (id: string) => {
     }>(`/blocks/${id}/children`, {
       params: { start_cursor: _start_cursor ?? undefined },
     });
+
     const resultArr = [..._array, ...blockChildren.data.results];
     if (blockChildren.data?.next_cursor && blockChildren.data.has_more) {
       return rc(blockChildren.data?.next_cursor, id, resultArr);
