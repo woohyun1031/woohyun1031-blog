@@ -3,7 +3,7 @@
 import dayjs from 'dayjs';
 import React from 'react';
 import GitHubCalendar from 'react-github-calendar';
-import { DarkModeThemeContext } from 'app/providers';
+import { DarkModeThemeContext } from 'app/(main)/providers';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 

@@ -3,7 +3,7 @@
 import React, { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DarkModeThemeContext } from 'app/providers';
+import { DarkModeThemeContext } from 'app/(main)/providers';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 export const Header = () => {
