@@ -2,7 +2,6 @@ import {
   getNotionPageInfo,
   getNotionPageDetail,
   getArticlesDataFromDB,
-  getPathFromTitle,
 } from '#apis/notion/notion';
 import { Metadata } from 'next';
 import { Tag } from '#components/common';
@@ -11,6 +10,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Block } from '#components/blocks';
 import { notFound } from 'next/navigation';
+import getPathFromTitle from '#utils/notion/getPathFromTitle';
 
 async function getArticles(pages: number) {
   const originData = await getArticlesDataFromDB({

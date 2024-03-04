@@ -1,8 +1,8 @@
-import { notionApi } from 'app/apis/index';
+import { notionApi } from '#apis/index';
 import convertBlock, {
   convertList2Block,
   IConvertBlock,
-} from 'app/utils/notions/convertBlock';
+} from '#utils/notion/convertBlock';
 import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export interface IPageFile {
@@ -38,18 +38,6 @@ export interface INotionPageList<T> {
   results: T[];
   type: 'page';
 }
-
-export const getPathFromTitle = (title: string): string => {
-  return (title || '')
-    .replace(/ /g, '-')
-    .replace(/[^a-zA-Z0-9가-힣-]/g, '')
-    .replace(/--/g, '-')
-    .replace(/-$/, '')
-    .replace(/^-/, '')
-    .replace(/--/g, '-')
-    .trim()
-    .toLowerCase();
-};
 
 export const getArticlesDataFromDB = async ({
   page_size,

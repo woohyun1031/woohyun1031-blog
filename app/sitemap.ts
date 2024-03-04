@@ -1,7 +1,5 @@
-import {
-  getArticlesDataFromDB,
-  getPathFromTitle,
-} from 'app/apis/notion/notion';
+import getPathFromTitle from '#utils/notion/getPathFromTitle';
+import { getArticlesDataFromDB } from 'app/apis/notion/notion';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
