@@ -3,7 +3,7 @@ import {
   getNotionPageDetail,
   getArticlesDataFromDB,
   getPathFromTitle,
-} from 'app/api/notion';
+} from '#apis/notion/notion';
 import { Metadata } from 'next';
 import { Tag } from '#components/common';
 import dayjs from 'dayjs';

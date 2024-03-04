@@ -1,4 +1,4 @@
-import { githubApi } from 'app/api/index';
+import { githubApi } from 'app/apis/index';
 
 export interface ICommitData {
   sha: string;

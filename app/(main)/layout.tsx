@@ -1,5 +1,5 @@
-import 'public/styles/globals.css';
-import { fontBold, fontMedium, fontThin } from 'public/styles/fonts';
+import '#styles/globals.css';
+import { fontBold, fontMedium, fontThin } from '#styles/fonts';
 import React from 'react';
 import { Providers } from './providers';
 import { Analytics } from '@vercel/analytics/react';

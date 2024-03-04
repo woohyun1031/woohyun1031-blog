@@ -10,11 +10,10 @@ import {
   BlockWrapper,
   Title,
 } from '#components/about';
-import { getArticlesDataFromDB, IPage } from 'app/api/notion';
+import { getArticlesDataFromDB, IPage } from '#apis/notion/notion';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import React from 'react';
-import { ListTag } from '#components/common';
 
 export const metadata: Metadata = {
   title: '김우현 프론트엔드 엔지니어 이력서',

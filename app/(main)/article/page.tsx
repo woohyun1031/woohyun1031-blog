@@ -1,5 +1,9 @@
-import { getArticlesDataFromDB, getPathFromTitle, IPage } from 'app/api/notion';
-import { IDefaultPageProps } from 'app/types/types';
+import {
+  getArticlesDataFromDB,
+  getPathFromTitle,
+  IPage,
+} from '#apis/notion/notion';
+import { IDefaultPageProps } from '#types/types';
 import { Metadata } from 'next';
 import Form from './form';
 
