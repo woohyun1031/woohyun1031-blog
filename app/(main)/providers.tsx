@@ -1,6 +1,6 @@
 'use client';
 
-import { Footer, HeaderWapper } from '#components/common';
+import { Footer, HeaderWapper } from '@components/common';
 import { usePathname } from 'next/navigation';
 import React, { createContext } from 'react';
 

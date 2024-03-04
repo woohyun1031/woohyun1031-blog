@@ -11,12 +11,12 @@ const config: Config = {
   // Add more setup options before each test is run
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    '^#/(.*)$': '<rootDir>/app/$1',
-    '^#apis/(.*)$': '<rootDir>/app/apis/$1',
-    '^#components/(.*)$': '<rootDir>/app/components/$1',
-    '^#hooks/(.*)$': '<rootDir>/app/hooks/$1',
+    '^@/(.*)$': '<rootDir>/app/$1',
+    '^@apis/(.*)$': '<rootDir>/app/apis/$1',
+    '^@components/(.*)$': '<rootDir>/app/components/$1',
+    '^@hooks/(.*)$': '<rootDir>/app/hooks/$1',
     '^#types/(.*)$': '<rootDir>/app/types/$1',
-    '^#utils/(.*)$': '<rootDir>/app/utils/$1',
+    '^@utils/(.*)$': '<rootDir>/app/utils/$1',
   },
   coverageProvider: 'v8',
   testEnvironment: 'node',

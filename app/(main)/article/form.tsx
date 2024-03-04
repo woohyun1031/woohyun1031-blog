@@ -1,8 +1,8 @@
 'use client';
 
-import { SkeletonComponent, Tag } from '#components/common';
-import useScrollForm from '#hooks/useScrollForm';
-import { INotionPageList, IPage } from '#apis/notion/notion';
+import { SkeletonComponent, Tag } from '@components/common';
+import useScrollForm from '@hooks/useScrollForm';
+import { INotionPageList, IPage } from '@apis/notion/notion';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import React from 'react';

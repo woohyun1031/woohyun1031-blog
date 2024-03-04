@@ -1,4 +1,4 @@
-import { SkeletonComponent } from '#components/common';
+import { SkeletonComponent } from '@components/common';
 
 export default function Loading() {
   const items = 1;

@@ -3,14 +3,14 @@
     "target": "es5",
     "baseUrl": ".",
     "paths": {
-      "#apis/*": ["app/apis/*"],
-      "#components/*": ["app/components/*"],
-      "#hooks/*": ["app/hooks/*"],
+      "@apis/*": ["app/apis/*"],
+      "@components/*": ["app/components/*"],
+      "@hooks/*": ["app/hooks/*"],
       "#types/*": ["app/types/*"],
-      "#utils/*": ["app/utils/*"],
-      "#public/*": ["public"],
-      "#styles/*": ["public/styles/*"],
-      "#images/*": ["public/images/*"]
+      "@utils/*": ["app/utils/*"],
+      "@public/*": ["public"],
+      "@styles/*": ["public/styles/*"],
+      "@images/*": ["public/images/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

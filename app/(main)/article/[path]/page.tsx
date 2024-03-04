@@ -2,19 +2,25 @@ import {
   getNotionPageInfo,
   getNotionPageDetail,
   getArticlesDataFromDB,
-} from '#apis/notion/notion';
+} from '@apis/notion/notion';
 import { Metadata } from 'next';
-import { Tag } from '#components/common';
+import { Tag } from '@components/common';
 import dayjs from 'dayjs';
 import React from 'react';
 import Link from 'next/link';
-import { Block } from '#components/blocks';
+import { Block } from '@components/blocks';
 import { notFound } from 'next/navigation';
-import getPathFromTitle from '#utils/notion/getPathFromTitle';
+import getPathFromTitle from '@utils/notion/getPathFromTitle';
 
 async function getArticles(pages: number) {
   const originData = await getArticlesDataFromDB({
     page_size: pages,
+    filter: {
+      property: 'isBlog',
+      checkbox: {
+        equals: true,
+      },
+    },
   });
 
   const articles = originData?.results.map((item) => {

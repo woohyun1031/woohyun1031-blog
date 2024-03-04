@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IConvertBlock } from 'app/utils/notions/convertBlock';
+import { IConvertBlock } from '@utils/notion/convertBlock';
 
 const BookmarkBlock = (block: IConvertBlock) => {
   return (
@@ -10,7 +10,7 @@ const BookmarkBlock = (block: IConvertBlock) => {
       className="flex h-24 w-full justify-between rounded-md border-1 border-gray-300 dark:border-gray-700"
       target="_blank"
     >
-      <div className="max-w-full flex-bookmark overflow-hidden py-3 px-4">
+      <div className="max-w-full flex-bookmark overflow-hidden px-4 py-3">
         <h3 className="mt-0 overflow-hidden text-ellipsis whitespace-nowrap text-base sm:text-lg">
           {block.title}
         </h3>

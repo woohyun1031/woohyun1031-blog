@@ -9,8 +9,8 @@ import {
   SubTitle,
   BlockWrapper,
   Title,
-} from '#components/about';
-import { getArticlesDataFromDB, IPage } from '#apis/notion/notion';
+} from '@components/about';
+import { getArticlesDataFromDB, IPage } from '@apis/notion/notion';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import React from 'react';
@@ -58,6 +58,12 @@ export default async function Page() {
   async function getNotionPageList() {
     const notitonList = await getArticlesDataFromDB({
       page_size: 5,
+      filter: {
+        property: 'Status',
+        status: {
+          equals: '완료',
+        },
+      },
     });
     return notitonList;
   }
