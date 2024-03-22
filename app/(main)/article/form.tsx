@@ -2,10 +2,10 @@
 
 import { SkeletonComponent, Tag } from '@components/common';
 import useScrollForm from '@hooks/useScrollForm';
-import { INotionPageList, IPage } from '@apis/notion/notion';
+import { INotionPageList, IPage } from '@api/notion/notion';
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export default function Form(props: {
   array: (Partial<IPage> & { path: string })[];
@@ -38,7 +38,7 @@ export default function Form(props: {
   );
 
   return (
-    <>
+    <Fragment>
       <div className="flex w-full justify-center">
         <div className="min-h-screen w-full max-w-container px-4">
           <div className="mb-8 mt-36">
@@ -127,6 +127,6 @@ export default function Form(props: {
           {!!hasNextPage && <SkeletonComponent count={2} />}
         </div>
       </div>
-    </>
+    </Fragment>
   );
 }

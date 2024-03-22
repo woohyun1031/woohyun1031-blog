@@ -1,4 +1,4 @@
-import { notionApi } from '@apis/index';
+import { notionApi } from '@api/index';
 import convertBlock, {
   convertList2Block,
   IConvertBlock,

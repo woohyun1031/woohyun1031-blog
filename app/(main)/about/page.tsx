@@ -10,7 +10,7 @@ import {
   BlockWrapper,
   Title,
 } from '@components/about';
-import { getArticlesDataFromDB, IPage } from '@apis/notion/notion';
+import { getArticlesDataFromDB, IPage } from '@api/notion/notion';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import React from 'react';

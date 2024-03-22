@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 export function LoadingComponent() {
   return (
     <div className="flex h-screen w-screen items-center justify-center">
@@ -12,7 +14,7 @@ export function LoadingComponent() {
 
 export function SkeletonComponent(props: { count: number }) {
   return (
-    <>
+    <Fragment>
       {[...new Array(props.count)].map((_, idx) => (
         <div className={`flex flex-col items-start ${idx == 0 ? '' : 'mt-24'}`}>
           <div className="mb-4 h-8 w-full rounded-full bg-gray-300 opacity-40 dark:bg-gray-600"></div>
@@ -21,6 +23,6 @@ export function SkeletonComponent(props: { count: number }) {
           <div className="h-3 w-1/3 rounded-full bg-gray-300 opacity-40 dark:bg-gray-700"></div>
         </div>
       ))}
-    </>
+    </Fragment>
   );
 }

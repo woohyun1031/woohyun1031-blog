@@ -3,7 +3,7 @@
     "target": "es5",
     "baseUrl": ".",
     "paths": {
-      "@apis/*": ["app/apis/*"],
+      "@apis/*": ["app/api/*"],
       "@api/*": ["app/api/*"],
       "@components/*": ["app/components/*"],
       "@hooks/*": ["app/hooks/*"],
