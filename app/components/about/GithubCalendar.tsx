@@ -1,6 +1,5 @@
 'use client';
 
-import dayjs from 'dayjs';
 import React from 'react';
 import GitHubCalendar from 'react-github-calendar';
 import { DarkModeThemeContext } from 'app/(main)/providers';

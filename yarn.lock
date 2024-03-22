@@ -2071,13 +2071,6 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/open-graph-scraper@^4.8.2":
-  version "4.8.5"
-  resolved "https://registry.yarnpkg.com/@types/open-graph-scraper/-/open-graph-scraper-4.8.5.tgz#c3faff744c6e8d37e289283522a4590e67700377"
-  integrity sha512-VaLETp904KkNylNuQLF1jjSYhAIDoEatCpAjzKsPXNSYS1EL0v1GxNMfFLzQ5IMoKmdddgvYpLtGpksHbjeR5Q==
-  dependencies:
-    "@types/node" "*"
-
 "@types/prop-types@*":
   version "15.7.11"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.11.tgz#2596fb352ee96a1379c657734d4b913a613ad563"

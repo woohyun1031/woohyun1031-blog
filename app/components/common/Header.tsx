@@ -15,14 +15,12 @@ export const Header = () => {
   //   typeof window !== 'undefined' ? window.location.search : '',
   // );
   const pathNames = pathName?.split('/') ?? [];
-
   const isArticleListPage =
     pathNames?.length <= 2 &&
     pathNames?.includes('article') &&
     !searchParams?.has('type');
 
   const isAboutPage = pathNames?.includes('about');
-
   const changeTheme = React.useCallback(() => {
     const localTheme = localStorage.getItem('theme');
     if (localTheme) {
