@@ -1,5 +1,4 @@
 import {
-  getNotionPageInfo,
   getNotionPageDetail,
   getArticlesDataFromDB,
 } from '@apis/notion/notion';
@@ -11,6 +10,7 @@ import Link from 'next/link';
 import { Block } from '@components/blocks';
 import { notFound } from 'next/navigation';
 import getPathFromTitle from '@utils/notion/getPathFromTitle';
+import { getNotionPage } from '@api/notion/apis';
 
 async function getArticles(pages: number) {
   const originData = await getArticlesDataFromDB({
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   const articles = await getArticles(100);
   const target = articles?.find((item) => encodeURI(item.path) === params.path);
   if (target?.id) {
-    const product = await getNotionPageInfo(target?.id);
+    const product = await getNotionPage(target?.id);
     return {
       title: product?.properties?.Name?.title?.[0]?.plain_text,
       description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
@@ -101,7 +101,7 @@ export default async function Page(props: any) {
     console.log('404 notFound Error', props, target);
     notFound();
   }
-  const page = await getNotionPageInfo(target.id as string);
+  const page = await getNotionPage(target.id as string);
   const data = await getNotionPageDetail(target.id as string);
   if (!page) {
     console.log('404 notFound Error', props, page);
