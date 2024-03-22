@@ -1,11 +1,11 @@
-import getPathFromTitle from '@utils/notion/getPathFromTitle';
-import { getArticlesDataFromDB } from '@api/notion/notion';
+import getPathFromTitle from '@utils/notion/formatTitleToPath';
+import { getArticlesFromDB } from '@apis/notion';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://woo1031.vercel.app';
 
-  const originData = await getArticlesDataFromDB({
+  const originData = await getArticlesFromDB({
     page_size: 100,
     filter: {
       property: 'isBlog',

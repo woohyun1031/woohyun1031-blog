@@ -1,6 +1,6 @@
-import { getArticlesDataFromDB, IPage } from '@api/notion/notion';
+import { getArticlesFromDB, IPage } from '@apis/notion';
 import { IDefaultPageProps } from '#types/types';
-import getPathFromTitle from '@utils/notion/getPathFromTitle';
+import getPathFromTitle from '@utils/notion/formatTitleToPath';
 import { Metadata } from 'next';
 import Form from './form';
 
@@ -63,7 +63,7 @@ export default async function Page(props: IDefaultPageProps<ISearchParams>) {
       page_size: number;
       type?: string;
     }) {
-      const originData = await getArticlesDataFromDB({
+      const originData = await getArticlesFromDB({
         page_size,
         filter: type
           ? {

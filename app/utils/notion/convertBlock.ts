@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 import ogs from 'open-graph-scraper';
 import { URL } from 'url';
 import AWS from 'aws-sdk';
+import getImageExtension from './getImageExtension';
 
 export interface IConvertBlock {
   id: string;
@@ -24,20 +25,7 @@ export interface IConvertBlock {
 }
 export type TBlockListType = 'numbered_list_item' | 'bulleted_list_item';
 
-// Content-Type에서 이미지의 확장자 추출하는 함수
-function getImageExtension(contentType: string) {
-  switch (contentType) {
-    case 'image/jpeg':
-      return 'jpg';
-    case 'image/png':
-      return 'png';
-    case 'image/gif':
-      return 'gif';
-    default:
-      return 'jpg';
-  }
-}
-export default async function convertBlock(
+export async function convertToCustomBlock(
   block: BlockObjectResponse,
 ): Promise<IConvertBlock> {
   try {
@@ -201,7 +189,7 @@ export default async function convertBlock(
   }
 }
 
-export function convertList2Block(blocks: IConvertBlock[]) {
+export function convertListBlock(blocks: IConvertBlock[]) {
   let listTypeArray: IConvertBlock[] = [];
   let listType: TBlockListType | null = null;
   const result = blocks.reduce((pre: IConvertBlock[], cur: IConvertBlock) => {
@@ -226,7 +214,7 @@ export function convertList2Block(blocks: IConvertBlock[]) {
         ...cur,
         ...(cur.hasChildren && cur.children
           ? {
-              children: convertList2Block(cur.children),
+              children: convertListBlock(cur.children),
             }
           : {}),
       });

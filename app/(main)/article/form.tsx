@@ -1,11 +1,11 @@
 'use client';
 
+import React, { Fragment } from 'react';
+import { IPage } from '@apis/notion';
 import { SkeletonComponent, Tag } from '@components/common';
 import useScrollForm from '@hooks/useScrollForm';
-import { INotionPageList, IPage } from '@api/notion/notion';
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import React, { Fragment } from 'react';
 
 export default function Form(props: {
   array: (Partial<IPage> & { path: string })[];

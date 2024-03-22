@@ -1,4 +1,4 @@
-import getPathFromTitle from '@utils/notion/getPathFromTitle';
+import getPathFromTitle from '@utils/notion/formatTitleToPath';
 
 describe('getPathFromTitle 기능 테스트', () => {
   it('공백을 "-"로 대체체한다.', () => {

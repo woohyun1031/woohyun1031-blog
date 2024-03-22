@@ -10,7 +10,7 @@ import {
   BlockWrapper,
   Title,
 } from '@components/about';
-import { getArticlesDataFromDB, IPage } from '@api/notion/notion';
+import { getArticlesFromDB, IPage } from '@apis/notion';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import React from 'react';
@@ -56,7 +56,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function Page() {
   async function getNotionPageList() {
-    const notitonList = await getArticlesDataFromDB({
+    const notitonList = await getArticlesFromDB({
       page_size: 5,
       filter: {
         property: 'Status',

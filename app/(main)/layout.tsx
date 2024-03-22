@@ -63,6 +63,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <title>woohyun blog</title>
       </head>
       <body className="duration-300 ease-in-out dark:bg-black dark:text-gray-300">
         <main>

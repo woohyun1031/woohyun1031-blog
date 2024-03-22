@@ -1,8 +1,4 @@
-import {
-  getNotionPageDetail,
-  getArticlesDataFromDB,
-  getNotionPageInfo,
-} from '@api/notion/notion';
+import { getArticlesFromDB, getPage, IPage } from '@apis/notion';
 import { Metadata } from 'next';
 import { Tag } from '@components/common';
 import dayjs from 'dayjs';
@@ -10,10 +6,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Block } from '@components/blocks';
 import { notFound } from 'next/navigation';
-import getPathFromTitle from '@utils/notion/getPathFromTitle';
+import getPathFromTitle from '@utils/notion/formatTitleToPath';
+import getTotalPageBlocks from '@utils/notion/getTotalPageBlocks';
 
 async function getArticles(pages: number) {
-  const originData = await getArticlesDataFromDB({
+  const originData = await getArticlesFromDB({
     page_size: pages,
     filter: {
       property: 'isBlog',
@@ -32,11 +29,12 @@ async function getArticles(pages: number) {
 
   return articles;
 }
+
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const articles = await getArticles(100);
   const target = articles?.find((item) => encodeURI(item.path) === params.path);
   if (target?.id) {
-    const product = await getNotionPageInfo(target?.id);
+    const product = await getPage<IPage>(target?.id).then((res) => res.data);
     return {
       title: product?.properties?.Name?.title?.[0]?.plain_text,
       description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
@@ -101,9 +99,9 @@ export default async function Page(props: any) {
     console.log('404 notFound Error', props, target);
     notFound();
   }
-  const page = await getNotionPageInfo(target.id as string);
-  const data = await getNotionPageDetail(target.id as string);
-  if (!page) {
+  const page = await getPage<IPage>(target.id).then((res) => res.data);
+  const data = await getTotalPageBlocks(target.id as string);
+  if (!page || !data?.length) {
     console.log('404 notFound Error', props, page);
     notFound();
   }
