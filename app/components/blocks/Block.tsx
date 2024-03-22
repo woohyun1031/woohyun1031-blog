@@ -23,7 +23,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
   const blocksObj = {
     paragraph: () => {
       return (
-        <div className="mb-2 mt-6 text-sm sm:text-base">
+        <div className="mb-6 mt-2 text-xs sm:text-sm">
           <TextBlock text={block.text ?? []} />
           {block.hasChildren && rc(block.children ?? [])}
         </div>
@@ -34,7 +34,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <ul className="mb-2 mt-6 list-decimal">
           {block.children?.map((item) => (
             <>
-              <ListTag className="text-sm marker:text-sm marker:text-gray-700 dark:marker:text-gray-400 sm:text-base sm:marker:text-base">
+              <ListTag className="text-xs marker:text-xs marker:text-gray-700 dark:marker:text-gray-400 sm:text-sm sm:marker:text-sm">
                 <TextBlock text={item.text ?? []} className="!font-sansM" />
               </ListTag>
               {item.hasChildren && rc(item.children ?? [])}
@@ -48,7 +48,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
         <ul className="mb-2 mt-6 list-disc">
           {block.children?.map((item) => (
             <>
-              <ListTag className="text-sm marker:text-gray-700 sm:text-base">
+              <ListTag className="text-xs marker:text-gray-700 sm:text-sm">
                 <TextBlock text={item.text ?? []} />
               </ListTag>
               {item.hasChildren && rc(item.children ?? [])}
@@ -58,35 +58,35 @@ export default function Block({ block }: { block: IConvertBlock }) {
       );
     },
     heading_1: () => (
-      <h1 className="mb-2 mt-6 border-b text-5xl dark:border-gray-600">
+      <h1 className="mb-6 mt-6 border-spacing-y-10 border-b text-4xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h1>
     ),
     heading_2: () => (
-      <h2 className="mb-2 mt-6 border-b text-3xl dark:border-gray-600">
+      <h2 className="mb-6 mt-12 border-spacing-y-10 border-b text-2xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h2>
     ),
     heading_3: () => (
-      <h3 className="mb-2 mt-6 border-b text-2xl dark:border-gray-600">
+      <h3 className="mb-6 mt-12 border-spacing-y-10 border-b text-xl dark:border-gray-600">
         <TextBlock text={block.text ?? []} />
       </h3>
     ),
     quote: () => (
       <blockquote
-        className="mb-2 mt-6 border-l-4 border-l-gray-800 bg-gray-100 py-2 pl-5 text-sm font-bold text-gray-800
+        className="mb-6 mt-2 border-l-4 border-l-gray-800 bg-gray-100 py-2 pl-5 pr-2 text-xs font-bold text-gray-800
         duration-300 ease-in-out  
         dark:border-l-gray-100
           dark:bg-gray-900
           dark:text-gray-200
-          sm:text-base
+          sm:text-sm
         "
       >
         <TextBlock text={block.text ?? []} />
       </blockquote>
     ),
     image: () => (
-      <div className="mb-2 mt-6">
+      <div className="mb-6 mt-2">
         <img
           src={block.url ?? ''}
           alt="test"
@@ -98,7 +98,7 @@ export default function Block({ block }: { block: IConvertBlock }) {
       </div>
     ),
     code: () => (
-      <div className="mb-2 mt-6">
+      <div className="mb-6 mt-2">
         <CodeBlock {...block} />
       </div>
     ),
