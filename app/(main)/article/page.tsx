@@ -1,8 +1,7 @@
-import { getArticlesFromDB, IPage } from '@apis/notion';
 import { IDefaultPageProps } from '#types/types';
-import getPathFromTitle from '@utils/notion/formatTitleToPath';
 import { Metadata } from 'next';
 import Form from './form';
+import getTargetPages from '@utils/notion/getTargetPages';
 
 export const dynamic = 'force-dynamic';
 
@@ -49,87 +48,12 @@ interface ISearchParams {
 }
 
 export default async function Page(props: IDefaultPageProps<ISearchParams>) {
-  async function getPages(pages: number) {
-    const resultArray: (Partial<IPage> & { path: string })[] = [];
-    const requestCount = Math.floor(pages / 100);
-    const lastRequestCount = pages % 100;
-
-    async function getArticlesWithOrigin({
-      start_cursor,
-      page_size,
-      type,
-    }: {
-      start_cursor?: string;
-      page_size: number;
-      type?: string;
-    }) {
-      const originData = await getArticlesFromDB({
-        page_size,
-        filter: type
-          ? {
-              and: [
-                {
-                  property: 'isBlog',
-                  checkbox: {
-                    equals: true,
-                  },
-                },
-                {
-                  property: 'Type',
-                  multi_select: {
-                    contains: type,
-                  },
-                },
-              ],
-            }
-          : {
-              property: 'isBlog',
-              checkbox: {
-                equals: true,
-              },
-            },
-        ...(start_cursor ? { start_cursor } : {}),
-      });
-
-      const articles = originData?.results.map((item) => {
-        const path = getPathFromTitle(
-          item.properties?.Name?.title?.[0]?.plain_text ?? '',
-        );
-        return { ...item, path };
-      });
-
-      return { originData, articles };
-    }
-
-    async function recursiveFetch(start_cursor: string | null, limit: number) {
-      if (limit) {
-        const { originData, articles } = await getArticlesWithOrigin({
-          page_size: 100,
-          ...(start_cursor ? { start_cursor } : {}),
-          ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
-        });
-        resultArray.push(...(articles ?? []));
-        await recursiveFetch(originData?.next_cursor, limit - 1);
-        return originData?.has_more ?? false;
-      } else {
-        const { originData, articles } = await getArticlesWithOrigin({
-          page_size: lastRequestCount,
-          ...(start_cursor ? { start_cursor } : {}),
-          ...(props.searchParams.type ? { type: props.searchParams.type } : {}),
-        });
-        resultArray.push(...(articles ?? []));
-        return originData?.has_more ?? false;
-      }
-    }
-    const hasMore = await recursiveFetch(null, requestCount);
-    return { array: resultArray, hasMore };
-  }
-
-  const { array, hasMore } = await getPages(
+  const { array, has_more } = await getTargetPages(
     props.searchParams.page ? Number(props.searchParams.page) : 10,
+    props.searchParams.type,
   );
   if (!array.length) return;
   return (
-    <Form array={array} hasMore={hasMore} searchParams={props.searchParams} />
+    <Form array={array} hasMore={has_more} searchParams={props.searchParams} />
   );
 }
