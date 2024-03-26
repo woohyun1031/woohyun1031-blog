@@ -6,6 +6,7 @@
       "@apis/*": ["app/api/*"],
       "@api/*": ["app/api/*"],
       "@components/*": ["app/components/*"],
+      "@constants/*": ["app/constants/*"],
       "@hooks/*": ["app/hooks/*"],
       "#types/*": ["app/types/*"],
       "@utils/*": ["app/utils/*"],
