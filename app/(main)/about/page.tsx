@@ -62,9 +62,10 @@ export default async function Page() {
                 <div className="mb-2">
                   <Description>
                     고객사 어플리케이션의 프론트엔드 파트를 설계하고 구축하는
-                    일을 하고 있습니다<span className="text-2xl">🚀</span>{' '}
-                    TypeScript와 React.js, Next.js를 사용하지만 Vanilla.js로
-                    개인 작업 하는 걸 선호합니다.
+                    일을 하고 있습니다<span className="text-2xl">🚀</span>
+                    <br />
+                    TypeScript와 React.js, Next.js를 주로 사용하지만
+                    Vanilla.js로 개인 작업 하는 것도 선호합니다.
                   </Description>
                 </div>
                 <div className="mb-2">
