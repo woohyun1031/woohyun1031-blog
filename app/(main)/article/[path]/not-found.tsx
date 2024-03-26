@@ -4,10 +4,8 @@ import React from 'react';
 
 export default function Error({
   error,
-  reset,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
 }) {
   React.useEffect(() => {
     console.error('error:::', error);
@@ -21,7 +19,6 @@ export default function Error({
             HTTP 404 - Not Found
           </p>
           <p className="font-sansT">Sorry, This page does not exist :(</p>
-          {/* <button onClick={() => reset()}>Try again</button> */}
         </div>
       </div>
     </div>

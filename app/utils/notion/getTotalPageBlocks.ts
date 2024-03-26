@@ -19,10 +19,13 @@ export async function getAllBlocksFromId(
   _array: BlockObjectResponse[],
 ): Promise<BlockObjectResponse[]> {
   if (!_id) return [];
+
   const blockChildren = await getBlockChildren<IBlockChildrenResponse>(_id, {
     params: { start_cursor: _start_cursor ?? undefined },
   }).then((res) => res.data);
+
   const newArray = [..._array, ...blockChildren.results];
+
   if (blockChildren?.next_cursor && blockChildren.has_more) {
     return getAllBlocksFromId(blockChildren?.next_cursor, _id, newArray);
   }

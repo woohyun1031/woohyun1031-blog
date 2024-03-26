@@ -5,10 +5,8 @@ import { Providers } from './(main)/providers';
 
 export default function Error({
   error,
-  reset,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
 }) {
   React.useEffect(() => {
     console.error('error:::', error);

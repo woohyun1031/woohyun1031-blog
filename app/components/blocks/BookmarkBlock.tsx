@@ -3,32 +3,38 @@
 import React from 'react';
 import { IConvertBlock } from '@utils/notion/convertBlock';
 
-const BookmarkBlock = (block: IConvertBlock) => {
+const BookmarkBlock = ({
+  url,
+  title,
+  description,
+  favicon,
+  image,
+}: IConvertBlock) => {
   return (
     <a
-      href={block.url}
+      href={url}
       className="flex h-28 w-full justify-between rounded-md border-1 
       border-gray-300 duration-300 hover:border-red-300 dark:border-gray-700 dark:hover:border-red-300"
       target="_blank"
     >
       <div className="max-w-full flex-bookmark overflow-hidden px-4 py-3">
         <h3 className="mt-0 overflow-hidden text-ellipsis whitespace-nowrap text-base sm:text-lg">
-          {block.title}
+          {title}
         </h3>
         <p className="h-8 overflow-hidden font-sansM text-xs text-gray-500">
-          {block.description}
+          {description}
         </p>
         <div className="flex items-center gap-2">
-          {block.favicon ? (
-            <img src={block.favicon} alt="favicon" width={16} height={16} />
+          {favicon ? (
+            <img src={favicon} alt="favicon" width={16} height={16} />
           ) : null}
-          <p className="truncate text-xs">{block.url}</p>
+          <p className="truncate text-xs">{url}</p>
         </div>
       </div>
-      {block.image ? (
+      {image ? (
         <div className="block sm:block ">
           <img
-            src={block.image ?? ''}
+            src={image ?? ''}
             alt="test"
             style={{
               borderTopRightRadius: 5,

@@ -1,4 +1,4 @@
-import { getArticlesFromDB, getPage, IPage } from '@apis/notion';
+import { getArticlesFromDB, getPageDetail, IPage } from '@apis/notion';
 import { Tag } from '@components/common';
 import dayjs from 'dayjs';
 import React from 'react';
@@ -29,20 +29,18 @@ async function getArticles(pages: number) {
   return articles;
 }
 
-export default async function Page(props: any) {
+export default async function Page({ params }: any) {
   const articles = await getArticles(100);
-  const target = articles?.find(
-    (item) => encodeURI(item.path) === props.params.path,
-  );
+  const target = articles?.find((item) => encodeURI(item.path) === params.path);
   if (!target) {
-    console.log('404 notFound Error', props, target);
+    console.log('404 notFound Error', target);
     notFound();
   }
-  const page = await getPage<IPage>(target.id).then((res) => res.data);
+  const page = await getPageDetail<IPage>(target.id).then((res) => res.data);
   const totalBlocks = await getTotalPageBlocks(target.id as string);
 
   if (!page || !totalBlocks?.length) {
-    console.log('404 notFound Error', props, page);
+    console.log('404 notFound Error', page);
     notFound();
   }
   const tagList = page?.properties?.Type?.multi_select ?? [];
@@ -94,13 +92,7 @@ export default async function Page(props: any) {
               )}
             </div>
 
-            <div
-              className="
-                dark:prose-dark                 
-                w-full 
-                max-w-container                                
-                "
-            >
+            <div className="dark:prose-dark w-full max-w-container">
               {totalBlocks &&
                 totalBlocks.map((item) => {
                   return <Block block={item} />;

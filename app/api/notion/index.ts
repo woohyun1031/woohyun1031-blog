@@ -35,7 +35,7 @@ export interface INotionPageList<T> {
   type: 'page';
 }
 
-export const getPage = <T>(
+export const getPageDetail = <T>(
   id: string,
   params?: Record<string, any>,
 ): Promise<AxiosResponse<T>> =>

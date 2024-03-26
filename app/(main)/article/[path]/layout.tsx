@@ -1,4 +1,4 @@
-import { getArticlesFromDB, getPage, IPage } from '@apis/notion';
+import { getArticlesFromDB, getPageDetail, IPage } from '@apis/notion';
 import { Metadata } from 'next';
 import React from 'react';
 import getPathFromTitle from '@utils/notion/formatTitleToPath';
@@ -32,13 +32,13 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   const articles = await getArticles(100);
   const target = articles?.find((item) => encodeURI(item.path) === params.path);
   if (target?.id) {
-    const product = await getPage<IPage>(target?.id).then((res) => res.data);
+    const page = await getPageDetail<IPage>(target?.id).then((res) => res.data);
     return {
-      title: product?.properties?.Name?.title?.[0]?.plain_text,
-      description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+      title: page?.properties?.Name?.title?.[0]?.plain_text,
+      description: page?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
       openGraph: {
-        title: product?.properties?.Name?.title?.[0]?.plain_text,
-        description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+        title: page?.properties?.Name?.title?.[0]?.plain_text,
+        description: page?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
         type: 'article',
         url: `https://woo1031.vercel.app/article/${target?.path ?? ''}`,
         images: [
@@ -51,8 +51,8 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         locale: 'en_US',
       },
       twitter: {
-        title: product?.properties?.Name?.title?.[0]?.plain_text,
-        description: product?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+        title: page?.properties?.Name?.title?.[0]?.plain_text,
+        description: page?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
         card: 'summary',
         creator: '@nextjs',
         images: ['/image.png'],
@@ -68,9 +68,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         'React',
         'JavaScript',
         'FrondEnd',
-        ...product?.properties?.Type?.multi_select?.map(
-          (item: any) => item.name,
-        ),
+        ...page?.properties?.Type?.multi_select?.map((item: any) => item.name),
       ],
     };
   }

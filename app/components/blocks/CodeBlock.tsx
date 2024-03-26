@@ -9,14 +9,11 @@ import {
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { DarkModeThemeContext } from 'app/(main)/providers';
 
-const CodeBlock = (block: IConvertBlock) => {
+const CodeBlock = ({ language, code }: IConvertBlock) => {
   const { isDark } = React.useContext(DarkModeThemeContext);
   return (
-    <SyntaxHighlighter
-      language={block.language}
-      style={isDark ? vscDarkPlus : vs}
-    >
-      {block.code || ''}
+    <SyntaxHighlighter language={language} style={isDark ? vscDarkPlus : vs}>
+      {code || ''}
     </SyntaxHighlighter>
   );
 };

@@ -9,13 +9,13 @@ interface ISearchParams {
   type: string;
 }
 
-export default async function Page(props: IDefaultPageProps<ISearchParams>) {
+export default async function Page({
+  searchParams,
+}: IDefaultPageProps<ISearchParams>) {
   const { array, has_more } = await getTargetPages(
-    props.searchParams.page ? Number(props.searchParams.page) : 10,
-    props.searchParams.type,
+    searchParams.page ? Number(searchParams.page) : 10,
+    searchParams.type,
   );
   if (!array.length) return;
-  return (
-    <Form array={array} hasMore={has_more} searchParams={props.searchParams} />
-  );
+  return <Form array={array} hasMore={has_more} searchParams={searchParams} />;
 }

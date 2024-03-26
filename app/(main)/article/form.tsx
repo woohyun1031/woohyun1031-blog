@@ -7,20 +7,25 @@ import useScrollForm from '@hooks/useScrollForm';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
-export default function Form(props: {
+export default function Form({
+  array,
+  hasMore,
+  searchParams,
+}: {
   array: (Partial<IPage> & { path: string })[];
   hasMore: boolean;
   searchParams: any;
 }) {
-  const { array, hasMore, searchParams } = props;
   const results = React.useMemo(
     () => array?.filter((item) => !!item) ?? [],
     [array],
   );
   const { onSubmit } = useScrollForm();
+
   const hasNextPage = hasMore ?? false;
 
   const observer = React.useRef<IntersectionObserver>();
+
   const lastBookElementRef = React.useCallback(
     (node: any) => {
       if (observer.current) observer.current.disconnect();

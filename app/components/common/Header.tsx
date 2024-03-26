@@ -11,9 +11,6 @@ export const Header = () => {
   const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  // const searchParams = new URLSearchParams(
-  //   typeof window !== 'undefined' ? window.location.search : '',
-  // );
   const pathNames = pathName?.split('/') ?? [];
   const isArticleListPage =
     pathNames?.length <= 2 &&
