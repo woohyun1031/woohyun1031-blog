@@ -72,15 +72,19 @@ export default async function Page() {
                   <Description>
                     요즘에는 일과 취미 모두를 개발에 집중하고 있습니다. 이러한
                     경험과 흥미로운 문제들을 꾸준히
-                    <LinkDescription href={URL.notion}>
+                    <LinkButton url={URL.notion} className="ml-2 mr-1" />
+                    노션에 기록하고 있습니다.{' '}
+                    {/* <LinkDescription href={URL.notion}>
                       {' '}
                       🔗노션에 기록하고 있습니다.{' '}
-                    </LinkDescription>
+                    </LinkDescription> */}
                     가끔 직접적으로 접하는 문제들에 대해 노션과 연동하여
-                    <LinkDescription href={URL.blog}>
+                    <LinkButton url={URL.blog} className="ml-2 mr-1" />
+                    이곳에 글을 업로드 하기도 합니다.
+                    {/* <LinkDescription href={URL.blog}>
                       {' '}
                       🔗이곳에 글을 업로드 하기도 합니다.
-                    </LinkDescription>
+                    </LinkDescription> */}
                   </Description>
                 </div>
               </div>
@@ -121,7 +125,7 @@ export default async function Page() {
                 <Title value={'Work Experience'} />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   More Information?
-                  <LinkButton url={URL.resume} />
+                  <LinkButton className="ml-2" url={URL.resume} />
                 </span>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
@@ -131,7 +135,7 @@ export default async function Page() {
                     <Title>
                       Actbase.llc
                       <Description> / Frontend Developer</Description>
-                      <LinkButton url={URL.actbase} />
+                      <LinkButton className="ml-2" url={URL.actbase} />
                     </Title>
                   </div>
                   <div className="mt-2">
@@ -171,9 +175,11 @@ export default async function Page() {
 
                     <div className="mt-6">
                       <Description>
-                        <LinkDescription href={URL.resume}>
+                        <LinkButton url={URL.resume} className="mr-1" />
+                        자세한 내용은 이력서를 확인해주세요
+                        {/* <LinkDescription href={URL.resume}>
                           🔗 자세한 내용은 이력서를 확인해주세요
-                        </LinkDescription>
+                        </LinkDescription> */}
                       </Description>
                     </div>
                   </div>
@@ -186,7 +192,7 @@ export default async function Page() {
                 <Title value={'Study'} />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   새롭게 알게 된 흥미로운 문제들을 기록합니다.
-                  <LinkButton url={URL.studyDb} />
+                  <LinkButton className="ml-2" url={URL.studyDb} />
                 </span>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
@@ -197,13 +203,14 @@ export default async function Page() {
                       <>
                         <div className="mt-2">
                           <Description>
-                            {value?.properties.Name?.title[0]?.text?.content}
                             <LinkButton
+                              className="mr-2"
                               url={value.url.replace(
                                 'https://www.notion.so/',
                                 'https://woo1031.notion.site/',
                               )}
                             />
+                            {value?.properties.Name?.title[0]?.text?.content}
                           </Description>
                         </div>
                         <div className="mt-2">
@@ -222,7 +229,7 @@ export default async function Page() {
                 <div className="mt-2">
                   <Description>
                     More Records ?
-                    <LinkButton url={URL.studyDb} />
+                    <LinkButton className="ml-2" url={URL.studyDb} />
                   </Description>
                 </div>
               </div>
@@ -233,7 +240,7 @@ export default async function Page() {
                 <Title value={'Commits'} />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   I love programming.
-                  <LinkButton url={URL.github} />
+                  <LinkButton className="ml-2" url={URL.github} />
                 </span>
                 <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
                 <div className="mt-10">
@@ -246,7 +253,7 @@ export default async function Page() {
               <div className="mb-10 text-center">
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   More Information?
-                  <LinkButton url={URL.notion} />
+                  <LinkButton className="ml-2" url={URL.notion} />
                 </span>
               </div>
             </BlockWrapper>
