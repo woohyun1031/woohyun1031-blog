@@ -56,6 +56,7 @@ export const Header = () => {
                 }
                 setIsShow(false);
               }}
+              scroll={false}
             >
               <span className="text-xl font-extralight text-gray-800 duration-300 ease-in-out hover:text-red-400 active:text-red-600 dark:text-white dark:hover:text-red-400 dark:active:text-red-600">
                 woohyun.kim
@@ -111,11 +112,11 @@ export const Header = () => {
                 <Link
                   href="/about"
                   className={`cursor-pointe m-auto text-xs duration-300
-                ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 ${
-                  pathName?.includes('about')
-                    ? 'text-red-400 dark:text-red-400'
-                    : 'text-stone-600 dark:text-white'
-                }`}
+                  ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 ${
+                    pathName?.includes('about')
+                      ? 'text-red-400 dark:text-red-400'
+                      : 'text-stone-600 dark:text-white'
+                  }`}
                   onClick={(event) => {
                     if (isAboutPage) {
                       event.preventDefault();
@@ -127,6 +128,7 @@ export const Header = () => {
                     }
                     setIsShow(false);
                   }}
+                  scroll={false}
                 >
                   ABOUT
                 </Link>
@@ -148,6 +150,7 @@ export const Header = () => {
                       });
                     }
                   }}
+                  scroll={false}
                 >
                   ARTICLE
                 </Link>
@@ -180,6 +183,7 @@ export const Header = () => {
                 }
                 setIsShow(false);
               }}
+              scroll={false}
             >
               ABOUT
             </Link>
@@ -202,6 +206,7 @@ export const Header = () => {
                 }
                 setIsShow(false);
               }}
+              scroll={false}
             >
               ARTICLE
             </Link>

@@ -1,6 +1,7 @@
 'use client';
 
 import { Footer, HeaderWapper } from '@components/common';
+import { AnimateProvider } from '@components/common/AnimateProvider';
 import { usePathname } from 'next/navigation';
 import React, { createContext } from 'react';
 
@@ -27,16 +28,12 @@ export function Providers({
     }
   }, []);
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
   return (
     <DarkModeThemeContext.Provider
       value={{ isDark: isDarkMode, setIsDark: setIsDarkMode }}
     >
       <HeaderWapper />
-      {children}
+      <AnimateProvider>{children}</AnimateProvider>
       <Footer />
     </DarkModeThemeContext.Provider>
   );
