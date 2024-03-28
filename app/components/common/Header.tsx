@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { DarkModeThemeContext } from 'app/(main)/providers';
 import { usePathname, useSearchParams } from 'next/navigation';
+import NextLink from './NextLink';
 
 export const Header = () => {
   const [isShow, setIsShow] = React.useState(false);
@@ -42,8 +43,8 @@ export const Header = () => {
       >
         <div className="flex w-full justify-center px-6 py-3">
           <div className="mx-2 flex w-full max-w-header flex-wrap items-center justify-between">
-            <Link
-              href="/article"
+            <NextLink
+              src="/article"
               className="mr-6 flex flex-shrink-0 cursor-pointer items-center"
               onClick={(event) => {
                 if (isArticleListPage) {
@@ -56,12 +57,11 @@ export const Header = () => {
                 }
                 setIsShow(false);
               }}
-              scroll={false}
             >
               <span className="text-xl font-extralight text-gray-800 duration-300 ease-in-out hover:text-red-400 active:text-red-600 dark:text-white dark:hover:text-red-400 dark:active:text-red-600">
                 woohyun.kim
               </span>
-            </Link>
+            </NextLink>
 
             <div className="flex">
               <button
@@ -109,8 +109,8 @@ export const Header = () => {
                 )}
               </button>
               <div className="ml-6 hidden gap-6 lg:flex">
-                <Link
-                  href="/about"
+                <NextLink
+                  src="/about"
                   className={`cursor-pointe m-auto text-xs duration-300
                   ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 ${
                     pathName?.includes('about')
@@ -128,12 +128,11 @@ export const Header = () => {
                     }
                     setIsShow(false);
                   }}
-                  scroll={false}
                 >
                   ABOUT
-                </Link>
-                <Link
-                  href="/article"
+                </NextLink>
+                <NextLink
+                  src="/article"
                   className={`m-auto w-full cursor-pointer text-xs duration-300
                 ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 ${
                   pathName?.includes('article')
@@ -150,10 +149,9 @@ export const Header = () => {
                       });
                     }
                   }}
-                  scroll={false}
                 >
                   ARTICLE
-                </Link>
+                </NextLink>
               </div>
             </div>
           </div>
@@ -164,8 +162,8 @@ export const Header = () => {
               isShow ? 'translate-y-0' : '-translate-y-16'
             }`}
           >
-            <Link
-              href="/about"
+            <NextLink
+              src="/about"
               className={`w-full cursor-pointer pl-8 text-xs  duration-300
             ease-in-out hover:text-red-400 active:text-red-600  dark:hover:text-red-400 dark:active:text-red-600 lg:mt-0 lg:inline-block ${
               pathName?.includes('about')
@@ -183,12 +181,11 @@ export const Header = () => {
                 }
                 setIsShow(false);
               }}
-              scroll={false}
             >
               ABOUT
-            </Link>
-            <Link
-              href="/article"
+            </NextLink>
+            <NextLink
+              src="/article"
               className={`mt-4 w-full cursor-pointer py-2 pl-8 text-xs duration-300
             ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 lg:mt-0 lg:inline-block ${
               pathName?.includes('article')
@@ -206,10 +203,9 @@ export const Header = () => {
                 }
                 setIsShow(false);
               }}
-              scroll={false}
             >
               ARTICLE
-            </Link>
+            </NextLink>
           </div>
         </div>
       </header>

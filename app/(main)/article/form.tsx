@@ -2,7 +2,7 @@
 
 import React, { Fragment } from 'react';
 import { IPage } from '@apis/notion';
-import { SkeletonComponent, Tag } from '@components/common';
+import { NextLink, SkeletonComponent, Tag } from '@components/common';
 import useScrollForm from '@hooks/useScrollForm';
 import dayjs from 'dayjs';
 import Link from 'next/link';
@@ -60,10 +60,10 @@ export default function Form({
             (item: Partial<IPage> & { path: string }, index: number) => {
               return (
                 <>
-                  <Link
+                  <NextLink
                     className="group flex w-full cursor-pointer flex-col align-middle lg:flex-row "
                     key={item.id}
-                    href={`/article/${item.path}`}
+                    src={`/article/${item.path}`}
                     {...(index + 1 === results.filter((item) => !!item)?.length
                       ? { ref: lastBookElementRef }
                       : {})}
@@ -86,7 +86,7 @@ export default function Form({
                         {item?.properties?.Subtitle.rich_text[0]?.plain_text}
                       </span>
                     </div>
-                  </Link>
+                  </NextLink>
                   <div className="mb-24 flex w-full flex-row flex-wrap gap-x-4 gap-y-2 align-middle">
                     <div className="text-center">
                       <span className="align-middle font-sansT text-xs text-gray-500 dark:text-gray-400">

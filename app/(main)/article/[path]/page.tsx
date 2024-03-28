@@ -1,5 +1,5 @@
 import { getArticlesFromDB, getPageDetail, IPage } from '@apis/notion';
-import { Tag } from '@components/common';
+import { NextLink, Tag } from '@components/common';
 import dayjs from 'dayjs';
 import React from 'react';
 import Link from 'next/link';
@@ -75,9 +75,9 @@ export default async function Page({ params }: any) {
                   return (
                     <>
                       <div>
-                        <Link href={`/article?type=${type.name}`}>
+                        <NextLink src={`/article?type=${type.name}`}>
                           <Tag title={type.name} />
-                        </Link>
+                        </NextLink>
                       </div>
                       {tagList.length !== index + 1 && (
                         <div>
