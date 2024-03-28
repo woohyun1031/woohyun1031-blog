@@ -81,9 +81,9 @@ export default function Form({
                         return (
                           <>
                             <div>
-                              <Link href={`/article?type=${type.name}`}>
+                              <NextLink src={`/article?type=${type.name}`}>
                                 <Tag title={type.name} />
-                              </Link>
+                              </NextLink>
                             </div>
                             {item?.properties?.Type?.multi_select?.length !==
                               idx + 1 && (

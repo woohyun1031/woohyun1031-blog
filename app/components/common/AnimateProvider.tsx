@@ -15,6 +15,7 @@ export function AnimateProvider({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const typeParams = searchParams.get('type');
+  const key = `${pathname}${typeParams ?? ''}`;
 
   const defaultVariants = {
     out: {
@@ -34,19 +35,17 @@ export function AnimateProvider({
   };
 
   React.useEffect(() => {
+    console.log(key);
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
     });
-  }, [pathname]);
+  }, [key]);
 
   return (
     <AnimatePresence initial mode="wait">
-      <ChildRouter
-        key={`${pathname}${typeParams ?? ''}`}
-        variants={variants ?? defaultVariants}
-      >
+      <ChildRouter key={key} variants={variants ?? defaultVariants}>
         {children}
       </ChildRouter>
     </AnimatePresence>
