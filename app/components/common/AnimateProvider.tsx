@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { AnimatePresence, Variant } from 'framer-motion';
 import ChildRouter from './ChildRouter';
 
@@ -13,6 +13,8 @@ export function AnimateProvider({
   variants?: Record<'out' | 'in', Variant>;
 }): React.ReactElement {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const params = searchParams.get('type');
 
   const defaultVariants = {
     out: {
@@ -41,7 +43,10 @@ export function AnimateProvider({
 
   return (
     <AnimatePresence initial mode="wait">
-      <ChildRouter key={pathname} variants={variants ?? defaultVariants}>
+      <ChildRouter
+        key={`${pathname}${params}`}
+        variants={variants ?? defaultVariants}
+      >
         {children}
       </ChildRouter>
     </AnimatePresence>
