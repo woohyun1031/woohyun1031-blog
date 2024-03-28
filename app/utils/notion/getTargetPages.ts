@@ -4,17 +4,10 @@ import getPathFromTitle from '@utils/notion/formatTitleToPath';
 export async function recursiveFetching(
   _start_cursor: string | null,
   _array: (Partial<IPage> & { path: string })[] = [],
-  {
-    limit,
-    lastRequestCount,
-  }: {
-    limit: number;
-    lastRequestCount: number;
-  },
   _type?: string,
 ): Promise<any> {
   const originData = await getArticlesFromDB({
-    page_size: limit ? 100 : lastRequestCount,
+    page_size: 100,
     filter: _type
       ? {
           and: [
@@ -50,34 +43,15 @@ export async function recursiveFetching(
 
   const newArray = [..._array, ...(articles ?? [])];
 
-  if (limit) {
-    return await recursiveFetching(
-      originData?.next_cursor,
-      newArray,
-      {
-        limit: limit - 1,
-        lastRequestCount,
-      },
-      _type,
-    );
+  if (originData?.has_more) {
+    return await recursiveFetching(originData?.next_cursor, newArray, _type);
   }
 
   return { array: newArray, has_more: originData?.has_more ?? false };
 }
 
-export default async function getTargetPages(pages: number, type?: string) {
-  const requestCount = Math.floor(pages / 100);
-  const lastRequestCount = pages % 100;
+export default async function getAllPages(type?: string) {
+  const { array } = await recursiveFetching(null, [], type);
 
-  const { array, has_more } = await recursiveFetching(
-    null,
-    [],
-    {
-      limit: requestCount,
-      lastRequestCount,
-    },
-    type,
-  );
-
-  return { array, has_more };
+  return { array };
 }

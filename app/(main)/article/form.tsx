@@ -2,44 +2,20 @@
 
 import React, { Fragment } from 'react';
 import { IPage } from '@apis/notion';
-import { NextLink, SkeletonComponent, Tag } from '@components/common';
-import useScrollForm from '@hooks/useScrollForm';
+import { NextLink, Tag } from '@components/common';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
 export default function Form({
   array,
-  hasMore,
   searchParams,
 }: {
   array: (Partial<IPage> & { path: string })[];
-  hasMore: boolean;
   searchParams: any;
 }) {
   const results = React.useMemo(
     () => array?.filter((item) => !!item) ?? [],
     [array],
-  );
-  const { onSubmit } = useScrollForm();
-
-  const hasNextPage = hasMore ?? false;
-
-  const observer = React.useRef<IntersectionObserver>();
-
-  const lastBookElementRef = React.useCallback(
-    (node: any) => {
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasNextPage) {
-          onSubmit({
-            ...searchParams,
-            page: (results.length += 10),
-          });
-        }
-      });
-      if (node) observer.current.observe(node);
-    },
-    [hasNextPage],
   );
 
   return (
@@ -64,9 +40,6 @@ export default function Form({
                     className="group flex w-full cursor-pointer flex-col align-middle lg:flex-row "
                     key={item.id}
                     src={`/article/${item.path}`}
-                    {...(index + 1 === results.filter((item) => !!item)?.length
-                      ? { ref: lastBookElementRef }
-                      : {})}
                   >
                     {/* {(item.cover?.file?.url || item.cover?.external?.url) && (
                     <img
@@ -129,7 +102,6 @@ export default function Form({
               );
             },
           )}
-          {!!hasNextPage && <SkeletonComponent count={2} />}
         </div>
       </div>
     </Fragment>

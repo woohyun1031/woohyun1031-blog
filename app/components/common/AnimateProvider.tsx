@@ -14,7 +14,7 @@ export function AnimateProvider({
 }): React.ReactElement {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const params = searchParams.get('type');
+  const typeParams = searchParams.get('type');
 
   const defaultVariants = {
     out: {
@@ -44,7 +44,7 @@ export function AnimateProvider({
   return (
     <AnimatePresence initial mode="wait">
       <ChildRouter
-        key={`${pathname}${params}`}
+        key={`${pathname}${typeParams ?? ''}`}
         variants={variants ?? defaultVariants}
       >
         {children}
