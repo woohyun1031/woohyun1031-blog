@@ -4,16 +4,17 @@ import {
   Description,
   BordDescription,
   SoftDescription,
-  LinkDescription,
   LinkButton,
   SubTitle,
   BlockWrapper,
   Title,
+  ContributionChart,
 } from '@components/about';
 import { getArticlesFromDB, IPage } from '@apis/notion';
 import Link from 'next/link';
-import React from 'react';
+import React, { Suspense } from 'react';
 import URL from '@constants/url';
+import { SkeletonComponent } from '@components/common';
 
 export const revalidate = 3600;
 
@@ -243,12 +244,14 @@ export default async function Page() {
                   <LinkButton className="ml-2" url={URL.github} />
                 </span>
                 <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
-                <div className="mt-10">
+                {/* <div className="mt-10">
                   <GithubCalendar />
+                </div> */}
+                <div className="mt-10">
+                  <ContributionChart username="woohyun1031" />
                 </div>
               </div>
             </BlockWrapper>
-
             <BlockWrapper>
               <div className="mb-10 text-center">
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">

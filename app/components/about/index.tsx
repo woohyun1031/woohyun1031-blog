@@ -9,8 +9,10 @@ import {
   SoftDescription,
   LinkDescription,
 } from './Description';
+import ContributionChart from './ContributionChart';
 
 export {
+  ContributionChart,
   Title,
   BlockWrapper,
   GithubCalendar,

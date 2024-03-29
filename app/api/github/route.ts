@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export type TContributionDayType = {
+  contributionCount: any;
+  date: any;
+};
 export interface IContributionInfo {
   totalContributions: number;
   weeks: {
-    contributionDays: {
-      contributionCount: any;
-      date: any;
-    }[];
-  };
+    contributionDays: TContributionDayType[];
+  }[];
 }
 
 export interface IUserContributionData {
