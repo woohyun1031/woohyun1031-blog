@@ -47,7 +47,7 @@ query($userName:String!) {
 
 export async function GET({ nextUrl }: NextRequest) {
   const { searchParams } = nextUrl;
-  const userName = searchParams.get('username');
+  const userName = searchParams?.get('username');
 
   const variables = `
   {
