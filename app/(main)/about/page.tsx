@@ -89,35 +89,35 @@ export default async function Page() {
                   </Description>
                 </div>
               </div>
-              <div className="mt-4">
-                <span className="cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
-                  <Link href={URL.mail} target="_blank">
-                    e-mail
-                  </Link>
-                </span>
+              <div className="mt-4 flex flex-wrap">
+                <Link href={URL.mail} target="_blank">
+                  <div className="cursor-pointer break-normal font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
+                    @mail
+                  </div>
+                </Link>
 
-                <span className="ml-6 cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
-                  <Link href={URL.resume} target="_blank">
+                <Link href={URL.resume} target="_blank">
+                  <div className="ml-6 cursor-pointer break-normal font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
                     resume
-                  </Link>
-                </span>
-                <span className="ml-6 cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
-                  <Link href={URL.github} target="_blank">
+                  </div>
+                </Link>
+                <Link href={URL.github} target="_blank">
+                  <div className="ml-6 cursor-pointer break-normal font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
                     github
-                  </Link>
-                </span>
+                  </div>
+                </Link>
 
-                <span className="ml-6 cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
-                  <Link href={URL.notion} target="_blank">
+                <Link href={URL.notion} target="_blank">
+                  <div className="ml-6 cursor-pointer break-normal font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
                     notion
-                  </Link>
-                </span>
+                  </div>
+                </Link>
 
-                <span className="ml-6 cursor-pointer font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-base">
-                  <Link href={URL.blog} target="_blank">
+                <Link href={URL.blog} target="_blank">
+                  <div className="ml-6 cursor-pointer break-normal font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
                     blog
-                  </Link>
-                </span>
+                  </div>
+                </Link>
               </div>
             </div>
 
