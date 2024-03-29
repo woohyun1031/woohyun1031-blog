@@ -18,3 +18,19 @@ notionApi.interceptors.request.use(
     return Promise.reject(error);
   },
 );
+
+export const githubApi = axios.create({
+  baseURL: process.env.GITHUB_PUBLIC_URL,
+});
+
+githubApi.interceptors.request.use(
+  async (config) => {
+    if (config.headers) {
+      config.headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
