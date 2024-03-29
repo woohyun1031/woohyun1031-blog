@@ -35,7 +35,6 @@ export function AnimateProvider({
   };
 
   React.useEffect(() => {
-    console.log(key);
     window.scrollTo({
       top: 0,
       left: 0,
