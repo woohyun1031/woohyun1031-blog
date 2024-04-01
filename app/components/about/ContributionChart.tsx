@@ -29,16 +29,16 @@ export default function ContributionChart({ username }: { username?: string }) {
           contributions in the last year
         </span>
       </div>
-      <div className="relative w-full overflow-auto whitespace-nowrap">
-        <table className="table-fixed border-separate border-spacing-[3px]">
+      <div className="relative mt-3 w-full overflow-auto whitespace-nowrap">
+        <table className="table-fixed border-separate border-spacing-[3px] ">
           <thead>
-            <tr className="h-[13px]">
+            <tr className="h-[30px]">
               <td className="sticky left-0 w-[28px] bg-white duration-300 ease-in-out dark:bg-black">
                 <span className="hidden">Day of Week</span>
               </td>
               {getMonthLabels(contributionInfo?.weeks ?? []).map(
                 ({ label, colSpan }) => (
-                  <td colSpan={colSpan}>
+                  <td colSpan={colSpan} className="pb-2">
                     <span className="text-xs font-bold text-gray-700 duration-300 ease-in-out dark:text-gray-300">
                       {label}
                     </span>
@@ -75,7 +75,7 @@ export default function ContributionChart({ username }: { username?: string }) {
             <tr className="table-row">
               <td className="sticky left-0 table-cell min-w-[40px] bg-white pr-2 text-right duration-300 ease-in-out dark:bg-black">
                 <span className="text-xs font-bold text-gray-700 duration-300 ease-in-out dark:text-gray-300">
-                  MON
+                  Mon
                 </span>
               </td>
               {contributionInfo?.weeks
@@ -123,7 +123,7 @@ export default function ContributionChart({ username }: { username?: string }) {
             <tr className="table-row">
               <td className="sticky left-0 table-cell min-w-[40px] bg-white pr-2 text-right duration-300 ease-in-out dark:bg-black">
                 <span className="text-xs font-bold text-gray-700 duration-300 ease-in-out dark:text-gray-300">
-                  WEN
+                  Wen
                 </span>
               </td>
               {contributionInfo?.weeks
@@ -171,7 +171,7 @@ export default function ContributionChart({ username }: { username?: string }) {
             <tr className="table-row">
               <td className="sticky left-0 table-cell min-w-[40px] bg-white pr-2 text-right duration-300 ease-in-out dark:bg-black">
                 <span className="text-xs font-bold text-gray-700 duration-300 ease-in-out dark:text-gray-300">
-                  FRI
+                  Fri
                 </span>
               </td>
               {contributionInfo?.weeks
