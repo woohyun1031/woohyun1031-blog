@@ -2,17 +2,12 @@
 
 import React from 'react';
 import getContributionList from '@apis/github/apis';
-import { IContributionInfo, TContributionDayType } from '@apis/github/route';
+import { IContributionInfo } from '@apis/github/route';
+import { getMonthLabels } from '@utils/github/contribution';
 
 export default function ContributionChart({ username }: { username?: string }) {
   const [contributionInfo, setContributionInfo] =
     React.useState<IContributionInfo>();
-
-  const contributionDays = contributionInfo?.weeks.reduce((prev, cur) => {
-    return prev.concat(cur.contributionDays);
-  }, [] as TContributionDayType[]);
-
-  console.log(contributionInfo?.weeks);
 
   React.useState(() => {
     getContributionList(username)
@@ -38,9 +33,18 @@ export default function ContributionChart({ username }: { username?: string }) {
         <table className="table-fixed border-separate border-spacing-[3px]">
           <thead>
             <tr className="h-[13px]">
-              <td className="w-[28px]">
+              <td className="sticky left-0 w-[28px] bg-white duration-300 ease-in-out dark:bg-black">
                 <span className="hidden">Day of Week</span>
               </td>
+              {getMonthLabels(contributionInfo?.weeks ?? []).map(
+                ({ label, colSpan }) => (
+                  <td colSpan={colSpan}>
+                    <span className="text-xs font-bold text-gray-700 duration-300 ease-in-out dark:text-gray-300">
+                      {label}
+                    </span>
+                  </td>
+                ),
+              )}
             </tr>
           </thead>
 
