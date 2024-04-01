@@ -8,7 +8,7 @@ import {
   SubTitle,
   BlockWrapper,
   Title,
-  ContributionChart,
+  ContributionGraph,
 } from '@components/about';
 import { getArticlesFromDB, IPage } from '@apis/notion';
 import Link from 'next/link';
@@ -248,7 +248,7 @@ export default async function Page() {
                   <GithubCalendar />
                 </div> */}
                 <div className="mt-10">
-                  <ContributionChart username="woohyun1031" />
+                  <ContributionGraph username="woohyun1031" />
                 </div>
               </div>
             </BlockWrapper>

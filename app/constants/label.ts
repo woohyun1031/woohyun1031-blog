@@ -12,3 +12,18 @@ export const DEFAULT_MONTH_LABELS = [
   'Nov',
   'Dec',
 ];
+
+export const DEFAULT_WEEK_LABELS = [
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wen',
+  'Thu',
+  'Fri',
+  'Sat',
+];
+
+export const label = {
+  month: DEFAULT_MONTH_LABELS,
+  week: DEFAULT_WEEK_LABELS,
+};
