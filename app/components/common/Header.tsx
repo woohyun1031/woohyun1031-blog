@@ -70,7 +70,7 @@ export const Header = () => {
               {isDark ? (
                 <div>
                   <Image
-                    src="/sun.svg"
+                    src="/images/sun.svg"
                     alt="me"
                     width="25"
                     height="25"
@@ -79,7 +79,12 @@ export const Header = () => {
                 </div>
               ) : (
                 <div>
-                  <Image src="/moon.svg" alt="me" width="25" height="25" />
+                  <Image
+                    src="/images/moon.svg"
+                    alt="me"
+                    width="25"
+                    height="25"
+                  />
                 </div>
               )}
             </button>

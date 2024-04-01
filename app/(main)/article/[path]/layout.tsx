@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         url: `https://woo1031.vercel.app/article/${target?.path ?? ''}`,
         images: [
           {
-            url: '/image.png',
+            url: '/images/image.png',
             alt: 'article image',
           },
         ],
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         description: page?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
         card: 'summary',
         creator: '@nextjs',
-        images: ['/image.png'],
+        images: ['/images/image.png'],
       },
       robots: {
         index: true,

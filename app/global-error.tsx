@@ -15,7 +15,7 @@ export default function Error({
   return (
     <html lang="ko">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/images/favicon.ico" sizes="any" />
       </head>
       <body className="duration-300 ease-in-out dark:bg-black dark:text-gray-300">
         <main>
