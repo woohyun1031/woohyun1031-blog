@@ -1,0 +1,37 @@
+[
+  {
+    "color": "D4C5F9",
+    "description": "패키지 매니저 수정, 그 외 기타 수정",
+    "name": "⚙️CHORE"
+  },
+  {
+    "color": "C5DEF5",
+    "description": "문서(주석) 수정",
+    "name": "📝DOCS"
+  },
+  {
+    "color": "FEF2C0",
+    "description": "기능 구현 관련",
+    "name": "✨FEAT"
+  },
+  {
+    "color": "F9D0C4",
+    "description": "기능에 대한 버그 수정",
+    "name": "🐛FIX"
+  },
+  {
+    "color": "C2E0C6",
+    "description": "기능의 변화가 아닌 코드 리팩터링 ex) 변수명 변경",
+    "name": "♻️REFACTOR"
+  },
+  {
+    "color": "E99695",
+    "description": "코드 스타일, 포맷팅에 대한 수정",
+    "name": "🎨STYLE"
+  },
+  {
+    "color": "66ff99",
+    "description": "test 관련",
+    "name": "✅TEST"
+  }
+]
