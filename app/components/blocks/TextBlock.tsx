@@ -1,24 +1,24 @@
-import React, { StyleHTMLAttributes } from 'react';
+import React from 'react';
 import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
-import { Annotations } from 'notion-to-md/build/types';
 
-const TextBlock = ({
+export default function TextBlock({
   text,
   className = '',
 }: {
   text: RichTextItemResponse[];
   className?: string;
-}) => {
+}) {
   return (
     <>
       <span>
-        {text?.map(({ plain_text, annotations, href }, index) => {
+        {text?.map(({ plain_text, annotations, href }) => {
           if (href)
             return (
               <a
                 href={href}
                 className="break-keep font-sansT leading-6 text-red-400 underline underline-offset-2"
                 target="_blank"
+                rel="noreferrer"
               >
                 {plain_text}
               </a>
@@ -50,9 +50,7 @@ const TextBlock = ({
           }
           return (
             <p
-              className={
-                `text-gray-700, break-keep font-sansT leading-8` + className
-              }
+              className={`text-gray-700, break-keep font-sansT leading-8 ${className}`}
             >
               {plain_text}
             </p>
@@ -61,6 +59,4 @@ const TextBlock = ({
       </span>
     </>
   );
-};
-
-export default TextBlock;
+}

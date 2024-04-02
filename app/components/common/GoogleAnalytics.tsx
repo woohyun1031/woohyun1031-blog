@@ -1,8 +1,9 @@
 'use client';
 
+import React from 'react';
 import Script from 'next/script';
 
-const GoogleAnalytics = () => {
+export default function GoogleAnalytics() {
   const traceId = 'G-VJN31ZVJJS';
 
   return (
@@ -22,6 +23,4 @@ const GoogleAnalytics = () => {
       </Script>
     </>
   );
-};
-
-export default GoogleAnalytics;
+}

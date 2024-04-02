@@ -1,13 +1,12 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { DarkModeThemeContext } from 'app/(main)/providers';
 import { usePathname, useSearchParams } from 'next/navigation';
 import NextLink from './NextLink';
 
-export const Header = () => {
+export function Header() {
   const [isShow, setIsShow] = React.useState(false);
   const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
   const pathName = usePathname();
@@ -64,6 +63,7 @@ export const Header = () => {
 
           <div className="flex">
             <button
+              type="button"
               className="text-gray-800 dark:text-white"
               onClick={() => changeTheme()}
             >
@@ -89,6 +89,7 @@ export const Header = () => {
               )}
             </button>
             <button
+              type="button"
               className="flex items-center rounded px-3 py-2 text-gray-900 hover:text-blue-600 lg:hidden"
               onClick={() => setIsShow((prev) => !prev)}
             >
@@ -214,12 +215,4 @@ export const Header = () => {
       </div>
     </header>
   );
-};
-
-export const HeaderWapper = () => {
-  return (
-    <Suspense>
-      <Header />
-    </Suspense>
-  );
-};
+}

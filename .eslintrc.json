@@ -1,24 +1,30 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "extends": [
     "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb-typescript",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "rules": {
-    "react/jsx-props-no-spreading": 0,
-    "import/prefer-default-export": 0,
-    "no-param-reassign": 0,
-    "react/require-default-props": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-empty-interface": 0,
+    "import/prefer-default-export": 0,
+    "react/jsx-no-useless-fragment": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/require-default-props": 0,
+    "react/jsx-fragments": 0,
+    "arrow-body-style": 0,
+    "consistent-return": 0,
+    "no-useless-return": 0,
     "react/destructuring-assignment": 0,
-    "prefer-promise-reject-errors": 0
+    "no-nested-ternary": 0,
+    "no-underscore-dangle": 0,
+    "no-unsafe-optional-chaining": 0,
+    "no-console": 0,
+    "react/no-unstable-nested-components": 0,
+    "import/no-cycle": 0
   }
 }

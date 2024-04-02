@@ -72,7 +72,7 @@ export const getArticlesFromDB = async ({
     return await getDatabase<INotionPageList<IPage>>({
       page_size: page_size ?? 0,
       start_cursor: start_cursor ?? undefined,
-      filter: filter,
+      filter,
     }).then((response) => response.data);
   } catch (error) {
     console.error(error);

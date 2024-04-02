@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import {
-  GithubCalendar,
   Description,
   BordDescription,
   SoftDescription,
@@ -12,9 +11,8 @@ import {
 } from '@components/about';
 import { getArticlesFromDB, IPage } from '@apis/notion';
 import Link from 'next/link';
-import React, { Suspense } from 'react';
+import React from 'react';
 import URL from '@constants/url';
-import { SkeletonComponent } from '@components/common';
 
 export const revalidate = 3600;
 
@@ -123,7 +121,7 @@ export default async function Page() {
 
             <BlockWrapper>
               <div>
-                <Title value={'Work Experience'} />
+                <Title value="Work Experience" />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   More Information?
                   <LinkButton className="ml-2" url={URL.resume} />
@@ -190,7 +188,7 @@ export default async function Page() {
 
             <BlockWrapper>
               <div>
-                <Title value={'Study'} />
+                <Title value="Study" />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   새롭게 알게 된 흥미로운 문제들을 기록합니다.
                   <LinkButton className="ml-2" url={URL.studyDb} />
@@ -198,8 +196,8 @@ export default async function Page() {
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
               <div className="mt-10">
-                {await getNotionPageList()?.then((value) => {
-                  return value?.results?.map((value: IPage) => {
+                {await getNotionPageList()?.then((response) => {
+                  return response?.results?.map((value: IPage) => {
                     return (
                       <>
                         <div className="mt-2">
@@ -238,7 +236,7 @@ export default async function Page() {
 
             <BlockWrapper>
               <div className="mb-10">
-                <Title value={'Commits'} />
+                <Title value="Commits" />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
                   I love programming.
                   <LinkButton className="ml-2" url={URL.github} />

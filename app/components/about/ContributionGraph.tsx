@@ -16,12 +16,12 @@ export default function ContributionGraph({ username }: { username?: string }) {
 
   React.useState(() => {
     getContributionList(username)
-      .then(async (res) => await res.json())
+      .then((res) => res.json())
       .then((result: IContributionInfo) => {
         setTotalContributions(result.totalContributions);
         setWeeks(result.weeks);
       })
-      .catch((e) => {});
+      .catch(() => {});
   });
 
   return (
@@ -42,10 +42,10 @@ export default function ContributionGraph({ username }: { username?: string }) {
               <td className="sticky left-0 w-[28px] bg-white duration-300 ease-in-out dark:bg-black">
                 <span className="hidden">Day of Week</span>
               </td>
-              {getMonthLabels(weeks).map(({ label, colSpan }) => (
+              {getMonthLabels(weeks).map(({ label: text, colSpan }) => (
                 <td colSpan={colSpan} className="pb-2">
                   <span className="text-xs font-bold text-gray-700 duration-300 ease-in-out dark:text-gray-300">
-                    {label}
+                    {text}
                   </span>
                 </td>
               ))}
@@ -84,11 +84,8 @@ export default function ContributionGraph({ username }: { username?: string }) {
                             </td>
                           );
                         })
-                    : [...new Array(7).fill(0)].map((_, idx) => (
-                        <td
-                          key={idx}
-                          className="table-cell min-w-[28px] cursor-pointer rounded-sm border border-gray-300 text-center dark:border-gray-500"
-                        >
+                    : [...new Array(7).fill(0)].map(() => (
+                        <td className="table-cell min-w-[28px] cursor-pointer rounded-sm border border-gray-300 text-center dark:border-gray-500">
                           <span className="text-xs text-gray-300 dark:text-gray-500">
                             0
                           </span>

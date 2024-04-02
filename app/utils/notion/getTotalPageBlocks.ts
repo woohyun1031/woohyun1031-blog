@@ -42,7 +42,7 @@ export async function getAllChildrenFromId(
       const customBlock = await convertToCustomBlock(item);
       if (customBlock?.hasChildren) {
         const result = await getAllChildrenFromId(customBlock.id);
-        customBlock['children'] = result;
+        customBlock.children = result;
       }
       return customBlock;
     }),

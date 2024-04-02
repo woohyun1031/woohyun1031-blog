@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const NextLink = (
+export default function NextLink(
   {
     children,
     src,
@@ -14,7 +14,7 @@ const NextLink = (
     onClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined;
   },
   props?: any,
-) => {
+) {
   return (
     <>
       <Link
@@ -28,6 +28,4 @@ const NextLink = (
       </Link>
     </>
   );
-};
-
-export default NextLink;
+}

@@ -44,7 +44,12 @@ export async function recursiveFetching(
   const newArray = [..._array, ...(articles ?? [])];
 
   if (originData?.has_more) {
-    return await recursiveFetching(originData?.next_cursor, newArray, _type);
+    const response = await recursiveFetching(
+      originData?.next_cursor,
+      newArray,
+      _type,
+    );
+    return response;
   }
 
   return { array: newArray, has_more: originData?.has_more ?? false };

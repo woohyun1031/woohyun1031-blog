@@ -3,19 +3,20 @@
 import React from 'react';
 import { IConvertBlock } from '@utils/notion/convertBlock';
 
-const BookmarkBlock = ({
+export default function BookmarkBlock({
   url,
   title,
   description,
   favicon,
   image,
-}: IConvertBlock) => {
+}: IConvertBlock) {
   return (
     <a
       href={url}
       className="flex h-28 w-full justify-between rounded-md border-1 
       border-gray-300 duration-300 hover:border-red-300 dark:border-gray-700 dark:hover:border-red-300"
       target="_blank"
+      rel="noreferrer"
     >
       <div className="max-w-full flex-bookmark overflow-hidden px-4 py-3">
         <h3 className="mt-0 overflow-hidden text-ellipsis whitespace-nowrap text-base sm:text-lg">
@@ -47,6 +48,4 @@ const BookmarkBlock = ({
       ) : null}
     </a>
   );
-};
-
-export default BookmarkBlock;
+}
