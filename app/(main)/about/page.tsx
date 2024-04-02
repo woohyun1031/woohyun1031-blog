@@ -60,8 +60,8 @@ export default async function Page() {
 
                 <div className="mb-2">
                   <Description>
-                    고객사 어플리케이션의 프론트엔드 파트를 설계하고 구축하는
-                    일을 하고 있습니다<span className="text-2xl">🚀</span>
+                    사용자 문제를 해결하는 기능을 구축하고 기술적으로 고도화하는
+                    작업을 하고 있습니다<span className="text-2xl">🚀</span>
                     <br />
                     TypeScript와 React.js, Next.js를 주로 사용하지만
                     Vanilla.js로 개인 작업 하는 것도 선호합니다.
@@ -90,7 +90,7 @@ export default async function Page() {
               <div className="mt-4 flex flex-wrap">
                 <Link href={URL.mail} target="_blank">
                   <div className="cursor-pointer break-normal font-sansM text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
-                    @mail
+                    e_mail
                   </div>
                 </Link>
 
@@ -148,16 +148,16 @@ export default async function Page() {
                     </div>
                     <div className="mt-2">
                       <Description>
-                        고객사의 비즈니스 요구사항에 맞는 애플리케이션 개발 및
-                        유지보수를 진행하는 개발팀에서 프론트엔드를
-                        담당했습니다.
+                        첫 회사로 다양한 프로젝트를 진행하며 프론트엔드 개발에
+                        대한 전문성을 쌓았습니다. 주로 고객사 어플리케이션의
+                        프론트엔드 기술 환경을 구축하고 개발을 진행했습니다.
                       </Description>
                     </div>
                     <div>
                       <Description>
-                        애플리케이션의 프론트엔드 파트 설계 및 구축 등 다양한
-                        작업을 해왔으며 이 과정에서 Docker와 GitLab을 활용한
-                        CI/CD와 인프라 관련 경험을 쌓았습니다.
+                        React와 Next.js 기반의 프로젝트를 구축하였으며 기획부터
+                        배포되는 과정까지 프로젝트의 전반적인 사이클을
+                        직접적으로 경험할 수 있었습니다.
                       </Description>
                     </div>
 

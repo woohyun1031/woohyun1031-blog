@@ -9,7 +9,7 @@ export function ScrollSmooth({
 }): React.ReactElement {
   const scrollWrapperRef = React.useRef<HTMLDivElement>(null);
   const offsetRef = React.useRef(0);
-  const speed = 0.05;
+  const speed = 0.07;
 
   const scrollAnimate = () => {
     offsetRef.current += (window.scrollY - offsetRef.current) * speed;
