@@ -1,13 +1,14 @@
 'use client';
 
-import { Footer, HeaderWapper, SkeletonComponent } from '@components/common';
+import { Footer, Header, SkeletonComponent } from '@components/common';
 import { AnimateProvider } from '@components/common/AnimateProvider';
-import { usePathname } from 'next/navigation';
 import React, { createContext, Suspense } from 'react';
 
 export const DarkModeThemeContext = createContext({
   isDark: false,
-  setIsDark: (value: any) => {},
+  setIsDark: (value: any) => {
+    console.log(value);
+  },
 });
 
 export function Providers({
@@ -27,11 +28,16 @@ export function Providers({
     }
   }, []);
 
+  const contextMemo = React.useMemo(
+    () => ({ isDark: isDarkMode, setIsDark: setIsDarkMode }),
+    [isDarkMode, setIsDarkMode],
+  );
+
   return (
-    <DarkModeThemeContext.Provider
-      value={{ isDark: isDarkMode, setIsDark: setIsDarkMode }}
-    >
-      <HeaderWapper />
+    <DarkModeThemeContext.Provider value={contextMemo}>
+      <Suspense>
+        <Header />
+      </Suspense>
       <section className="min-h-svh">
         <Suspense
           fallback={

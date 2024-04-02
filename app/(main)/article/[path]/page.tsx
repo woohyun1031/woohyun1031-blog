@@ -2,7 +2,6 @@ import { getArticlesFromDB, getPageDetail, IPage } from '@apis/notion';
 import { NextLink, Tag } from '@components/common';
 import dayjs from 'dayjs';
 import React from 'react';
-import Link from 'next/link';
 import { Block } from '@components/blocks';
 import { notFound } from 'next/navigation';
 import getPathFromTitle from '@utils/notion/formatTitleToPath';

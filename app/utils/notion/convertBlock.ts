@@ -122,10 +122,9 @@ export async function convertToCustomBlock(
           ? result.favicon
           : result.favicon?.startsWith('//')
           ? `http:${result.favicon}`
-          : new URL(result.requestUrl ?? '').origin + '/favicon.ico';
+          : `${new URL(result.requestUrl ?? '').origin}/favicon.ico`;
         const response = await fetch(favicon);
-        const status =
-          response.status >= 400 && response.status < 600 ? false : true;
+        const status = !(response.status >= 400 && response.status < 600);
         return {
           id: block.id,
           type: 'bookmark',
@@ -219,25 +218,24 @@ export function convertListBlock(blocks: IConvertBlock[]) {
           : {}),
       });
       return [...pre];
-    } else {
-      const prevTypeList = [...listTypeArray];
-      const prevType = listType;
-      listTypeArray = [];
-      return [
-        ...pre,
-        ...(prevTypeList.length
-          ? [
-              {
-                id: uuid(),
-                type: prevType as TBlockListType,
-                hasChildren: false,
-                children: prevTypeList,
-              },
-              cur,
-            ]
-          : [cur]),
-      ];
     }
+    const prevTypeList = [...listTypeArray];
+    const prevType = listType;
+    listTypeArray = [];
+    return [
+      ...pre,
+      ...(prevTypeList.length
+        ? [
+            {
+              id: uuid(),
+              type: prevType as TBlockListType,
+              hasChildren: false,
+              children: prevTypeList,
+            },
+            cur,
+          ]
+        : [cur]),
+    ];
   }, []);
 
   if (listTypeArray.length) {

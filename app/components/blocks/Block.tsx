@@ -1,10 +1,10 @@
 import React from 'react';
 import { IConvertBlock } from '@utils/notion/convertBlock';
+import { Tweet } from 'react-tweet';
+import { ListTag } from '@components/common';
 import CodeBlock from './CodeBlock';
 import TextBlock from './TextBlock';
 import BookmarkBlock from './BookmarkBlock';
-import { Tweet } from 'react-tweet';
-import { ListTag } from '@components/common';
 
 export default function Block({ block }: { block: IConvertBlock }) {
   function rc(blockList: IConvertBlock[]) {

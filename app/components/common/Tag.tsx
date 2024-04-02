@@ -6,7 +6,7 @@ export interface ITagProps {
   title?: string;
   onClick?: () => void;
 }
-const Tag = (props: ITagProps) => {
+export default function Tag(props: ITagProps) {
   return (
     <span
       className={`
@@ -32,6 +32,4 @@ const Tag = (props: ITagProps) => {
       {props.title ?? ''}
     </span>
   );
-};
-
-export default Tag;
+}

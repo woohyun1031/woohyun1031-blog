@@ -2,35 +2,17 @@ import axios, { AxiosInstance } from 'axios';
 
 export const notionApi: AxiosInstance = axios.create({
   baseURL: process.env.NOTION_PUBLIC_URL,
+  headers: {
+    Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
+    Accept: 'application/json',
+    'Notion-Version': '2022-06-28',
+    'Content-Type': 'application/json',
+  },
 });
-
-notionApi.interceptors.request.use(
-  async (config) => {
-    if (config.headers) {
-      config.headers.Authorization = `Bearer ${process.env.NOTION_TOKEN}`;
-      config.headers.Accept = 'application/json';
-      config.headers['Notion-Version'] = '2022-06-28';
-      config.headers['Content-Type'] = 'application/json';
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
-);
 
 export const githubApi = axios.create({
   baseURL: process.env.GITHUB_PUBLIC_URL,
+  headers: {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+  },
 });
-
-githubApi.interceptors.request.use(
-  async (config) => {
-    if (config.headers) {
-      config.headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
-);

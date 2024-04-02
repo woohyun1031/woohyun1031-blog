@@ -1,6 +1,7 @@
+import React from 'react';
 import { IDefaultPageProps } from '#types/types';
-import Form from './form';
 import getAllPages from '@utils/notion/getTargetPages';
+import Form from './form';
 
 export const dynamic = 'force-dynamic';
 

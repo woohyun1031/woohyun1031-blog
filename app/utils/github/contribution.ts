@@ -20,7 +20,7 @@ export const getMonthLabels = (
     }, [])
     .reduce<{ label: string; colSpan: number }[]>(
       (labels, current, idx, origin) => {
-        if (idx == origin.length - 1) {
+        if (idx === origin.length - 1) {
           const span = weeks.length - idx;
           return [
             ...labels,
