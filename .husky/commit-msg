@@ -1,0 +1,23 @@
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(awk '!/^\s*#/' "$COMMIT_MSG_FILE")
+SECOND_LINE=$(echo "$COMMIT_MSG" | sed -n '2p')
+
+IS_HEADER_FORMAT_VALID='^(:[a-zA-Z_]+: )?(Feat|Fix|Docs|Refactor|Test|Style|Chore): .+'
+IS_HEADER_LENGTH_UNDER_50='^(.{1,50}$)'
+
+# --- header ---
+if ! echo "$COMMIT_MSG" | grep -qE "$IS_HEADER_FORMAT_VALID"; then
+    echo "🚨 커밋 메시지는 'Feat: ', 'Fix: ', 'Docs: ', 'Refactor: ', 'Test: ', 'Style: ', 'Chore: ' 중 하나로 시작해야 합니다. (띄워쓰기 포함)" 
+    exit 1
+fi
+
+if ! echo "$COMMIT_MSG" | grep -qE "$IS_HEADER_LENGTH_UNDER_50"; then
+    echo "🚨 커밋 메시지의 첫 줄은 50자를 넘을 수 없습니다."
+    exit 1
+fi
+
+# --- description ---
+if ! [ -z "$SECOND_LINE" ]; then
+    echo "🚨 커밋 메시지의 두 번째 줄은 비워야 합니다."
+    exit 1
+fi
