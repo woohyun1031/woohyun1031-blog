@@ -3,39 +3,44 @@
 import { Footer, Header, SkeletonComponent } from '@components/common';
 import { AnimateProvider } from '@components/common/AnimateProvider';
 import { ScrollSmooth } from '@components/common/ScrollSmooth';
-import React, { createContext, Suspense } from 'react';
-
-export const DarkModeThemeContext = createContext({
-  isDark: false,
-  setIsDark: (value: any) => {
-    console.log(value);
-  },
-});
+import {
+  DarkModeDispatch,
+  darkModeReducer,
+  initialDarkModeState,
+} from '@contexts/darkModeContext';
+import React, { Suspense } from 'react';
 
 export function Providers({
   children,
 }: {
   children: React.ReactNode;
 }): React.ReactElement {
-  const [isDarkMode, setIsDarkMode] = React.useState<boolean>(false);
+  const [darkModeState, darkModeDispatch] = React.useReducer(
+    darkModeReducer,
+    initialDarkModeState,
+  );
 
   React.useEffect(() => {
     if (localStorage.theme === 'dark') {
       document.documentElement.classList.add('dark');
-      setIsDarkMode(true);
+      darkModeDispatch({
+        type: 'dark',
+      });
     } else {
       document.documentElement.classList.remove('dark');
-      setIsDarkMode(false);
+      darkModeDispatch({
+        type: 'light',
+      });
     }
   }, []);
 
-  const contextMemo = React.useMemo(
-    () => ({ isDark: isDarkMode, setIsDark: setIsDarkMode }),
-    [isDarkMode, setIsDarkMode],
+  const darkModeContextMemo = React.useMemo(
+    () => ({ darkModeState, darkModeDispatch }),
+    [darkModeState, darkModeDispatch],
   );
 
   return (
-    <DarkModeThemeContext.Provider value={contextMemo}>
+    <DarkModeDispatch.Provider value={darkModeContextMemo}>
       <Suspense>
         <Header />
       </Suspense>
@@ -57,6 +62,6 @@ export function Providers({
         </section>
         <Footer />
       </ScrollSmooth>
-    </DarkModeThemeContext.Provider>
+    </DarkModeDispatch.Provider>
   );
 }

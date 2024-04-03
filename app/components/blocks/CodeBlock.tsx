@@ -7,10 +7,14 @@ import {
   vscDarkPlus,
   vs,
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { DarkModeThemeContext } from 'app/(main)/providers';
+import { DarkModeDispatch } from '@contexts/darkModeContext';
 
 export default function CodeBlock({ language, code }: IConvertBlock) {
-  const { isDark } = React.useContext(DarkModeThemeContext);
+  const { darkModeState } = React.useContext(DarkModeDispatch);
+  const isDark = React.useMemo(
+    () => darkModeState.isDark,
+    [darkModeState.isDark],
+  );
   return (
     <SyntaxHighlighter language={language} style={isDark ? vscDarkPlus : vs}>
       {code || ''}
