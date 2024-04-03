@@ -12,7 +12,7 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/app/$1',
-    '^@apis/(.*)$': '<rootDir>/app/apis/$1',
+    '^@api/(.*)$': '<rootDir>/app/apis/$1',
     '^@components/(.*)$': '<rootDir>/app/components/$1',
     '^@hooks/(.*)$': '<rootDir>/app/hooks/$1',
     '^#types/(.*)$': '<rootDir>/app/types/$1',

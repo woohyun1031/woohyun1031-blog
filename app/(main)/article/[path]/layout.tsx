@@ -1,4 +1,4 @@
-import { getArticlesFromDB, getPageDetail, IPage } from '@apis/notion';
+import { getArticlesFromDB, getPageDetail, IPage } from '@api/notion';
 import { Metadata } from 'next';
 import React from 'react';
 import getPathFromTitle from '@utils/notion/formatTitleToPath';

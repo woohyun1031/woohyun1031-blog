@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import getContributionList from '@apis/github/apis';
-import { IContributionInfo, TContributionDayType } from '@apis/github/route';
+import getContributionList from '@api/github/apis';
+import { IContributionInfo, TContributionDayType } from '@api/github/route';
 import { getMonthLabels } from '@utils/github/contribution';
 import { label } from '@constants/label';
 

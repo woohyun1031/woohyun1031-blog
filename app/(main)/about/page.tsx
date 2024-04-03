@@ -9,7 +9,7 @@ import {
   Title,
   ContributionGraph,
 } from '@components/about';
-import { getArticlesFromDB, IPage } from '@apis/notion';
+import { getArticlesFromDB, IPage } from '@api/notion';
 import Link from 'next/link';
 import React from 'react';
 import URL from '@constants/url';

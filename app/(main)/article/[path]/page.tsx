@@ -1,4 +1,4 @@
-import { getArticlesFromDB, getPageDetail, IPage } from '@apis/notion';
+import { getArticlesFromDB, getPageDetail, IPage } from '@api/notion';
 import { NextLink, Tag } from '@components/common';
 import dayjs from 'dayjs';
 import React from 'react';

@@ -1,4 +1,4 @@
-import { TContributionDayType } from '@apis/github/route';
+import { TContributionDayType } from '@api/github/route';
 import { DEFAULT_MONTH_LABELS } from '@constants/label';
 import dayjs from 'dayjs';
 
