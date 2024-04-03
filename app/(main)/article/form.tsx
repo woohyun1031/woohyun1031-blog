@@ -1,7 +1,7 @@
 'use client';
 
 import React, { Fragment } from 'react';
-import { IPage } from '@apis/notion';
+import { IPage } from '@api/notion';
 import { NextLink, Tag } from '@components/common';
 import dayjs from 'dayjs';
 

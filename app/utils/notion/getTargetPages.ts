@@ -1,4 +1,4 @@
-import { getArticlesFromDB, IPage } from '@apis/notion';
+import { getArticlesFromDB, IPage } from '@api/notion';
 import getPathFromTitle from '@utils/notion/formatTitleToPath';
 
 export async function recursiveFetching(

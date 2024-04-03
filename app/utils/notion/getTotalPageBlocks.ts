@@ -1,4 +1,4 @@
-import { getBlockChildren } from '@apis/notion';
+import { getBlockChildren } from '@api/notion';
 import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import {
   convertToCustomBlock,

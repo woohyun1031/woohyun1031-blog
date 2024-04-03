@@ -2,13 +2,15 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { DarkModeThemeContext } from 'app/(main)/providers';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { DarkModeDispatch } from '@contexts/darkModeContext';
 import NextLink from './NextLink';
 
 export function Header() {
   const [isShow, setIsShow] = React.useState(false);
-  const { isDark, setIsDark } = React.useContext(DarkModeThemeContext);
+  const { darkModeState, darkModeDispatch } =
+    React.useContext(DarkModeDispatch);
+  const { isDark } = darkModeState;
   const pathName = usePathname();
   const searchParams = useSearchParams();
   const pathNames = pathName?.split('/') ?? [];
@@ -24,12 +26,12 @@ export function Header() {
       if (localTheme === 'dark') {
         localStorage.removeItem('theme');
         document.documentElement.classList.remove('dark');
-        return setIsDark(false);
+        return darkModeDispatch({ type: 'light' });
       }
     } else {
       localStorage.setItem('theme', 'dark');
       document.documentElement.classList.add('dark');
-      setIsDark(true);
+      darkModeDispatch({ type: 'dark' });
     }
   }, []);
 

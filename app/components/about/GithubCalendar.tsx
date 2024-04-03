@@ -2,12 +2,16 @@
 
 import React from 'react';
 import GitHubCalendar from 'react-github-calendar';
-import { DarkModeThemeContext } from 'app/(main)/providers';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
+import { DarkModeDispatch } from '@contexts/darkModeContext';
 
 export default function GithubCalendar() {
-  const { isDark } = React.useContext(DarkModeThemeContext);
+  const { darkModeState } = React.useContext(DarkModeDispatch);
+  const isDark = React.useMemo(
+    () => darkModeState.isDark,
+    [darkModeState.isDark],
+  );
 
   const gitHubCalendar = React.useCallback(() => {
     return (

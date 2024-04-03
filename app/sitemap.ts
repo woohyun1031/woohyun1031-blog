@@ -1,5 +1,5 @@
 import getPathFromTitle from '@utils/notion/formatTitleToPath';
-import { getArticlesFromDB } from '@apis/notion';
+import { getArticlesFromDB } from '@api/notion';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
