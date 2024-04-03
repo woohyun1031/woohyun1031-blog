@@ -24,7 +24,6 @@
     "no-underscore-dangle": 0,
     "no-unsafe-optional-chaining": 0,
     "no-console": 0,
-    "react/no-unstable-nested-components": 0,
-    "import/no-cycle": 0
+    "react/no-unstable-nested-components": 0
   }
 }
