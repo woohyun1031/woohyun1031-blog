@@ -1,0 +1,4 @@
+next.config.js
+node_modules
+jest.config.ts
+.lintstagedrc.js
