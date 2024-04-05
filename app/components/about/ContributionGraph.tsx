@@ -14,7 +14,7 @@ export default function ContributionGraph({ username }: { username?: string }) {
     }[]
   >([]);
 
-  React.useState(() => {
+  React.useEffect(() => {
     getContributionList(username)
       .then((res) => res.json())
       .then((result: IContributionInfo) => {
@@ -22,7 +22,7 @@ export default function ContributionGraph({ username }: { username?: string }) {
         setWeeks(result.weeks);
       })
       .catch(() => {});
-  });
+  }, [username]);
 
   return (
     <>
