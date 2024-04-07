@@ -234,7 +234,7 @@ export default async function Page() {
               </div>
             </BlockWrapper>
 
-            <BlockWrapper>
+            <BlockWrapper keyword="Commits">
               <div className="mb-10">
                 <Title value="Commits" />
                 <span className="mt-2 block font-sansT text-sm text-gray-400 dark:text-gray-400 sm:text-base lg:ml-4 lg:inline">
