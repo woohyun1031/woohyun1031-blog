@@ -30,7 +30,6 @@ export default function Error({
                   <p className="font-sansT">
                     Sorry, This page does not exist :(
                   </p>
-                  {/* <button onClick={() => reset()}>Try again</button> */}
                 </div>
               </div>
             </div>
