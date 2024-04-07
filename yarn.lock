@@ -6263,10 +6263,10 @@ react-activity-calendar@^2.2.5:
     chroma-js "^2.4.2"
     date-fns "^3.2.0"
 
-react-contribution-viewer@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-contribution-viewer/-/react-contribution-viewer-1.0.2.tgz#497f2ded06ee12d78fa77b26060616e7cb18452e"
-  integrity sha512-AUtlC2ET9OEVyzya6KRBZGqbdSznsn+ofxRZ1Ox/GJwSBj8UcQmRa6s9pcKVZsRKpdF5IfkettdQvSn/D5WuWg==
+react-contribution-viewer@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-contribution-viewer/-/react-contribution-viewer-1.0.3.tgz#f8494361de039445e38910214f8f453c70fac6c4"
+  integrity sha512-UID/xKgEIN0P5Kc0HkbCiUdMWajfh88xUpXJowEsD6xPopRcUGix8IIcXvDqzd63Ktf/fVp7cotPvUUpEVGIBQ==
   dependencies:
     dayjs "^1.11.10"
 

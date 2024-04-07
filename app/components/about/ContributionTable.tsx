@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import 'react-tooltip/dist/react-tooltip.css';
 import { DarkModeDispatch } from '@contexts/darkModeContext';
 import ContributionWrapper from 'react-contribution-viewer';
 
