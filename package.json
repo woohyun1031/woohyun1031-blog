@@ -23,7 +23,7 @@
     "octokit": "^2.0.14",
     "open-graph-scraper": "6.3.2",
     "react": "^18.2.0",
-    "react-contribution-viewer": "^1.0.8",
+    "react-contribution-viewer": "^1.1.0",
     "react-dom": "^18.2.0",
     "react-github-calendar": "^4.0.0",
     "react-syntax-highlighter": "^15.5.0",

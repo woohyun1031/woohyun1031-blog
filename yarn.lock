@@ -2135,6 +2135,11 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.3.tgz#6209321eb2c1712a7e7466422b8cb1fc0d9dd5d8"
   integrity sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==
 
+"@types/style-inject@^0.3.5":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@types/style-inject/-/style-inject-0.3.5.tgz#0b14c59c167d04b3cdb633c9a8252ba240729394"
+  integrity sha512-dg4FKPXAPpoULxmwqqjGgnA4hhIYtK7zFsfSuTL5y9IjTzUFcdr7e5fpqhtRWyfVNmk5RuCjcvl2dlB7k063ow==
+
 "@types/tough-cookie@*":
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-4.0.5.tgz#cb6e2a691b70cb177c6e3ae9c1d2e8b2ea8cd304"
@@ -6263,12 +6268,14 @@ react-activity-calendar@^2.2.5:
     chroma-js "^2.4.2"
     date-fns "^3.2.0"
 
-react-contribution-viewer@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/react-contribution-viewer/-/react-contribution-viewer-1.0.8.tgz#e651bda80c7542678b0f3b0bfdab651cd9163f14"
-  integrity sha512-YkyaHXRGI2CBTE16U35VMjWT95y2KPQN6yD48VlYgXtJSHxdG8MfuykADsEXa+oW5vyS9qhwZJw38Qajdubi8w==
+react-contribution-viewer@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-contribution-viewer/-/react-contribution-viewer-1.1.0.tgz#217dcc8aba8a15a8604653d7a507f3729725160f"
+  integrity sha512-nvPuEhnXrwUmEdlixl24exyNTZ2posZz8hhZOtL6VMTbz+Of+5j2zCo80HVsmzd3C+PVqoi/hN9qc1OY8denZQ==
   dependencies:
+    "@types/style-inject" "^0.3.5"
     dayjs "^1.11.10"
+    style-inject "^0.3.0"
 
 react-dom@^18.2.0:
   version "18.2.0"
@@ -6851,6 +6858,11 @@ strip-json-comments@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
+
+style-inject@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/style-inject/-/style-inject-0.3.0.tgz#d21c477affec91811cc82355832a700d22bf8dd3"
+  integrity sha512-IezA2qp+vcdlhJaVm5SOdPPTUu0FCEqfNSli2vRuSIBbu5Nq5UvygTk/VzeCqfLz2Atj3dVII5QBKGZRZ0edzw==
 
 styled-jsx@5.1.1:
   version "5.1.1"
