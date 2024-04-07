@@ -4,11 +4,13 @@ export type TContributionDayType = {
   contributionCount: any;
   date: any;
 };
+
+export type TContributionWeekType = {
+  contributionDays: TContributionDayType[];
+};
 export interface IContributionInfo {
   totalContributions: number;
-  weeks: {
-    contributionDays: TContributionDayType[];
-  }[];
+  weeks: Array<TContributionWeekType>;
 }
 
 export interface IUserContributionData {

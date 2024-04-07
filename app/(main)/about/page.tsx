@@ -7,16 +7,18 @@ import {
   SubTitle,
   BlockWrapper,
   Title,
-  ContributionGraph,
 } from '@components/about';
 import { getArticlesFromDB, IPage } from '@api/notion';
 import Link from 'next/link';
 import React from 'react';
 import URL from '@constants/url';
+import ContributionTable from '@components/about/ContributionTable';
 
 export const revalidate = 3600;
 
 export default async function Page() {
+  // const res = await getContributionList('woohyun1031');
+  // const data = await res.json();
   async function getNotionPageList() {
     const notitonList = await getArticlesFromDB({
       page_size: 5,
@@ -242,11 +244,8 @@ export default async function Page() {
                   <LinkButton className="ml-2" url={URL.github} />
                 </span>
                 <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
-                {/* <div className="mt-10">
-                  <GithubCalendar />
-                </div> */}
                 <div className="mt-10">
-                  <ContributionGraph username="woohyun1031" />
+                  <ContributionTable />
                 </div>
               </div>
             </BlockWrapper>
