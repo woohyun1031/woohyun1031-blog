@@ -17,8 +17,6 @@ import ContributionTable from '@components/about/ContributionTable';
 export const revalidate = 3600;
 
 export default async function Page() {
-  // const res = await getContributionList('woohyun1031');
-  // const data = await res.json();
   async function getNotionPageList() {
     const notitonList = await getArticlesFromDB({
       page_size: 5,

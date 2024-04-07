@@ -3,7 +3,7 @@
 import React from 'react';
 import 'react-tooltip/dist/react-tooltip.css';
 import { DarkModeDispatch } from '@contexts/darkModeContext';
-import ContributionViewer from 'react-contribution-viewer';
+import ContributionWrapper from 'react-contribution-viewer';
 
 export default function ContributionTable() {
   const { darkModeState } = React.useContext(DarkModeDispatch);
@@ -12,7 +12,7 @@ export default function ContributionTable() {
     [darkModeState.isDark],
   );
   return (
-    <ContributionViewer
+    <ContributionWrapper
       username="woohyun1031"
       isDark={isDark}
       isHeader
