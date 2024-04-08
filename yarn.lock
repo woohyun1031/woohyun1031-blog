@@ -2135,11 +2135,6 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.3.tgz#6209321eb2c1712a7e7466422b8cb1fc0d9dd5d8"
   integrity sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==
 
-"@types/style-inject@^0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@types/style-inject/-/style-inject-0.3.5.tgz#0b14c59c167d04b3cdb633c9a8252ba240729394"
-  integrity sha512-dg4FKPXAPpoULxmwqqjGgnA4hhIYtK7zFsfSuTL5y9IjTzUFcdr7e5fpqhtRWyfVNmk5RuCjcvl2dlB7k063ow==
-
 "@types/tough-cookie@*":
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-4.0.5.tgz#cb6e2a691b70cb177c6e3ae9c1d2e8b2ea8cd304"
@@ -6268,12 +6263,11 @@ react-activity-calendar@^2.2.5:
     chroma-js "^2.4.2"
     date-fns "^3.2.0"
 
-react-contribution-viewer@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-contribution-viewer/-/react-contribution-viewer-1.1.2.tgz#8d764d67331f1b23b8d47d57334a345d939c0451"
-  integrity sha512-YMsAUDYcsImTSQ5gMnUyQ4fMII3C4t5UbpK4ZaJu2foeEYUzzFKXjMkJnvkyKycC7tu8z7MOAiL5t06FJ1D6ow==
+react-contribution-viewer@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-contribution-viewer/-/react-contribution-viewer-1.1.3.tgz#4598e788280a6921e8b905f05bde4a64253024ec"
+  integrity sha512-W4Dq5TLOrtIyPEn420mAjUjopfKBAxH9Uc71vMahmlfdamkyJ/M9roDRRiEYbhrFTs5WJ0QvSH8zDrSXe9NuRA==
   dependencies:
-    "@types/style-inject" "^0.3.5"
     dayjs "^1.11.10"
     style-inject "^0.3.0"
 
