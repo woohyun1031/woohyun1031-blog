@@ -9,6 +9,9 @@ const URL = {
   studyDb:
     'https://woo1031.notion.site/Development-Engineering-Notion-2d6ebc5912ce4bc38a1ec85b857a62cd',
   actbase: 'https://actbase.io/',
+  personality: 'https://personality-orpin.vercel.app/',
+  react_contribution_viewer:
+    'https://github.com/woohyun1031/react-contribution-viewer',
 };
 
 export default URL;

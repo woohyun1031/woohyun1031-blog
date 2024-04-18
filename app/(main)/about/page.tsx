@@ -13,6 +13,7 @@ import Link from 'next/link';
 import React from 'react';
 import URL from '@constants/url';
 import ContributionTable from '@components/about/ContributionTable';
+import Desk from '@components/Desk';
 
 export const revalidate = 3600;
 
@@ -36,8 +37,19 @@ export default async function Page() {
         <div className="min-h-screen w-full max-w-container px-8">
           <div className="mt-36 flex w-full flex-col justify-center px-12">
             <div>
-              <div>
+              <div className="mt-12 flex justify-center sm:mt-12 sm:flex sm:justify-start lg:mt-20">
                 <div>
+                  <Desk />
+                  <div className="mt-2 text-xs text-gray-400 dark:text-gray-500">
+                    - part of{' '}
+                    <LinkButton
+                      url={URL.personality}
+                      className="ml-1 mr-1 text-sm"
+                    />
+                    &quot;my-personality&quot; project... -
+                  </div>
+                </div>
+                {/* <div>
                   <span className="block font-sansM text-4xl leading-snug text-gray-900 duration-300 ease-in-out dark:text-gray-50 sm:text-5xl lg:inline">
                     WooHyun Kim{' '}
                   </span>
@@ -47,12 +59,12 @@ export default async function Page() {
                       Student
                     </SubTitle>
                   </div>
-                </div>
+                </div> */}
               </div>
-              <div className="mt-2 lg:mt-6 lg:w-3/4">
+              <div className="mt-12 lg:mt-20 lg:w-3/4">
                 <div className="mb-2">
                   <Description>
-                    안녕하세요, 2년차 프론트엔드 개발자
+                    안녕하세요, 3년차 프론트엔드 개발자
                     <BordDescription> 김우현</BordDescription>
                     입니다<span className="text-2xl">👋</span>
                   </Description>
@@ -61,7 +73,7 @@ export default async function Page() {
                 <div className="mb-2">
                   <Description>
                     사용자 문제를 해결하는 기능을 구축하고 기술적으로 고도화하는
-                    작업을 하고 있습니다<span className="text-2xl">🚀</span>
+                    작업을 하고 있습니다 <span className="text-2xl">🚀</span>
                     <br />
                     TypeScript와 React.js, Next.js를 주로 사용하지만
                     Vanilla.js로 개인 작업 하는 것도 선호합니다.
@@ -148,9 +160,8 @@ export default async function Page() {
                     </div>
                     <div className="mt-2">
                       <Description>
-                        첫 회사로 다양한 프로젝트를 진행하며 프론트엔드 개발에
-                        대한 전문성을 쌓았습니다. 주로 고객사 어플리케이션의
-                        프론트엔드 기술 환경을 구축하고 개발을 진행했습니다.
+                        개발팀의 신입 팀원으로 다양한 프로젝트를 경험하고
+                        프론트엔드 개발에 대한 전문성을 쌓았습니다.
                       </Description>
                     </div>
                     <div>
@@ -244,6 +255,15 @@ export default async function Page() {
                 <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
                 <div className="mt-10">
                   <ContributionTable />
+                </div>
+                <div className="mt-2 text-xs text-gray-400 dark:text-gray-500">
+                  -{' '}
+                  <LinkButton
+                    url={URL.react_contribution_viewer}
+                    className="ml-1 mr-1 text-sm"
+                  />
+                  &quot;react-contribution-viewer&quot; project, you can find it
+                  on npm -
                 </div>
               </div>
             </BlockWrapper>
