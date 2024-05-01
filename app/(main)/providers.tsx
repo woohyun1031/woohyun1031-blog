@@ -48,7 +48,7 @@ export function Providers({
         <section className="min-h-svh">
           <Suspense
             fallback={
-              <div className="flex w-full justify-center">
+              <div className="flex w-full animate-show_animation justify-center">
                 <div className="min-h-screen w-full max-w-container px-4">
                   <div className="mb-8 mt-36">
                     <SkeletonComponent count={1} />

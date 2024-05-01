@@ -8,9 +8,7 @@ import NextLink from './NextLink';
 
 export function Header() {
   const [isShow, setIsShow] = React.useState(false);
-  const { darkModeState, darkModeDispatch } =
-    React.useContext(DarkModeDispatch);
-  const { isDark } = darkModeState;
+  const { darkModeDispatch } = React.useContext(DarkModeDispatch);
   const pathName = usePathname();
   const searchParams = useSearchParams();
   const pathNames = pathName?.split('/') ?? [];
@@ -58,46 +56,56 @@ export function Header() {
               setIsShow(false);
             }}
           >
-            <span className="text-xl font-extralight text-gray-800 duration-300 ease-in-out hover:text-red-400 active:text-red-600 dark:text-white dark:hover:text-red-400 dark:active:text-red-600">
-              woohyun.kim
-            </span>
+            {/* <span className="text-xl font-extralight text-gray-800 duration-300 ease-in-out hover:text-red-400 active:text-red-600 dark:text-white dark:hover:text-red-400 dark:active:text-red-600">
+              k_wh.
+            </span> */}
           </NextLink>
 
-          <div className="flex">
+          <div className="flex gap-1">
             <button
               type="button"
-              className="text-gray-800 dark:text-white"
+              className="
+              group
+              relative
+              flex
+              h-8
+              w-8 flex-row
+              items-center
+              justify-center
+              overflow-hidden 
+              rounded-md              
+              text-gray-800 
+              duration-300
+              hover:bg-gray-100
+              dark:text-white dark:hover:bg-gray-800"
               onClick={() => changeTheme()}
             >
-              {isDark ? (
-                <div>
-                  <Image
-                    src="/images/sun.svg"
-                    alt="me"
-                    width="25"
-                    height="25"
-                    className="fill-current"
-                  />
-                </div>
-              ) : (
-                <div>
-                  <Image
-                    src="/images/moon.svg"
-                    alt="me"
-                    width="25"
-                    height="25"
-                  />
-                </div>
-              )}
+              <div
+                className="invisible absolute h-5 w-5 translate-x-2  opacity-0 duration-300 
+              dark:visible dark:relative dark:translate-x-0 dark:opacity-[1]"
+              >
+                <Image
+                  src="/images/sun.svg"
+                  alt="me"
+                  fill
+                  className="fill-current"
+                />
+              </div>
+              <div
+                className="visible h-5 w-5 translate-x-0  opacity-[1] duration-300
+                  dark:invisible dark:absolute dark:-translate-x-2  dark:opacity-0"
+              >
+                <Image src="/images/moon.svg" alt="me" fill />
+              </div>
             </button>
             <button
               type="button"
-              className="flex items-center rounded px-3 py-2 text-gray-900 hover:text-blue-600 lg:hidden"
+              className="flex items-center rounded p-1 text-gray-900 duration-300 hover:bg-gray-100 hover:text-red-600 dark:hover:bg-gray-800 lg:hidden"
               onClick={() => setIsShow((prev) => !prev)}
             >
               {isShow ? (
                 <svg
-                  className="fill-current dark:text-white"
+                  className="h-5 w-5 fill-current dark:text-white"
                   viewBox="0 96 960 960"
                   height="20"
                   width="20"
@@ -106,7 +114,7 @@ export function Header() {
                 </svg>
               ) : (
                 <svg
-                  className="fill-current dark:text-white"
+                  className="h-5 w-5 fill-current dark:text-white"
                   viewBox="0 96 960 960"
                   height="20"
                   width="20"
@@ -115,7 +123,7 @@ export function Header() {
                 </svg>
               )}
             </button>
-            <div className="ml-6 hidden gap-6 lg:flex">
+            <div className="ml-3 hidden gap-6 lg:flex">
               <NextLink
                 src="/about"
                 className={`cursor-pointe m-auto text-xs duration-300
@@ -136,7 +144,7 @@ export function Header() {
                   setIsShow(false);
                 }}
               >
-                ABOUT
+                about
               </NextLink>
               <NextLink
                 src="/article"
@@ -157,7 +165,7 @@ export function Header() {
                   }
                 }}
               >
-                ARTICLE
+                article
               </NextLink>
             </div>
           </div>
@@ -189,7 +197,7 @@ export function Header() {
               setIsShow(false);
             }}
           >
-            ABOUT
+            about
           </NextLink>
           <NextLink
             src="/article"
@@ -211,7 +219,7 @@ export function Header() {
               setIsShow(false);
             }}
           >
-            ARTICLE
+            article
           </NextLink>
         </div>
       </div>
