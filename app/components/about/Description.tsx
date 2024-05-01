@@ -3,7 +3,10 @@ import React from 'react';
 
 export function Description({ children }: { children: React.ReactNode }) {
   return (
-    <span className="break-keep font-sansM text-xs text-gray-600 duration-300 ease-in-out dark:text-gray-400 sm:text-sm">
+    <span
+      className="break-keep font-sansT text-xs text-description-firm duration-300 ease-in-out 
+    dark:text-description-dark_firm sm:text-sm"
+    >
       {children}
     </span>
   );
@@ -11,7 +14,10 @@ export function Description({ children }: { children: React.ReactNode }) {
 
 export function BordDescription({ children }: { children: React.ReactNode }) {
   return (
-    <span className="break-keep font-sansB text-xs text-gray-700 duration-300 ease-in-out dark:text-gray-300 sm:text-sm">
+    <span
+      className="break-keep font-sansM text-xs text-description-hard duration-300 ease-in-out 
+    dark:text-description-dark_hard sm:text-sm"
+    >
       {children}
     </span>
   );
@@ -19,7 +25,10 @@ export function BordDescription({ children }: { children: React.ReactNode }) {
 
 export function SoftDescription({ children }: { children: React.ReactNode }) {
   return (
-    <span className="break-keep font-sansT text-xs text-gray-400 duration-300 ease-in-out dark:text-gray-500">
+    <span
+      className="break-keep font-sansT text-xs text-description-soft duration-300 ease-in-out 
+    dark:text-description-dark_soft"
+    >
       {children}
     </span>
   );

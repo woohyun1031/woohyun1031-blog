@@ -19,6 +19,14 @@ module.exports = {
           100: '#F5F7FA',
           1000: '#1F2933',
         },
+        description: {
+          soft: 'rgb(156 163 175)',
+          firm: 'rgb(107 114 128)',
+          hard: 'rgb(55 65 81)',
+          dark_soft: 'rgb(107 114 128)',
+          dark_firm: 'rgb(156 163 175)',
+          dark_hard: 'rgb(209 213 219)',
+        },
       },
       fontFamily: {
         sansB: ['var(--font-bold)'],
@@ -54,6 +62,7 @@ module.exports = {
         not_sway_animation: 'not_sway 0.3s ease-in-out forwards',
         purse_animation: 'purse .5s ease-in-out forwards',
         not_purse_animation: 'not_purse .5s ease-in-out forwards',
+        show_animation: 'show .5s linear forwards',
       },
       keyframes: {
         sway: {
@@ -79,6 +88,10 @@ module.exports = {
           '30%': { opacity: '0.9' },
           '40%': { opacity: '1' },
           '100%': { opacity: '0' },
+        },
+        show: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
       },
     },

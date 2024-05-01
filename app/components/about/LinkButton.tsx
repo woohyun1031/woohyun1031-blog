@@ -10,7 +10,7 @@ export default function LinkButton({
 }) {
   return (
     <span
-      className={`cursor-pointer font-sansT  text-base text-red-400  hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 ${className}`}
+      className={`cursor-pointer font-sansT text-base text-red-400  hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 ${className}`}
     >
       <Link href={url ?? ''} target="_blank">
         +
