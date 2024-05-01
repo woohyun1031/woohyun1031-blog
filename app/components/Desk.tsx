@@ -12,7 +12,6 @@ import {
 } from '@components/icons';
 import Image from 'next/image';
 import React from 'react';
-import Link from 'next/link';
 
 export default function Desk() {
   const componentSizes = {
@@ -36,8 +35,7 @@ export default function Desk() {
       <div
         className={`mb-5 flex w-full ${componentSizes.photoGroup} flex-row justify-end`}
       >
-        <Link
-          href="/about"
+        <span
           className={`common-animation group relative h-full ${componentSizes.photos} cursor-pointer text-gray-600 dark:text-gray-200`}
         >
           <PhotosIcon />
@@ -46,13 +44,12 @@ export default function Desk() {
           >
             <PhotoIcon />
           </div>
-        </Link>
+        </span>
       </div>
       <div
         className={`flex h-full ${componentSizes.deskGroup} items-end justify-center gap-3`}
       >
-        <Link
-          href="/about"
+        <span
           className={`common-animation group relative h-full ${componentSizes.books} cursor-pointer text-gray-600 dark:text-gray-200`}
         >
           <BooksIcon />
@@ -61,9 +58,8 @@ export default function Desk() {
           >
             <BookIcon />
           </div>
-        </Link>
-        <Link
-          href="/about"
+        </span>
+        <span
           className={`common-animation group relative h-full ${componentSizes.mac} cursor-pointer overflow-hidden text-gray-600 dark:text-gray-200`}
         >
           <div className="relative z-50 overflow-hidden">
@@ -83,9 +79,8 @@ export default function Desk() {
               className="z-10 object-cover opacity-85 brightness-90 dark:opacity-85 dark:brightness-125 "
             />
           </div>
-        </Link>
-        <Link
-          href="/about"
+        </span>
+        <span
           className={`common-animation group relative h-full ${componentSizes.cds} cursor-pointer text-gray-600 dark:text-gray-200`}
         >
           <AlbumsIcon />
@@ -96,7 +91,7 @@ export default function Desk() {
           >
             <AlbumIcon />
           </div>
-        </Link>
+        </span>
       </div>
       <div
         className={`common-animation flex ${componentSizes.desk} justify-center text-gray-600 dark:text-gray-200`}
