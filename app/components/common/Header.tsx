@@ -31,7 +31,7 @@ export function Header() {
       document.documentElement.classList.add('dark');
       darkModeDispatch({ type: 'dark' });
     }
-  }, []);
+  }, [darkModeDispatch]);
 
   return (
     <header
@@ -65,17 +65,8 @@ export function Header() {
             <button
               type="button"
               className="
-              group
-              relative
-              flex
-              h-8
-              w-8 flex-row
-              items-center
-              justify-center
-              overflow-hidden 
-              rounded-md              
-              text-gray-800 
-              duration-300
+              group relative flex h-8 w-8 flex-row items-center justify-center
+              overflow-hidden rounded-md text-gray-800 duration-300
               hover:bg-gray-100
               dark:text-white dark:hover:bg-gray-800"
               onClick={() => changeTheme()}
@@ -93,36 +84,52 @@ export function Header() {
               </div>
               <div
                 className="visible h-5 w-5 translate-x-0  opacity-[1] duration-300
-                  dark:invisible dark:absolute dark:-translate-x-2  dark:opacity-0"
+                  dark:invisible dark:absolute dark:-translate-x-2 dark:opacity-0"
               >
                 <Image src="/images/moon.svg" alt="me" fill />
               </div>
             </button>
+
             <button
               type="button"
-              className="flex items-center rounded p-1 text-gray-900 duration-300 hover:bg-gray-100 hover:text-red-600 dark:hover:bg-gray-800 lg:hidden"
+              className="
+              group relative flex h-8 w-8 flex-row items-center justify-center
+              overflow-hidden rounded-md text-gray-800 duration-300
+              hover:bg-gray-100
+              dark:text-white dark:hover:bg-gray-800 lg:hidden"
               onClick={() => setIsShow((prev) => !prev)}
             >
-              {isShow ? (
-                <svg
-                  className="h-5 w-5 fill-current dark:text-white"
-                  viewBox="0 96 960 960"
-                  height="20"
-                  width="20"
-                >
-                  <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
-                </svg>
-              ) : (
-                <svg
-                  className="h-5 w-5 fill-current dark:text-white"
-                  viewBox="0 96 960 960"
-                  height="20"
-                  width="20"
-                >
-                  <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
-                </svg>
-              )}
+              <svg
+                className={`h-5 w-5 dark:text-white ${
+                  isShow
+                    ? 'visible h-5 w-5 rotate-0 scale-100 opacity-[1] duration-300'
+                    : 'invisible absolute h-5 w-5 rotate-180 scale-0 opacity-0 duration-300'
+                }`}
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                height="20"
+                width="20"
+                viewBox="0 96 960 960"
+              >
+                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+              </svg>
+
+              <svg
+                className={`h-5 w-5 dark:text-white ${
+                  isShow
+                    ? 'invisible absolute h-5 w-5 -rotate-180 scale-0 opacity-0 duration-300'
+                    : 'visible h-5 w-5 rotate-0 scale-100 opacity-[1] duration-300'
+                }`}
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                height="20"
+                width="20"
+                viewBox="0 96 960 960"
+              >
+                <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+              </svg>
             </button>
+
             <div className="ml-3 hidden gap-6 lg:flex">
               <NextLink
                 src="/about"

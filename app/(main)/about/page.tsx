@@ -34,7 +34,7 @@ export default async function Page() {
   return (
     <>
       <div className="flex w-full justify-center">
-        <div className="min-h-screen w-full max-w-container px-8">
+        <div className="min-h-screen w-full max-w-container">
           <div className="mt-36 flex w-full flex-col justify-center px-12">
             <div>
               <div className="mt-12 flex justify-center sm:mt-12 lg:mt-20">
@@ -45,12 +45,12 @@ export default async function Page() {
                       url={URL.personality}
                       className="ml-1 mr-1 text-sm"
                     />
-                    &quot;my-personality&quot;
+                    &quot; my identity &quot;
                   </div>
                 </div>
               </div>
               <div>
-                <div className="mt-12 lg:mt-20 lg:w-3/4">
+                <div className="mt-12 w-full lg:mt-20">
                   <div className="mb-2">
                     <Description>
                       안녕하세요, 프론트엔드 개발자
@@ -79,32 +79,62 @@ export default async function Page() {
                     </Description>
                   </div>
                 </div>
-                <div className="mt-4 flex flex-wrap">
+                <div className="mt-4 flex flex-wrap gap-6">
                   <Link href={URL.mail} target="_blank">
-                    <div className="cursor-pointer break-normal font-sansT text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
+                    <div
+                      className="cursor-pointer break-normal font-sansT text-sm 
+                    text-red-400 duration-300 ease-in-out 
+                    hover:text-gray-700 
+                    dark:text-red-400 dark:hover:text-gray-300 
+                    sm:text-xs"
+                    >
                       e_mail
                     </div>
                   </Link>
 
                   <Link href={URL.resume} target="_blank">
-                    <div className="ml-6 cursor-pointer break-normal font-sansT text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
+                    <div
+                      className="cursor-pointer break-normal font-sansT text-sm 
+                    text-red-400 duration-300 ease-in-out 
+                    hover:text-gray-700 
+                    dark:text-red-400 dark:hover:text-gray-300 
+                    sm:text-xs"
+                    >
                       resume
                     </div>
                   </Link>
                   <Link href={URL.github} target="_blank">
-                    <div className="ml-6 cursor-pointer break-normal font-sansT text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
+                    <div
+                      className="cursor-pointer break-normal font-sansT text-sm 
+                    text-red-400 duration-300 ease-in-out 
+                    hover:text-gray-700 
+                    dark:text-red-400 dark:hover:text-gray-300 
+                    sm:text-xs"
+                    >
                       github
                     </div>
                   </Link>
 
                   <Link href={URL.notion} target="_blank">
-                    <div className="ml-6 cursor-pointer break-normal font-sansT text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
+                    <div
+                      className="cursor-pointer break-normal font-sansT text-sm 
+                    text-red-400 duration-300 ease-in-out 
+                    hover:text-gray-700 
+                    dark:text-red-400 dark:hover:text-gray-300 
+                    sm:text-xs"
+                    >
                       notion
                     </div>
                   </Link>
 
                   <Link href={URL.blog} target="_blank">
-                    <div className="ml-6 cursor-pointer break-normal font-sansT text-sm text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-xs">
+                    <div
+                      className="cursor-pointer break-normal font-sansT text-sm 
+                    text-red-400 duration-300 ease-in-out 
+                    hover:text-gray-700 
+                    dark:text-red-400 dark:hover:text-gray-300 
+                    sm:text-xs"
+                    >
                       blog
                     </div>
                   </Link>
@@ -121,7 +151,7 @@ export default async function Page() {
                 </div>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
-              <div className="mt-10 lg:flex lg:justify-between">
+              <div className="mt-10">
                 <div className="mb-10">
                   <div>
                     <Title>
@@ -143,7 +173,7 @@ export default async function Page() {
                     <SoftDescription>2022.08 ~ 2023.12</SoftDescription>
                   </div>
                 </div>
-                <div className="lg:w-500">
+                <div className="">
                   <div className="mt-12">
                     <div className="mt-4">
                       <SubTitle>Description</SubTitle>
@@ -162,7 +192,7 @@ export default async function Page() {
                       </Description>
                     </div>
 
-                    <div className="mt-6">
+                    {/* <div className="mt-6">
                       <SubTitle>Tech Stack</SubTitle>
                     </div>
                     <div className="mt-2">
@@ -171,7 +201,7 @@ export default async function Page() {
                         Redux, styled-components, SCSS, Less, GitLab CI, AWS S3,
                         Docker ...
                       </Description>
-                    </div>
+                    </div> */}
 
                     <div className="mt-6 text-xs text-gray-400 dark:text-gray-500">
                       <LinkButton

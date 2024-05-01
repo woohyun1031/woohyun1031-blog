@@ -37,9 +37,9 @@ module.exports = {
         nav: '#1890FF',
       },
       maxWidth: {
-        container: '1140px',
-        header: '1300px',
-        innerContainer: '700px',
+        container: '800px',
+        header: '800px',
+        innerContainer: '800px',
         70: '70%',
       },
       minWidth: {
