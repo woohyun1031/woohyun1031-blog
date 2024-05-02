@@ -37,12 +37,16 @@ export function SoftDescription({ children }: { children: React.ReactNode }) {
 export function LinkDescription({
   children,
   href,
+  className,
 }: {
   children: React.ReactNode;
   href: string;
+  className?: string;
 }) {
   return (
-    <span className="cursor-pointer break-keep font-sansM text-xs text-red-400 duration-300 ease-in-out hover:text-gray-700 dark:text-red-400 dark:hover:text-gray-300 sm:text-sm">
+    <span
+      className={`cursor-pointer break-keep font-sansT text-xs text-red-400 duration-300 ease-in-out hover:text-gray-800 dark:text-red-400 dark:hover:text-gray-300 sm:text-sm ${className}`}
+    >
       <Link href={href} target="_blank">
         {children}
       </Link>

@@ -3,13 +3,12 @@ import {
   Description,
   BordDescription,
   SoftDescription,
-  LinkButton,
+  LinkDescription,
   SubTitle,
   BlockWrapper,
   Title,
 } from '@components/about';
 import { getArticlesFromDB, IPage } from '@api/notion';
-import Link from 'next/link';
 import React from 'react';
 import URL from '@constants/url';
 import ContributionTable from '@components/about/ContributionTable';
@@ -41,10 +40,7 @@ export default async function Page() {
                 <div>
                   <Desk />
                   <div className="mt-2 text-xs text-gray-400 dark:text-gray-500">
-                    <LinkButton
-                      url={URL.personality}
-                      className="ml-1 mr-1 text-sm"
-                    />
+                    <LinkDescription href={URL.personality}>+ </LinkDescription>{' '}
                     &quot; my identity &quot;
                   </div>
                 </div>
@@ -71,73 +67,23 @@ export default async function Page() {
                     <Description>
                       요즘에는 일과 취미 모두를 개발에 집중하고 있습니다. 이러한
                       경험과 흥미로운 문제들을 꾸준히
-                      <LinkButton url={URL.notion} className="ml-2 mr-1" />
-                      노션에 기록하고 있습니다. <br />
+                      <LinkDescription href={URL.notion}>
+                        {' '}
+                        개인 노션
+                      </LinkDescription>
+                      에 기록하고 있습니다. <br />
                       가끔 직접적으로 접하는 문제들에 대해 노션과 연동하여
-                      <LinkButton url={URL.blog} className="ml-2 mr-1" />
-                      이곳에 글을 업로드 하기도 합니다.
+                      <LinkDescription href={URL.blog}> 이곳</LinkDescription>에
+                      글을 업로드 하기도 합니다.
                     </Description>
                   </div>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-6">
-                  <Link href={URL.mail} target="_blank">
-                    <div
-                      className="cursor-pointer break-normal font-sansT text-sm 
-                    text-red-400 duration-300 ease-in-out 
-                    hover:text-gray-700 
-                    dark:text-red-400 dark:hover:text-gray-300 
-                    sm:text-xs"
-                    >
-                      e_mail
-                    </div>
-                  </Link>
-
-                  <Link href={URL.resume} target="_blank">
-                    <div
-                      className="cursor-pointer break-normal font-sansT text-sm 
-                    text-red-400 duration-300 ease-in-out 
-                    hover:text-gray-700 
-                    dark:text-red-400 dark:hover:text-gray-300 
-                    sm:text-xs"
-                    >
-                      resume
-                    </div>
-                  </Link>
-                  <Link href={URL.github} target="_blank">
-                    <div
-                      className="cursor-pointer break-normal font-sansT text-sm 
-                    text-red-400 duration-300 ease-in-out 
-                    hover:text-gray-700 
-                    dark:text-red-400 dark:hover:text-gray-300 
-                    sm:text-xs"
-                    >
-                      github
-                    </div>
-                  </Link>
-
-                  <Link href={URL.notion} target="_blank">
-                    <div
-                      className="cursor-pointer break-normal font-sansT text-sm 
-                    text-red-400 duration-300 ease-in-out 
-                    hover:text-gray-700 
-                    dark:text-red-400 dark:hover:text-gray-300 
-                    sm:text-xs"
-                    >
-                      notion
-                    </div>
-                  </Link>
-
-                  <Link href={URL.blog} target="_blank">
-                    <div
-                      className="cursor-pointer break-normal font-sansT text-sm 
-                    text-red-400 duration-300 ease-in-out 
-                    hover:text-gray-700 
-                    dark:text-red-400 dark:hover:text-gray-300 
-                    sm:text-xs"
-                    >
-                      blog
-                    </div>
-                  </Link>
+                  <LinkDescription href={URL.mail}>e_mail</LinkDescription>
+                  <LinkDescription href={URL.resume}>resume</LinkDescription>
+                  <LinkDescription href={URL.github}>github</LinkDescription>
+                  <LinkDescription href={URL.notion}>notion</LinkDescription>
+                  <LinkDescription href={URL.blog}>blog</LinkDescription>
                 </div>
               </div>
             </div>
@@ -147,7 +93,9 @@ export default async function Page() {
                 <Title value="Work Experience" />
                 <div className="mt-2 block text-xs text-gray-400 dark:text-gray-500 lg:ml-4 lg:inline">
                   More Information?
-                  <LinkButton url={URL.resume} className="ml-2 text-sm" />
+                  <LinkDescription href={URL.resume} className="ml-2">
+                    +
+                  </LinkDescription>
                 </div>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
@@ -161,10 +109,9 @@ export default async function Page() {
                         /{' '}
                         <span className="mt-6 text-xs text-gray-400 dark:text-gray-500">
                           Frontend Developer
-                          <LinkButton
-                            url={URL.actbase}
-                            className="ml-2 text-sm"
-                          />
+                          <LinkDescription href={URL.actbase} className="ml-2">
+                            +
+                          </LinkDescription>
                         </span>
                       </Description>
                     </Title>
@@ -192,22 +139,10 @@ export default async function Page() {
                       </Description>
                     </div>
 
-                    {/* <div className="mt-6">
-                      <SubTitle>Tech Stack</SubTitle>
-                    </div>
-                    <div className="mt-2">
-                      <Description>
-                        TypeScript, Next.js, React.js, ReactNative, ReactQuery,
-                        Redux, styled-components, SCSS, Less, GitLab CI, AWS S3,
-                        Docker ...
-                      </Description>
-                    </div> */}
-
                     <div className="mt-6 text-xs text-gray-400 dark:text-gray-500">
-                      <LinkButton
-                        url={URL.resume}
-                        className="ml-1 mr-1 text-sm"
-                      />
+                      <LinkDescription href={URL.resume} className="ml-1 mr-1 ">
+                        +
+                      </LinkDescription>
                       자세한 내용은 이력서를 확인해주세요
                     </div>
                   </div>
@@ -220,7 +155,9 @@ export default async function Page() {
                 <Title value="Study" />
                 <div className="mt-2 block text-xs text-gray-400 dark:text-gray-500 lg:ml-4 lg:inline">
                   새롭게 알게 된 흥미로운 문제들을 노션에 기록합니다.
-                  <LinkButton url={URL.studyDb} className="ml-2 text-sm" />
+                  <LinkDescription href={URL.studyDb} className="ml-2">
+                    +
+                  </LinkDescription>
                 </div>
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
@@ -231,13 +168,15 @@ export default async function Page() {
                       <>
                         <div className="mt-2">
                           <Description>
-                            <LinkButton
-                              className="mr-2"
-                              url={value.url.replace(
+                            <LinkDescription
+                              href={value.url.replace(
                                 'https://www.notion.so/',
                                 'https://woo1031.notion.site/',
                               )}
-                            />
+                              className="mr-2"
+                            >
+                              +
+                            </LinkDescription>
                             {value?.properties.Name?.title[0]?.text?.content}
                           </Description>
                         </div>
@@ -257,7 +196,9 @@ export default async function Page() {
                 <div className="mt-2">
                   <Description>
                     More Records ?
-                    <LinkButton className="ml-2" url={URL.studyDb} />
+                    <LinkDescription href={URL.studyDb} className="ml-2">
+                      +
+                    </LinkDescription>
                   </Description>
                 </div>
               </div>
@@ -268,17 +209,21 @@ export default async function Page() {
                 <Title value="Commits" />
                 <div className="mt-2 block text-xs text-gray-400 dark:text-gray-500 lg:ml-4 lg:inline">
                   I love programming.
-                  <LinkButton url={URL.github} className="ml-2 text-sm" />
+                  <LinkDescription href={URL.github} className="ml-2">
+                    +
+                  </LinkDescription>
                 </div>
                 <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
                 <div className="mt-10">
                   <ContributionTable />
                 </div>
                 <div className="mt-2 text-xs text-gray-400 dark:text-gray-500">
-                  <LinkButton
-                    url={URL.react_contribution_viewer}
-                    className="ml-1 mr-1 text-sm"
-                  />
+                  <LinkDescription
+                    href={URL.react_contribution_viewer}
+                    className="ml-1 mr-1"
+                  >
+                    +
+                  </LinkDescription>
                   &quot;react-contribution-viewer&quot; project, you can find it
                   on npm
                 </div>
@@ -288,7 +233,9 @@ export default async function Page() {
               <div className="mb-10 text-center">
                 <span className="mt-2 block text-xs text-gray-400 dark:text-gray-500 lg:ml-4 lg:inline">
                   More Information?
-                  <LinkButton className="ml-2" url={URL.notion} />
+                  <LinkDescription href={URL.notion} className="ml-2">
+                    +
+                  </LinkDescription>
                 </span>
               </div>
             </BlockWrapper>

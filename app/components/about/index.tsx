@@ -2,7 +2,6 @@ import Title from './Title';
 import SubTitle from './SubTitle';
 import BlockWrapper from './BlockWrapper';
 import GithubCalendar from './GithubCalendar';
-import LinkButton from './LinkButton';
 import {
   Description,
   BordDescription,
@@ -16,7 +15,6 @@ export {
   Title,
   BlockWrapper,
   GithubCalendar,
-  LinkButton,
   SubTitle,
   Description,
   BordDescription,
