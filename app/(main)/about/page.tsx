@@ -39,10 +39,10 @@ export default async function Page() {
               <div className="mt-12 flex justify-center sm:mt-12 lg:mt-20">
                 <div>
                   <Desk />
-                  <div className="mt-2 text-xs text-gray-400 dark:text-gray-500">
+                  {/* <div className="mt-2 text-xs text-gray-400 dark:text-gray-500">
                     <LinkDescription href={URL.personality}>+ </LinkDescription>{' '}
                     &quot; my identity &quot;
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div>
