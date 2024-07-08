@@ -11,7 +11,7 @@ async function getArticles(pages: number) {
   const originData = await getArticlesFromDB({
     page_size: pages,
     filter: {
-      property: 'isBlog',
+      property: 'upload',
       checkbox: {
         equals: true,
       },
@@ -20,7 +20,7 @@ async function getArticles(pages: number) {
 
   const articles = originData?.results.map((item) => {
     const path = getPathFromTitle(
-      item.properties?.Name?.title?.[0]?.plain_text ?? '',
+      item.properties?.title?.title?.[0]?.plain_text ?? '',
     );
     return { ...item, path };
   });
@@ -42,7 +42,7 @@ export default async function Page({ params }: any) {
     console.log('404 notFound Error', page);
     notFound();
   }
-  const tagList = page?.properties?.Type?.multi_select ?? [];
+  const tagList = page?.properties?.tag?.multi_select ?? [];
 
   return (
     <>
@@ -50,7 +50,7 @@ export default async function Page({ params }: any) {
         <div className="min-h-screen w-full max-w-innerContainer px-4">
           <div className="flex flex-col items-center">
             <div className="mb-3 w-full break-keep px-4 text-center font-sansT text-3xl leading-relaxed text-gray-900 dark:text-white sm:mb-6 sm:text-4xl sm:leading-relaxed">
-              <span>{page.properties.Name.title[0].plain_text}</span>
+              <span>{page.properties.title.title[0].plain_text}</span>
             </div>
 
             <div className="mb-24 flex w-full flex-row flex-wrap justify-center gap-x-4 gap-y-2 align-middle">

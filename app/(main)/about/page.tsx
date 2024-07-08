@@ -21,7 +21,7 @@ export default async function Page() {
     const notitonList = await getArticlesFromDB({
       page_size: 5,
       filter: {
-        property: 'Status',
+        property: 'status',
         status: {
           equals: '완료',
         },
@@ -177,7 +177,7 @@ export default async function Page() {
                             >
                               +
                             </LinkDescription>
-                            {value?.properties.Name?.title[0]?.text?.content}
+                            {value?.properties.title?.title[0]?.text?.content}
                           </Description>
                         </div>
                         <div className="mt-2">

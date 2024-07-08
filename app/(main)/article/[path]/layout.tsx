@@ -11,7 +11,7 @@ async function getArticles(pages: number) {
   const originData = await getArticlesFromDB({
     page_size: pages,
     filter: {
-      property: 'isBlog',
+      property: 'upload',
       checkbox: {
         equals: true,
       },
@@ -20,7 +20,7 @@ async function getArticles(pages: number) {
 
   const articles = originData?.results.map((item) => {
     const path = getPathFromTitle(
-      item.properties?.Name?.title?.[0]?.plain_text ?? '',
+      item.properties?.title?.title?.[0]?.plain_text ?? '',
     );
     return { ...item, path };
   });
@@ -34,11 +34,11 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   if (target?.id) {
     const page = await getPageDetail<IPage>(target?.id).then((res) => res.data);
     return {
-      title: page?.properties?.Name?.title?.[0]?.plain_text,
-      description: page?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+      title: page?.properties?.title?.title?.[0]?.plain_text,
+      description: page?.properties?.subtitle?.rich_text?.[0]?.plain_text,
       openGraph: {
-        title: page?.properties?.Name?.title?.[0]?.plain_text,
-        description: page?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+        title: page?.properties?.title?.title?.[0]?.plain_text,
+        description: page?.properties?.subtitle?.rich_text?.[0]?.plain_text,
         type: 'article',
         url: `https://woo1031.vercel.app/article/${target?.path ?? ''}`,
         images: [
@@ -51,8 +51,8 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         locale: 'en_US',
       },
       twitter: {
-        title: page?.properties?.Name?.title?.[0]?.plain_text,
-        description: page?.properties?.Subtitle?.rich_text?.[0]?.plain_text,
+        title: page?.properties?.title?.title?.[0]?.plain_text,
+        description: page?.properties?.subtitle?.rich_text?.[0]?.plain_text,
         card: 'summary',
         creator: '@nextjs',
         images: ['/images/image.png'],
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         'React',
         'JavaScript',
         'FrondEnd',
-        ...page?.properties?.Type?.multi_select?.map((item: any) => item.name),
+        ...page?.properties?.tag?.multi_select?.map((item: any) => item.name),
       ],
     };
   }

@@ -12,13 +12,13 @@ export async function recursiveFetching(
       ? {
           and: [
             {
-              property: 'isBlog',
+              property: 'upload',
               checkbox: {
                 equals: true,
               },
             },
             {
-              property: 'Type',
+              property: 'tag',
               multi_select: {
                 contains: _type,
               },
@@ -26,7 +26,7 @@ export async function recursiveFetching(
           ],
         }
       : {
-          property: 'isBlog',
+          property: 'upload',
           checkbox: {
             equals: true,
           },
@@ -36,7 +36,7 @@ export async function recursiveFetching(
 
   const articles = originData?.results.map((item) => {
     const path = getPathFromTitle(
-      item.properties?.Name?.title?.[0]?.plain_text ?? '',
+      item.properties?.title?.title?.[0]?.plain_text ?? '',
     );
     return { ...item, path };
   });

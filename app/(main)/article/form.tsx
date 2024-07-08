@@ -51,10 +51,10 @@ export default function Form({
                   )} */}
                   <div className="flex w-full flex-col justify-center">
                     <span className="mb-4 mt-4 inline-block w-full break-keep text-center font-sansT text-2xl text-gray-900 transition delay-75 duration-500 ease-in-out group-hover:text-red-500 dark:text-white dark:group-hover:text-gray-400 sm:text-left sm:text-3xl lg:mt-0">
-                      {item?.properties?.Name?.title[0].text.content}
+                      {item?.properties?.title?.title[0].text.content}
                     </span>
                     <span className="mb-4 inline-block break-keep font-sansT text-base text-gray-700 delay-75 duration-500 group-hover:text-red-500 dark:text-gray-200 dark:group-hover:text-gray-400">
-                      {item?.properties?.Subtitle.rich_text[0]?.plain_text}
+                      {item?.properties?.subtitle.rich_text[0]?.plain_text}
                     </span>
                   </div>
                 </NextLink>
@@ -64,14 +64,14 @@ export default function Form({
                       {dayjs(item?.created_time).format('MMMM DD, YYYY')}
                     </span>
                   </div>
-                  {item?.properties?.Type?.multi_select?.length ? (
+                  {item?.properties?.tag?.multi_select?.length ? (
                     <div>
                       <span className="font-sansT text-xs text-gray-500 dark:text-gray-400">
                         |
                       </span>
                     </div>
                   ) : null}
-                  {item?.properties?.Type?.multi_select?.map(
+                  {item?.properties?.tag?.multi_select?.map(
                     (
                       type: { id: string; name: string; color: string },
                       idx: number,
@@ -83,7 +83,7 @@ export default function Form({
                               <Tag title={type.name} />
                             </NextLink>
                           </div>
-                          {item?.properties?.Type?.multi_select?.length !==
+                          {item?.properties?.tag?.multi_select?.length !==
                             idx + 1 && (
                             <div>
                               <span className="font-sansT text-xs text-gray-500 dark:text-gray-400">

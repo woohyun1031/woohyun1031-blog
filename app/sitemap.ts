@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const originData = await getArticlesFromDB({
     page_size: 100,
     filter: {
-      property: 'isBlog',
+      property: 'upload',
       checkbox: {
         equals: true,
       },
@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const articles = originData?.results.map((item) => {
     const path = getPathFromTitle(
-      item.properties?.Name?.title?.[0]?.plain_text ?? '',
+      item.properties?.title?.title?.[0]?.plain_text ?? '',
     );
     return { ...item, path };
   });
