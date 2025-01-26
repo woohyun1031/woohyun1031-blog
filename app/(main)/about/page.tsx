@@ -100,18 +100,42 @@ export default async function Page() {
               </div>
               <hr className="mt-4 border-t-1 duration-300 ease-in-out dark:border-gray-600" />
               <div className="mt-10">
-                <div className="mb-10">
+                <div className="mb-5">
                   <div>
                     <Title>
-                      Actbase.llc
+                      VGen
                       <Description>
                         {' '}
                         /{' '}
                         <span className="mt-6 text-xs text-gray-400 dark:text-gray-500">
                           Frontend Developer
-                          <LinkDescription href={URL.actbase} className="ml-2">
+                          <LinkDescription
+                            href="https://vgen.co.kr/"
+                            className="ml-2"
+                          >
                             +
                           </LinkDescription>
+                        </span>
+                      </Description>
+                    </Title>
+                  </div>
+                  <div className="mt-2">
+                    <SoftDescription>2024.07 ~ current</SoftDescription>
+                  </div>
+                </div>
+
+                <div className="mb-5 mt-20">
+                  <div>
+                    <Title>
+                      Actbase
+                      <Description>
+                        {' '}
+                        /{' '}
+                        <span className="mt-6 text-xs text-gray-400 dark:text-gray-500">
+                          Frontend Developer
+                          {/* <LinkDescription href={URL.actbase} className="ml-2">
+                            +
+                          </LinkDescription> */}
                         </span>
                       </Description>
                     </Title>
