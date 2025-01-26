@@ -4,11 +4,14 @@ import React from 'react';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { DarkModeDispatch } from '@contexts/darkModeContext';
+import { ModalDispatch } from '@contexts/modalContext';
 import NextLink from './NextLink';
 
 export function Header() {
   const [isShow, setIsShow] = React.useState(false);
   const { darkModeDispatch } = React.useContext(DarkModeDispatch);
+  const { openModal } = React.useContext(ModalDispatch);
+
   const pathName = usePathname();
   const searchParams = useSearchParams();
   const pathNames = pathName?.split('/') ?? [];
@@ -33,6 +36,28 @@ export function Header() {
     }
   }, [darkModeDispatch]);
 
+  function openNoAccessModal() {
+    return openModal(
+      <div className="flex h-full w-full items-center justify-center">
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          onKeyDown={(e) => e.key === 'Enter' && e.stopPropagation()}
+          onKeyPress={(e) =>
+            (e.key === 'Enter' || e.key === ' ') && e.stopPropagation()
+          }
+        >
+          <div className="mt-2 text-lg text-white dark:text-white">
+            This service is currently undergoing maintenance 😢
+          </div>
+        </div>
+      </div>,
+    );
+  }
+
   return (
     <header
       className={`fixed top-0 z-50 w-full bg-white bg-opacity-75 backdrop-blur-md duration-300 ease-in-out ${
@@ -56,9 +81,7 @@ export function Header() {
               setIsShow(false);
             }}
           >
-            {/* <span className="text-xl font-extralight text-gray-800 duration-300 ease-in-out hover:text-red-400 active:text-red-600 dark:text-white dark:hover:text-red-400 dark:active:text-red-600">
-              k_wh.
-            </span> */}
+            {}
           </NextLink>
 
           <div className="flex gap-1">
@@ -174,6 +197,21 @@ export function Header() {
               >
                 article
               </NextLink>
+              <NextLink
+                src="/article"
+                className={`m-auto w-full cursor-pointer text-xs duration-300
+                ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 ${
+                  pathName?.includes('instagram')
+                    ? 'text-red-400 dark:text-red-400'
+                    : 'text-stone-600 dark:text-white'
+                }`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  openNoAccessModal();
+                }}
+              >
+                instagram
+              </NextLink>
             </div>
           </div>
         </div>
@@ -181,7 +219,7 @@ export function Header() {
       <div className="m-0 h-full w-full overflow-hidden">
         <div
           className={`flex h-full transform flex-col text-sm duration-300 ease-in-out lg:hidden ${
-            isShow ? 'translate-y-0' : '-translate-y-16'
+            isShow ? 'translate-y-0' : '-translate-y-28'
           }`}
         >
           <NextLink
@@ -227,6 +265,21 @@ export function Header() {
             }}
           >
             article
+          </NextLink>
+          <NextLink
+            src="/article"
+            className={`mt-4 w-full cursor-pointer py-2 pl-8 text-xs duration-300
+            ease-in-out hover:text-red-400 active:text-red-600 dark:hover:text-red-400 dark:active:text-red-600 lg:mt-0 lg:inline-block ${
+              pathName?.includes('instagram')
+                ? 'text-red-400 dark:text-red-400'
+                : 'text-stone-600 dark:text-white'
+            }`}
+            onClick={(e) => {
+              e.preventDefault();
+              openNoAccessModal();
+            }}
+          >
+            instagram
           </NextLink>
         </div>
       </div>
