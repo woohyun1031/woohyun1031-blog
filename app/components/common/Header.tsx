@@ -61,7 +61,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 z-50 w-full bg-white bg-opacity-75 backdrop-blur-md duration-300 ease-in-out ${
-        isShow ? 'h-32 lg:h-14' : 'h-14'
+        isShow ? 'h-44 lg:h-14' : 'h-14'
       } dark:bg-black dark:bg-opacity-70`}
     >
       <div className="relative z-30 flex w-full justify-center px-6 py-2">
