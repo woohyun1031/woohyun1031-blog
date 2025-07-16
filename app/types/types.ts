@@ -1,7 +1,7 @@
 export interface IDefaultPageProps<
   TSearchParams = Record<string, any>,
-  TParams = Record<string, any>,
+  // TParams = Record<string, any>,
 > {
-  params: TParams;
+  // params: TParams;
   searchParams: TSearchParams;
 }
